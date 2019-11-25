@@ -1,29 +1,30 @@
 <?php
-  require ("class.pessoa.php");
+include_once 'class.db.php';
 /**
  * Criando uma class com o nome coordenador que esta extendendo a class de pessoas
  */
     class Coordenador
     {
-      public $id;
-      public $pessoa_id;
+      public $id_coordenador;
+      public $fk_pessoa;
       public $data_cadastro;
 
       public static function listar()
         {
           try {
-            $query = "SELECT * from pessoa";
+            $query = "SELECT coordenador.id_coordenador as id_coordenador,pessoa.nome as nome_coord, pessoa.email as email_coord, pessoa.cpf as cpf_coord, pessoa.telefone as telefone_coord,coordenador.data_cadastro as datacad_coord from pessoa join coordenador on pessoa.id_pessoa = coordenador.fk_pessoa";
                         $stmt = DB::conexao()->prepare($query);
                         $stmt->execute();
                         $registros = $stmt->fetchAll();
                         if($registros){
                           foreach($registros as $objeto){
                             $temporario = new Coordenador();
-                            $temporario->setId($objeto['id']);
-                            $temporario->setNome($objeto['nome']);
-                            $temporario->setEmail($objeto['email']);
-                            $temporario->setCpf($objeto['cpf']);
-                            $temporario->setTelefone($objeto['telefone']);
+                            $temporario->setId($objeto['id_coordenador']);
+                            $temporario->setNome($objeto['nome_coord']);
+                            $temporario->setEmail($objeto['email_coord']);
+                            $temporario->setCpf($objeto['cpf_coord']);
+                            $temporario->setTelefone($objeto['telefone_coord']);
+                            $temporario->setDataCadastro($objeto['datacad_coord']);
                             $itens[] = $temporario;
                           }
               return $itens;
@@ -33,33 +34,55 @@
           }
         }
 
-      public function adicionar(){
-        try {
-          $sql = "INSERT INTO coordenador(pessoa_id,data_cadastro) values (:pessoa_id,:data_cadastro)";
-          $conexao = DB::conexao();
-          $stmt = $conexao->prepare($sql);
-          $stmt->bindParam(':pessoa_id',$this->pessoa_id);
-          $stmt->bindParam(':data_cadastro',$this->data_cadastro);
-          $stmt->execute();
-
-        } catch (PDOException $e) {
-          echo "ERROR:".$e->getMessage();
+        public function adicionar(){
+          try {
+            $sql = "INSERT INTO coordenador(fk_pessoa,data_cadastro) values (:fk_pessoa,:data_cadastro)";
+            $conexao = DB::conexao();
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindParam(':fk_pessoa',$this->fk_pessoa);
+            $stmt->bindParam(':data_cadastro',$this->data_cadastro);
+            $stmt->execute();
+          } catch (PDOException $e) {
+            echo "ERROR:".$e->getMessage();
+          }
         }
 
+      public function getId()
+      {
+        return $this->id_coordenador;
       }
 
-      public function setId($id){
-        $this->id = $id;
+      public function setId($id_coordenador){
+        $this->id_coordenador = $id_coordenador;
+      }
+
+      public function getNome()
+      {
+        return $this->nome;
       }
 
       public function setNome($nome){
         $this->nome = $nome;
       }
 
+      public function getEmail()
+      {
+        return $this->email;
+      }
+
       public function setEmail($email){
         $this->email = $email;
       }
 
+      public function getCpf()
+      {
+        return $this->cpf;
+      }
+
+      public function getTelefone()
+      {
+        return $this->telefone;
+      }
       public function setCpf($cpf){
         $this->cpf = $cpf;
       }
@@ -69,19 +92,19 @@
       }
 
       public function setPessoaId($ultimoIdPessoa){
-        $this->pessoa_id = $ultimoIdPessoa;
+        $this->fk_pessoa = $ultimoIdPessoa;
       }
 
       public function getPessoaId($ultimoIdPessoa){
-        return $this->pessoa_id;
+        return $this->fk_pessoa;
       }
 
       public function getIdCoordenador(){
-        return $this->id;
+        return $this->id_coordenador;
       }
 
-      public function setIdCoordenador($id){
-        $this->id = $id;
+      public function setIdCoordenador($id_coordenador){
+        $this->id_coordenador = $id_coordenador;
       }
 
       public function getDataCadastro(){

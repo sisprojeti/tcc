@@ -6,7 +6,7 @@
       public $data_matricula;
       public $situacao_aluno;
       public $matricula;
-      public $pessoa_id;
+      public $fk_pessoa;
 
       //---------Provavelmente vamos utilizar esses atributos em outra classe-------
       //public $turma;
@@ -17,14 +17,14 @@
     public static function listar()
       {
         try {
-          $query = "select aluno.id ,pessoa.nome as nome, aluno.situacao_aluno as situacao_aluno, aluno.matricula as matricula from aluno join pessoa on aluno.pessoa_id = pessoa.id";
+          $query = "select aluno.id_aluno ,pessoa.nome as nome, aluno.situacao_aluno as situacao_aluno, aluno.matricula as matricula from aluno join pessoa on aluno.fk_pessoa = pessoa.id_pessoa";
                       $stmt = DB::conexao()->prepare($query);
                       $stmt->execute();
                       $registros = $stmt->fetchAll();
                       if($registros){
                         foreach($registros as $objeto){
                           $temporario = new Aluno();
-                          $temporario->setIdAluno($objeto['id']);
+                          $temporario->setIdAluno($objeto['id_aluno']);
                           $temporario->setNome($objeto['nome']);
                           $temporario->setSituacaoAluno($objeto['situacao_aluno']);
                           $temporario->setMatricula($objeto['matricula']);
@@ -45,7 +45,7 @@
                         $stmt->execute();
                         $registros = $stmt->fetchAll();
                         $totalRegistros = count($registros);
-              return $totalRegistros;
+                        return $totalRegistros;
             }catch(Exception $e){
                 echo "ERROR".$e->getMessage();
             }
@@ -56,10 +56,10 @@
 
       public function adicionar(){
         try{
-                  $sql = "INSERT INTO aluno(pessoa_id,data_matricula,situacao_aluno,matricula) values(:pessoa_id,:data_matricula,:situacao_aluno,:matricula)"; //criando uma variavel $stmt e atribuindo o valor da variavel $pdo e utilizand operador de acesso a objetos pra utilizar o metodo prepare pra preparar o insert no banco de dados
+                  $sql = "INSERT INTO aluno(fk_pessoa,data_matricula,situacao_aluno,matricula) values(:fk_pessoa,:data_matricula,:situacao_aluno,:matricula)"; //criando uma variavel $stmt e atribuindo o valor da variavel $pdo e utilizand operador de acesso a objetos pra utilizar o metodo prepare pra preparar o insert no banco de dados
                   $conexao = DB::conexao();
                   $stmt = $conexao->prepare($sql);
-                  $stmt->bindParam(':pessoa_id',$this->pessoa_id);
+                  $stmt->bindParam(':fk_pessoa',$this->fk_pessoa);
                   $stmt->bindParam(':data_matricula',$this->data_matricula);
                   $stmt->bindParam(':situacao_aluno',$this->situacao_aluno);
                   $stmt->bindParam(':matricula',$this->matricula);
@@ -80,16 +80,16 @@
               }
 
               public function setPessoaId($ultimoIdPessoa){
-                $this->pessoa_id = $ultimoIdPessoa;
+                $this->fk_pessoa = $ultimoIdPessoa;
               }
 
               public function getPessoaId($ultimoIdPessoa){
-                return $this->pessoa_id;
+                return $this->fk_pessoa;
               }
             /*---------------------------------------------------------------------
               ENCAPSULAMENTO NOME
              ---------------------------------------------------------------------*/
-            public function getNome(){
+            public function getNomeAluno(){
               return $this->nome;
             }
 

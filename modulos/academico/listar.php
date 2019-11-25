@@ -7,7 +7,7 @@
     echo "ERROR:".$e->getMessage();
    }
 ?>
- <div class="container col-lg-12 navbar-white">   
+ <div class="container col-lg-12 navbar-white">
     <section class="content navbar-light navbar-white">
       <div class="container-fluid navbar-white ">
 <table class="table table-striped"style="margin-top:10px;">
@@ -25,7 +25,7 @@
   foreach($alunos as $aluno){?>
     <tr>
     <th scope="row"><?php echo $aluno->getIdAluno();?></th>
-    <td><?php echo $aluno->getNome();?></td>
+    <td><?php echo $aluno->getNomeAluno();?></td>
     <td><?php echo $aluno->getSituacaoAluno();?></td>
     <td><?php echo $aluno->getMatricula();?></td>
     <td width=250>

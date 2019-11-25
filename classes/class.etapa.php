@@ -5,7 +5,7 @@ include_once('classes/class.db.php');
     {
 
       //Criando atributos pra class etapa
-      public $id;
+      public $id_etapa;
       public $nome;
       public $ordem;
       public $status_etapa;
@@ -29,7 +29,7 @@ include_once('classes/class.db.php');
                       if($registros){
                         foreach($registros as $objeto){
                           $temporario = new Etapa();
-                          $temporario->setId($objeto['id']);
+                          $temporario->setIdEtapa($objeto['id_etapa']);
                           $temporario->setNome($objeto['nome']);
                           $itens[] = $temporario;
                         }
@@ -41,16 +41,16 @@ include_once('classes/class.db.php');
     }
 
 
-      public function setId($id){
-        $this->id = $id;
+      public function setIdEtapa($id_etapa){
+        $this->id_etapa = $id_etapa;
       }
 
       public function getIdEtapa(){
-        return $this->id;
+        return $this->id_etapa;
       }
 
       /* =========Inicio encapsulamento nome da etapa =========*/
-      public function getNome(){
+      public function getNomeEtapa(){
         return $this->nome;
       }
 

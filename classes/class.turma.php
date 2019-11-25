@@ -8,10 +8,10 @@
 
     class Turma
     {
-      public $id;
-      public $exercicio_id;
-      public $curso_id;
-      public $etapa_id;
+      public $id_turma;
+      public $fk_exercicio;
+      public $fk_curso;
+      public $fk_etapa;
       public $nome;
       public $turno;
       public $lotacao;
@@ -19,12 +19,12 @@
 
       public function adicionar(){
         try{
-          $sql = "INSERT INTO turma (exercicio_id,curso_id,etapa_id,nome,turno,lotacao,status_finalizada) values (:exercicio_id,:curso_id,:etapa_id,:nome,:turno,:lotacao,:status_finalizada)";
+          $sql = "INSERT INTO turma (fk_exercicio,fk_etapa,fk_curso,nome,turno,lotacao,status_finalizada) values (:fk_exercicio,:fk_etapa,:fk_curso,:nome,:turno,:lotacao,:status_finalizada)";
           $conexao = DB::conexao();
           $stmt = $conexao->prepare($sql);
-          $stmt->bindParam(':exercicio_id',$this->exercicio_id);
-          $stmt->bindParam(':curso_id',$this->curso_id);
-          $stmt->bindParam(':etapa_id',$this->etapa_id);
+          $stmt->bindParam(':fk_exercicio',$this->fk_exercicio);
+          $stmt->bindParam(':fk_etapa',$this->fk_etapa);
+          $stmt->bindParam(':fk_curso',$this->fk_curso);
           $stmt->bindParam(':nome',$this->nome);
           $stmt->bindParam(':turno',$this->turno);
           $stmt->bindParam(':lotacao',$this->lotacao);
@@ -46,7 +46,7 @@
                       if($registros){
                         foreach($registros as $objeto){
                           $temporario = new Turma();
-                          $temporario->setIdTurma($objeto['id']);
+                          $temporario->setIdTurma($objeto['id_turma']);
                           $temporario->setNome($objeto['nome']);
                           $itens[] = $temporario;
                         }
@@ -66,24 +66,24 @@
       }
 
 /* =========Inicio encapsulamento da FK exercicio =========*/
-      public function setExercicioId($exercicio_id){
-        $this->exercicio_id = $exercicio_id;
+      public function setExercicioId($fk_exercicio){
+        $this->fk_exercicio = $fk_exercicio;
       }
 
       public function getExercicioId(){
-        return $this->exercicio_id;
+        return $this->exercicio;
       }
 /* =========Inicio encapsulamento da FK curso =========*/
-      public function setCursoId($curso_id){
-        $this->curso_id = $curso_id;
+      public function setCursoId($fk_curso){
+        $this->fk_curso = $fk_curso;
       }
 
       public function getCursoId(){
-        return $this->curso_id;
+        return $this->fk_curso_id;
       }
 /* =========Inicio encapsulamento da FK etapa =========*/
-      public function setEtapaId($etapa_id){
-        $this->etapa_id = $etapa_id;
+      public function setEtapaId($fk_etapa){
+        $this->fk_etapa = $fk_etapa;
       }
 
       public function getEtapaId(){
@@ -92,15 +92,15 @@
 
       /* =========Inicio encapsulamento id de turma =========*/
       public function getCodTurma(){
-        return $this->id;
+        return $this->id_turma;
       }
 
-      public function setCodTurma($id){
-        $this->id = $id;
+      public function setCodTurma($id_turma){
+        $this->id_turma = $id_turm;
       }
 
       /* =========Inicio encapsulamento nome de turma =========*/
-      public function getNome(){
+      public function getNomeTurma(){
         return $this->nome;
       }
 

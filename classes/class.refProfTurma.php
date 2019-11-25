@@ -2,46 +2,45 @@
   include_once('class.db.php');
     class RefProfTurma
     {
-      public $id;
-      public $turma_id;
-      public $professor_id;
+      public $id_ref_prof_turma;
+      public $fk_turma;
+      public $fk_professor;
 
       public function adicionar(){
         try {
-          $sql = "INSERT INTO ref_prof_turma (professor_id,turma_id) values (:professor_id,:turma_id)";
+          $sql = "INSERT INTO ref_prof_turma (professor_id,turma_id) values (:fk_professor_id,:fk_turma)";
           $conexao = DB::conexao();
           $stmt = $conexao->prepare($sql);
-          $stmt->bindParam(':professor_id',$this->professor_id);
-          $stmt->bindParam(':turma_id',$this->turma_id);
+          $stmt->bindParam(':fk_professor',$this->fk_professor);
+          $stmt->bindParam(':fk_turma',$this->fk_turma);
           $stmt->execute();
         } catch (PDOException $e) {
           echo "error".$e->getMessage();
         }
-
       }
 
       public function getIdRefProfTurma(){
-        return $this->id;
+        return $this->id_ref_prof_turma;
       }
 
-      public function setIdRefProfTurma($id){
-        $this->id = $id;
+      public function setIdRefProfTurma($id_ref_prof_turma){
+        $this->id_ref_prof_turma = $id_ref_prof_turma;
       }
 
       public function getTurmaId(){
         return $this->turma_id;
       }
 
-      public function setIdTurma($turma_id){
-        $this->turma_id = $turma_id;
+      public function setIdTurma($fk_turma){
+        $this->fk_turma = $fk_turma;
       }
 
       public function getIdProfessor(){
         return $this->professor_id;
       }
 
-      public function setIdProfessor($professor_id){
-        $this->professor_id = $professor_id;
+      public function setIdProfessor($fk_professor){
+        $this->fk_professor = $fk_professor;
       }
     }
 

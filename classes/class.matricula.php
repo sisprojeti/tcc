@@ -2,17 +2,17 @@
   include_once('class.db.php');
     class Matricula
     {
-      public $id;
-      public $turma_id;
-      public $aluno_id;
+      public $id_matricula;
+      public $fk_turma;
+      public $fk_aluno;
 
       public function adicionar(){
         try {
-          $sql = "INSERT INTO matricula (turma_id,aluno_id) values (:turma_id,:aluno_id)";
+          $sql = "INSERT INTO matricula (fk_turma,fk_aluno) values (:fk_turma,:fk_aluno)";
           $conexao = DB::conexao();
           $stmt = $conexao->prepare($sql);
-          $stmt->bindParam(':turma_id',$this->turma_id);
-          $stmt->bindParam(':aluno_id',$this->aluno_id);
+          $stmt->bindParam(':fk_turma',$this->fk_turma);
+          $stmt->bindParam(':fk_aluno',$this->fk_aluno);
           $stmt->execute();
         } catch (PDOException $e) {
           echo "error".$e->getMessage();
@@ -29,19 +29,19 @@
 
 
       public function getTurmaId(){
-        return $this->turma_id;
+        return $this->fk_turma;
       }
 
-      public function setTurmaId($turma_id){
-        $this->turma_id = $turma_id;
+      public function setTurmaId($fk_turma){
+        $this->fk_turma = $fk_turma;
       }
 
       public function getAlunoId(){
-        return $this->aluno_id;
+        return $this->fk_aluno;
       }
 
-      public function setAlunoId($aluno_id){
-        $this->aluno_id = $aluno_id;
+      public function setAlunoId($fk_aluno){
+        $this->fk_aluno = $fk_aluno;
       }
     }
 

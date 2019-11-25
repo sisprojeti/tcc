@@ -58,7 +58,7 @@
 */
       public function calculaMediaProjeti($nota1,$nota2,$nota3){
         //fazer lógica de calcular a media de projeti
-        $this->media = ($nota1 + $nota2 + $nota3)/3 //revisar como é feito o calculo da média para fazer calculo da media corretamente
+        $this->media = ($nota1 + $nota2 + $nota3)/3; //revisar como é feito o calculo da média para fazer calculo da media corretamente
       }
 /*
   Final do metodo de calculo da media de projeti

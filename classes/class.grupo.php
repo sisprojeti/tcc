@@ -2,9 +2,10 @@
 
   class Grupo
   {
-  	public $id;
+  	public $id_grupo;
     public $nome;
 
+        
 
        /*------------------------------------/*
        ENCAPSULAMENTOS DO ID
@@ -29,7 +30,7 @@
        public function setNome($nome){
          $this->nome = $nome;
        }
-        
+
   }
 
 ?>

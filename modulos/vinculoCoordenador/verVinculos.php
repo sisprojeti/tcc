@@ -1,11 +1,14 @@
-<?php include('classes/class.curso.php') ?>
 <?php
-
-  try {
-      $cursos = Curso::listar();
-  } catch (Exception $e) {
-    echo "ERROR:".$e->getMessage();
-   }
+include_once('classes/class.refCoordenadorCurso.php');
+include_once('classes/class.coordenador.php');
+try {
+    $vinculos = RefCoordenadorCurso::listar();
+    echo "<pre>";
+    var_dump($vinculos);
+    echo "</pre>";
+} catch (Exception $e) {
+  echo "ERROR:".$e->getMessage();
+ }
 ?>
 <div class="container col-lg-12 navbar-white">
     <section class="content navbar-light navbar-white">
@@ -22,24 +25,20 @@
 <th scope="col">#</th>
 <th scope="col">Nome</th>
 <th scope="col">Sigla</th>
-<th scope="col">Situação</th>
-<th scope="col">Ação</th>
 </tr>
 </thead>
 <tbody>
-<?php if(isset($cursos)){
-  foreach($cursos as $curso){?>
+<?php if(isset($vinculos)){
+  foreach($vinculos as $vinculo){?>
     <tr>
-    <th scope="row"><?php echo $curso->getIdCurso();?></th>
-    <td><?php echo $curso->getNome();?></td>
-    <td><?php echo $curso->getSigla();?></td>
-    <td><?php echo $curso->getStatusCurso();?></td>
+    <td><?php echo $vinculo->getId();?></td>
+    <td><?php echo $vinculo->getNomeCurso();?></td>
+    <td><?php echo $vinculo->getNomeCoordenador();?></td>
     <td width=250>
       <a class="btn btn-primary" href="">Info</a>
       <a class="btn btn-warning" href="?modulo=curso&acao=editar&id=<?php echo $curso->getIdcurso();?>">Editar</a>
     <a class="btn btn-danger" href="?modulo=curso&acao=excluir&id=<?php echo $curso->getIdcurso();?>">Excluir</a>
   </td>
-
     </tr>
 <?php }}?>
 </tbody>

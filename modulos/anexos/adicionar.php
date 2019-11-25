@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-  <style type="text/css">
-    .container{
-      margin:0px;
-    }
-  </style>
-</head>
-<body>
 <div class="container">
   <div class="row it">
-    <div class="col-sm-offset-1 col-sm-10 col-lg-12" id="one">
+    <div class="col-sm-offset-1 col-sm-10" id="one">
       <p>
         Área destinada para envio de documentos da Av1, Av2 e Av3.
       </p><br>
@@ -48,13 +37,9 @@
       <div class="text-center">
         <a href="#" class="btn btn-outline-dark"><i class="fa fa-plus"></i> Adicionar novo</a>
         <a href="#" class="btn btn-outline-dark"><i class="fa fa-paper-plane"></i> Enviar</a>
-
       </div>
     </div>
     <!--one-->
   </div>
   <!-- row -->
 </div>
-
-</body>
-</html>

@@ -5,11 +5,16 @@
  */
     class Tarefa
     {
+      public $id_tarefa;
+      public $fk_status_tarefa;
+      public $fk_projeti;
       public $titulo;
       public $descricao;
       public $data_inicio;
-      public $data_termino;
-      public $responsavel;
+      public $data_fim;
+      public $descricao;
+      public $responsavel_id;
+      public $data_conclusao;
 
 
 /*---------------------------------------------------------------------

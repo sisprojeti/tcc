@@ -1,8 +1,8 @@
 <?php
 	class RefUsuarioGrupo{
-		public $id;
-		public $grupo_id;
-		public $usuario_id;
+		public $id_ref_usuario_grupo;
+		public $fk_grupo;
+		public $fk_usuario;
 
 
 		/*------------------------------------/*
@@ -25,8 +25,8 @@
          	return $this->grupo_id;
        	}
 
-       public function setGrupoId($grupo_id){
-         $this->grupo_id = $grupo_id;
+       public function setGrupoId($fk_grupo){
+         $this->fk_grupo = $fk_grupo;
        }
 
        /*------------------------------------/*
@@ -34,11 +34,11 @@
        /*------------------------------------*/
 
        	public function getUsuarioId(){
-         	return $this->usuario_id;
+         	return $this->fk_usuario_id;
        	}
 
-       public function setUsuarioId($usuario_id){
-         $this->usuario_id = $usuario_id;
+       public function setUsuarioId($fk_usuario){
+         $this->fk_usuario = $fk_usuario;
        }
 
 	}

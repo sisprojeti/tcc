@@ -4,7 +4,7 @@ require_once('class.db.php');
 
      class Curso
      {
-      public $id;
+      public $id_curso;
       public $nome;
       public $sigla;
       public $ano_total;
@@ -31,7 +31,7 @@ require_once('class.db.php');
                       if($registros){
                         foreach($registros as $objeto){
                           $temporario = new Curso();
-                          $temporario->setId($objeto['id']);
+                          $temporario->setId($objeto['id_curso']);
                           $temporario->setNome($objeto['nome']);
                           $temporario->setSigla($objeto['sigla']);
                           $temporario->setStatusCurso($objeto['status_curso']);
@@ -71,18 +71,19 @@ require_once('class.db.php');
        ENCAPSULAMENTOS DO ID
        /*------------------------------------*/
 
-       public function getId(){
-         return $this->id;
+       public function getIdCurso(){
+         return $this->id_curso;
        }
 
-       public function setId($id){
-         $this->id = $id;
+       public function setId($id_curso){
+         $this->id_curso = $id_curso;
        }
+
 
        /*------------------------------------/*
        ENCAPSULAMENTOS DO NOME
        /*------------------------------------*/
-       public function getNome(){
+       public function getNomeCurso(){
          return $this->nome;
        }
 

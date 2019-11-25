@@ -4,9 +4,9 @@ include_once("classes/class.turma.php");
   if(isset($_POST['button']) && $_POST['button'] === 'Salvar'){
     try{
       $turma = new Turma();
-      $turma->setExercicioId($_POST['exercicio_id']);
-      $turma->setCursoId($_POST['curso_id']);
-      $turma->setEtapaId($_POST['etapa_id']);
+      $turma->setExercicioId($_POST['fk_exercicio']);
+      $turma->setEtapaId($_POST['fk_etapa']);
+      $turma->setCursoId($_POST['fk_curso']);
       $turma->setNome($_POST['nome']);
       $turma->setTurno($_POST['turno']);
       $turma->setLotacao($_POST['lotacao']);
@@ -30,7 +30,7 @@ include_once("classes/class.turma.php");
   } catch (PDOException $e){
     echo "ERROR".$e->getMessage();
   }
-  
+
   try {
     include_once("classes/class.etapa.php");
     $listarEtapas = Etapa::listar();
@@ -67,10 +67,10 @@ include_once("classes/class.turma.php");
          <form role="form" action="#" method="POST">
                   <div class="form-group">
                     <label>Exercicío</label>
-                    <select class="form-control" name="exercicio_id">
+                    <select class="form-control" name="fk_exercicio">
+                        <option value="">Selecione o Exercicio da Turma</option>
                       <?php if (isset($listarExercicios)):?>
                         <?php foreach ($listarExercicios as $linha): ?>
-                            <option value="">Selecione o Exercicio da Turma</option>
                             <option value="<?php echo $linha->getIdExercicio();?>"><?php echo $linha->getNomeAno();?></option>
                         <?php endforeach;?>
                       <?php endif;?>
@@ -78,22 +78,22 @@ include_once("classes/class.turma.php");
                   </div>
                   <div class="form-group">
                     <label>Curso</label>
-                    <select class="form-control" name="curso_id">
+                    <select class="form-control" name="fk_curso">
+                      <option value="">Selecione o Curso da Turma</option>
                       <?php if (isset($listarCursos)):?>
                         <?php foreach ($listarCursos as $curso): ?>
-                            <option value="">Selecione o Curso da Turma</option>
-                            <option value="<?php echo $curso->getId();?>"><?php echo $curso->getNome();?></option>
+                            <option value="<?php echo $curso->getIdCurso();?>"><?php echo $curso->getNomeCurso();?></option>
                         <?php endforeach;?>
                       <?php endif;?>
                     </select>
                   </div>
                   <div class="form-group">
                     <label>Etapa</label>
-                    <select class="form-control" name="etapa_id">
+                    <select class="form-control" name="fk_etapa">
+                      <option value="">Selecione a etapa da Turma</option>
                       <?php if (isset($listarEtapas)):?>
                         <?php foreach ($listarEtapas as $etapa): ?>
-                            <option value="">Selecione a etapa da Turma</option>
-                            <option value="<?php echo $etapa->getIdEtapa();?>"><?php echo $etapa->getNome();?></option>
+                            <option value="<?php echo $etapa->getIdEtapa();?>"><?php echo $etapa->getNomeEtapa();?></option>
                         <?php endforeach;?>
                       <?php endif;?>
                     </select>

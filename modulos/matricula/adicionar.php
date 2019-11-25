@@ -4,8 +4,8 @@ include_once('classes/class.matricula.php');
     if(isset($_POST['button']) && $_POST['button'] === 'Salvar'){
       try {
         $matricula = new Matricula;
-        $matricula->setTurmaId($_POST['turma_id']);
-        $matricula->setAlunoId($_POST['aluno_id']);
+        $matricula->setTurmaId($_POST['fk_turma']);
+        $matricula->setAlunoId($_POST['fk_aluno']);
         $matricula->adicionar();
       } catch (PDOException $e) {
         echo "error".$e->getMessage();
@@ -50,22 +50,22 @@ include_once('classes/class.matricula.php');
          <form role="form" action="#" method="POST">
            <div class="form-group">
              <label>Turma</label>
-             <select class="form-control" name="turma_id">
+             <select class="form-control" name="fk_turma">
                <option value="">Selecione o Exercicio da Turma</option>
                <?php if(isset($listarTurmas)):?>
                  <?php foreach ($listarTurmas as $linha):?>
-                     <option value="<?php echo $linha->getIdTurma();?>"><?php echo $linha->getNome();?></option>
+                     <option value="<?php echo $linha->getIdTurma();?>"><?php echo $linha->getNomeTurma();?></option>
                  <?php endforeach;?>
                <?php endif;?>
              </select>
            </div>
            <div class="form-group">
              <label>Aluno</label>
-             <select class="form-control" name="aluno_id">
+             <select class="form-control" name="fk_aluno">
                <option value="">Selecione o Aluno</option>
                <?php if(isset($listarAlunos)):?>
                  <?php foreach ($listarAlunos as $aluno):?>
-                     <option value="<?php echo $aluno->getIdAluno();?>"><?php echo $aluno->getNome();?></option>
+                     <option value="<?php echo $aluno->getIdAluno();?>"><?php echo $aluno->getNomeAluno();?></option>
                  <?php endforeach;?>
                <?php endif;?>
              </select>

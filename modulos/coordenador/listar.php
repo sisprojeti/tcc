@@ -22,7 +22,7 @@
 <?php if(isset($coordenadores)){
   foreach($coordenadores as $coordenador){?>
     <tr>
-    <th scope="row"><?php echo $coordenador->getIdAluno();?></th>
+    <th scope="row"><?php echo $coordenador->getIdCoordenador();?></th>
     <td><?php echo $coordenador->getNome();?></td>
     <td><?php echo $coordenador->getEmail();?></td>
     <td><?php echo $coordenador->getCpf();?></td>

@@ -5,7 +5,7 @@ include_once('class.db.php');
      */
     class Pessoa
     {
-      public $id;
+      public $id_pessoa;
       public $nome;
       public $email;
       public $cpf;
@@ -34,14 +34,14 @@ include_once('class.db.php');
 
       public function listar(){
         try {
-          $sql = "select pessoa.id, pessoa.nome, pessoa.cpf, pessoa.telefone, grupo_pessoa.nome as grupo, pessoa.email from pessoa join grupo_pessoa on pessoa.grupo_pessoa_id = grupo_pessoa.id ";
+          $sql = "select pessoa.id_pessoa, pessoa.nome, pessoa.cpf, pessoa.telefone, grupo_pessoa.nome as grupo, pessoa.email from pessoa join grupo_pessoa on pessoa.grupo_pessoa_id = grupo_pessoa.id ";
           $stmt = DB::conexao()->prepare($sql);
           $stmt->execute();
           $registros = $stmt->fetchAll();
           if($registros){
             foreach($registros as $objeto){
               $temporario = new Pessoa();
-              $temporario->setIdPessoa($objeto['id']);
+              $temporario->setIdPessoa($objeto['id_pessoa']);
               $temporario->setNome($objeto['nome']);
               $temporario->setEmail($objeto['email']);
               $temporario->setCpf($objeto['cpf']);
@@ -53,17 +53,26 @@ include_once('class.db.php');
         } catch (PDOException $e) {
           echo "Deu erro".$e->getMessage();
         }
-
       }
+
+      public static function contarPessoas()
+        {
+          try {
+            $query = "SELECT * FROM pessoa";
+                        $stmt = DB::conexao()->prepare($query);
+                        $stmt->execute();
+                        $registros = $stmt->fetchAll();
+                        $totalRegistros = count($registros);
+                        return $totalRegistros;
+            }catch(Exception $e){
+                echo "ERROR".$e->getMessage();
+            }
+          }
+
 
       public function getIdPessoa()
       {
-        return $this->id;
-      }
-
-      public function setIdPessoa($id)
-      {
-        $this->id = $id;
+        return $this->id_pessoa;
       }
 
             /*---------------------------------------------------------------------

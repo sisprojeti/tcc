@@ -1,15 +1,15 @@
 <?php
 include_once('class.db.php');
 	class Usuario{
-		public $id;
-		public $pessoa_id;
+		public $id_usuario;
+		public $fk_pessoa;
 		public $senha = 1234;
 
 		public function adicionar(){
-		  $sql = "INSERT INTO usuario (pessoa_id,senha) values (:pessoa_id,:senha)";
+		  $sql = "INSERT INTO usuario (fk_pessoa,senha) values (:fk_pessoa,:senha)";
 		  $conexao = DB::conexao();
 		  $stmt = $conexao->prepare($sql);
-		  $stmt->bindParam(':pessoa_id',$this->pessoa_id);
+		  $stmt->bindParam(':fk_pessoa',$this->fk_pessoa);
 		  $stmt->bindParam(':senha',$this->senha);
 		  $stmt->execute();
     }
@@ -31,11 +31,11 @@ include_once('class.db.php');
        /*------------------------------------*/
 
         public function setPessoaUsuarioId($ultimoIdPessoa){
-          	$this->pessoa_id = $ultimoIdPessoa;
+          	$this->fk_pessoa = $ultimoIdPessoa;
         }
 
         public function getPessoaId($ultimoIdPessoa){
-            return $this->pessoa_id;
+            return $this->fk_pessoa;
         }
 
         /*------------------------------------/*

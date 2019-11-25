@@ -1,18 +1,18 @@
 <?php
-  include('class.pessoa.php');
+include_once 'class.db.php';
     class Professor
     {
 
-      public $id;
-      public $pessoa_id;
+      public $id_professor;
+      public $fk_pessoa;
       public $data_cadastro;
 
       public function adicionar(){
         try {
-          $sql = "INSERT INTO professor(pessoa_id,data_cadastro) values (:pessoa_id,:data_cadastro)";
+          $sql = "INSERT INTO professor(fk_pessoa,data_cadastro) values (:fk_pessoa,:data_cadastro)";
           $conexao = DB::conexao();
           $stmt = $conexao->prepare($sql);
-          $stmt->bindParam(':pessoa_id',$this->pessoa_id);
+          $stmt->bindParam(':fk_pessoa',$this->fk_pessoa);
           $stmt->bindParam(':data_cadastro',$this->data_cadastro);
           $stmt->execute();
         } catch (PDOException $e) {
@@ -23,15 +23,19 @@
       public static function listar()
         {
           try {
-            $query = "SELECT pessoa.nome,professor.id from pessoa join professor on pessoa.id = professor.pessoa_id";
+            $query = "SELECT professor.id_professor as id_professor , pessoa.nome as nome_prof, pessoa.email as email_prof, pessoa.cpf as cpf_prof, pessoa.telefone as telefone_prof, professor.data_cadastro as data_cadastro_prof from pessoa join professor on pessoa.id_pessoa = professor.fk_pessoa";
                         $stmt = DB::conexao()->prepare($query);
                         $stmt->execute();
                         $registros = $stmt->fetchAll();
                         if($registros){
                           foreach($registros as $objeto){
                             $temporario = new Professor();
-                            $temporario->setIdProfessor($objeto['id']);
-                            $temporario->setNome($objeto['nome']);
+                            $temporario->setIdProfessor($objeto['id_professor']);
+                            $temporario->setNome($objeto['nome_prof']);
+                            $temporario->setEmail($objeto['email_prof']);
+                            $temporario->setCpf($objeto['cpf_prof']);
+                            $temporario->setTelefone($objeto['telefone_prof']);
+                            $temporario->setDataCadastro($objeto['data_cadastro_prof']);
                             $itens[] = $temporario;
                           }
               return $itens;
@@ -40,6 +44,37 @@
               echo "ERROR".$e->getMessage();
           }
         }
+
+        public function getEmail()
+        {
+          return $this->email;
+        }
+
+        public function setEmail($email)
+        {
+          $this->email = $email;
+        }
+
+        public function getCpf()
+        {
+          return $this->cpf;
+        }
+
+        public function setCpf($cpf)
+        {
+          $this->cpf = $cpf;
+        }
+
+        public function getTelefone()
+        {
+          return $this->telefone;
+        }
+
+        public function setTelefone($telefone)
+        {
+          $this->telefone = $telefone;
+        }
+
 
         public function getNome(){
           return $this->nome;
@@ -51,19 +86,19 @@
 
 
       public function setPessoaId($ultimoIdPessoa){
-        $this->pessoa_id = $ultimoIdPessoa;
+        $this->fk_pessoa = $ultimoIdPessoa;
       }
 
       public function getPessoaId($ultimoIdPessoa){
-        return $this->pessoa_id;
+        return $this->fk_pessoa;
       }
 
       public function getIdProfessor(){
-        return $this->id;
+        return $this->id_professor;
       }
 
-      public function setIdProfessor($id){
-        $this->id = $id;
+      public function setIdProfessor($id_professor){
+        $this->id_professor = $id_professor;
       }
 
       public function getDataCadastro(){

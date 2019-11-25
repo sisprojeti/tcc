@@ -3,7 +3,7 @@ require_once("class.db.php");
 
     class Exercicio
     {
-      public $id;
+      public $id_exercicio;
       public $nome_ano;
       public $data_inicio;
       public $data_fim;
@@ -35,7 +35,7 @@ require_once("class.db.php");
                       if($registros){
                         foreach($registros as $objeto){
                           $temporario = new Exercicio();
-                          $temporario->setIdExercicio($objeto['id']);
+                          $temporario->setIdExercicio($objeto['id_exercicio']);
                           $temporario->setNomeAno($objeto['nome_ano']);
                           $temporario->setDataInicio($objeto['data_inicio']);
                           $temporario->setDataFim($objeto['data_fim']);
@@ -48,12 +48,12 @@ require_once("class.db.php");
       }
     }
 
-      public function setIdExercicio($id){
-        $this->id = $id;
+      public function setIdExercicio($id_exercicio){
+        $this->id_exercicio = $id_exercicio;
       }
 
       public function getIdExercicio(){
-        return $this->id;
+        return $this->id_exercicio;
       }
 
       public function setNomeAno($nome_ano){
