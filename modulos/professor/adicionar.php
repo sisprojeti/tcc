@@ -30,6 +30,17 @@ include_once("classes/class.pessoa.php");
              color:red
        }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+       <script type="text/javascript">
+  $(document).ready(function(){
+    $("#cpf").mask("000.000.000-00");
+    $("#celular").mask("(00) 00000-0000");
+  });
+</script>
 </head>
 <body>
 <div class="content-header navbar-white">
@@ -65,11 +76,11 @@ include_once("classes/class.pessoa.php");
                  </div>
                  <div class="form-group">
                    <label>CPF</label>
-                   <input type="text" class="form-control" name="cpf" placeholder="Insira o CPF" required>
+                   <input type="text" class="form-control" name="cpf" id="cpf" placeholder="Insira o CPF" required>
                  </div>
                  <div class="form-group">
                    <label>Celular</label>
-                   <input type="tel" class="form-control" name="telefone" placeholder="Insira o Celular" required>
+                   <input type="tel" class="form-control" name="telefone" id="celular" placeholder="Insira o Celular" required>
                  </div>
                  <div class="form-group">
                    <label>Data Cadastro</label>
@@ -89,14 +100,6 @@ include_once("classes/class.pessoa.php");
   </div>
 </div>
 
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
-  integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw="
-  crossorigin="anonymous"></script>
-        <!-- VALIDATION CDN -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
-
       <script>
             $("#form_professor").validate({
        rules : {
@@ -111,9 +114,8 @@ include_once("classes/class.pessoa.php");
                     email: true
              },
              cpf:{
-                    cpf: false, //tenho que dar uma olhada nesse campo cpf
-                    required:true,
-                    minlength: 11
+                    cpf: true, //tenho que dar uma olhada nesse campo cpf
+                    required:true
              },
              telefone: {
                     required: true,
@@ -134,8 +136,7 @@ include_once("classes/class.pessoa.php");
                     email:"Insira um Email válido."
              },
             cpf:{
-                    required:"Por favor, informe um CPF válido",
-                    minlength:"Insira todos os números do CPF"
+                    required:"Por favor, informe um CPF válido"
              },
               telefone:{
                     required:"Por favor, insira o  nº de do celular"
@@ -166,7 +167,7 @@ include_once("classes/class.pessoa.php");
                       return this.optional(element) || /(^[-!#$%&'*+/=?^_`{}|~0-9A-Z]+(\.[-!#$%&'*+/=?^_`{}|~0-9A-Z]+)*|^"([\001-\010\013\014\016-\037!#-\[\]-\177]|\\[\001-\011\013\014\016-\177])*")@((?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)$)|\[(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}\]$/i.test(value);
                   },
                   'Insira um Email Válido.'
-              );s
+              );
 
        jQuery.validator.addMethod("cpf", function(value, element) {
    value = jQuery.trim(value);
