@@ -1,4 +1,7 @@
-
+<div>
+  <br>
+  <p> CADASTRAR GRUPO</p>
+</div>
 <br>
 <div class="container col-lg-8">
  <div class="row">
@@ -34,7 +37,7 @@
         <input type="text" class="form-control" id="inputAddress2" placeholder="Digite o nome do integrante do grupo" name="aluno3">
         </div>
 <input type="submit" class="btn btn-primary" value="Cadastrar Grupo" name="cadastroGrupo">
- <input type="reset" class="btn btn-primary" value="Limpar">
+ <input type="reset" class="btn btn-danger" value="Limpar">
   </form>
     </div>
     <div class="col-sm">
