@@ -34,7 +34,7 @@
   foreach($cursos as $curso){?>
     <tr>
     <th scope="row"><?php echo $curso->getIdCurso();?></th>
-    <td><?php echo $curso->getNome();?></td>
+    <td><?php echo $curso->getNomeCurso();?></td>
     <td><?php echo $curso->getSigla();?></td>
     <td><?php echo $curso->getStatusCurso();?></td>
     <td width=250>
