@@ -49,7 +49,7 @@ try {
       <div class="container-fluid">
          <form role="form" action="#" method="POST">
            <div class="form-group">
-             <label>Turma</label>
+             <label>Coordenador</label>
              <select class="form-control" name="fk_coordenador">
               <option value="">Selecione a Coordenador</option>
                <?php if(isset($listarCoordenadores)):?>

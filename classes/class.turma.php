@@ -48,6 +48,9 @@
                           $temporario = new Turma();
                           $temporario->setIdTurma($objeto['id_turma']);
                           $temporario->setNome($objeto['nome']);
+                          $temporario->setCursoId($objeto['fk_curso']);
+                          $temporario->setEtapaId($objeto['fk_etapa']);
+                          $temporario->setTurno($objeto['turno']);
                           $itens[] = $temporario;
                         }
             return $itens;

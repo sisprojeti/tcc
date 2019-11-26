@@ -10,7 +10,7 @@
 <!------------------------------------- MENU ----------------------------------->
 <div class="area_menu">
   <p></p>
-   <p class="texto-area">Lista de Exercicios </p>
+   <p class="texto-area">Lista de Exercícios </p>
     <div><a href="index.php?modulo=exercicio&acao=adicionar" class="btn btn-success">Adicionar</a> </div>
 </div>
 

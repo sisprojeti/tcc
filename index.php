@@ -158,7 +158,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="?modulo=etapa&acao=adicionar" class="nav-link">
+                <a href="?modulo=etapa&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Etapa</p>
                 </a>
@@ -228,7 +228,7 @@
 ---------------------------------------------------------------------------->
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="?modulo=turma&acao=adicionar" class="nav-link">
+                <a href="?modulo=turma&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Turma</p>
                 </a>
