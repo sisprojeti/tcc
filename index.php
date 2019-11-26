@@ -219,24 +219,6 @@
                   <p>Critérios Avaliativos</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="?modulo=anexos&acao=ver" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Etapa</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=anexos&acao=ver" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Exercicio</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=anexos&acao=ver" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Curso</p>
-                </a>
-              </li>
             </ul>
           </li>
           <li class="nav-item has-treeview">
