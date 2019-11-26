@@ -52,6 +52,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `sisp08`.`aluno` (
   `id_aluno` INT NOT NULL AUTO_INCREMENT,
   `data_matricula` DATE NULL,
+  `matricula` VARCHAR(255) NULL,
   `situacao_aluno` TINYINT NULL,
   `fk_pessoa` INT NOT NULL,
   PRIMARY KEY (`id_aluno`),
