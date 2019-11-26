@@ -206,6 +206,30 @@
                   <p>Anexos</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="?modulo=criteriosAvaliativos&acao=ver" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Critérios Avaliativos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?modulo=anexos&acao=ver" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Etapa</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?modulo=anexos&acao=ver" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Exercicio</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?modulo=anexos&acao=ver" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Curso</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item has-treeview">
@@ -395,6 +419,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script><!-- PELO CDN -->
-  
+
 </body>
 </html>
