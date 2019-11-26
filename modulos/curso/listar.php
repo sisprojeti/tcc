@@ -7,15 +7,18 @@
     echo "ERROR:".$e->getMessage();
    }
 ?>
-<div class="container col-lg-12 navbar-white">
-    <section class="content navbar-light navbar-white">
-      <div class="container-fluid navbar-white ">
-<div class="row">
-    <p>
-   <a href="index.php?modulo=curso&acao=adicionar" class="btn btn-success">Adicionar</a>
+<!------------------------------------- MENU ----------------------------------->
+<div class="area_menu">
+  <p></p>
+   <p class="texto-area">Lista de Cursos </p>
+    <div><a href="index.php?modulo=curso&acao=adicionar" class="btn btn-success">Adicionar</a> </div>
+</div>
 
-   Listar Cursos
-  </p>
+<!------------------------------------- TABELA ----------------------------------->
+<div class="container col-lg-12 navbar-white">
+<section class="content navbar-light navbar-white">
+<div class="container-fluid navbar-white ">
+<div class="row">
 <table class="table table-striped"style="margin-top:10px;">
 <thead>
 <tr>
