@@ -97,6 +97,10 @@ footer a:hover {
 .text-small {
   font-size: .8rem;
 }
+.area-btn{
+  background: #000;
+  border: solid 1px;
+}
 
 /* Responsive */
 @media (min-width: 576px) { 

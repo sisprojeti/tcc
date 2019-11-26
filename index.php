@@ -41,6 +41,7 @@
 
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/formularios.css">
 </head>
 <!--<body class="hold-transition sidebar-mini layout-fixed"> -->
 <body class="sidebar-mini skin-yellow-light" style="height: auto; min-height: 100%;">
@@ -151,7 +152,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="?modulo=exercicio&acao=adicionar" class="nav-link">
+                <a href="?modulo=exercicio&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Exercicio</p>
                 </a>
@@ -160,6 +161,12 @@
                 <a href="?modulo=etapa&acao=adicionar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Etapa</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?modulo=vinculoCoordenador&acao=adicionar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Vicular Coordenador</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -236,12 +243,6 @@
                 <a href="?modulo=vinculoProfessor&acao=adicionar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Vincular Professor</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=vinculoCoordenador&acao=adicionar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Vicular Coordenador</p>
                 </a>
               </li>
             </ul> </li>
