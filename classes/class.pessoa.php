@@ -45,20 +45,20 @@ include_once('class.db.php');
           }
       }
 
-      public function __construct($id = false){
-        if($id){
-          $sql = "SELECT * FROM pessoa where id_pessoa = :id_pessoa";
-          $sql = DB::conexao()->prepare($sql);
-          $stmt->bindParam(":id_pessoa",$id_pessoa,PDO::PARAM_INT);
-          $stmt->execute();
-          $foreach($stmt as $obj){
-            $this->setIdPessoa($obj['id_pessoa']);
-            $this->setEmail($obj['nome']);
-            $this->setCpf($obj['cpf']);
-            $this->setTelefone['telefone'];
-          }
-        }
-      }
+      // public function __construct($id = false){
+      //   if($id){
+      //     $sql = "SELECT * FROM pessoa where id_pessoa = :id_pessoa";
+      //     $sql = DB::conexao()->prepare($sql);
+      //     $stmt->bindParam(":id_pessoa",$id_pessoa,PDO::PARAM_INT);
+      //     $stmt->execute();
+      //     $foreach($stmt as $obj){
+      //       $this->setIdPessoa($obj['id_pessoa']);
+      //       $this->setEmail($obj['nome']);
+      //       $this->setCpf($obj['cpf']);
+      //       $this->setTelefone['telefone'];
+      //     }
+      //   }
+      // }
 
       public function listar(){
         try {
