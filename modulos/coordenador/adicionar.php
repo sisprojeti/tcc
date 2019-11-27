@@ -80,7 +80,7 @@ include_once("classes/class.pessoa.php");
                   </div>
                   <div class="form-group">
                     <label>Celular</label>
-                    <input type="tel" class="form-control" name="celular" id="celular" placeholder="Insira o Celular" required>
+                    <input type="tel" class="form-control" name="telefone" id="celular" placeholder="Insira o Celular" required>
                   </div>
                   <div class="form-group">
                     <label>Data Cadastro</label>
@@ -95,8 +95,8 @@ include_once("classes/class.pessoa.php");
               </form>
         <!-- /.row (main row) -->
       </div> <!-- /.container-fluid -->
-    </section> 
-  </div> 
+    </section>
+  </div>
 </div>
 
       <script>
@@ -108,7 +108,7 @@ include_once("classes/class.pessoa.php");
                     accept: "[a-zA-Z]+",
              },
              email:{
-                    
+
                     required:true,
                     email: true
              },
@@ -122,7 +122,7 @@ include_once("classes/class.pessoa.php");
              data_cadastro: {
                     required: true,
              },
-                                               
+
        },
        messages:{
             nome:{
@@ -142,7 +142,7 @@ include_once("classes/class.pessoa.php");
              },
              data_cadastro:{
                     required:"Por favor, insira a data do cadastro"
-             },        
+             },
        }
 
 });
@@ -154,7 +154,7 @@ include_once("classes/class.pessoa.php");
 
         //SENHA
             $.validator.addMethod("passwordcheck", function(value) {
-               return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) // 
+               return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) //
                    && /[a-z]/.test(value) // letra minúscula
                    && /\d/.test(value) // número
             });
@@ -167,12 +167,12 @@ include_once("classes/class.pessoa.php");
                   },
                   'Insira um Email Válido.'
               );
-          
+
             //CPF
 
                  jQuery.validator.addMethod("cadpessoafisica", function(value, element) {
              value = jQuery.trim(value);
-            
+
             value = value.replace('.','');
             value = value.replace('.','');
             cpf = value.replace('-','');
@@ -190,14 +190,14 @@ include_once("classes/class.pessoa.php");
             c = 11;
             for (y=0; y<10; y++) b += (a[y] * c--);
             if ((x = b % 11) < 2) { a[10] = 0; } else { a[10] = 11-x; }
-            
+
             var retorno = true;
             if ((cpf.charAt(9) != a[9]) || (cpf.charAt(10) != a[10]) || cpf.match(expReg)) retorno = false;
-            
+
             return this.optional(element) || retorno;
 
           }, "Informe um CPF válido");
- 
+
 
        </script>
 </body>

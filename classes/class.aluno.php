@@ -38,14 +38,14 @@
       }
 
       public static function contarAlunos()
-        {
+        { 
           try {
             $query = "select * from aluno";
                         $stmt = DB::conexao()->prepare($query);
                         $stmt->execute();
                         $registros = $stmt->fetchAll();
-                        $totalRegistros = count($registros);
-                        return $totalRegistros;
+                        $totalAlunos = count($registros);
+                        return $totalAlunos;
             }catch(Exception $e){
                 echo "ERROR".$e->getMessage();
             }

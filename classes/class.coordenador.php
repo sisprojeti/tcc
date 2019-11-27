@@ -47,6 +47,20 @@ include_once 'class.db.php';
           }
         }
 
+        public static function contarCoordenadores()
+          {
+            try {
+              $query = "select * from coordenador";
+                          $stmt = DB::conexao()->prepare($query);
+                          $stmt->execute();
+                          $registros = $stmt->fetchAll();
+                          $totalCoordenadores = count($registros);
+                          return $totalCoordenadores;
+              }catch(Exception $e){
+                  echo "ERROR".$e->getMessage();
+              }
+            }
+
       public function getId()
       {
         return $this->id_coordenador;

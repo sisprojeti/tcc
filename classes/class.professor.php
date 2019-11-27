@@ -45,6 +45,20 @@ include_once 'class.db.php';
           }
         }
 
+        public static function contarProfessores()
+          {
+            try {
+              $query = "select * from professor";
+                          $stmt = DB::conexao()->prepare($query);
+                          $stmt->execute();
+                          $registros = $stmt->fetchAll();
+                          $totalProfessores = count($registros);
+                          return $totalProfessores;
+              }catch(Exception $e){
+                  echo "ERROR".$e->getMessage();
+              }
+            }
+
         public function getEmail()
         {
           return $this->email;
