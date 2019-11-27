@@ -59,6 +59,21 @@
         echo "ERROR".$e->getMessage();
       }
     }
+
+    public static function contarTurmas()
+      {
+        try {
+          $query = "select * from turma";
+                      $stmt = DB::conexao()->prepare($query);
+                      $stmt->execute();
+                      $registros = $stmt->fetchAll();
+                      $totalTurmas = count($registros);
+                      return $totalTurmas;
+          }catch(Exception $e){
+              echo "ERROR".$e->getMessage();
+          }
+        }
+
 /* =========Inicio encapsulamento id de turma =========*/
       public function setIdTurma($id){
         $this->id = $id;

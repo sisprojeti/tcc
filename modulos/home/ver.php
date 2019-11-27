@@ -3,11 +3,13 @@ include_once('classes/class.pessoa.php');
 include_once('classes/class.aluno.php');
 include_once('classes/class.professor.php');
 include_once('classes/class.coordenador.php');
+include_once('classes/class.turma.php');
 try{
   $totalPessoas = Pessoa::contarPessoas();
   $totalAlunos = Aluno::contarAlunos();
   $totalProfessores = Professor::contarProfessores();
   $totalCoordenadores = Coordenador::contarCoordenadores();
+  $totalTurmas = Turma::contarTurmas();
 }catch(PDOException $e) {
   echo "ERROR".$e->getMessage();
 }
@@ -113,7 +115,7 @@ try{
         <!-- small box -->
         <div class="small-box bg-danger">
           <div class="inner">
-            <?= $totalProfessores;?>
+            <h3><?= $totalProfessores;?></h3>
             <p><h4>Professores</h4></p>
           </div>
           <div class="icon">
@@ -127,7 +129,7 @@ try{
         <!-- small box -->
         <div class="small-box bg-info">
           <div class="inner">
-            <?= $totalCoordenadores;?>
+          <h3>  <?= $totalCoordenadores;?></h3>
             <p><h4>Coordenadores</h4></p>
           </div>
           <div class="icon">
