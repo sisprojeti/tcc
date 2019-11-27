@@ -32,6 +32,34 @@ include_once('class.db.php');
         }
       }
 
+      public function atualizar()
+      {
+        if($this->cod_produto){
+          $sql = "UPDATE pessoa set nome = :nome, email = :email, cpf = :cpf, telefone = :telefone";
+          $stmt = DB::conexao()->prepare($sql);
+          $stmt->bindParam(':nome',$this->nome);
+          $stmt->bindParam(':email',$this->email);
+          $stmt->bindParam(':cpf',$this->cpf);
+          $stmt->bindParam(':telefone',$this->telefone);
+          $stmt->execute();
+          }
+      }
+
+      public function __construct($id = false){
+        if($id){
+          $sql = "SELECT * FROM pessoa where id_pessoa = :id_pessoa";
+          $sql = DB::conexao()->prepare($sql);
+          $stmt->bindParam(":id_pessoa",$id_pessoa,PDO::PARAM_INT);
+          $stmt->execute();
+          $foreach($stmt as $obj){
+            $this->setIdPessoa($obj['id_pessoa']);
+            $this->setEmail($obj['nome']);
+            $this->setCpf($obj['cpf']);
+            $this->setTelefone['telefone'];
+          }
+        }
+      }
+
       public function listar(){
         try {
           $sql = "select pessoa.id_pessoa, pessoa.nome, pessoa.cpf, pessoa.telefone, grupo_pessoa.nome as grupo, pessoa.email from pessoa join grupo_pessoa on pessoa.grupo_pessoa_id = grupo_pessoa.id ";
