@@ -53,8 +53,7 @@ try{
         </div>
       </div>
       <!-- ./col -->
-      <div class="col-lg-3 col-6">
-        <!-- small box -->
+      <!-- <div class="col-lg-3 col-6">
         <div class="small-box bg-success">
           <div class="inner">
             <h3>20</h3>
@@ -66,19 +65,19 @@ try{
           </div>
           <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
-      </div>
+      </div> -->
       <!-- ./col -->
       <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-warning">
           <div class="inner">
-            <h3><?= $totalAlunos;?></h3>
+            <h3 style="color:white;"><?= $totalPessoas;?></h3>
             <p><h4 style="color:white;">Usuários Registrados</h4></p>
           </div>
           <div class="icon">
             <i class="ion ion-person-add"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="#" class="small-box-footer"> <span style="color:white;"> More info   <i class="fas fa-arrow-circle-right"></i></span></a>
         </div>
       </div>
       <!-- ./col -->
@@ -143,7 +142,7 @@ try{
         <!-- small box -->
         <div class="small-box bg-secondary">
           <div class="inner">
-            <?= $totalTurmas;?>
+           <h3> <?= $totalTurmas;?></h3>
             <p><h4>Turmas</h4></p>
           </div>
           <div class="icon">
@@ -153,11 +152,11 @@ try{
         </div>
       </div>
 
-      <div class="col-lg-3 col-6">
-        <!-- small box -->
+      <!-- <div class="col-lg-3 col-6">
+
         <div class="small-box bg-warning">
           <div class="inner">
-            <?= $totalVinculoCoordenadores;?>
+
             <p><h4>Coordenadores Vinculados a turma</h4></p>
           </div>
           <div class="icon">
@@ -165,8 +164,8 @@ try{
           </div>
           <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
-      </div>
-
+      </div> -->
+<!--
       <div class="col-lg-3 col-6">
         <div class="small-box bg-light">
           <div class="inner">
@@ -178,7 +177,7 @@ try{
           </div>
           <a href="#" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
         </div>
-      </div>
+      </div> -->
       <!-- ./col -->
     </div>
     <!-- /.row -->

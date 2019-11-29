@@ -1,19 +1,24 @@
 <?php
-	include "controller/classUsuario.php";
-	session_start();
-	if(isset($_POST["botao"]) && $_POST["botao"] == "Logar"){
-		Usuario::logar($_POST['usuario'], $_POST['senha']);
-		print_r($_SESSION);
-	}
-	
+    require('Classes/class.usuario.php');
+    session_start();
+    if(isset($_POST['botao']) && $_POST["botao"] == "Logar"){
+      Usuario::logar($_POST['login_usuario'], $_POST['senha']);
+    }
 ?>
-
 <?php
-	if(isset($_SESSION['login_usuario']) && isset($_SESSION['id_usuario'])){
-		echo "<script> location.href='index.php'; </script>";
-	}
-?>
+  if(isset($_SESSION['login_usuario']) && isset($_SESSION['id_usuario'])){
+    echo "<script>location.href='index.php'</script>";
+  }
 
+  if(isset($_GET['msg']) && $_GET['msg'] === 'erro'){
+    echo "<span style='color:red'> Você precisa estar logado para acessar paginas restritas </span>";
+  }
+  //
+	// if(isset($_GET['msg']) && $_GET['msg'] === 'usuario_senha_invalidos'){
+  //   echo "<span style='color:red'> Usuário ou senha inválidos </span>";
+  // }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +29,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
 	body {
 		color: #fff;
@@ -39,13 +44,13 @@
 	.form-control:focus {
 		border-color: #70c5c0;
 	}
-    .form-control, .btn {        
+    .form-control, .btn {
         border-radius: 2px;
     }
 	.login-form {
 		width: 350px;
 		margin: 0 auto;
-		padding: 100px 0 30px;		
+		padding: 100px 0 30px;
 	}
 	.login-form form {
 		color: #7a7a7a;
@@ -54,8 +59,8 @@
         font-size: 13px;
         background: #ececec;
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        padding: 30px;	
-        position: relative;	
+        padding: 30px;
+        position: relative;
     }
 	.login-form h2 {
 		font-size: 22px;
@@ -77,11 +82,11 @@
 	}
 	.login-form .avatar img {
 		width: 100%;
-	}	
+	}
     .login-form input[type="checkbox"] {
         margin-top: 2px;
     }
-    .login-form .btn {        
+    .login-form .btn {
         font-size: 16px;
         font-weight: bold;
 		background: #EE7600;
@@ -91,7 +96,7 @@
 	.login-form .btn:hover, .login-form .btn:focus {
 		background: #FF7F24;
         outline: none !important;
-	}    
+	}
 	.login-form a {
 		color: #fff;
 		text-decoration: underline;
@@ -110,19 +115,19 @@
 </head>
 <body>
 <div class="login-form">
-    <form action="" method="post">
+    <form action="#" method="post">
 		<div class="avatar">
 			<img src="img/user.png" alt="Avatar" />
 		</div>
-        <h2 class="text-center">Login</h2>   
+        <h2 class="text-center">Login</h2>
         <div class="form-group">
-        	<input type="text" class="form-control" name="usuario" placeholder="CPF" required="required">
+        	<input type="text" class="form-control" name="login_usuario" placeholder="CPF" required="required">
         </div>
 		<div class="form-group">
             <input type="password" class="form-control" name="senha" placeholder="SENHA" required="required">
-        </div>        
+        </div>
         <div class="form-group">
-            <input type="submit" name="botao" class="btn btn-primary btn-lg btn-block" value="Acessar">
+            <input type="submit" name="botao" class="btn btn-primary btn-lg btn-block" value="Logar">
         </div>
 		<div class="clearfix">
             <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
@@ -131,4 +136,4 @@
     </form>
 </div>
 </body>
-</html>                            
+</html>

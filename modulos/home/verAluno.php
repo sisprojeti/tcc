@@ -1,3 +1,14 @@
+<?php
+include_once('Classes/Tarefa.php');
+
+try {
+  $totalTarefas = Tarefa::contarTarefas();
+} catch (PDOException $e) {
+  echo "ERROR".$e->getMessage();
+}
+
+
+?>
  <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -32,7 +43,19 @@
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="Lista de Tarefas.php" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="?modulo=tarefa&acao=listar" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h4><?= $totalTarefas ;?></h4>
+                <p><h4>Tarefas Cadastradas</h4></p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -70,9 +93,24 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3 ><i class="far fa-clipboard"></i></h3>
+                <h3 ><i class="fas fa-clipboard"></i></h3>
 
                 <p>Visualizar Notas</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="Visualizar Notas.php" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3 ><i class="fas fa-clipboard"></i></h3>
+
+                <p>Grupo de Projeti</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>

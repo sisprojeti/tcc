@@ -1,14 +1,31 @@
 <?php
     session_start();
+    //$_SESSION['nome_usuario'] = "Diego Barbosa da Silva de Souza"; //utilizando a váriavel super global $_SESSION
+    //$_SESSION['nome_login'] = "diego.souza"; //utilizando a váriavel super global $_SESSION
+    // if(isset($_SESSION['login_usuario'])){
+    //   echo "Você esta logado";
+    // }else{
+    //   echo "<script>alert('Você precisa realizar login para acessar essa página.')</script>";
+    //   header('Location:login.php');
+    // }
+
     if(!isset($_SESSION['login_usuario']) || !isset($_SESSION['id_usuario'])){
+      //echo "<script> alert('Você precisa estar logado para acessar páginas restritas')</script>";
       echo "<script>location.href='login.php?msg=erro'</script>";
     }
 
     if(isset($_POST['botao']) && $_POST["botao"] == "Sair"){
       session_destroy();
-      header('Location:login.php');
+      header('Location:login2.php');
     }
 
+    //echo '<pre>';
+    //echo $_SESSION['nome_usuario'];
+    //echo "<br>";
+    //  echo print_r($_SESSION);
+    //echo $_SESSION['nome_login'];
+    //session_unset();
+    //print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,7 +41,7 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bbootstrap 4 -->
-  <link rel="stylesheet" href="pluginOs/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
@@ -76,9 +93,6 @@
         </div>
       </div>
     </form>
-    <form class="form my-12 my-lg-0" method="post" href="#">
-      <input class="btn btn-outline-danger my-2 my-sm-0" type="submit" name="botao" value="Sair">
-    </form>
   </nav>
 
   <aside class="main-sidebar elevation-4 sidebar-light-info">
@@ -97,7 +111,7 @@
           <img src="dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Ciclano Silva de Tal</a>
+          <a href="#" class="d-block">Conteudo Dinamico</a>
         </div>
       </div>
 
@@ -107,179 +121,37 @@
 <!----------------------------------------------------------------------------
 ---------- MENU DO COORDENADOR
 ---------------------------------------------------------------------------->
-          <li class="nav-item has-treeview menu-open">
-            <a href="index.php" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Home Coordenador
-              </p>
-            </a>
+
           </li>
-          </li>
-<!----------------------------------------------------------------------------
----------- CADASTROS DE PESSOAS
----------------------------------------------------------------------------->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Cadastros
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="?modulo=academico&acao=adicionar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Acadêmicos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=professor&acao=adicionar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Professor</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=coordenador&acao=adicionar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Coordenador</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-<!----------------------------------------------------------------------------
----------- CURSOS
----------------------------------------------------------------------------->
-<li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chalkboard-teacher"></i>
-              <p>
-                Cursos
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="?modulo=curso&acao=listar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Curso</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=exercicio&acao=listar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Exercicio</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=etapa&acao=listar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Etapa</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=vinculoCoordenador&acao=adicionar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Vicular Coordenador</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=criterio&acao=adicionar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Critérios Avaliativos</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-<!----------------------------------------------------------------------------
----------- RELATORIOS
----------------------------------------------------------------------------->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Relatórios
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="?modulo=professor&acao=listar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Professores</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=academico&acao=listar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Alunos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=coordenador&acao=listar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Coordenador</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=anexos&acao=ver" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Anexos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=criteriosAvaliativos&acao=ver" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Critérios Avaliativos</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Turmas
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-<!----------------------------------------------------------------------------
----------- TURMAS
----------------------------------------------------------------------------->
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="?modulo=turma&acao=listar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Turma</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=matricula&acao=adicionar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Matricula</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=vinculoProfessor&acao=adicionar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Vincular Professor</p>
-                </a>
-              </li>
-            </ul> </li>
-            <!-- Inicio ambiente aluno-->
-         <!-- <li class="nav-item has-treeview menu-open">
+         <li class="nav-item has-treeview menu-open">
             <ul class="nav nav-treeview">
              <li class="nav-item has-treeview menu-open">
-              <a href="modulo=home&acao=verAluno.php" class="nav-link active">
+              <a href="ambienteAluno.php" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Home Aluno
               </p>
             </a>
-          </li>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>
+                  Cadastros
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="?modulo=tarefa&acao=adicionar" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tarefas</p>
+                  </a>
+                </li>
+              </ul>
+              </li>
               <li class="nav-item">
-                <a href="Lista_Tarefas.php" class="nav-link">
+                <a href="?modulo=tarefa&acao=listar" class="nav-link">
                   <i class="fas fa-tasks nav-icon"></i>
                   <p>Lista de Tarefas</p>
                 </a>
@@ -333,8 +205,7 @@
               <p>Documentation</p>
             </a>
           </li>
-        </ul> -->
-          <!-- final ambiente aluno-->
+        </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -361,7 +232,7 @@
             include("modulos/".$modulo."/".$acao.".php");
           }
           }else{
-              include("modulos/home/verCoordenador.php");
+              include("modulos/home/verAluno.php");
           }
     ?>
   </div>
