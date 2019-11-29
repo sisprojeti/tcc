@@ -13,7 +13,26 @@ include_once("classes/class.etapa.php");
       echo "ERROR".$e->getMessage();
   }
 ?>
-    <div class="content-header navbar-white">
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <style>
+       .error{
+             color:red
+       }
+</style>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+</head>
+<body>
+  
+  <div class="content-header navbar-white">
           <div class="container-fluid navbar-white">
             <div class="row mb-2">
               <div class="col-sm-6">
@@ -36,19 +55,19 @@ include_once("classes/class.etapa.php");
     <section class="content navbar-white">
       <div class="container-fluid navbar-white">
 
-         <form role="form" action="#" method="POST">
+         <form role="form" id="form_etapa" action="#" method="POST">
           <br>
                   <div class="form-group">
                     <label>Nome</label>
-                    <input type="text" class="form-control"  placeholder="Ex: 1 SEMESTRE" name="nome">
+                    <input type="text" class="form-control"  placeholder="Ex: 1 SEMESTRE" name="nome" id="nome" required autofocus>
                   </div>
                   <div class="form-group">
                     <label>Ordem</label>
-                    <input type="text" class="form-control" name="ordem" placeholder="Ex: 1">
+                    <input type="text" class="form-control" name="ordem" id="ordem" placeholder="Ex: 1" required> 
                   </div>
                   <div class="form-group">
                     <label>Ativo: </label>
-                   <input type="checkbox" name="status_etapa" value="true" id="ativo">
+                   <input type="checkbox" name="status_etapa" value="true" id="status_etapa" required>
                   </div> <br>
                 <!-- /.card-body -->
 
@@ -64,3 +83,44 @@ include_once("classes/class.etapa.php");
     </section>
     </div>
     </div>
+    <script>
+            $("#form_etapa").validate({
+       rules : {
+              nome:{
+                    required:true,
+                    accept: "[a-zA-Z]+",
+             },
+             ordem:{
+                    
+                    required:true,
+             },
+             status_etapa:{
+                    
+                    required:true,
+             },                                  
+       },
+       messages:{
+            nome:{
+                    required:"Por favor, informe o nome da etapa",
+                    accept: "Cuidado! preencha o nome sem caracteres especiais"
+             },
+             ordem:{
+                    required:"Por favor, informe a ordem"
+             }, 
+             status_etapa:{
+                    required:"Por favor, informe o status"
+             },  
+       }
+
+});
+
+        //NOME
+            jQuery.validator.addMethod("accept", function(value, element, param) {
+              return value.match(new RegExp("." + param + "$"));
+            });
+
+       </script>
+
+</body>
+</html>
+    

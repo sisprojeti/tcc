@@ -26,7 +26,27 @@ include_once('classes/class.refProfTurma.php');
       echo "ERROR".$e->getMessage();
     }
 ?>
-<div class="content-header">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <style>
+       .error{
+             color:red
+       }
+</style>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+
+
+  <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -45,10 +65,10 @@ include_once('classes/class.refProfTurma.php');
     <div class="container col-lg-8">
     <section class="content">
       <div class="container-fluid">
-         <form role="form" action="#" method="POST">
+         <form role="form" id="form_vincProfessor" action="#" method="POST">
            <div class="form-group">
              <label>Turma</label>
-             <select class="form-control" name="turma_id">
+             <select class="form-control" name="turma_id" id="turma_id" required autofocus>
                <?php if(isset($listarTurmas)):?>
                  <option value="">Selecione a Turma</option>
                  <?php foreach ($listarTurmas as $linha):?>
@@ -59,7 +79,7 @@ include_once('classes/class.refProfTurma.php');
            </div>
            <div class="form-group">
              <label>Professor</label>
-             <select class="form-control" name="professor_id">
+             <select class="form-control" name="professor_id" id="professor_id" required>
 
                <?php if(isset($listarProfessores)):?>
                  <option value="">Selecione o Professor</option>
@@ -77,3 +97,31 @@ include_once('classes/class.refProfTurma.php');
       </div>
     </section>
 </div>
+
+<script>
+            $("#form_vincProfessor").validate({
+       rules : {
+              turma_id:{
+                    required:true
+             },
+              professor_id:{
+                    
+                    required:true,
+             },                                  
+       },
+       messages:{
+              turma_id:{
+                    required:"Por favor, informe a turma"
+             },
+              professor_id:{
+                    required:"Por favor, informe o Professor"
+             },  
+       }
+
+});
+
+
+       </script>
+  
+</body>
+</html>

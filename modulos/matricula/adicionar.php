@@ -26,7 +26,25 @@ include_once('classes/class.matricula.php');
       echo "ERROR".$e->getMessage();
     }
 ?>
-
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <style>
+       .error{
+             color:red
+       }
+</style>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  
 <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -47,10 +65,10 @@ include_once('classes/class.matricula.php');
       <div class="container col-lg-8 navbar-white">
     <section class="content">
       <div class="container-fluid">
-         <form role="form" action="#" method="POST">
+         <form role="form" id="form_matricula" action="#" method="POST">
            <div class="form-group">
              <label>Turma</label>
-             <select class="form-control" name="fk_turma">
+             <select class="form-control" name="fk_turma" id="fk_turma">
                <option value="">Selecione o Exercicio da Turma</option>
                <?php if(isset($listarTurmas)):?>
                  <?php foreach ($listarTurmas as $linha):?>
@@ -61,7 +79,7 @@ include_once('classes/class.matricula.php');
            </div>
            <div class="form-group">
              <label>Aluno</label>
-             <select class="form-control" name="fk_aluno">
+             <select class="form-control" name="fk_aluno" id="fk_aluno">
                <option value="">Selecione o Aluno</option>
                <?php if(isset($listarAlunos)):?>
                  <?php foreach ($listarAlunos as $aluno):?>
@@ -80,3 +98,31 @@ include_once('classes/class.matricula.php');
     </section>
   </div>
 </div>
+
+<script>
+            $("#form_matricula").validate({
+       rules : {
+              fk_turma:{
+                    required:true
+             },
+             fk_aluno:{
+                    
+                    required:true,
+             },                                  
+       },
+       messages:{
+              fk_turma:{
+                    required:"Por favor, informe a turma"
+             },
+              fk_aluno:{
+                    required:"Por favor, informe o Aluno"
+             },  
+       }
+
+});
+
+
+       </script>
+</body>
+</html>
+
