@@ -1,5 +1,5 @@
 <?php
-include_once 'class.db.php';
+require_once 'class.db.php';
 /**
  * Criando uma class com o nome coordenador que esta extendendo a class de pessoas
  */

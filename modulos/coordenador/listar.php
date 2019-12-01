@@ -8,7 +8,7 @@
    }
 ?>
 
-<table class="table table-dark" style="margin-top:10px;">
+<table class="table table-white" style="margin-top:10px;">
 <thead>
 <tr>
 <th scope="col">#</th>
@@ -27,6 +27,7 @@
     <td><?php echo $coordenador->getEmail();?></td>
     <td><?php echo $coordenador->getCpf();?></td>
     <td><?php echo $coordenador->getTelefone();?></td>
+    <td><a href="?modulo=Academico&acao=editar&id=<?php echo $coordenador->getIdCoordenador();?>"><button class="btn btn-info">Info</button></a></td>
     <td><a href="?modulo=Academico&acao=editar&id=<?php echo $coordenador->getIdCoordenador();?>"><button class="btn btn-warning">Editar</button></a></td>
     <td><a href="?modulo=Academico&acao=excluir&id=<?php echo $coordenador->getIdCoordenador();?>"><button class="btn btn-danger">Excluir</button></a></td>
 

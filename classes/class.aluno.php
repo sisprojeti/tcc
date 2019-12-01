@@ -4,6 +4,7 @@
     {
 
       public $data_matricula;
+      public $id_grupo = 2;
       public $situacao_aluno;
       public $matricula;
       public $fk_pessoa;
@@ -17,7 +18,7 @@
     public static function listar()
       {
         try {
-          $query = "select aluno.id_aluno ,pessoa.nome as nome, aluno.situacao_aluno as situacao_aluno, aluno.matricula as matricula from aluno join pessoa on aluno.fk_pessoa = pessoa.id_pessoa";
+          $query = "select aluno.id_aluno ,pessoa.nome as nome  , aluno.situacao_aluno as situacao_aluno, aluno.matricula as matricula from aluno join pessoa on aluno.fk_pessoa = pessoa.id_pessoa";
                       $stmt = DB::conexao()->prepare($query);
                       $stmt->execute();
                       $registros = $stmt->fetchAll();
@@ -38,7 +39,7 @@
       }
 
       public static function contarAlunos()
-        { 
+        {
           try {
             $query = "select * from aluno";
                         $stmt = DB::conexao()->prepare($query);

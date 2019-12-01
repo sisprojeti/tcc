@@ -3,6 +3,7 @@
     if(!isset($_SESSION['login_usuario']) || !isset($_SESSION['id_usuario'])){
       echo "<script>location.href='login.php?msg=erro'</script>";
     }
+    print_r($_SESSION);
 
     if(isset($_POST['botao']) && $_POST["botao"] == "Sair"){
       session_destroy();
@@ -129,7 +130,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="?modulo=academico&acao=adicionar" class="nav-link">
+                <a href="?modulo=aluno&acao=adicionar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Acadêmicos</p>
                 </a>
@@ -211,7 +212,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="?modulo=academico&acao=listar" class="nav-link">
+                <a href="?modulo=aluno&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Alunos</p>
                 </a>
@@ -266,7 +267,82 @@
                   <p>Vincular Professor</p>
                 </a>
               </li>
-            </ul> </li>
+            </ul>
+            <li class="nav-item has-treeview menu-open">
+               <ul class="nav nav-treeview">
+                <li class="nav-item has-treeview menu-open">
+                 <a href="ambienteAluno.php" class="nav-link active">
+                 <i class="nav-icon fas fa-tachometer-alt"></i>
+                 <p>
+                   Home Aluno
+                 </p>
+               </a>
+               </li>
+               <li class="nav-item has-treeview">
+                 <a href="#" class="nav-link">
+                   <i class="nav-icon fas fa-edit"></i>
+                   <p>
+                     Cadastros
+                     <i class="fas fa-angle-left right"></i>
+                   </p>
+                 </a>
+                 <ul class="nav nav-treeview">
+                   <li class="nav-item">
+                     <a href="?modulo=tarefa&acao=adicionar" class="nav-link">
+                       <i class="far fa-circle nav-icon"></i>
+                       <p>Tarefas</p>
+                     </a>
+                   </li>
+                 </ul>
+                 </li>
+                 <li class="nav-item">
+                   <a href="?modulo=tarefa&acao=listar" class="nav-link">
+                     <i class="fas fa-tasks nav-icon"></i>
+                     <p>Lista de Tarefas</p>
+                   </a>
+                 </li>
+                 <li class="nav-item">
+                   <a href="?modulo=anexos&acao=adicionar" class="nav-link">
+                     <i class="fas fa-file-upload nav-icon"></i>
+                     <p>Documentação</p>
+                   </a>
+                 </li>
+                 <li class="nav-item">
+                   <a href="Modelo_Documentacao.php" class="nav-link">
+                     <i class="fas fa-file-alt nav-icon"></i>
+                     <p>Modelo de Doc</p>
+                   </a>
+                 </li>
+                 <li class="nav-item">
+                   <a href="Visualizar_Notas.php" class="nav-link">
+                     <i class="fas fa-clipboard nav-icon"></i>
+                     <p>Visualizar Notas</p>
+                   </a>
+                 </li>
+               </ul> </li>
+             <li class="nav-item has-treeview">
+               <a href="#" class="nav-link">
+                 <i class="fas fa-users nav-icon"> </i>
+                 <p>
+                    Área de Grupos
+                   <i class="right fas fa-angle-left"></i>
+                 </p>
+               </a>
+               <ul class="nav nav-treeview">
+                 <li class="nav-item">
+                   <a href="?modulo=grupo&acao=adicionar" class="nav-link">
+                     <i class="fas fa-users-cog nav-icon"></i>
+                     <p>Montar Grupo<span class="right badge badge-danger">New</span></p>
+                   </a>
+                 </li>
+                 <li class="nav-item">
+                   <a href="#" class="nav-link">
+                     <i class="far fa-edit nav-icon"></i>
+                     <p>Visualizar Grupo<span class="right badge badge-primary">Edit</span></p>
+                   </a>
+                 </li>
+               </ul>
+          </li>
             <!-- Inicio ambiente aluno-->
          <!-- <li class="nav-item has-treeview menu-open">
             <ul class="nav nav-treeview">

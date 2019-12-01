@@ -1,13 +1,26 @@
 <?php
-  require('class.db.php');
+  require_once('class.db.php');
     /**
      *  Criando uma class com o nome Usuarios
      */
     class Usuario
     {
-
+      public $fk_pessoa;
       public $senha;
       public $login;
+
+      public function adicionar()
+      {
+        $sql = "INSERT INTO usuario (senha,fk_pessoa,login) values (:senha,:fk_pessoa,:login)";
+        $conexao = DB::conexao();
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindParam(':senha',$this->senha);
+        $stmt->bindParam(':fk_pessoa',$this->fk_pessoa);
+        $stmt->bindParam(':login',$this->login);
+        $stmt->execute();
+        $ultimoIdUsuario = $conexao->lastInsertId();
+        return $ultimoIdUsuario;
+      }
 
       public static function logar($login = false, $senha = false){
         if($login && $senha){
@@ -56,6 +69,11 @@
       public function setSenha($senha)
       {
         $this->senha = $senha;
+      }
+
+      public function setPessoaUsuarioId($ultimoIdPessoa)
+      {
+        $this->fk_pessoa = $ultimoIdPessoa;
       }
 
     }

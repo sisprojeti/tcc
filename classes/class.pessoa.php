@@ -1,5 +1,5 @@
 <?php
-include_once('class.db.php');
+require_once('class.db.php');
     /**
      * Criando uma class para armazernar os atributos e metodos da class funcionario
      */

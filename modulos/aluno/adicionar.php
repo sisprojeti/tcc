@@ -1,8 +1,16 @@
-
 <?php
-include_once("classes/class.aluno.php");
-include_once("classes/class.pessoa.php");
-include_once("classes/class.usuario.php");
+require_once("classes/class.aluno.php");
+require_once("classes/class.pessoa.php");
+require_once("classes/class.usuario.php");
+require_once("classes/class.grupo.php");
+require_once('classes/class.refUsuarioGrupo.php');
+try {
+  $fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
+  //como adicionar o usuario pegando o modulo do qual ele faz parte e pegando o id do grupo que ele faz parte atraves do modulos
+} catch (PDOException $e) {
+  echo "ERROR".$e->getMessage();
+}
+
     try {
     if(isset($_POST["button"]) && ($_POST["button"] === "Salvar")){
        $pessoa = new Pessoa();
@@ -21,7 +29,12 @@ include_once("classes/class.usuario.php");
 
        $usuario = new Usuario();
        $usuario->setPessoaUsuarioId($ultimoIdPessoa);
-       $usuario->adicionar();
+       $ultimoIdUsuario = $usuario->adicionar();
+
+       $novo_ref_usuario_grupo = new RefUsuarioGrupo();
+       $novo_ref_usuario_grupo->setIdUsuario($ultimoIdUsuario);
+       $novo_ref_usuario_grupo->setIdGrupo($fk_grupo);
+       $novo_ref_usuario_grupo->adicionar();
     }
   } catch (PDOException $e) {
       echo "ERROR".$e->getMessage();
@@ -70,7 +83,7 @@ include_once("classes/class.usuario.php");
     <!-- Main content -->
     <div class="container col-lg-12 navbar-white">
       <div class="container col-lg-8 navbar-white">
-    
+
     <section class="content navbar-light navbar-white">
       <div class="container-fluid navbar-white ">
 
@@ -99,6 +112,16 @@ include_once("classes/class.usuario.php");
                     <label>Matricula</label>
                     <input type="text" class="form-control" name="matricula" id="matricula" placeholder="Insira a Matricula no Aluno" required>
                   </div>
+                  <div class="form-grou">
+                    <label>Grupo</grupo>
+                    <select class="form-control" name="fk_grupo" require autofocus>
+                      <option value="">Selecione o grupo</option>
+                      <?php foreach($listarGrupos as $grupo):?>
+                        <option value="<?php $grupo->getIdGrupo();?>"> <?php echo $grupo->getNomeGrupo();?></option>
+                      <?php endforeach;?>
+                    </select>
+                  </div>
+
                   <div class="form-group">
                     <label>Situacao Aluno: </label>
                     Ativo <input type="checkbox" name="situacao_aluno" value="true" id="situacao_aluno" required>
@@ -127,7 +150,7 @@ include_once("classes/class.usuario.php");
                     accept: "[a-zA-Z]+",
              },
              email:{
-                    
+
                     required:true,
                     email: true
              },
@@ -147,7 +170,7 @@ include_once("classes/class.usuario.php");
              },
              situacao_aluno:{
                     required: true,
-             },                                     
+             },
        },
        messages:{
             nome:{
@@ -167,13 +190,13 @@ include_once("classes/class.usuario.php");
              },
              data_matricula:{
                     required:"Por favor, insira a data de matricula",
-             },  
+             },
              matricula:{
                     required:"Por favor, insira o nº da matricula"
              },
              situacao_aluno:{
                     required:"Por favor, confirme a situação do aluno."
-             },       
+             },
        }
 
 });
@@ -185,7 +208,7 @@ include_once("classes/class.usuario.php");
 
         //SENHA
             $.validator.addMethod("passwordcheck", function(value) {
-               return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) // 
+               return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) //
                    && /[a-z]/.test(value) // letra minúscula
                    && /\d/.test(value) // número
             });
@@ -203,7 +226,7 @@ include_once("classes/class.usuario.php");
 
                  jQuery.validator.addMethod("cpf", function(value, element) {
              value = jQuery.trim(value);
-            
+
             value = value.replace('.','');
             value = value.replace('.','');
             cpf = value.replace('-','');
@@ -221,14 +244,14 @@ include_once("classes/class.usuario.php");
             c = 11;
             for (y=0; y<10; y++) b += (a[y] * c--);
             if ((x = b % 11) < 2) { a[10] = 0; } else { a[10] = 11-x; }
-            
+
             var retorno = true;
             if ((cpf.charAt(9) != a[9]) || (cpf.charAt(10) != a[10]) || cpf.match(expReg)) retorno = false;
-            
+
             return this.optional(element) || retorno;
 
           }, "Informe um CPF válido");
-           
+
 
        </script>
 

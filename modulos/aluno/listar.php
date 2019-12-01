@@ -26,9 +26,13 @@
     <tr>
     <th scope="row"><?php echo $aluno->getIdAluno();?></th>
     <td><?php echo $aluno->getNomeAluno();?></td>
-    <td><?php echo $aluno->getSituacaoAluno();?></td>
+    <td><?php if(!$aluno->getSituacaoAluno()){
+      echo "Inativo";
+    }else{
+      echo "Ativo";
+    };?></td>
     <td><?php echo $aluno->getMatricula();?></td>
-    <td width=250>
+    <td>
       <a class="btn btn-primary" href="">Info</a>
       <a class="btn btn-warning" href="?modulo=Academico&acao=editar&id=<?php echo $aluno->getIdAluno();?>">Editar</a>
     <a class="btn btn-danger" href="?modulo=Academico&acao=excluir&id=<?php echo $aluno->getIdAluno();?>">Excluir</a>
