@@ -4,6 +4,7 @@
       echo "<script>location.href='login.php?msg=erro'</script>";
     }
     print_r($_SESSION);
+    
 
     if(isset($_POST['botao']) && $_POST["botao"] == "Sair"){
       session_destroy();

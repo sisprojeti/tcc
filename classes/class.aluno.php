@@ -52,6 +52,14 @@
             }
           }
 
+        public function exibeNome()
+        {
+          $sql = "SELECT * FROM aluno";
+          $conexao = DB::conexao();
+          $stmt = $conexao->prepare($sql);
+          
+        }
+
 
   //---------########### FINAL DA MELHORIA DO METODO DE LISTAR ############ -------------------
 

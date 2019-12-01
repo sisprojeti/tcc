@@ -1,3 +1,11 @@
+<?php
+include_once('Classes/class.usuario.php');
+include_once('Classes/class.pessoa.php');
+$usuario = new Usuario($_SESSION['id_usuario']);
+$pessoa = $usuario->recuperaPessoa();
+print_r($pessoa);
+
+?>
 <div>
   <br>
   <p> CADASTRAR GRUPO</p>
@@ -21,12 +29,12 @@
       <div class="form-group col-md-6">
         <label for="inputPassword4">Descrição</label>
         <input name="description" type="text" class="form-control" id="inputPassword4" placeholder="Digite uma breve descrição do seu projeti">
-      </div> 
+      </div>
     </div>
-                            
+
     <div class="form-group">
         <label for="inputAddress2">Nome Integrante</label>
-        <input type="text" class="form-control" id="inputAddress2" placeholder="Digite o nome do integrante do grupo" name="aluno1" value="">
+        <input type="text" disabled class="form-control" value="<?= $pessoa->getNome();?>" id="inputAddress2" placeholder="Digite o nome do integrante do grupo" name="aluno1" value="">
      </div>
     <div class="form-group">
         <label for="inputAddress2">Nome Integrante</label>

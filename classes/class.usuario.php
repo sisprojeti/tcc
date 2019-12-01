@@ -5,9 +5,28 @@
      */
     class Usuario
     {
+      public $id_usuario;
       public $fk_pessoa;
       public $senha;
       public $login;
+
+      public function __construct($id_usuario=false){
+          if($id_usuario){
+            $sql = "SELECT * FROM usuario where id_usuario = :id_usuario";
+            $stmt = DB::conexao()->prepare($sql);
+            $stmt->bindParam(":id_usuario",$id_usuario,PDO::PARAM_INT);
+            $stmt->execute();
+            foreach($stmt as $obj){
+              $this->setIdUsuario($obj['id_usuario']);
+              $this->setFkPessoa($obj['fk_pessoa']);
+            }
+          }
+        }
+
+        public function recuperaPessoa()
+        {
+          return new Pessoa($this->fk_pessoa);
+        }
 
       public function adicionar()
       {
@@ -39,6 +58,19 @@
           }
 
         }
+      }
+
+      public function setFkPessoa($fk_pessoa){
+        $this->fk_pessoa = $fk_pessoa;
+      }
+
+      public function getFkPessoa()
+      {
+        return $this->fk_pessoa;
+      }
+
+      public function setIdUsuario($id_usuario){
+        $this->id_usuario = $id_usuario;
       }
 
       public function getNome()

@@ -14,6 +14,22 @@ require_once('class.db.php');
 
       //protected $senha; verificar se o campo de senha vai ficar na classe de pessoa e tabela de pessoa, ou na tabela de usuarios na classe de usuarios
 
+            public function __construct($id_pessoa = false){
+              if($id_pessoa){
+                $sql = "SELECT * FROM pessoa where id_pessoa = :id_pessoa";
+                $stmt = DB::conexao()->prepare($sql);
+                $stmt->bindParam(":id_pessoa",$id_pessoa,PDO::PARAM_INT);
+                $stmt->execute();
+                  foreach($stmt as $obj){
+                  $this->setIdPessoa($obj['id_pessoa']);
+                  $this->setNome($obj['nome']);
+                  $this->setEmail($obj['email']);
+                  $this->setCpf($obj['cpf']);
+                  $this->setTelefone($obj['telefone']);
+                }
+              }
+            }
+
       public function adicionar(){
         try{
           $sql = "INSERT INTO pessoa(nome,email,cpf,telefone) values (:nome,:email,:cpf,:telefone)";
@@ -45,20 +61,6 @@ require_once('class.db.php');
           }
       }
 
-      // public function __construct($id = false){
-      //   if($id){
-      //     $sql = "SELECT * FROM pessoa where id_pessoa = :id_pessoa";
-      //     $sql = DB::conexao()->prepare($sql);
-      //     $stmt->bindParam(":id_pessoa",$id_pessoa,PDO::PARAM_INT);
-      //     $stmt->execute();
-      //     $foreach($stmt as $obj){
-      //       $this->setIdPessoa($obj['id_pessoa']);
-      //       $this->setEmail($obj['nome']);
-      //       $this->setCpf($obj['cpf']);
-      //       $this->setTelefone['telefone'];
-      //     }
-      //   }
-      // }
 
       public function listar(){
         try {
@@ -102,6 +104,12 @@ require_once('class.db.php');
       {
         return $this->id_pessoa;
       }
+
+
+            public function setIdPessoa($id_pessoa)
+            {
+              $this->id_pessoa = $id_pessoa;
+            }
 
             /*---------------------------------------------------------------------
   ENCAPSULAMENTO NOME
