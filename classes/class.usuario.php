@@ -30,33 +30,41 @@
 
       public function adicionar()
       {
-        $sql = "INSERT INTO usuario (senha,fk_pessoa,login) values (:senha,:fk_pessoa,:login)";
+        $sql = "INSERT INTO usuario (senha,fk_pessoa) values (:senha,:fk_pessoa)";
         $conexao = DB::conexao();
         $stmt = $conexao->prepare($sql);
         $stmt->bindParam(':senha',$this->senha);
         $stmt->bindParam(':fk_pessoa',$this->fk_pessoa);
-        $stmt->bindParam(':login',$this->login);
         $stmt->execute();
         $ultimoIdUsuario = $conexao->lastInsertId();
         return $ultimoIdUsuario;
       }
 
-      public static function logar($login = false, $senha = false){
-        if($login && $senha){
-          $sql = "SELECT * FROM usuario where login = :login and senha = :senha";
-          $stmt = DB::conexao()->prepare($sql);
-          $stmt->bindParam(':login',$login);
+      public static function logar($cpf = false, $senha = false){
+        if($cpf && $senha){
+          $sql = "SELECT * FROM usuario
+          join pessoa on pessoa.id_pessoa = usuario.fk_pessoa
+          join grupo on grupo.id_grupo = usuario.fk_pessoa
+          join ref_usuario_grupo on ref_usuario_grupo.fk_grupo = usuario.id_usuario
+          where pessoa.cpf = :cpf and usuario.senha = :senha";
+          $conexao = DB::conexao();
+          $stmt = $conexao->prepare($sql);
           $stmt->bindParam(':senha',$senha);
+          $stmt->bindParam(':cpf',$cpf);
+          //$stmt->bindParam(':login',$this->login);
           $stmt->execute();
-          if(isset($stmt)){
-            foreach ($stmt as $obj) {
-              $_SESSION['login_usuario'] = $obj['login'];
-              $_SESSION['id_usuario'] = $obj['id_usuario'];
+          $registros = $stmt->fetchAll();
+          if($registros){
+            foreach($registros as $objeto){
+              $_SESSION['fk_grupo'] = $objeto['fk_grupo'];
+              $_SESSION['nome_grupo'] = $objeto['nome'];
+              $_SESSION['fk_usuario'] = $objeto['fk_usuario'];
+              $_SESSION['fk_pessoa'] = $objeto['fk_pessoa'];
+              $_SESSION['cpf']  = $objeto['cpf'];
+              $_SESSION['senha'] = $objeto['senha'];
+              header('Location:index.php');
             }
-          }else{
-            header('Location:index.php?msg2=usuario_senha_invalidos');
-          }
-
+        }
         }
       }
 

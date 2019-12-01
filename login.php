@@ -2,11 +2,13 @@
     require('Classes/class.usuario.php');
     session_start();
     if(isset($_POST['botao']) && $_POST["botao"] == "Logar"){
-      Usuario::logar($_POST['login_usuario'], $_POST['senha']);
+      print_r($_POST);
+      $u = Usuario::logar($_POST['cpf'], $_POST['senha']);
+      die();
     }
 ?>
 <?php
-  if(isset($_SESSION['login_usuario']) && isset($_SESSION['id_usuario'])){
+  if(isset($_SESSION['cpf']) && isset($_SESSION['id_usuario'])){
     echo "<script>location.href='index.php'</script>";
   }
 
@@ -121,7 +123,7 @@
 		</div>
         <h2 class="text-center">Login</h2>
         <div class="form-group">
-        	<input type="text" class="form-control" name="login_usuario" placeholder="CPF" required="required">
+        	<input type="text" class="form-control" name="cpf" placeholder="CPF" required="required">
         </div>
 		<div class="form-group">
             <input type="password" class="form-control" name="senha" placeholder="SENHA" required="required">

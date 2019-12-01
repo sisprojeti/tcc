@@ -42,9 +42,8 @@ try{
     <!-- Small boxes (Stat box) -->
     <div class="row">
       <?php
-          $id_grupo = 2;
           if(
-              $id_grupo === 1
+              $_SESSION['nome_grupo'] === 'administrador'
             ){?>
       <div class="col-lg-3 col-6">
         <!-- small box -->
@@ -187,7 +186,7 @@ try{
         </div>
       </div> -->
       <!-- ./col -->
-    <?php }else if($id_grupo === 2){ ?>
+    <?php }else if($_SESSION['nome_grupo'] === 'aluno'){ ?>
       <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-info">

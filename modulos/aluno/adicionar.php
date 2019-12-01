@@ -6,6 +6,8 @@ require_once("classes/class.grupo.php");
 require_once('classes/class.refUsuarioGrupo.php');
 try {
   $fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
+  // print_r($_REQUEST);
+  // echo $fk_grupo;
   //como adicionar o usuario pegando o modulo do qual ele faz parte e pegando o id do grupo que ele faz parte atraves do modulos
 } catch (PDOException $e) {
   echo "ERROR".$e->getMessage();
@@ -112,16 +114,6 @@ try {
                     <label>Matricula</label>
                     <input type="text" class="form-control" name="matricula" id="matricula" placeholder="Insira a Matricula no Aluno" required>
                   </div>
-                  <div class="form-grou">
-                    <label>Grupo</grupo>
-                    <select class="form-control" name="fk_grupo" require autofocus>
-                      <option value="">Selecione o grupo</option>
-                      <?php foreach($listarGrupos as $grupo):?>
-                        <option value="<?php $grupo->getIdGrupo();?>"> <?php echo $grupo->getNomeGrupo();?></option>
-                      <?php endforeach;?>
-                    </select>
-                  </div>
-
                   <div class="form-group">
                     <label>Situacao Aluno: </label>
                     Ativo <input type="checkbox" name="situacao_aluno" value="true" id="situacao_aluno" required>

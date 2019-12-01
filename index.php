@@ -1,10 +1,8 @@
 <?php
     session_start();
-    if(!isset($_SESSION['login_usuario']) || !isset($_SESSION['id_usuario'])){
+    if(!isset($_SESSION['cpf']) || !isset($_SESSION['fk_usuario'])){
       echo "<script>location.href='login.php?msg=erro'</script>";
     }
-    print_r($_SESSION);
-    
 
     if(isset($_POST['botao']) && $_POST["botao"] == "Sair"){
       session_destroy();
