@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `sisp09`.`usuario` (
 CREATE TABLE IF NOT EXISTS `sisp09`.`aluno` (
   `id_aluno` INT NOT NULL AUTO_INCREMENT,
   `data_matricula` DATE NULL,
+  `matricula` VARCHAR(45) NULL,
   `situacao_aluno` TINYINT NULL,
   `fk_pessoa` INT NOT NULL,
   PRIMARY KEY (`id_aluno`),
