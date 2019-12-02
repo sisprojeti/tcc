@@ -67,7 +67,9 @@
               $_SESSION['senha'] = $objeto['senha'];
               header('Location:index.php');
             }
-        }
+          }else{
+            header('Location:login.php?login_invalido=erro');
+          }
         }
       }
 

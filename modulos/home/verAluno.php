@@ -1,13 +1,11 @@
 <?php
-include_once('Classes/Tarefa.php');
-
-try {
-  $totalTarefas = Tarefa::contarTarefas();
-} catch (PDOException $e) {
-  echo "ERROR".$e->getMessage();
-}
-
-
+// include_once('Classes/Tarefa.php');
+//
+// try {
+//   $totalTarefas = Tarefa::contarTarefas();
+// } catch (PDOException $e) {
+//   echo "ERROR".$e->getMessage();
+// }
 ?>
  <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -32,7 +30,7 @@ try {
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          
+
           <!-- ./col -->
         </div>
         <!-- /.row -->
