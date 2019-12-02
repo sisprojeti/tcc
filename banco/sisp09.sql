@@ -286,7 +286,7 @@ CREATE TABLE IF NOT EXISTS `sisp09`.`ref_aluno_turma` (
 CREATE TABLE IF NOT EXISTS `sisp09`.`projeti` (
   `id_projeti` INT NOT NULL AUTO_INCREMENT,
   `tema` VARCHAR(255) NOT NULL,
-  `decricao` TEXT NOT NULL,
+  `descricao` TEXT NOT NULL,
   PRIMARY KEY (`id_projeti`));
 
 
