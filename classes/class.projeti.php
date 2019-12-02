@@ -6,6 +6,17 @@
     public $tema;
     public $descricao;
 
+        public function adicionar()
+        {
+          $sql = "INSERT INTO projeti(tema,descricao) values (:tema,:descricao)";
+          $conexao = DB::conexao();
+          $stmt = $conexao->prepare($sql);
+          $stmt->bindParam(':tema',$this->tema);
+          $stmt->bindParam(':descricao',$this->descricao);
+          $stmt->execute();
+          $ultimoIdProjeti = $conexao->lastInsertId();
+          return $ultimoIdProjeti;
+        }
 
        /*------------------------------------/*
        ENCAPSULAMENTOS DO ID
@@ -42,8 +53,8 @@
        public function setDescricao($descricao){
          $this->descricao = $descricao;
        }
-      
-      
+
+
   }
 
 ?>
