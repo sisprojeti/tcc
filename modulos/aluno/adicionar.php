@@ -1,4 +1,9 @@
 <?php
+
+if(isset($_GET['msgerro']) && $_GET['msgerro'] === 'erro_cadastro'){
+  echo "Usuário cadastrado";
+};
+
 require_once("classes/class.aluno.php");
 require_once("classes/class.pessoa.php");
 require_once("classes/class.usuario.php");
