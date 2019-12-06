@@ -8,6 +8,7 @@
       session_destroy();
       header('Location:login.php');
     }
+    print_r($_SESSION);
 
 ?>
 <!DOCTYPE html>
@@ -97,7 +98,7 @@
           <img src="dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Ciclano Silva de Tal</a>
+          <a href="#" class="d-block"></a>
         </div>
       </div>
 
@@ -107,6 +108,10 @@
 <!----------------------------------------------------------------------------
 ---------- MENU DO COORDENADOR
 ---------------------------------------------------------------------------->
+<?php
+    if(
+        $_SESSION['nome_grupo'] === 'administrador'
+      ){?>
           <li class="nav-item has-treeview menu-open">
             <a href="index.php" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -114,7 +119,6 @@
                 Home Coordenador
               </p>
             </a>
-          </li>
           </li>
 <!----------------------------------------------------------------------------
 ---------- CADASTROS DE PESSOAS
@@ -273,6 +277,7 @@
                 </a>
               </li>
             </ul>
+          <?php }else{?>
             <li class="nav-item has-treeview menu-open">
                <ul class="nav nav-treeview">
                 <li class="nav-item has-treeview menu-open">
@@ -348,6 +353,7 @@
                  </li>
                </ul>
           </li>
+          <?php };?>
             <!-- Inicio ambiente aluno-->
          <!-- <li class="nav-item has-treeview menu-open">
             <ul class="nav nav-treeview">

@@ -32,17 +32,28 @@ require_once('class.db.php');
 
       public function adicionar(){
         try{
-          $sql = "INSERT INTO pessoa(nome,email,cpf,telefone) values (:nome,:email,:cpf,:telefone)";
+          $sql = "SELECT cpf from pessoa where cpf = :cpf";
           $conexao = DB::conexao();
           $stmt = $conexao->prepare($sql);
-          $stmt->bindParam(':nome',$this->nome);
-          $stmt->bindParam(':email',$this->email);
-          $stmt->bindParam(':cpf',$this->cpf);
-          $stmt->bindParam(':telefone',$this->telefone);
+          $stmt->bindParam(":cpf",$this->cpf);
           $stmt->execute();
-          $ultimoIdPessoa = $conexao->lastInsertId();
-          return $ultimoIdPessoa;
-
+          $rg = $stmt->fetchAll();
+          if($rg){
+            echo "usuário já cadastrado no sistema";
+            header('Location:?modulo=adicionar&acao=listar&msgerro=erro_cadastro');
+            exit();
+          }else{
+            $sql = "INSERT INTO pessoa(nome,email,cpf,telefone) values (:nome,:email,:cpf,:telefone)";
+            $conexao = DB::conexao();
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindParam(':nome',$this->nome);
+            $stmt->bindParam(':email',$this->email);
+            $stmt->bindParam(':cpf',$this->cpf);
+            $stmt->bindParam(':telefone',$this->telefone);
+            $stmt->execute();
+            $ultimoIdPessoa = $conexao->lastInsertId();
+            return $ultimoIdPessoa;
+          }
         }catch(PDOException $e){
           echo "ERROR".$e->getMessage();
         }

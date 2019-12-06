@@ -7,9 +7,20 @@ include_once('Classes/class.projeti.php');
 include_once('Classes/class.refAlunoProjeti.php');
 //print_r($_SESSION);
 if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grupo'){
-  $fk_aluno = Aluno::recuperaAluno($_SESSION['fk_pessoa']);
-  print_r($fk_aluno);
-  echo $fk_aluno->getIdAluno();
+  // $fk_aluno = Aluno::recuperaAluno($_SESSION['fk_pessoa']);
+  // print_r($fk_aluno);
+  // echo $fk_aluno->getIdAluno();
+
+
+  $usuario = new Usuario($_SESSION['fk_pessoa']);
+  //$turma = new Turma($_SESSION['fk_turma']);
+  $turma_aluno = Turma::recuperaTurmaAluno($_SESSION['fk_pessoa']);
+  //print_r($turma_aluno);
+  //print_r($turma_aluno);
+  $pessoa = $usuario->recuperaPessoa();
+  // echo "<pre>";
+  // print_r($_SESSION);
+  // echo "</pre>";
 
   $projeti = new Projeti();
   // echo ->getIdAluno();
@@ -20,7 +31,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
 
   $integranteProjeti_um = new RefAlunoProjeti();
   $integranteProjeti_um->setFkProjeti($ultimoIdProjeti);
-  $integranteProjeti_um->setFkAluno($fk_aluno->getIdAluno());
+  $integranteProjeti_um->setFkAluno($pessoa->getIdPessoa());
   $integranteProjeti_um->adicionar();
 
   $integranteProjeti_dois = new RefAlunoProjeti();
@@ -35,16 +46,6 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
 
 }
 
-
-$usuario = new Usuario($_SESSION['fk_usuario']);
-//$turma = new Turma($_SESSION['fk_turma']);
-$turma_aluno = Turma::recuperaTurmaAluno($_SESSION['fk_pessoa']);
-//print_r($turma_aluno);
-//print_r($turma_aluno);
-$pessoa = $usuario->recuperaPessoa();
-// echo "<pre>";
-// print_r($_SESSION);
-// echo "</pre>";
 
 ?>
 <div>
@@ -75,7 +76,7 @@ $pessoa = $usuario->recuperaPessoa();
 
     <div class="form-group">
         <label for="inputAddress2">Nome Integrante</label>
-        <input type="text" disabled class="form-control" value="<?= $pessoa->getNome();?>" id="inputAddress2" placeholder="Digite o nome do integrante do grupo" name="aluno1" value="">
+        <input type="text" disabled class="form-control" value="<?php echo $pessoa->getNome();?>" id="inputAddress2" placeholder="Digite o nome do integrante do grupo" name="aluno1" value="">
      </div>
      <div class="form-row">
            <!-- <div class="form-group col-md-4">
@@ -91,7 +92,7 @@ $pessoa = $usuario->recuperaPessoa();
                $alunos = Aluno::listarAlunosTurma($turma_aluno->getIdTurma());
                foreach($alunos as $aluno){
                ?>
-                 <option value="<?php echo $aluno->getIdAluno();?>">     <?php echo $aluno->recuperaPessoa()->getNome();?></option>
+                 <option value="<?php echo $aluno->getIdAluno();?>"><?php echo $aluno->recuperaPessoa()->getNome();?></option>
                <?php }?>
              </select>
            </div>

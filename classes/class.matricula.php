@@ -8,7 +8,7 @@
 
       public function adicionar(){
         try {
-          $sql = "INSERT INTO matricula (fk_turma,fk_aluno) values (:fk_turma,:fk_aluno)";
+          $sql = "INSERT INTO ref_aluno_turma(fk_turma,fk_aluno) values (:fk_turma,:fk_aluno)";
           $conexao = DB::conexao();
           $stmt = $conexao->prepare($sql);
           $stmt->bindParam(':fk_turma',$this->fk_turma);
