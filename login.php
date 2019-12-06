@@ -42,6 +42,9 @@
 		color: #fff;
 		background: #36648B;
 	}
+	.error{
+             color:red
+       }
 	.form-control {
         min-height: 41px;
 		background: #fff;
@@ -132,7 +135,7 @@
 </head>
 <body>
 <div class="login-form">
-    <form action="#" method="post">
+    <form action="#" id="form_login" method="post">
 		<div class="avatar">
 			<img src="img/user.png" alt="Avatar" />
 		</div>
@@ -141,16 +144,70 @@
         	<input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF" required="required">
         </div>
 		<div class="form-group">
-            <input type="password" class="form-control" name="senha" placeholder="SENHA" required="required">
+            <input type="password" class="form-control" name="senha" id="senha" placeholder="SENHA" required="required">
         </div>
         <div class="form-group">
             <input type="submit" name="botao" class="btn btn-primary btn-lg btn-block" value="Logar">
         </div>
 		<div class="clearfix">
-            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+            <label class="pull-left checkbox-inline"><input type="checkbox">Lembrar-me</label>
             <a href="#" class="pull-right">Esqueceu sua senha?</a>
         </div>
     </form>
 </div>
+
+ <script>
+            $("#form_login").validate({
+       rules : {
+              cpf:{
+                    required:true,
+                    cpf: true,
+             },
+             senha:{
+                    required:true
+             },
+       },
+       messages:{
+            cpf:{
+                    required:"Por favor, informe o CPF."      
+             },
+             senha:{
+                    required:"Por favor, informe a senha."      
+             },
+       }
+
+});
+             jQuery.validator.addMethod("cpf", function(value, element) {
+             value = jQuery.trim(value);
+
+            value = value.replace('.','');
+            value = value.replace('.','');
+            cpf = value.replace('-','');
+            while(cpf.length < 11) cpf = "0"+ cpf;
+            var expReg = /^0+$|^1+$|^2+$|^3+$|^4+$|^5+$|^6+$|^7+$|^8+$|^9+$/;
+            var a = [];
+            var b = new Number;
+            var c = 11;
+            for (i=0; i<11; i++){
+              a[i] = cpf.charAt(i);
+              if (i < 9) b += (a[i] * --c);
+            }
+            if ((x = b % 11) < 2) { a[9] = 0 } else { a[9] = 11-x }
+            b = 0;
+            c = 11;
+            for (y=0; y<10; y++) b += (a[y] * c--);
+            if ((x = b % 11) < 2) { a[10] = 0; } else { a[10] = 11-x; }
+
+            var retorno = true;
+            if ((cpf.charAt(9) != a[9]) || (cpf.charAt(10) != a[10]) || cpf.match(expReg)) retorno = false;
+
+            return this.optional(element) || retorno;
+
+          }, "Informe um CPF válido");
+
+
+
+       </script>
+
 </body>
 </html>
