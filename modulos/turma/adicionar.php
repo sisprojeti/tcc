@@ -7,7 +7,7 @@ include_once("classes/class.turma.php");
       $turma->setExercicioId($_POST['fk_exercicio']);
       $turma->setEtapaId($_POST['fk_etapa']);
       $turma->setCursoId($_POST['fk_curso']);
-      $turma->setNome($_POST['nome']);
+      $turma->setNomeTurma($_POST['nome']);
       $turma->setTurno($_POST['turno']);
       $turma->setLotacao($_POST['lotacao']);
       $turma->setStatusFinalizada($_POST['status_finalizada']);
@@ -177,9 +177,9 @@ include_once("classes/class.turma.php");
                     required:true,
              },
              status_finalizada:{
-                    
+
                     required:true,
-             },                                  
+             },
        },
        messages:{
               fk_exercicio:{
@@ -187,22 +187,22 @@ include_once("classes/class.turma.php");
              },
               fk_curso:{
                     required:"Por favor, informe o curso"
-             }, 
+             },
               fk_etapa:{
                     required:"Por favor, informe a etapa"
-             }, 
+             },
               nome:{
                     required:"Por favor, informe o nome da turma"
-             }, 
+             },
               lotacao:{
                     required:"Por favor, informe a Lotação"
-             }, 
+             },
              turno:{
                     required:"Por favor, informe o turno"
-             }, 
+             },
              status_finalizada:{
                     required:"Por favor, informe o status"
-             },  
+             },
        }
 
 });

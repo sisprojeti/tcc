@@ -4,15 +4,15 @@
     {
       public $id_ref_aluno_projeti;
       public $fk_projeti;
-      public $fk_matricula;
+      public $fk_aluno;
 
       public function adicionar()
       {
-        $sql = "INSERT INTO ref_aluno_projeto(fk_projeti,fk_matricula) values (:fk_projeti,:fk_matricula)";
+        $sql = "INSERT INTO ref_aluno_projeti(fk_projeti,fk_aluno) values (:fk_projeti,:fk_aluno)";
         $conexao = DB::conexao();
         $stmt = $conexao->prepare($sql);
         $stmt->bindParam(':fk_projeti',$this->fk_projeti);
-        $stmt->bindParam(':fk_matricula',$this->fk_matricula);
+        $stmt->bindParam(':fk_aluno',$this->fk_aluno);
         $stmt->execute();
       }
 
@@ -21,8 +21,8 @@
         $sql ="SELECT * FROM ref_aluno_projeti";
       }
 
-      public function getFkMatricula(){
-        return $this->fk_matricula;
+      public function getFkAluno(){
+        return $this->fk_aluno;
       }
 
       public function getFkProjeti(){
@@ -33,8 +33,8 @@
         $this->fk_projeti = $fk_projeti;
       }
 
-      public function setFkMatriculoa($fk_matricula){
-        $this->fk_matricula = $fk_matricula;
+      public function setFkAluno($fk_aluno){
+        $this->fk_aluno = $fk_aluno;
       }
     }
 

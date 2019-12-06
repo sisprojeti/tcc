@@ -28,6 +28,8 @@
           return new Pessoa($this->fk_pessoa);
         }
 
+
+
       public function adicionar()
       {
         $sql = "INSERT INTO usuario (senha,fk_pessoa) values (:senha,:fk_pessoa)";
@@ -56,6 +58,7 @@
           $registros = $stmt->fetchAll();
           if($registros){
             foreach($registros as $objeto){
+              //print_r($objeto);
               $_SESSION['fk_grupo'] = $objeto['fk_grupo'];
               $_SESSION['nome_grupo'] = $objeto['nome'];
               $_SESSION['fk_usuario'] = $objeto['fk_usuario'];
@@ -64,7 +67,9 @@
               $_SESSION['senha'] = $objeto['senha'];
               header('Location:index.php');
             }
-        }
+          }else{
+            header('Location:login.php?login_invalido=erro');
+          }
         }
       }
 

@@ -2,18 +2,23 @@
     require('Classes/class.usuario.php');
     session_start();
     if(isset($_POST['botao']) && $_POST["botao"] == "Logar"){
-      print_r($_POST);
+      //print_r($_POST);
       $u = Usuario::logar($_POST['cpf'], $_POST['senha']);
-      die();
+      //die();
     }
+    
 ?>
 <?php
   if(isset($_SESSION['cpf']) && isset($_SESSION['id_usuario'])){
     echo "<script>location.href='index.php'</script>";
   }
 
+  if(isset($_GET['login_invalido']) && $_GET['login_invalido'] === 'erro'){
+    echo "<span style='color:red'> Login ou Senha Inválidos </span>";
+  }
+
   if(isset($_GET['msg']) && $_GET['msg'] === 'erro'){
-    echo "<span style='color:red'> Você precisa estar logado para acessar paginas restritas </span>";
+    echo "<span style='color:red'> Você precisa estar logado para acessar páginas restritas </span>";
   }
   //
 	// if(isset($_GET['msg']) && $_GET['msg'] === 'usuario_senha_invalidos'){

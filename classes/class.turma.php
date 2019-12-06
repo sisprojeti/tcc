@@ -17,6 +17,26 @@
       public $lotacao;
       public $status_finalizada;
 
+      public static function recuperaTurmaAluno($fk_aluno)
+      {
+        $sql = "SELECT turma.nome as nome_turma, turma.id_turma as id_turma
+        from ref_aluno_turma
+        join turma on turma.id_turma = ref_aluno_turma.fk_turma
+        join aluno on aluno.id_aluno = ref_aluno_turma.fk_aluno
+        where aluno.fk_pessoa = $fk_aluno";
+        $conexao = DB::conexao();
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute();
+        if($stmt){
+          foreach($stmt as $objeto){
+            $temporario = new Turma();
+            $temporario->setIdTurma($objeto['id_turma']);
+            $temporario->setNomeTurma($objeto['nome_turma']);
+          }
+          return $temporario;
+          }
+        }
+
       public function adicionar(){
         try{
           $sql = "INSERT INTO turma (fk_exercicio,fk_etapa,fk_curso,nome,turno,lotacao,status_finalizada) values (:fk_exercicio,:fk_etapa,:fk_curso,:nome,:turno,:lotacao,:status_finalizada)";
@@ -47,7 +67,7 @@
                         foreach($registros as $objeto){
                           $temporario = new Turma();
                           $temporario->setIdTurma($objeto['id_turma']);
-                          $temporario->setNome($objeto['nome']);
+                          $temporario->setNomeTurma($objeto['nome']);
                           $temporario->setCursoId($objeto['fk_curso']);
                           $temporario->setEtapaId($objeto['fk_etapa']);
                           $temporario->setTurno($objeto['turno']);
@@ -122,7 +142,7 @@
         return $this->nome;
       }
 
-      public function setNome($nome){
+      public function setNomeTurma($nome){
         $this->nome = $nome;
       }
 

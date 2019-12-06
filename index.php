@@ -8,6 +8,7 @@
       session_destroy();
       header('Location:login.php');
     }
+    print_r($_SESSION);
 
 ?>
 <!DOCTYPE html>
@@ -48,8 +49,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"> </script>
-
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -97,7 +98,7 @@
           <img src="dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Ciclano Silva de Tal</a>
+          <a href="#" class="d-block"></a>
         </div>
       </div>
 
@@ -107,6 +108,10 @@
 <!----------------------------------------------------------------------------
 ---------- MENU DO COORDENADOR
 ---------------------------------------------------------------------------->
+<?php
+    if(
+        $_SESSION['nome_grupo'] === 'administrador'
+      ){?>
           <li class="nav-item has-treeview menu-open">
             <a href="index.php" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -114,7 +119,6 @@
                 Home Coordenador
               </p>
             </a>
-          </li>
           </li>
 <!----------------------------------------------------------------------------
 ---------- CADASTROS DE PESSOAS
@@ -182,6 +186,12 @@
                 <a href="?modulo=vinculoCoordenador&acao=adicionar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Vicular Coordenador</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?modulo=vinculoAluno&acao=adicionar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Vicular Aluno a Turma</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -267,6 +277,7 @@
                 </a>
               </li>
             </ul>
+          <?php }else{?>
             <li class="nav-item has-treeview menu-open">
                <ul class="nav nav-treeview">
                 <li class="nav-item has-treeview menu-open">
@@ -342,6 +353,7 @@
                  </li>
                </ul>
           </li>
+          <?php };?>
             <!-- Inicio ambiente aluno-->
          <!-- <li class="nav-item has-treeview menu-open">
             <ul class="nav nav-treeview">

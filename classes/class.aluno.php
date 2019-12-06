@@ -3,8 +3,9 @@
     class Aluno
     {
 
+      public $id_aluno;
       public $data_matricula;
-      public $id_grupo = 2;
+      public $id_grupo;
       public $situacao_aluno;
       public $matricula;
       public $fk_pessoa;
@@ -14,6 +15,33 @@
       //public $grupo_projeti;
       //---------------------------##########---------------------------------------
 
+      public function __construct($id_aluno=false){
+          if($id_aluno){
+            $sql = "SELECT * FROM aluno where id_aluno = :id_aluno";
+            $stmt = DB::conexao()->prepare($sql);
+            $stmt->bindParam(":id_aluno",$id_aluno,PDO::PARAM_INT);
+            $stmt->execute();
+            foreach($stmt as $obj){
+              $this->setIdAluno($obj['id_aluno']);
+            }
+          }
+        }
+
+        public static function recuperaAluno($fk_pessoa)
+        {
+
+          $sql = "SELECT * FROM aluno where fk_pessoa = :fk_pessoa";
+          $conexao = DB::conexao();
+          $stmt = $conexao->prepare($sql);
+          $stmt->bindParam(':fk_pessoa',$fk_pessoa);
+          $stmt->execute();
+          if($stmt){
+            foreach($stmt as $obj){
+              $temporario = new Aluno($obj['id_aluno']);
+            }
+            return $temporario;
+            }
+          }
 
     public static function listar()
       {
@@ -38,6 +66,30 @@
         }
       }
 
+      public static function listarAlunosTurma($fk_turma)
+        {
+          try {
+            $query = "SELECT * FROM ref_aluno_turma
+            join aluno on aluno.id_aluno = ref_aluno_turma.fk_aluno
+            where ref_aluno_turma.fk_turma = :fk_turma";
+                        $stmt = DB::conexao()->prepare($query);
+                        $stmt->bindParam(':fk_turma',$fk_turma);
+                        $stmt->execute();
+                        $registros = $stmt->fetchAll();
+                        if($registros){
+                          foreach($registros as $objeto){
+                            $temporario = new Aluno();
+                            $temporario->setIdAluno($objeto['id_aluno']);
+                            $temporario->setFkPessoa($objeto['fk_pessoa']);
+                            $itens[] = $temporario;
+                          }
+              return $itens;
+            }
+          } catch (Exception $e) {
+              echo "ERROR".$e->getMessage();
+          }
+        }
+
       public static function contarAlunos()
         {
           try {
@@ -57,7 +109,7 @@
           $sql = "SELECT * FROM aluno";
           $conexao = DB::conexao();
           $stmt = $conexao->prepare($sql);
-          
+
         }
 
 
@@ -65,13 +117,13 @@
 
       public function adicionar(){
         try{
-                  $sql = "INSERT INTO aluno(fk_pessoa,data_matricula,situacao_aluno,matricula) values(:fk_pessoa,:data_matricula,:situacao_aluno,:matricula)"; //criando uma variavel $stmt e atribuindo o valor da variavel $pdo e utilizand operador de acesso a objetos pra utilizar o metodo prepare pra preparar o insert no banco de dados
+                  $sql = "INSERT INTO aluno(fk_pessoa,matricula,data_matricula,situacao_aluno) values(:fk_pessoa,:matricula,:data_matricula,:situacao_aluno)"; //criando uma variavel $stmt e atribuindo o valor da variavel $pdo e utilizand operador de acesso a objetos pra utilizar o metodo prepare pra preparar o insert no banco de dados
                   $conexao = DB::conexao();
                   $stmt = $conexao->prepare($sql);
                   $stmt->bindParam(':fk_pessoa',$this->fk_pessoa);
+                  $stmt->bindParam(':matricula',$this->matricula);
                   $stmt->bindParam(':data_matricula',$this->data_matricula);
                   $stmt->bindParam(':situacao_aluno',$this->situacao_aluno);
-                  $stmt->bindParam(':matricula',$this->matricula);
                   $stmt->execute();
                   $ultimoIdAluno = $conexao->lastInsertId(); //RECUPERANDO O ULTIMO ID INSERIDO
                   return $ultimoIdAluno;
@@ -80,12 +132,12 @@
         }
       }
 
-              public function setIdAluno($id){
-                $this->id = $id;
+              public function setIdAluno($id_aluno){
+                $this->id_aluno = $id_aluno;
               }
 
               public function getIdAluno(){
-                return $this->id;
+                return $this->id_aluno;
               }
 
               public function setPessoaId($ultimoIdPessoa){
@@ -170,10 +222,18 @@
                   return $this->matricula;
                 }
 
+                public function setFkPessoa($fk_pessoa)
+                {
+                  $this->fk_pessoa = $fk_pessoa;
+                }
+
                 public function setMatricula($matricula){
                   $this->matricula = $matricula;
                 }
 
+                public function recuperaPessoa(){
+                  return new Pessoa($this->fk_pessoa);
+                }
 
       //VAMOS UTILIZAR ESSES METODOS EM OUTRA CLASS PROVAVELMENTE NÃO APAGAR
       // public function setTurma($turma){

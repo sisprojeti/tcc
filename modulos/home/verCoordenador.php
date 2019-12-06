@@ -12,7 +12,7 @@ try{
   $totalProfessores = Professor::contarProfessores();
   $totalCoordenadores = Coordenador::contarCoordenadores();
   $totalTurmas = Turma::contarTurmas();
-  $totalTarefas = Tarefa::contarTarefas();
+  //$totalTarefas = Tarefa::contarTarefas();
 }catch(PDOException $e) {
   echo "ERROR".$e->getMessage();
 }
@@ -204,7 +204,7 @@ try{
       <div class="col-lg-3 col-6">
         <div class="small-box bg-success">
           <div class="inner">
-            <h4><?= $totalTarefas ;?></h4>
+            <!-- <h4></h4> -->
             <p><h4>Tarefas Cadastradas</h4></p>
           </div>
           <div class="icon">

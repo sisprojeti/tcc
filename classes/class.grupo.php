@@ -18,6 +18,7 @@
         }
       }
 
+
     public function adicionar()
     {
       $sql = "INSERT INTO grupo (nome) values (:nome)";
