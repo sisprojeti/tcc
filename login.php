@@ -114,6 +114,16 @@
 		text-decoration: underline;
 	}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+       <script type="text/javascript">
+  $(document).ready(function(){
+    $("#cpf").mask("000.000.000-00");
+  });
+</script>
 </head>
 <body>
 <div class="login-form">
@@ -123,7 +133,7 @@
 		</div>
         <h2 class="text-center">Login</h2>
         <div class="form-group">
-        	<input type="text" class="form-control" name="cpf" placeholder="CPF" required="required">
+        	<input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF" required="required">
         </div>
 		<div class="form-group">
             <input type="password" class="form-control" name="senha" placeholder="SENHA" required="required">
