@@ -130,21 +130,17 @@ try {
     <label class="custom-control-label" for="customSwitch3"> Situação  </label>
 </div>
  </div>
-
-                <!-- /.card-body -->
-
-                <div class="form-group navbar-white">
-                  <input type="submit" name="button" value="Salvar" class="btn btn-primary" >
-                  <button type="reset" class="btn btn-danger ">Limpar</button>
-                </div>
-              </form>
-
-
-        <!-- /.row (main row) -->
+ <!-- /.card-body -->
+<div class="form-group navbar-white">
+    <input type="submit" name="button" value="Salvar" class="btn btn-primary" >
+    <button type="reset" class="btn btn-danger ">Limpar</button>
+</div>
+</form>
+    <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
   </div>
-  </div>
+</div>
 
       <script>
             $("#form_academicos").validate({

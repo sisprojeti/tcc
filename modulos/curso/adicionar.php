@@ -9,7 +9,11 @@
       $curso->setSigla($_POST['sigla']);
       $curso->setAnoTotal($_POST['ano_total']);
       $curso->setCargaHoraria($_POST['carga_horaria']);
-      $curso->setStatusCurso($_POST['status_curso']);
+      if(isset($_POST['status_curso'])){
+        $curso->setStatusCurso(true);
+       }else{
+        $curso->setStatusCurso(false);
+       }
       $curso->adicionar();
     }catch(PDOException $e){
       echo "ERROR".$e->getMessage();
@@ -88,10 +92,12 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label>Status Curso: </label> </br>
-                    Ativo: <input type="checkbox" name="status_curso" id="status_curso" value="true" id="ativo">
-                  </div>
-                <!-- /.card-body -->
+    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+    <input type="checkbox" name="status_curso" class="custom-control-input" id="customSwitch3" value="true">
+    <label class="custom-control-label" for="customSwitch3"> Situação  </label>
+</div>
+ </div>
+   <!-- /.card-body -->
 
                 <div class="form-group navbar-white">
                   <input type="submit" name="button" value="Salvar" class="btn btn-primary" >
@@ -123,9 +129,6 @@
              carga_horaria: {
                     required: true,
 
-             },
-             status_curso: {
-                    required: true,
              },                                    
        },
        messages:{
@@ -141,10 +144,7 @@
              },
               carga_horaria:{
                     required:"Por favor, insira a Carga Horária do Curso"
-             },
-             status_curso:{
-                    required:"Por favor, informe o status do curso"
-             },     
+             },    
        }
 
 });

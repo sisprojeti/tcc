@@ -36,7 +36,12 @@
     <th scope="row"><?php echo $curso->getIdCurso();?></th>
     <td><?php echo $curso->getNomeCurso();?></td>
     <td><?php echo $curso->getSigla();?></td>
-    <td><?php echo $curso->getStatusCurso();?></td>
+    <td>
+    <?php if(!$curso->getStatusCurso()){
+      echo "Inativo";
+    }else{
+      echo "Ativo";
+    };?></td>
     <td width=250>
       <a class="btn btn-primary" href="">Info</a>
       <a class="btn btn-warning" href="?modulo=curso&acao=editar&id=<?php echo $curso->getIdcurso();?>">Editar</a>
