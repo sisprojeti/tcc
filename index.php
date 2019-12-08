@@ -67,18 +67,18 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
     </ul>
-    <form class="form-inline ml-3">
+    <form class="form-inline ml-3" method="post" style="width: 100%; display: flex; justify-content: space-between;" >
       <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Pesquisar" aria-label="Search">
+        <input style="width: 300px;"class="form-control form-control-navbar" type="search" placeholder="Pesquisar" aria-label="Search">
         <div class="input-group-append">
           <button class="btn btn-navbar" type="submit">
             <i class="fas fa-search"></i>
           </button>
         </div>
       </div>
-    </form>
-    <form class="form my-12 my-lg-0" method="post" href="#">
-      <input class="btn btn-outline-danger my-2 my-sm-0" type="submit" name="botao" value="Sair">
+      <div class="input-group input-group-sm">
+        <input style="width: 100px; border: 1px solid #F4A460;" class="btn btn-danger my-2 my-sm-0" type="submit" name="botao" value="Sair">
+      </div>
     </form>
   </nav>
 

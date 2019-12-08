@@ -34,8 +34,10 @@ try {
        $aluno->setMatricula($_POST['matricula']);
        $aluno->adicionar();
 
+       $senha = '123456';
        $usuario = new Usuario();
        $usuario->setPessoaUsuarioId($ultimoIdPessoa);
+       $usuario->setSenha($senha);
        $ultimoIdUsuario = $usuario->adicionar();
 
        $novo_ref_usuario_grupo = new RefUsuarioGrupo();
@@ -143,7 +145,7 @@ try {
        rules : {
               nome:{
                     required:true,
-                    minlength:16,
+                    minlength:6,
                     accept: "[a-zA-Z]+",
              },
              email:{
