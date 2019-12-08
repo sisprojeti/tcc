@@ -87,7 +87,7 @@
     <a href="index.php" class="brand-link navbar-orange">
       <img src="img/logobranca.png" alt="SISP Logo" class="brand-image"
            style="opacity: ">
-      <span class="brand-text font-weight-light text-white">Conteúdo Dinâmico</span>
+      <span class="brand-text font-weight-light text-white"><?php ?></span>
     </a>
 
     <!-- Sidebar -->
