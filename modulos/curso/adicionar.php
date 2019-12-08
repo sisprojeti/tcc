@@ -59,39 +59,38 @@
     <!-- /.content-header --->
 
     <!-- Main content -->
-    <div class="container col-lg-12 navbar-white">
-    <div class="container col-lg-8 navbar-white">
-    <section class="content">
-      <div class="container-fluid">
-
-         <form role="form" id="form_curso" action="#" method="POST">
-                  <div class="form-group">
-                    <label>Nome</label>
-                    <input type="text" class="form-control"  placeholder="Nome do Curso" name="nome" id="nome" required autofocus>
-                  </div>
-                  <div class="form-group">
-                    <label>Sigla</label>
-                    <input type="text" class="form-control" name="sigla" id="sigla" placeholder="Sigla" required>
-                  </div>
-                  <div class="form-group">
-                    <label>Ano Total</label>
-                    <div class="input-group mb-2">
-                      <div class="input-group-prepend ">
-                        <div class="input-group-text">ANO</div>
-                      </div>
-                      <input type="text" class="form-control col-lg-12" name="ano_total" id="ano_total" placeholder="Ex: 1 " required>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label>Carga Horária</label>
-                    <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">HORAS</div>
-                      </div>
-                      <input type="text" class="form-control col-lg-12" name="carga_horaria" id="carga_horaria"  placeholder="Carga Horária " required>
-                    </div>
-                  </div>
-                  <div class="form-group">
+<div class="container col-lg-12 navbar-white">
+<div class="container col-lg-8 navbar-white">
+<section class="content">
+<div class="container-fluid">
+<form role="form" id="form_curso" action="#" method="POST">
+<div class="form-group">
+  <label>Nome</label>
+  <input type="text" class="form-control"  placeholder="Nome do Curso" name="nome" id="nome" required autofocus>
+</div>
+<div class="form-group">
+  <label>Sigla</label>
+  <input type="text" class="form-control" name="sigla" id="sigla" placeholder="Sigla" required>
+</div>
+<div class="form-group">
+  <label>Ano Total</label>
+<div class="input-group mb-2">
+<div class="input-group-prepend ">
+  <div class="input-group-text">ANO</div>
+</div>
+  <input type="text" class="form-control col-lg-12" name="ano_total" id="ano_total" placeholder="Ex: 1 " required>
+</div>
+</div>
+<div class="form-group">
+  <label>Carga Horária</label>
+  <div class="input-group mb-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text">HORAS</div>
+    </div>
+  <input type="text" class="form-control col-lg-12" name="carga_horaria" id="carga_horaria"  placeholder="Carga Horária " required>
+</div>
+</div>
+<div class="form-group">
     <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
     <input type="checkbox" name="status_curso" class="custom-control-input" id="customSwitch3" value="true">
     <label class="custom-control-label" for="customSwitch3"> Situação  </label>

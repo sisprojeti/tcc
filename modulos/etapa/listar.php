@@ -36,7 +36,11 @@
     <th scope="row"><?php echo $etapa->getIdEtapa();?></th>
     <td><?php echo $etapa->getNomeEtapa();?></td>
     <td><?php echo $etapa->getOrdem();?></td>
-    <td><?php echo $etapa->getStatusEtapa();?></td>
+    <td><?php if(!$etapa->getStatusEtapa()){
+      echo "Inativo";
+    }else{
+      echo "Ativo";
+    };?></td>
     <td width=250>
       <a class="btn btn-primary" href="">Info</a>
       <a class="btn btn-warning" href="?modulo=etapa&acao=editar&id=<?php echo $etapa->getIdEtapa();?>">Editar</a>

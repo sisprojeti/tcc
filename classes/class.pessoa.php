@@ -37,8 +37,8 @@ require_once('class.db.php');
           $stmt = $conexao->prepare($sql);
           $stmt->bindParam(":cpf",$this->cpf);
           $stmt->execute();
-          $rg = $stmt->fetchAll();
-          if($rg){
+          $cpf = $stmt->fetchAll();
+          if($cpf){
             echo "usuário já cadastrado no sistema";
             header('Location:?modulo=adicionar&acao=listar&msgerro=erro_cadastro');
             exit();

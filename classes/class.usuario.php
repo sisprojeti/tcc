@@ -61,6 +61,7 @@
               //print_r($objeto);
               $_SESSION['fk_grupo'] = $objeto['fk_grupo'];
               $_SESSION['nome_grupo'] = $objeto['nome'];
+              $_SESSION['nome_pessoa'] = $objeto['nome_pessoa'];
               $_SESSION['fk_usuario'] = $objeto['fk_usuario'];
               $_SESSION['fk_pessoa'] = $objeto['fk_pessoa'];
               $_SESSION['cpf']  = $objeto['cpf'];
@@ -91,9 +92,18 @@
         return $this->nome;
       }
 
-      public function setNome($nome)
+      public function setNome($nome_pessoa)
       {
         $this->nome = $nome;
+      }
+      public function getNomePessoa()
+      {
+        return $this->nome_pessoa;
+      }
+
+      public function setNomePessoa($nome_pessoa)
+      {
+        $this->nome_pessoa = $nome_pessoa;
       }
 
       public function getEmail()

@@ -6,7 +6,11 @@ include_once("classes/class.etapa.php");
        $etapa = new Etapa();
        $etapa->setNome($_POST['nome']);
        $etapa->setOrdem($_POST['ordem']);
-       $etapa->setStatusEtapa($_POST['status_etapa']);
+       if(isset($_POST['status_etapa'])){
+        $etapa->setStatusEtapa(true);
+       }else{
+        $etapa->setStatusEtapa(false);
+       }
        $etapa->adicionar();
     }
   } catch (PDOException $e) {
@@ -47,28 +51,28 @@ include_once("classes/class.etapa.php");
             </div>
           </div>
     </div>
-
-
     <!-- Main content -->
-    <div class="container col-lg-12 navbar-white">
-    <div class="container col-lg-8 navbar-white">
-    <section class="content navbar-white">
-      <div class="container-fluid navbar-white">
-
-         <form role="form" id="form_etapa" action="#" method="POST">
-          <br>
-                  <div class="form-group">
-                    <label>Nome</label>
-                    <input type="text" class="form-control"  placeholder="Ex: 1 SEMESTRE" name="nome" id="nome" required autofocus>
-                  </div>
-                  <div class="form-group">
-                    <label>Ordem</label>
-                    <input type="text" class="form-control" name="ordem" id="ordem" placeholder="Ex: 1" required> 
-                  </div>
-                  <div class="form-group">
-                    <label>Ativo: </label>
-                   <input type="checkbox" name="status_etapa" value="true" id="status_etapa" required>
-                  </div> <br>
+<div class="container col-lg-12 navbar-white">
+<div class="container col-lg-8 navbar-white">
+<section class="content navbar-white">
+<div class="container-fluid navbar-white">
+ <form role="form" id="form_etapa" action="#" method="POST">
+  <br>
+<div class="form-group">
+  <label>Nome</label>
+  <input type="text" class="form-control"  placeholder="Ex: 1 SEMESTRE" name="nome" id="nome" required autofocus>
+</div>
+<div class="form-group">
+  <label>Ordem</label>
+  <input type="text" class="form-control" name="ordem" id="ordem" placeholder="Ex: 1" required> 
+</div>
+<div class="form-group">
+    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+    <input type="checkbox" name="status_etapa" class="custom-control-input" id="customSwitch3" value="true">
+    <label class="custom-control-label" for="customSwitch3"> Situação  </label>
+</div>
+ </div>
+<br>
                 <!-- /.card-body -->
 
                 <div class="form-group navbar-white">

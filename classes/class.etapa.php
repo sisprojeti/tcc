@@ -31,6 +31,8 @@ include_once('classes/class.db.php');
                           $temporario = new Etapa();
                           $temporario->setIdEtapa($objeto['id_etapa']);
                           $temporario->setNome($objeto['nome']);
+                          $temporario->setOrdem($objeto['ordem']);
+                          $temporario->setStatusEtapa($objeto['status_etapa']);
                           $itens[] = $temporario;
                         }
             return $itens;
