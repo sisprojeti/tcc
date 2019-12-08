@@ -1,25 +1,33 @@
 <?php
 include_once("classes/class.coordenador.php");
 include_once("classes/class.pessoa.php");
+require_once("classes/class.usuario.php");
+require_once("classes/class.grupo.php");
+require_once('classes/class.refUsuarioGrupo.php');
     try {
     if(isset($_POST["button"]) && ($_POST["button"] === "Salvar")){
-       $pessoa = new Pessoa();
-       $pessoa->setNome($_POST['nome']);
-       $pessoa->setEmail($_POST['email']);
-       $pessoa->setCpf($_POST['cpf']);
-       $pessoa->setTelefone($_POST['telefone']);
-       $ultimoIdPessoa = $pessoa->adicionar();
+      $pessoa = new Pessoa();
+      $pessoa->setNome($_POST['nome']);
+      $pessoa->setEmail($_POST['email']);
+      $pessoa->setCpf($_POST['cpf']);
+      $pessoa->setTelefone($_POST['telefone']);
+      $ultimoIdPessoa = $pessoa->adicionar();
 
-       $coordenador = new Coordenador();
-       $coordenador->setPessoaId($ultimoIdPessoa);
-       $coordenador->setDataCadastro($_POST['data_cadastro']);
-       $coordenador->adicionar();
+      $coordenador = new Coordenador();
+      $coordenador->setPessoaId($ultimoIdPessoa);
+      $coordenador->setDataCadastro($_POST['data_cadastro']);
+      $coordenador->adicionar();
 
-        $senha = '123456';
-       $usuario = new Usuario();
-       $usuario->setPessoaUsuarioId($ultimoIdPessoa);
-       $usuario->setSenha($senha);
-       $ultimoIdUsuario = $usuario->adicionar();
+      $senha = '123456';
+      $usuario = new Usuario();
+      $usuario->setPessoaUsuarioId($ultimoIdPessoa);
+      $usuario->setSenha($senha);
+      $ultimoIdUsuario = $usuario->adicionar();
+
+      $novo_ref_usuario_grupo = new RefUsuarioGrupo();
+      $novo_ref_usuario_grupo->setIdUsuario($ultimoIdUsuario);
+      $novo_ref_usuario_grupo->setIdGrupo($fk_grupo);
+      $novo_ref_usuario_grupo->adicionar();
 
     }
   } catch (PDOException $e) {

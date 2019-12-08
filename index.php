@@ -189,12 +189,6 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="?modulo=vinculoAluno&acao=adicionar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Vicular Aluno a Turma</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="?modulo=criterio&acao=adicionar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Critérios Avaliativos</p>
@@ -265,15 +259,15 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="?modulo=matricula&acao=adicionar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Matricula</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="?modulo=vinculoProfessor&acao=adicionar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Vincular Professor</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?modulo=vinculoAluno&acao=adicionar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Vicular Aluno a Turma</p>
                 </a>
               </li>
             </ul>

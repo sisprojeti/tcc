@@ -18,7 +18,7 @@
 <th scope="col">Email</th>
 <th scope="col">Cpf</th>
 <th scope="col">Telefone</th>
-<th scope="col">Data Cadastro</th>
+<th scope="col">Ação</th>
 </tr>
 </thead>
 <tbody>
@@ -30,7 +30,6 @@
     <td><?php echo $professor->getEmail();?></td>
     <td><?php echo $professor->getCpf();?></td>
     <td><?php echo $professor->getTelefone();?>
-    <td><?php echo $professor->getDataCadastro();?>
     <td width=250>
       <a class="btn btn-primary" href="">Info</a>
       <a class="btn btn-warning" href="?modulo=Academico&acao=editar&id=<?php echo $professor->getIdProfessor();?>">Editar</a>

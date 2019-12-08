@@ -15,7 +15,7 @@
 <tr>
 <th scope="col">#</th>
 <th scope="col">Nome</th>
-<th scope="col">Situacao</th>
+<th scope="col">Situação</th>
 <th scope="col">Matricula</th>
 <th scope="col">Ação</th>
 </tr>
