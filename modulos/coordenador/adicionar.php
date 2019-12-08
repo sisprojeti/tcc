@@ -14,6 +14,13 @@ include_once("classes/class.pessoa.php");
        $coordenador->setPessoaId($ultimoIdPessoa);
        $coordenador->setDataCadastro($_POST['data_cadastro']);
        $coordenador->adicionar();
+
+        $senha = '123456';
+       $usuario = new Usuario();
+       $usuario->setPessoaUsuarioId($ultimoIdPessoa);
+       $usuario->setSenha($senha);
+       $ultimoIdUsuario = $usuario->adicionar();
+
     }
   } catch (PDOException $e) {
       echo "ERROR".$e->getMessage();

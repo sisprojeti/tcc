@@ -9,6 +9,24 @@ require_once 'class.db.php';
       public $fk_pessoa;
       public $data_cadastro;
 
+/**-----------------------------------------------
+ * CONSTRUTOR
+ --------------------------------------------------------------------------*/
+      public function __construct($id_coordenador=false){
+          if($id_coordenador){
+            $sql = "SELECT * FROM coordenador where id_coordenador = :id_coordenador";
+            $stmt = DB::conexao()->prepare($sql);
+            $stmt->bindParam(":id_coordenador",$id_coordenador,PDO::PARAM_INT);
+            $stmt->execute();
+            foreach($stmt as $obj){
+              $this->setId($obj['id_coordenador']);
+            }
+          }
+        }
+
+/**-----------------------------------------------
+ * LISTAR
+ --------------------------------------------------------------------------*/
       public static function listar()
         {
           try {
@@ -34,6 +52,29 @@ require_once 'class.db.php';
           }
         }
 
+/**-----------------------------------------------
+ * RECUPERA FK PESSOAS
+ --------------------------------------------------------------------------*/
+        public static function recuperaCoordenador($fk_pessoa)
+        {
+
+          $sql = "SELECT * FROM coordenador where fk_pessoa = :fk_pessoa";
+          $conexao = DB::conexao();
+          $stmt = $conexao->prepare($sql);
+          $stmt->bindParam(':fk_pessoa',$fk_pessoa);
+          $stmt->execute();
+          if($stmt){
+            foreach($stmt as $obj){
+              $temporario = new Coordenador($obj['id_coordenador']);
+            }
+            return $temporario;
+            }
+          }
+
+/**-----------------------------------------------
+ * ADICIONAR
+ --------------------------------------------------------------------------*/
+
         public function adicionar(){
           try {
             $sql = "INSERT INTO coordenador(fk_pessoa,data_cadastro) values (:fk_pessoa,:data_cadastro)";
@@ -46,6 +87,10 @@ require_once 'class.db.php';
             echo "ERROR:".$e->getMessage();
           }
         }
+
+/**-----------------------------------------------
+ * COUNT
+ --------------------------------------------------------------------------*/
 
         public static function contarCoordenadores()
           {
