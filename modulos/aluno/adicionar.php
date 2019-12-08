@@ -30,7 +30,11 @@ try {
        $aluno = new Aluno();
        $aluno->setPessoaId($ultimoIdPessoa);
        $aluno->setDataMatricula($_POST['data_matricula']);
-       $aluno->setSituacaoAluno($_POST['situacao_aluno']);
+       if(isset($_POST['situacao_aluno'])){
+        $aluno->setSituacaoAluno(true);
+       }else{
+        $aluno->setSituacaoAluno(false);
+       }
        $aluno->setMatricula($_POST['matricula']);
        $aluno->adicionar();
 
@@ -90,41 +94,43 @@ try {
     <!-- /.content-header --->
 
     <!-- Main content -->
-    <div class="container col-lg-12 navbar-white">
-      <div class="container col-lg-8 navbar-white">
+<div class="container col-lg-12 navbar-white">
+<div class="container col-lg-8 navbar-white">
 
-    <section class="content navbar-light navbar-white">
-      <div class="container-fluid navbar-white ">
+<section class="content navbar-light navbar-white">
+<div class="container-fluid navbar-white ">
+<form role="form" id="form_academicos" action="#" method="POST">
+  <div class="form-group">
+    <label>Nome</label>
+    <input type="text" class="form-control"  placeholder="Insira o Nome Completo" name="nome" minlength="15" required>
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" class="form-control"  placeholder="Insira o E-mail" name="email" required>
+</div>
+<div class="form-group">
+    <label>CPF</label>
+    <input type="text" class="form-control"  name="cpf" id="cpf" placeholder="000.000.000-00" required >
+</div>
+<div class="form-group">
+    <label>Telefone</label>
+    <input type="tel" class="form-control" name="telefone" id="celular" placeholder="(00) 00000-0000" required>
+</div>
+<div class="form-group">
+    <label>Data Matricula</label>
+    <input type="date" class="form-control" name="data_matricula" id="data_matricula" required >
+</div>
+<div class="form-group">
+    <label>Matricula</label>
+    <input type="text" class="form-control" name="matricula" id="matricula" placeholder="Insira a Matricula no Aluno" required>
+</div>
+<div class="form-group">
+    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+    <input type="checkbox" name="situacao_aluno" class="custom-control-input" id="customSwitch3" value="true">
+    <label class="custom-control-label" for="customSwitch3"> Situação  </label>
+</div>
+ </div>
 
-         <form role="form" id="form_academicos" action="#" method="POST">
-                  <div class="form-group">
-                    <label>Nome</label>
-                    <input type="text" class="form-control"  placeholder="Insira o Nome Completo" name="nome" minlength="15" required>
-                  </div>
-                  <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control"  placeholder="Insira o E-mail" name="email" required>
-                  </div>
-                  <div class="form-group">
-                    <label>CPF</label>
-                    <input type="text" class="form-control"  name="cpf" id="cpf" placeholder="000.000.000-00" required >
-                  </div>
-                  <div class="form-group">
-                    <label>Telefone</label>
-                    <input type="tel" class="form-control" name="telefone" id="celular" placeholder="(00) 00000-0000" required>
-                  </div>
-               <div class="form-group">
-                    <label>Data Matricula</label>
-                    <input type="date" class="form-control" name="data_matricula" id="data_matricula" required >
-                  </div>
-                  <div class="form-group">
-                    <label>Matricula</label>
-                    <input type="text" class="form-control" name="matricula" id="matricula" placeholder="Insira a Matricula no Aluno" required>
-                  </div>
-                  <div class="form-group">
-                    <label>Situacao Aluno: </label>
-                    Ativo <input type="checkbox" name="situacao_aluno" value="true" id="situacao_aluno" required>
-                  </div>
                 <!-- /.card-body -->
 
                 <div class="form-group navbar-white">
@@ -167,9 +173,6 @@ try {
              matricula: {
                     required: true,
              },
-             situacao_aluno:{
-                    required: true,
-             },
        },
        messages:{
             nome:{
@@ -192,9 +195,6 @@ try {
              },
              matricula:{
                     required:"Por favor, insira o nº da matricula"
-             },
-             situacao_aluno:{
-                    required:"Por favor, confirme a situação do aluno."
              },
        }
 
