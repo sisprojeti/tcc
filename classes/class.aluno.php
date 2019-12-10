@@ -109,7 +109,6 @@
           $sql = "SELECT * FROM aluno";
           $conexao = DB::conexao();
           $stmt = $conexao->prepare($sql);
-
         }
 
 

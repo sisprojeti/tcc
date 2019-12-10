@@ -6,21 +6,20 @@ include_once('Classes/class.turma.php');
 include_once('Classes/class.projeti.php');
 include_once('Classes/class.refAlunoProjeti.php');
 //print_r($_SESSION);
+$usuario = new Usuario($_SESSION['fk_pessoa']);
+//$turma = new Turma($_SESSION['fk_turma']);
+$turma_aluno = Turma::recuperaTurmaAluno($_SESSION['fk_pessoa']);
+//echo $_SESSION['fk_pessoa'];
+//print_r($turma_aluno);
+//print_r($turma_aluno);
+$pessoa = $usuario->recuperaPessoa();
+// echo "<pre>";
+//print_r($_SESSION);
+// echo "</pre>";
 if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grupo'){
   // $fk_aluno = Aluno::recuperaAluno($_SESSION['fk_pessoa']);
   // print_r($fk_aluno);
   // echo $fk_aluno->getIdAluno();
-
-
-  $usuario = new Usuario($_SESSION['fk_pessoa']);
-  //$turma = new Turma($_SESSION['fk_turma']);
-  $turma_aluno = Turma::recuperaTurmaAluno($_SESSION['fk_pessoa']);
-  //print_r($turma_aluno);
-  //print_r($turma_aluno);
-  $pessoa = $usuario->recuperaPessoa();
-  // echo "<pre>";
-  // print_r($_SESSION);
-  // echo "</pre>";
 
   $projeti = new Projeti();
   // echo ->getIdAluno();

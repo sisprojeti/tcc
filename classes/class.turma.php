@@ -117,7 +117,7 @@
       }
 
       public function getCursoId(){
-        return $this->fk_curso_id;
+        return $this->fk_curso;
       }
 /* =========Inicio encapsulamento da FK etapa =========*/
       public function setEtapaId($fk_etapa){
@@ -125,7 +125,7 @@
       }
 
       public function getEtapaId(){
-        return $this->etapa_id;
+        return $this->fk_etapa;
       }
 
       /* =========Inicio encapsulamento id de turma =========*/
@@ -134,7 +134,7 @@
       }
 
       public function setCodTurma($id_turma){
-        $this->id_turma = $id_turm;
+        $this->id_turma = $id_turma;
       }
 
       /* =========Inicio encapsulamento nome de turma =========*/

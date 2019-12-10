@@ -44,7 +44,13 @@
 
       public static function logar($cpf = false, $senha = false){
         if($cpf && $senha){
-          $sql = "SELECT * FROM usuario
+          $sql = "SELECT ref_usuario_grupo.fk_grupo as fk_grupo,
+          grupo.nome as nome_grupo,
+          pessoa.nome as nome_pessoa,
+          ref_usuario_grupo.fk_usuario as fk_usuario,
+          usuario.fk_pessoa as fk_pessoa,
+          pessoa.cpf as cpf,
+          usuario.senha as senha FROM usuario
           join pessoa on pessoa.id_pessoa = usuario.fk_pessoa
           join grupo on grupo.id_grupo = usuario.fk_pessoa
           join ref_usuario_grupo on ref_usuario_grupo.fk_grupo = usuario.id_usuario
@@ -60,7 +66,7 @@
             foreach($registros as $objeto){
               //print_r($objeto);
               $_SESSION['fk_grupo'] = $objeto['fk_grupo'];
-              $_SESSION['nome_grupo'] = $objeto['nome'];
+              $_SESSION['nome_grupo'] = $objeto['nome_grupo'];
               $_SESSION['nome_pessoa'] = $objeto['nome_pessoa'];
               $_SESSION['fk_usuario'] = $objeto['fk_usuario'];
               $_SESSION['fk_pessoa'] = $objeto['fk_pessoa'];
