@@ -128,9 +128,9 @@ include_once("classes/class.turma.php");
   <label>Turno</label>
   <select class="form-control" name="turno" id="turno" required>
     <option> Selecione um Turno.. </option>
-    <option value="manhã"> Manhã </option>
-    <option value="tarde"> Tarde </option>
-    <option value="noite"> Noite </option>
+    <option value="Manhã"> Manhã </option>
+    <option value="Tarde"> Tarde </option>
+    <option value="Noite"> Noite </option>
   </select>
 </div>
 <div class="form-group">
