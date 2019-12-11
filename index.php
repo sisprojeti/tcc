@@ -8,7 +8,7 @@
       session_destroy();
       header('Location:login.php');
     }
-    print_r($_SESSION);
+    //print_r($_SESSION);
 
 ?>
 <!DOCTYPE html>
@@ -52,6 +52,9 @@
     <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+
+    		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/formularios.css">
@@ -282,7 +285,7 @@
                  </p>
                </a>
                </li>
-               <li class="nav-item has-treeview">
+               <!-- <li class="nav-item has-treeview">
                  <a href="#" class="nav-link">
                    <i class="nav-icon fas fa-edit"></i>
                    <p>
@@ -298,9 +301,9 @@
                      </a>
                    </li>
                  </ul>
-                 </li>
+                 </li> -->
                  <li class="nav-item">
-                   <a href="?modulo=tarefa&acao=listar" class="nav-link">
+                   <a href="?modulo=tarefa&acao=adicionar" class="nav-link">
                      <i class="fas fa-tasks nav-icon"></i>
                      <p>Lista de Tarefas</p>
                    </a>

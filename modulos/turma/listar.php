@@ -36,8 +36,8 @@
     <tr>
     <th scope="row"><?php echo $turma->getIdTurma();?></th>
     <td><?php echo $turma->getNomeTurma();?></td>
-    <td><?php echo $turma->getCursoId();?></td>
-    <td><?php echo $turma->getEtapaId();?></td>
+    <td><?php echo $turma->getCurso();?></td>
+    <td><?php echo $turma->getEtapa();?></td>
     <td><?php echo $turma->getTurno();?></td>
     <td width=250>
       <a class="btn btn-primary" href="">Info</a>

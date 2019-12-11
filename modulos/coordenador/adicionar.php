@@ -24,6 +24,7 @@ require_once('classes/class.refUsuarioGrupo.php');
       $usuario->setSenha($senha);
       $ultimoIdUsuario = $usuario->adicionar();
 
+      $fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
       $novo_ref_usuario_grupo = new RefUsuarioGrupo();
       $novo_ref_usuario_grupo->setIdUsuario($ultimoIdUsuario);
       $novo_ref_usuario_grupo->setIdGrupo($fk_grupo);

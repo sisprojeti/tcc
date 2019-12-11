@@ -11,6 +11,8 @@
       public $id_turma;
       public $fk_exercicio;
       public $fk_curso;
+      public $curso;
+      public $etapa;
       public $fk_etapa;
       public $nome;
       public $turno;
@@ -59,7 +61,14 @@
 
       public static function listar(){
         try {
-          $query = "SELECT * FROM turma";
+          $query = "SELECT turma.nome as turma,
+                    turma.id_turma as id_turma,
+                    turma.nome as nome,
+                    turma.turno as turno,
+                    curso.nome as curso,
+                    etapa.nome as etapa
+                    from turma join etapa on turma.fk_etapa = etapa.id_etapa
+                     join curso on turma.fk_curso = curso.id_curso";
                       $stmt = DB::conexao()->prepare($query);
                       $stmt->execute();
                       $registros = $stmt->fetchAll();
@@ -68,8 +77,8 @@
                           $temporario = new Turma();
                           $temporario->setIdTurma($objeto['id_turma']);
                           $temporario->setNomeTurma($objeto['nome']);
-                          $temporario->setCursoId($objeto['fk_curso']);
-                          $temporario->setEtapaId($objeto['fk_etapa']);
+                          $temporario->setCurso($objeto['curso']);
+                          $temporario->setEtapa($objeto['etapa']);
                           $temporario->setTurno($objeto['turno']);
                           $itens[] = $temporario;
                         }
@@ -101,6 +110,26 @@
 
       public function getIdTurma(){
           return $this->id;
+      }
+
+      public function setCurso($curso)
+      {
+        $this->curso = $curso;
+      }
+
+      public function getCurso()
+      {
+        return $this->curso;
+      }
+
+      public function setEtapa($etapa)
+      {
+        $this->etapa = $etapa;
+      }
+
+      public function getEtapa()
+      {
+        return $this->etapa;
       }
 
 /* =========Inicio encapsulamento da FK exercicio =========*/
