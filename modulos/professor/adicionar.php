@@ -2,9 +2,7 @@
 include_once("classes/class.professor.php");
 include_once("classes/class.pessoa.php");
 include_once("classes/class.grupo.php");
-
-//$fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
-
+$fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
     try {
     if(isset($_POST["button"]) && ($_POST["button"] === "Salvar")){
        $pessoa = new Pessoa();

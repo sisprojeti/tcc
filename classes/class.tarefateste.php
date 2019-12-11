@@ -12,7 +12,6 @@
       public $descricao;
       public $data_inicio;
       public $data_fim;
-      public $descricao;
       public $responsavel_id;
       public $data_conclusao;
 
@@ -86,8 +85,8 @@
 
     }
 
-    $novaTarefa = new Tarefa("CRUD de usuários","Fazer a lógica do CRUD de usuários","28-09-2019","29-09-2019","Diego Barbosa");
-
-    var_dump($novaTarefa);
+    // $novaTarefa = new Tarefa("CRUD de usuários","Fazer a lógica do CRUD de usuários","28-09-2019","29-09-2019","Diego Barbosa");
+    //
+    // var_dump($novaTarefa);
 
 ?>

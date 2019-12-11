@@ -4,7 +4,7 @@ include_once('classes/class.aluno.php');
 include_once('classes/class.professor.php');
 include_once('classes/class.coordenador.php');
 include_once('classes/class.turma.php');
-include_once('Classes/Tarefa.php');
+include_once('Classes/class.tarefa.php');
 
 try{
   $totalPessoas = Pessoa::contarPessoas();
@@ -12,6 +12,7 @@ try{
   $totalProfessores = Professor::contarProfessores();
   $totalCoordenadores = Coordenador::contarCoordenadores();
   $totalTurmas = Turma::contarTurmas();
+  $totalTarefas = Tarefa::contarTarefas();
   //$totalTarefas = Tarefa::contarTarefas();
 }catch(PDOException $e) {
   echo "ERROR".$e->getMessage();
@@ -204,7 +205,7 @@ try{
       <div class="col-lg-3 col-6">
         <div class="small-box bg-success">
           <div class="inner">
-            <!-- <h4></h4> -->
+            <?php echo $totalTarefas;?>
             <p><h4>Tarefas Cadastradas</h4></p>
           </div>
           <div class="icon">

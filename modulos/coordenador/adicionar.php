@@ -3,6 +3,7 @@ include_once("classes/class.coordenador.php");
 include_once("classes/class.pessoa.php");
 require_once("classes/class.usuario.php");
 require_once("classes/class.grupo.php");
+$fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
 require_once('classes/class.refUsuarioGrupo.php');
     try {
     if(isset($_POST["button"]) && ($_POST["button"] === "Salvar")){
@@ -24,7 +25,6 @@ require_once('classes/class.refUsuarioGrupo.php');
       $usuario->setSenha($senha);
       $ultimoIdUsuario = $usuario->adicionar();
 
-      $fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
       $novo_ref_usuario_grupo = new RefUsuarioGrupo();
       $novo_ref_usuario_grupo->setIdUsuario($ultimoIdUsuario);
       $novo_ref_usuario_grupo->setIdGrupo($fk_grupo);
