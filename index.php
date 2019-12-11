@@ -303,7 +303,7 @@
                  </ul>
                  </li> -->
                  <li class="nav-item">
-                   <a href="?modulo=tarefa&acao=adicionar" class="nav-link">
+                   <a href="?modulo=tarefa&acao=home" class="nav-link">
                      <i class="fas fa-tasks nav-icon"></i>
                      <p>Lista de Tarefas</p>
                    </a>
