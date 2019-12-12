@@ -6,13 +6,13 @@
 		    </a>
 			</div>
 		</nav>
-
+<br>
 		<div class="container app">
 			<div class="row">
 				<div class="col-md-3 menu">
-					<ul class="list-group">
+					<ul class="list-group" >
 						<li class="list-group-item"><a href="?modulo=tarefa&acao=home">Tarefas pendentes</a></li>
-						<li class="list-group-item active"><a href="?modulo=tarefa&acao=nova_tarefa" style="color:orange;font-size:20px;">Nova tarefa</a></li>
+						<li class="list-group-item active"><a href="?modulo=tarefa&acao=nova_tarefa" style="color:#FFF;font-size:20px;">Nova tarefa</a></li>
 						<li class="list-group-item"><a href="?modulo=tarefa&acao=todas_tarefas">Todas tarefas</a></li>
 					</ul>
 				</div>
