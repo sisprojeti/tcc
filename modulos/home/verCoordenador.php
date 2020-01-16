@@ -4,7 +4,7 @@ include_once('classes/class.aluno.php');
 include_once('classes/class.professor.php');
 include_once('classes/class.coordenador.php');
 include_once('classes/class.turma.php');
-include_once('Classes/class.tarefa.php');
+include_once('modulos/tarefa/tarefa.model.php');
 
 try{
   $totalPessoas = Pessoa::contarPessoas();
@@ -199,19 +199,19 @@ try{
           <div class="icon">
             <i class="ion ion-bag"></i>
           </div>
-          <a href="?modulo=tarefa&acao=listar" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=tarefa&acao=home" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
         <div class="small-box bg-success">
           <div class="inner">
-            <?php echo $totalTarefas;?>
+          <h4><?php echo $totalTarefas;?></h4>
             <p><h4>Tarefas Cadastradas</h4></p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=tarefa&acao=home" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->

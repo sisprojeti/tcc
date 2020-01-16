@@ -55,6 +55,25 @@
           join grupo on grupo.id_grupo = usuario.fk_pessoa
           join ref_usuario_grupo on ref_usuario_grupo.fk_grupo = usuario.id_usuario
           where pessoa.cpf = :cpf and usuario.senha = :senha";
+
+          //----#------TEM QUE FAZER O SELECT CERTO PRA FAZER O LOGIN POIS ESTA COM BOG ----#------//
+          // $sql = "SELECT ref_usuario_grupo.fk_grupo as fk_grupo,
+          // ref_usuario_grupo.fk_usuario as ref_usuario_grupo,
+          // grupo.nome as nome_grupo,
+          // grupo.id_grupo as id_grupo,
+          // pessoa.nome as nome_pessoa,
+          // ref_usuario_grupo.fk_usuario as fk_usuario,
+          // usuario.fk_pessoa as fk_pessoa,
+          // usuario.id_usuario,
+          // pessoa.cpf as cpf,
+          // usuario.senha as senha FROM usuario
+          // join grupo on grupo.id_grupo = usuario.fk_usuario
+          // join pessoa on pessoa.id_pessoa = usuario.fk_pessoa
+          // join ref_usuario_grupo on ref_usuario_grupo.fk_grupo = grupo.id_grupo
+          // join ref_usuario_grupo as ref_teste on ref_teste.fk_usuario = usuario.id_usuario
+          // where pessoa.cpf = :cpf and usuario.senha = :senha";
+
+
           $conexao = DB::conexao();
           $stmt = $conexao->prepare($sql);
           $stmt->bindParam(':senha',$senha);

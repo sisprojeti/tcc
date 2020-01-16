@@ -1,6 +1,8 @@
 <?php include('classes/class.aluno.php') ?>
 <?php
-
+  if(isset($_GET['msgsucesso']) && $_GET['msgsucesso'] === 'sucesso_inserir'){
+    echo "<script>alert('Usuario cadastrado com sucesso')</script>";
+  }
   try {
       $alunos = Aluno::listar();
   } catch (Exception $e) {
