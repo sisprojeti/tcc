@@ -32,17 +32,18 @@ require_once('class.db.php');
 
       public function adicionar(){
         try{
-          $sql = "SELECT cpf from pessoa where cpf = :cpf";
-          $conexao = DB::conexao();
-          $stmt = $conexao->prepare($sql);
-          $stmt->bindParam(":cpf",$this->cpf);
-          $stmt->execute();
-          $cpf = $stmt->fetchAll();
-          if($cpf){
-            echo "usuário já cadastrado no sistema";
-            header('Location:?modulo=adicionar&acao=listar&msgerro=erro_cadastro');
-            exit();
-          }else{
+          // $sql = "SELECT cpf from pessoa where cpf = :cpf";
+          // $conexao = DB::conexao();
+          // $stmt = $conexao->prepare($sql);
+          // $stmt->bindParam(":cpf",$this->cpf);
+          // $stmt->execute();
+          // $cpf = $stmt->fetchAll();
+          // if($cpf){
+          //   //echo "usuário já cadastrado no sistema";
+          //   header('Location:modulo=aluno&acao=listar');
+          //   //$erro_cadastro = $_GET['msgerro'];
+          //   //exit();
+          // }else{
             $sql = "INSERT INTO pessoa(nome,email,cpf,telefone) values (:nome,:email,:cpf,:telefone)";
             $conexao = DB::conexao();
             $stmt = $conexao->prepare($sql);
@@ -53,10 +54,11 @@ require_once('class.db.php');
             $stmt->execute();
             $ultimoIdPessoa = $conexao->lastInsertId();
             return $ultimoIdPessoa;
+            header('Location:?modulo=aluno&acao=listar');
+            exit();
+          }catch(PDOException $e){
+            echo "ERROR".$e->getMessage();
           }
-        }catch(PDOException $e){
-          echo "ERROR".$e->getMessage();
-        }
       }
 
       public function atualizar()

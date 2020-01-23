@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_GET['msgerro']) && $_GET['msgerro'] === 'erro_cadastro'){
-  echo "Usuário cadastrado";
+  echo "<script>alert('Usuário já cadastrado no sistema')</script>";
 };
 
 require_once("classes/class.aluno.php");

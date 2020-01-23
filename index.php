@@ -51,7 +51,65 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"> </script>
     <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script>
+			function editar(id, txt_tarefa) {
 
+				//criar um form de edição
+				let form = document.createElement('form')
+				form.action = 'index.php?modulo=tarefa&acao=tarefa_atualizar'
+				form.method = 'post'
+				form.className = 'row'
+
+				//criar um input para entrada do texto
+				let inputTarefa = document.createElement('input')
+				inputTarefa.type = 'text'
+				inputTarefa.name = 'tarefa'
+				inputTarefa.className = 'col-9 form-control'
+				inputTarefa.value = txt_tarefa
+
+				//criar um input hidden para guardar o id da tarefa
+				let inputId = document.createElement('input')
+				inputId.type = 'hidden'
+				inputId.name = 'id'
+				inputId.value = id
+
+				//criar um button para envio do form
+				let button = document.createElement('button')
+				button.type = 'submit'
+				button.className = 'col-3 btn btn-info'
+				button.innerHTML = 'Atualizar'
+
+				//incluir inputTarefa no form
+				form.appendChild(inputTarefa)
+
+				//incluir inputId no form
+				form.appendChild(inputId)
+
+				//incluir button no form
+				form.appendChild(button)
+
+				//teste
+				//console.log(form)
+
+				//selecionar a div tarefa
+				let tarefa = document.getElementById('tarefa_'+id)
+
+				//limpar o texto da tarefa para inclusão do form
+				tarefa.innerHTML = ''
+
+				//incluir form na página
+				tarefa.insertBefore(form, tarefa[0])
+
+			}
+
+			function remover(id) {
+				location.href = 'todas_tarefas.php?acao=remover&id='+id;
+			}
+
+			function marcarRealizada(id) {
+				location.href = 'todas_tarefas.php?acao=marcarRealizada&id='+id;
+			}
+		</script>
 
     		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -278,7 +336,7 @@
             <li class="nav-item has-treeview menu-open">
                <ul class="nav nav-treeview">
                 <li class="nav-item has-treeview menu-open">
-                 <a href="ambienteAluno.php" class="nav-link active">
+                 <a href="?index.php" class="nav-link active">
                  <i class="nav-icon fas fa-tachometer-alt"></i>
                  <p>
                    Home Aluno
@@ -432,6 +490,10 @@
           $modulo = $_GET["modulo"];
         }else{
           $modulo = false;
+        }
+
+        if(isset($_GET["parametro"])){
+          $parametro = $_GET["parametro"];
         }
 
         if(isset($_GET["acao"])){

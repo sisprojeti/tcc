@@ -6,7 +6,7 @@
       $u = Usuario::logar($_POST['cpf'], $_POST['senha']);
       //die();
     }
-    
+
 ?>
 <?php
   if(isset($_SESSION['cpf']) && isset($_SESSION['id_usuario'])){
@@ -18,8 +18,8 @@
   }
 
   if(isset($_GET['msg']) && $_GET['msg'] === 'erro'){
-   echo "<div class='alert alert-danger' role='alert'> Você precisa estar logado para acessar páginas! </div>";
-   
+   echo "<div class='alert alert-danger' role='alert'> Você precisa estar logado para acessar páginas restritas! </div>";
+
   }
   //
 	// if(isset($_GET['msg']) && $_GET['msg'] === 'usuario_senha_invalidos'){
@@ -170,10 +170,10 @@
        },
        messages:{
             cpf:{
-                    required:"Por favor, informe o CPF."      
+                    required:"Por favor, informe o CPF."
              },
              senha:{
-                    required:"Por favor, informe a senha."      
+                    required:"Por favor, informe a senha."
              },
        }
 

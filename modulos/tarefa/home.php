@@ -1,3 +1,21 @@
+<?php
+  require_once('tarefa.model.php');
+  require_once('conexao.php');
+  require_once('tarefa.service.php');
+  $action = 'recuperar';
+  // require_once 'tarefa_controller.php';
+  $tarefa = new Tarefa();
+  $conexao = new Conexao();
+
+  $tarefaService = new TarefaService($conexao, $tarefa);
+  $tarefas = $tarefaService->recuperar();
+  //
+  // echo "<pre>";
+  // print_r($tarefas);
+  // echo "</pre>";
+
+
+?>
 <nav class="navbar navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">
@@ -24,23 +42,22 @@
             <h4>Tarefas pendentes</h4>
             <hr />
 
-            <div class="row mb-3 d-flex align-items-center tarefa">
-              <div class="col-sm-9">Lavar o carro</div>
-              <div class="col-sm-3 mt-2 d-flex justify-content-between">
-                <i class="fas fa-trash-alt fa-lg text-danger"></i>
-                <i class="fas fa-edit fa-lg text-info"></i>
-                <i class="fas fa-check-square fa-lg text-success"></i>
-              </div>
-            </div>
+            <? foreach($tarefas as $indice => $tarefa) { ?>
+              <div class="row mb-3 d-flex align-items-center tarefa">
+                <div class="col-sm-9" id="tarefa_<?= $tarefa->id ?>">
+                  <?= $tarefa->tarefa ?> (<?= $tarefa->status ?>)
+                </div>
+                <div class="col-sm-3 mt-2 d-flex justify-content-between">
+                  <i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?= $tarefa->id ?>)"></i>
 
-            <div class="row mb-3 d-flex align-items-center tarefa">
-              <div class="col-sm-9">Passear com o cachorro</div>
-              <div class="col-sm-3 mt-2 d-flex justify-content-between">
-                <i class="fas fa-trash-alt fa-lg text-danger"></i>
-                <i class="fas fa-edit fa-lg text-info"></i>
-                <i class="fas fa-check-square fa-lg text-success"></i>
+                  <? if($tarefa->status == 'pendente') { ?>
+                    <i class="fas fa-edit fa-lg text-info" onclick="editar(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')"></i>
+                    <i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?= $tarefa->id ?>)"></i>
+                  <? } ?>
+                </div>
               </div>
-            </div>
+
+            <? } ?>
           </div>
         </div>
       </div>
