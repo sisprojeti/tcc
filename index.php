@@ -177,7 +177,7 @@
             <a href="index.php" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Home Coordenador
+                Home Administrador
               </p>
             </a>
           </li>
@@ -196,7 +196,7 @@
               <li class="nav-item">
                 <a href="?modulo=aluno&acao=adicionar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Acadêmicos</p>
+                  <p>Acadêmico</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -209,6 +209,12 @@
                 <a href="?modulo=coordenador&acao=adicionar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Coordenador</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?modulo=administrador&acao=adicionar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Administrador</p>
                 </a>
               </li>
             </ul>
@@ -228,7 +234,7 @@
               <li class="nav-item">
                 <a href="?modulo=curso&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Curso</p>
+                  <p> Lista de Cursos</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -316,7 +322,7 @@
               <li class="nav-item">
                 <a href="?modulo=turma&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Turma</p>
+                  <p>Lista de Turmas</p>
                 </a>
               </li>
               <li class="nav-item">
