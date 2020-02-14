@@ -127,7 +127,7 @@ try {
 <div class="form-group">
     <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
     <input type="checkbox" name="situacao_aluno" class="custom-control-input" id="customSwitch3" value="true">
-    <label class="custom-control-label" for="customSwitch3"> Situação  </label>
+    <label class="custom-control-label" for="customSwitch3"> Ativo  </label>
 </div>
  </div>
  <!-- /.card-body -->

@@ -23,7 +23,7 @@
     {
       $sql = "INSERT INTO grupo (nome) values (:nome)";
       $conexao = DB::conexao();
-      $stmt = $conexao->prepare($Sql);
+      $stmt = $conexao->prepare($sql);
       $stmt->bindParam(':nome',$this->nome);
       $stmt->execute();
     }

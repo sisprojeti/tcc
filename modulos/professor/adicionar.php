@@ -2,6 +2,7 @@
 include_once("classes/class.professor.php");
 include_once("classes/class.pessoa.php");
 include_once("classes/class.grupo.php");
+include_once("classes/class.usuario.php");
 $fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
     try {
     if(isset($_POST["button"]) && ($_POST["button"] === "Salvar")){
@@ -16,6 +17,11 @@ $fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
        $professor->setPessoaId($ultimoIdPessoa);
        $professor->setDataCadastro($_POST['data_cadastro']);
        $professor->adicionar();
+
+       $usuario = new Usuario();
+       $usuario->setPessoaUsuarioId($ultimoIdPessoa);
+       $usuario->setSenha($senha);
+       $ultimoIdUsuario = $usuario->adicionar();
     }
   } catch (PDOException $e) {
       echo "ERROR".$e->getMessage();
