@@ -4,7 +4,9 @@ include_once('classes/class.aluno.php');
 include_once('classes/class.professor.php');
 include_once('classes/class.coordenador.php');
 include_once('classes/class.turma.php');
+include_once('classes/class.curso.php');
 include_once('modulos/tarefa/tarefa.model.php');
+
 
 try{
   $totalPessoas = Pessoa::contarPessoas();
@@ -13,6 +15,7 @@ try{
   $totalCoordenadores = Coordenador::contarCoordenadores();
   $totalTurmas = Turma::contarTurmas();
   $totalTarefas = Tarefa::contarTarefas();
+  $totalCursos = Curso::contarCursos();
   //$totalTarefas = Tarefa::contarTarefas();
 }catch(PDOException $e) {
   echo "ERROR".$e->getMessage();
@@ -173,11 +176,11 @@ try{
           <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div> -->
-<!--
+
       <div class="col-lg-3 col-6">
-        <div class="small-box bg-light">
+        <div class="small-box bg-green">
           <div class="inner">
-              <?= $totalCursos ;?>
+                      <h3 style="color:white;"><?= $totalCursos;?></h3>
               <p><h4>Cursos</h4></p>
           </div>
           <div class="icon">
@@ -203,7 +206,7 @@ try{
         </div>
       </div>
       <div class="col-lg-3 col-6">
-        <div class="small-box bg-success">
+        <div class="small-box bg-secondary">
           <div class="inner">
           <h4><?php echo $totalTarefas;?></h4>
             <p><h4>Tarefas Cadastradas</h4></p>
@@ -214,10 +217,22 @@ try{
           <a href="?modulo=tarefa&acao=home" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-success">
+          <div class="inner">
+          <h4><?php echo $totalTarefas;?></h4>
+            <p><h4>Tarefas Feitas</h4></p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="?modulo=tarefa&acao=home" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
       <!-- ./col -->
       <div class="col-lg-3 col-6">
         <!-- small box -->
-        <div class="small-box bg-success">
+        <div class="small-box bg-info">
           <div class="inner">
             <h3><i class="fas fa-file-upload"></i></h3>
 
@@ -262,7 +277,7 @@ try{
 
       <div class="col-lg-3 col-6">
         <!-- small box -->
-        <div class="small-box bg-danger">
+        <div class="small-box bg-primary">
           <div class="inner">
             <h3 ><i class="fas fa-clipboard"></i></h3>
 

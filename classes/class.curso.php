@@ -43,6 +43,21 @@ require_once('class.db.php');
         echo "ERROR".$e->getMessage();
       }
     }
+
+    public static function contarCursos()
+      {
+        try {
+          $query = "select * from curso";
+                      $stmt = DB::conexao()->prepare($query);
+                      $stmt->execute();
+                      $registros = $stmt->fetchAll();
+                      $totalTurmas = count($registros);
+                      return $totalTurmas;
+          }catch(Exception $e){
+              echo "ERROR".$e->getMessage();
+          }
+        }
+
     //   public static function listar(){
     //     try {
     //       $sql = "SELECT * FROM curso";

@@ -3,7 +3,7 @@
     class Conexao{
 
       private $host = 'localhost';
-      private $dbname = 'sisp09';
+      private $dbname = 'sisp10';
       private $user = 'root';
       private $pass = '';
 
