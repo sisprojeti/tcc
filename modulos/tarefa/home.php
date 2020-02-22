@@ -25,42 +25,111 @@
   </div>
 </nav>
 <br>
-<div class="container app">
-  <div class="row">
-    <div class="col-md-3 menu">
-      <ul class="list-group">
-        <li class="list-group-item active"><a style="color:#fff;font-size:20px;" href="?modulo=tarefa&acao=home">Tarefas pendentes</a></li>
-        <li class="list-group-item"><a href="?modulo=tarefa&acao=nova_tarefa">Nova tarefa</a></li>
-        <li class="list-group-item"><a href="?modulo=tarefa&acao=todas_tarefas">Todas tarefas</a></li>
-      </ul>
-    </div>
-
-    <div class="col-md-9">
-      <div class="container pagina">
-        <div class="row">
-          <div class="col">
-            <h4>Tarefas pendentes</h4>
-            <hr />
-
-            <? foreach($tarefas as $indice => $tarefa) { ?>
-              <div class="row mb-3 d-flex align-items-center tarefa">
-                <div class="col-sm-9" id="tarefa_<?= $tarefa->id ?>">
-                  <?= $tarefa->tarefa ?> (<?= $tarefa->status ?>)
-                </div>
-                <div class="col-sm-3 mt-2 d-flex justify-content-between">
-                  <i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?= $tarefa->id ?>)"></i>
-
-                  <? if($tarefa->status == 'pendente') { ?>
-                    <i class="fas fa-edit fa-lg text-info" onclick="editar(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')"></i>
-                    <i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?= $tarefa->id ?>)"></i>
-                  <? } ?>
-                </div>
-              </div>
-
-            <? } ?>
+<div class="container">
+  <button type="button" class="btn btn btn-success"  data-toggle="modal" data-target="#exampleModal" data-whatever="Mensagem"><i class="far fa-plus-square"></i>   Nova Tarefa</button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nova Tarefa</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Nome:</label>
+            <input type="text" class="form-control" id="recipient-name">
           </div>
-        </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Descrição:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Salvar</button>
       </div>
     </div>
   </div>
 </div>
+  <br><br>
+  <div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item col s3">
+        <a class="nav-link" href="#">A Fazer</a>
+      </li>
+      <li class="nav-item col s3">
+        <a class="nav-link active" href="#">Fazendo</a>
+      </li>
+      <li class="nav-item col s3">
+        <a class="nav-link" href="#">Feito</a>
+      </li>
+      <li class="nav-item col s3">
+        <a class="nav-link" href="#">Revisão</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Montar Logo</h5>
+    <p class="card-text">Tarefa tem como objetivo produzir uma logo em vetor para usabilidade no sistema e demais.</p>
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalLogo">
+  Detalhes
+</button>
+
+<!-- Modal LOGO-->
+<div class="modal fade" id="modalLogo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Montar Logo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       Aqui vai ficar os detalhes da logo
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+  <hr>
+  <div class="card-body">
+    <h5 class="card-title">Fazer Site</h5>
+    <p class="card-text">Tarefa tem como objetivo produzir um site de informações sobre a fábrica e o sistema SISP. </p>
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalExemplo">
+  Detalhes
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Fazer Site</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       Aqui vai ficar o conteúdo escrito do site
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+  <hr>
+</div>
+
+</div>
+
