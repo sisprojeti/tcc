@@ -14,6 +14,7 @@
       public $data_fim;
       public $responsavel_id;
       public $data_conclusao;
+      public $data_cadastro;
 
 
 /*---------------------------------------------------------------------
@@ -72,6 +73,18 @@
 
       public function setTitulo($titulo){
         $this->titulo = $titulo;
+      }
+
+/*---------------------------------------------------------------------
+  DATA CADASTRO
+ ---------------------------------------------------------------------*/
+
+      public function getDataCadastro(){
+        return $this->data_cadastro;
+      }
+
+      public function setDataCadastro($data_cadastro){
+        $this->data_cadastro = $data_cadastro;
       }
 
       public function __construct($titulo,$descricao,$data_inicio,$data_termino,$reponsavel){
