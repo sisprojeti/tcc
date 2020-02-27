@@ -20,15 +20,25 @@
   <div class="container">
     <a class="navbar-brand" href="#">
       <!-- <img src="img/logo.png" width="150" height="100" class="d-inline-block align-center" alt=""> -->
-       <h1>Lista de Tarefas</h1>
+       <h2>Lista de Tarefas</h2>
     </a>
   </div>
 </nav>
 <br>
 <div class="container">
-  <button type="button" class="btn btn btn-success"  data-toggle="modal" data-target="#exampleModal" data-whatever="Mensagem"><i class="far fa-plus-square"></i>   Nova Tarefa</button>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <!------------------------------------------------------------
+#INICIO BOTÃO DE NOVA TAREFA
+--------------------------------------------------------------------------------------------------->
+   <button style="float: right;" id="nova_tarefa" type="button" class="btn btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="far fa-plus-square"></i>   Nova Tarefa</button> 
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <!------------------------------------------------------------
+#MODAL BOTÃO DE NOVA TAREFA
+--------------------------------------------------------------------------------------------------->
+ 
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Nova Tarefa</h5>
@@ -39,14 +49,56 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Nome:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label class="col-form-label">Título:</label>
+            <input type="text" class="form-control" id="titulo">
           </div>
           <div class="form-group">
-            <label for="message-text" class="col-form-label">Descrição:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+            <label class="col-form-label">Descrição:</label>
+            <textarea class="form-control" id="descricao"></textarea>
           </div>
-        </form>
+           <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Data de Ínicio:</label>
+                        <input type="date" class="form-control" id="data_inicio" >
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Data de Término:</label>
+                        <input type="date" class="form-control" id="data_termino">
+                      </div>
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Data de Entrega:</label>
+                        <input type="date" class="form-control" id="data_entrega">
+                      </div>
+                    </div>
+                     <!-- select -->
+                    <div class="col-sm-6"> 
+                      <div class="form-group">
+                        <label>Status da Tarefa: </label>
+                        <select class="form-control">
+                          <option value="1"> A FAZER</option>
+                          <option value="2"> FAZENDO</option>
+                          <option value="3"> REVISÃO</option>
+                          <option value="4"> FEITO</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+              </div>
+            <div class="form-group">
+              <label class="col-form-label">Responsável:</label>
+              <select class="form-control">
+               <option> Selecione.. </option>
+                
+            </select>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -55,21 +107,25 @@
     </div>
   </div>
 </div>
+
+ <!------------------------------------------------------------
+# FIM MODAL BOTÃO DE NOVA TAREFA
+--------------------------------------------------------------------------------------------------->
   <br><br>
   <div class="card text-center">
   <div class="card-header">
-    <ul class="nav nav-pills card-header-pills">
+    <ul class="nav nav-tabs">
       <li class="nav-item col s3">
-        <a class="nav-link" href="#">A Fazer</a>
+        <a class="nav-link active" href="#">A Fazer</a>
       </li>
       <li class="nav-item col s3">
-        <a class="nav-link active" href="#">Fazendo</a>
-      </li>
-      <li class="nav-item col s3">
-        <a class="nav-link" href="#">Feito</a>
+        <a class="nav-link" href="#">Fazendo</a>
       </li>
       <li class="nav-item col s3">
         <a class="nav-link" href="#">Revisão</a>
+      </li>
+      <li class="nav-item col s3">
+        <a class="nav-link" href="#">Feito</a>
       </li>
     </ul>
   </div>
@@ -100,35 +156,7 @@
   </div>
 </div>
   </div>
-  <hr>
-  <div class="card-body">
-    <h5 class="card-title">Fazer Site</h5>
-    <p class="card-text">Tarefa tem como objetivo produzir um site de informações sobre a fábrica e o sistema SISP. </p>
-    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalExemplo">
-  Detalhes
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Fazer Site</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       Aqui vai ficar o conteúdo escrito do site
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-      </div>
-    </div>
-  </div>
-</div>
-  </div>
-  <hr>
+ 
 </div>
 
 </div>
