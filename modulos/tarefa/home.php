@@ -20,47 +20,144 @@
   <div class="container">
     <a class="navbar-brand" href="#">
       <!-- <img src="img/logo.png" width="150" height="100" class="d-inline-block align-center" alt=""> -->
-       <h1>Lista de Tarefas</h1>
+       <h2>Lista de Tarefas</h2>
     </a>
   </div>
 </nav>
 <br>
-<div class="container app">
-  <div class="row">
-    <div class="col-md-3 menu">
-      <ul class="list-group">
-        <li class="list-group-item active"><a style="color:#fff;font-size:20px;" href="?modulo=tarefa&acao=home">Tarefas pendentes</a></li>
-        <li class="list-group-item"><a href="?modulo=tarefa&acao=nova_tarefa">Nova tarefa</a></li>
-        <li class="list-group-item"><a href="?modulo=tarefa&acao=todas_tarefas">Todas tarefas</a></li>
-      </ul>
-    </div>
+<div class="container">
+  <!------------------------------------------------------------
+#INICIO BOTÃO DE NOVA TAREFA
+--------------------------------------------------------------------------------------------------->
+   <button style="float: right;" id="nova_tarefa" type="button" class="btn btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="far fa-plus-square"></i>   Nova Tarefa</button> 
 
-    <div class="col-md-9">
-      <div class="container pagina">
-        <div class="row">
-          <div class="col">
-            <h4>Tarefas pendentes</h4>
-            <hr />
 
-            <? foreach($tarefas as $indice => $tarefa) { ?>
-              <div class="row mb-3 d-flex align-items-center tarefa">
-                <div class="col-sm-9" id="tarefa_<?= $tarefa->id ?>">
-                  <?= $tarefa->tarefa ?> (<?= $tarefa->status ?>)
-                </div>
-                <div class="col-sm-3 mt-2 d-flex justify-content-between">
-                  <i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?= $tarefa->id ?>)"></i>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-                  <? if($tarefa->status == 'pendente') { ?>
-                    <i class="fas fa-edit fa-lg text-info" onclick="editar(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')"></i>
-                    <i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?= $tarefa->id ?>)"></i>
-                  <? } ?>
-                </div>
-              </div>
-
-            <? } ?>
+  <!------------------------------------------------------------
+#MODAL BOTÃO DE NOVA TAREFA
+--------------------------------------------------------------------------------------------------->
+ 
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nova Tarefa</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label class="col-form-label">Título:</label>
+            <input type="text" class="form-control" id="titulo">
           </div>
-        </div>
+          <div class="form-group">
+            <label class="col-form-label">Descrição:</label>
+            <textarea class="form-control" id="descricao"></textarea>
+          </div>
+           <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Data de Ínicio:</label>
+                        <input type="date" class="form-control" id="data_inicio" >
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Data de Término:</label>
+                        <input type="date" class="form-control" id="data_termino">
+                      </div>
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Data de Entrega:</label>
+                        <input type="date" class="form-control" id="data_entrega">
+                      </div>
+                    </div>
+                     <!-- select -->
+                    <div class="col-sm-6"> 
+                      <div class="form-group">
+                        <label>Status da Tarefa: </label>
+                        <select class="form-control">
+                          <option value="1"> A FAZER</option>
+                          <option value="2"> FAZENDO</option>
+                          <option value="3"> REVISÃO</option>
+                          <option value="4"> FEITO</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+              </div>
+            <div class="form-group">
+              <label class="col-form-label">Responsável:</label>
+              <select class="form-control">
+               <option> Selecione.. </option>
+                
+            </select>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Salvar</button>
       </div>
     </div>
   </div>
 </div>
+
+ <!------------------------------------------------------------
+# FIM MODAL BOTÃO DE NOVA TAREFA
+--------------------------------------------------------------------------------------------------->
+  <br><br>
+  <div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs">
+      <li class="nav-item col s3">
+        <a class="nav-link active" href="#">A Fazer</a>
+      </li>
+      <li class="nav-item col s3">
+        <a class="nav-link" href="#">Fazendo</a>
+      </li>
+      <li class="nav-item col s3">
+        <a class="nav-link" href="#">Revisão</a>
+      </li>
+      <li class="nav-item col s3">
+        <a class="nav-link" href="#">Feito</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Montar Logo</h5>
+    <p class="card-text">Tarefa tem como objetivo produzir uma logo em vetor para usabilidade no sistema e demais.</p>
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalLogo">
+  Detalhes
+</button>
+
+<!-- Modal LOGO-->
+<div class="modal fade" id="modalLogo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Montar Logo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       Aqui vai ficar os detalhes da logo
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+ 
+</div>
+
+</div>
+
