@@ -72,6 +72,20 @@
           }
         }
 
+        public static function contarGrupos()
+          {
+            try {
+              $query = "select * from grupo";
+                          $stmt = DB::conexao()->prepare($query);
+                          $stmt->execute();
+                          $registros = $stmt->fetchAll();
+                          $totalGrupos = count($registros);
+                          return $totalGrupos;
+              }catch(Exception $e){
+                  echo "ERROR".$e->getMessage();
+              }
+            }
+
 
 
        /*------------------------------------/*

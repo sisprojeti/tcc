@@ -42,6 +42,20 @@ include_once('classes/class.db.php');
       }
     }
 
+    public static function contarEtapas()
+      {
+        try {
+          $query = "select * from etapa";
+                      $stmt = DB::conexao()->prepare($query);
+                      $stmt->execute();
+                      $registros = $stmt->fetchAll();
+                      $totalEtapas = count($registros);
+                      return $totalEtapas;
+          }catch(Exception $e){
+              echo "ERROR".$e->getMessage();
+          }
+        }
+
 
       public function setIdEtapa($id_etapa){
         $this->id_etapa = $id_etapa;

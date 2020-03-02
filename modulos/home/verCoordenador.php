@@ -6,7 +6,9 @@ include_once('classes/class.coordenador.php');
 include_once('classes/class.turma.php');
 include_once('classes/class.curso.php');
 include_once('modulos/tarefa/tarefa.model.php');
-
+include_once('classes/class.exercicio.php');
+include_once('classes/class.etapa.php');
+include_once('classes/class.grupo.php');
 
 try{
   $totalPessoas = Pessoa::contarPessoas();
@@ -16,6 +18,9 @@ try{
   $totalTurmas = Turma::contarTurmas();
   $totalTarefas = Tarefa::contarTarefas();
   $totalCursos = Curso::contarCursos();
+  $totalExercicios = Exercicio::contarExercicio();
+  $totalEtapas = Etapa::contarEtapas();
+  $totalGrupos = Grupo::contarGrupos();
   //$totalTarefas = Tarefa::contarTarefas();
 }catch(PDOException $e) {
   echo "ERROR".$e->getMessage();
@@ -53,9 +58,23 @@ try{
         <!-- small box -->
         <div class="small-box bg-info">
           <div class="inner">
-            <h3>10</h3>
+            <h3><?= $totalGrupos?></h3>
 
-            <p><h4>Grupos Registrados</h4></p>
+            <p><h4>Grupos de Permissões</h4></p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-bag"></i>
+          </div>
+          <a href="#" class="small-box-footer">Relatorios <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-green">
+          <div class="inner">
+            <h3><?= $totalGrupos?></h3>
+
+            <p><h4>Grupos de Projeti</h4></p>
           </div>
           <div class="icon">
             <i class="ion ion-bag"></i>
@@ -188,7 +207,32 @@ try{
           </div>
           <a href="#" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
         </div>
-      </div> -->
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-primary">
+          <div class="inner">
+                      <h3 style="color:white;"><?= $totalExercicios;?></h3>
+              <p><h4>Exercicios</h4></p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-pie-graph"></i>
+          </div>
+          <a href="#" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-danger">
+          <div class="inner">
+                      <h3 style="color:white;"><?= $totalEtapas;?></h3>
+              <p><h4>Etapas</h4></p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-pie-graph"></i>
+          </div>
+          <a href="#" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+     -->
       <!-- ./col -->
     <?php }else if($_SESSION['nome_grupo'] === 'aluno'){ ?>
       <div class="col-lg-3 col-6">

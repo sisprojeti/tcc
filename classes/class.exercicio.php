@@ -48,6 +48,20 @@ require_once("class.db.php");
       }
     }
 
+    public static function contarExercicio()
+      {
+        try {
+          $query = "select * from exercicio";
+                      $stmt = DB::conexao()->prepare($query);
+                      $stmt->execute();
+                      $registros = $stmt->fetchAll();
+                      $totalExercicios = count($registros);
+                      return $totalExercicios;
+          }catch(Exception $e){
+              echo "ERROR".$e->getMessage();
+          }
+        }
+
       public function setIdExercicio($id_exercicio){
         $this->id_exercicio = $id_exercicio;
       }
