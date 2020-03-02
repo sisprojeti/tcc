@@ -419,16 +419,16 @@ CREATE TABLE IF NOT EXISTS `ref_prof_turma` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ref_projeti_tarefa`
+-- Estrutura da tabela `ref_aluno_tarefa`
 --
 
-CREATE TABLE IF NOT EXISTS `ref_projeti_tarefa` (
-  `id_ref_projeti_tarefa` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `ref_aluno_tarefa` (
+  `id_ref_aluno_tarefa` int(11) NOT NULL AUTO_INCREMENT,
   `fk_tarefa` int(11) NOT NULL,
   `fk_ref_aluno_projeti` int(11) NOT NULL,
-  PRIMARY KEY (`id_ref_projeti_tarefa`),
-  KEY `fk_ref_projeti_tarefa_ref_aluno_projeti1` (`fk_ref_aluno_projeti`),
-  KEY `fk_ref_projeti_tarefa_tarefa1` (`fk_tarefa`)
+  PRIMARY KEY (`id_ref_aluno_tarefa`),
+  KEY `fk_ref_aluno_tarefa_ref_aluno_projeti1` (`fk_ref_aluno_projeti`),
+  KEY `fk_ref_aluno_tarefa_tarefa1` (`fk_tarefa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -493,10 +493,10 @@ CREATE TABLE IF NOT EXISTS `tarefa` (
   `data_conclusao` date DEFAULT NULL,
   `descricao` varchar(255) DEFAULT NULL,
   `data_cadastro` date DEFAULT NULL,
-  `fk_projeti` int(11) NOT NULL,
+  `fk_aluno_projeti` int(11) NOT NULL,
   `fk_status_tarefa` int(11) NOT NULL,
   PRIMARY KEY (`id_tarefa`),
-  KEY `fk_tarefa_projeti1` (`fk_projeti`),
+  KEY `fk_tarefa_projeti1` (`fk_aluno_projeti`),
   KEY `fk_tarefa_status_tarefa1` (`fk_status_tarefa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -619,11 +619,11 @@ ALTER TABLE `ref_prof_turma`
   ADD CONSTRAINT `fk_ref_prof_turma_turma1` FOREIGN KEY (`fk_turma`) REFERENCES `turma` (`id_turma`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Limitadores para a tabela `ref_projeti_tarefa`
+-- Limitadores para a tabela `ref_aluno_tarefa`
 --
-ALTER TABLE `ref_projeti_tarefa`
-  ADD CONSTRAINT `fk_ref_projeti_tarefa_ref_aluno_projeti1` FOREIGN KEY (`fk_ref_aluno_projeti`) REFERENCES `ref_aluno_projeti` (`id_ref_aluno_projeti`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_ref_projeti_tarefa_tarefa1` FOREIGN KEY (`fk_tarefa`) REFERENCES `tarefa` (`id_tarefa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `ref_aluno_tarefa`
+  ADD CONSTRAINT `fk_ref_aluno_tarefa_ref_aluno_projeti1` FOREIGN KEY (`fk_ref_aluno_projeti`) REFERENCES `ref_aluno_projeti` (`id_ref_aluno_projeti`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_ref_aluno_tarefa_tarefa1` FOREIGN KEY (`fk_tarefa`) REFERENCES `tarefa` (`id_tarefa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `ref_usuario_grupo`
@@ -636,7 +636,7 @@ ALTER TABLE `ref_usuario_grupo`
 -- Limitadores para a tabela `tarefa`
 --
 ALTER TABLE `tarefa`
-  ADD CONSTRAINT `fk_tarefa_projeti1` FOREIGN KEY (`fk_projeti`) REFERENCES `projeti` (`id_projeti`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tarefa_projeti1` FOREIGN KEY (`fk_aluno_projeti`) REFERENCES `projeti` (`id_projeti`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_tarefa_status_tarefa1` FOREIGN KEY (`fk_status_tarefa`) REFERENCES `status_tarefa` (`id_status_tarefa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
