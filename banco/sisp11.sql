@@ -493,10 +493,10 @@ CREATE TABLE IF NOT EXISTS `tarefa` (
   `data_conclusao` date DEFAULT NULL,
   `descricao` varchar(255) DEFAULT NULL,
   `data_cadastro` date DEFAULT NULL,
-  `fk_aluno_projeti` int(11) NOT NULL,
+  `fk_projeti` int(11) NOT NULL,
   `fk_status_tarefa` int(11) NOT NULL,
   PRIMARY KEY (`id_tarefa`),
-  KEY `fk_tarefa_projeti1` (`fk_aluno_projeti`),
+  KEY `fk_tarefa_projeti1` (`fk_projeti`),
   KEY `fk_tarefa_status_tarefa1` (`fk_status_tarefa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -636,7 +636,7 @@ ALTER TABLE `ref_usuario_grupo`
 -- Limitadores para a tabela `tarefa`
 --
 ALTER TABLE `tarefa`
-  ADD CONSTRAINT `fk_tarefa_projeti1` FOREIGN KEY (`fk_aluno_projeti`) REFERENCES `projeti` (`id_projeti`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tarefa_projeti1` FOREIGN KEY (`fk_projeti`) REFERENCES `projeti` (`id_projeti`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_tarefa_status_tarefa1` FOREIGN KEY (`fk_status_tarefa`) REFERENCES `status_tarefa` (`id_status_tarefa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
