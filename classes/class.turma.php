@@ -103,6 +103,13 @@
           }
         }
 
+        public function recuperaProfessorTurma()
+        {
+          $query = "select pessoa.nome from turma
+           join professor join pessoa
+           on professor.id_professor = pessoa.id_pessoa";
+        }
+
 /* =========Inicio encapsulamento id de turma =========*/
       public function setIdTurma($id){
         $this->id = $id;

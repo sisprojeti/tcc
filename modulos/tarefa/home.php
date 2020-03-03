@@ -2,13 +2,21 @@
   require_once('tarefa.model.php');
   require_once('conexao.php');
   require_once('tarefa.service.php');
+  require_once('classes/class.tarefa.php');
+  require_once('classes/class.db.php');
   $action = 'recuperar';
   // require_once 'tarefa_controller.php';
   $tarefa = new Tarefa();
+  $tarefaTeste = new TarefaTeste();
   $conexao = new Conexao();
 
   $tarefaService = new TarefaService($conexao, $tarefa);
   $tarefas = $tarefaService->recuperar();
+  try{
+    $listarStatus = TarefaTeste::listarStatusTarefa();
+  } catch (PDOException $e) {
+      echo "ERROR".$e->getMessage();
+  }
   //
   // echo "<pre>";
   // print_r($tarefas);
@@ -29,7 +37,7 @@
   <!------------------------------------------------------------
 #INICIO BOTÃO DE NOVA TAREFA
 --------------------------------------------------------------------------------------------------->
-   <button style="float: right;" id="nova_tarefa" type="button" class="btn btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="far fa-plus-square"></i>   Nova Tarefa</button> 
+   <button style="float: right;" id="nova_tarefa" type="button" class="btn btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="far fa-plus-square"></i>   Nova Tarefa</button>
 
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -37,7 +45,7 @@
   <!------------------------------------------------------------
 #MODAL BOTÃO DE NOVA TAREFA
 --------------------------------------------------------------------------------------------------->
- 
+
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -47,27 +55,27 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="">
           <div class="form-group">
             <label class="col-form-label">Título:</label>
-            <input type="text" class="form-control" id="titulo">
+            <input type="text" class="form-control" name="titulo" id="titulo">
           </div>
           <div class="form-group">
             <label class="col-form-label">Descrição:</label>
-            <textarea class="form-control" id="descricao"></textarea>
+            <textarea class="form-control" id="descricao" name="descricao"></textarea>
           </div>
            <div class="row">
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
                         <label>Data de Ínicio:</label>
-                        <input type="date" class="form-control" id="data_inicio" >
+                        <input type="date" class="form-control" name="data_inicio" id="data_inicio" >
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Data de Término:</label>
-                        <input type="date" class="form-control" id="data_termino">
+                        <input type="date" class="form-control" name="data_termino" id="data_termino">
                       </div>
                     </div>
             </div>
@@ -75,34 +83,37 @@
                 <div class="col-sm-6">
                       <div class="form-group">
                         <label>Data de Entrega:</label>
-                        <input type="date" class="form-control" id="data_entrega">
+                        <input type="date" class="form-control" name="data_entrega" id="data_entrega">
                       </div>
                     </div>
                      <!-- select -->
-                    <div class="col-sm-6"> 
-                      <div class="form-group">
-                        <label>Status da Tarefa: </label>
-                        <select class="form-control">
-                          <option value="1"> A FAZER</option>
-                          <option value="2"> FAZENDO</option>
-                          <option value="3"> REVISÃO</option>
-                          <option value="4"> FEITO</option>
-                        </select>
-                      </div>
-                    </div>
-                    
+
+                     <div class="col-sm-6">
+                       <label>Status Tarefa</label>
+                       <select class="form-control" name="fk_status" required autofocus>
+                        <option value="">Selecione o status</option>
+                         <?php if(isset($listarStatus)):?>
+                           <?php foreach ($listarStatus as $status):?>
+                             <?php //if($aluno->getSituacaoAluno()):?>
+                             <option value="<?php echo $status->getIdStatusTarefa();?>"><?php echo $status->getNomeStatusTarefa();?></option>
+                           <?php// endif;?>
+                           <?php endforeach;?>
+                         <?php endif;?>
+                       </select>
+                     </div>
+
               </div>
             <div class="form-group">
               <label class="col-form-label">Responsável:</label>
               <select class="form-control">
                <option> Selecione.. </option>
-                
+
             </select>
           </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
+        <button type="button" name="save" class="btn btn-primary">Salvar</button>
       </div>
     </div>
   </div>
@@ -156,8 +167,7 @@
   </div>
 </div>
   </div>
- 
-</div>
 
 </div>
 
+</div>

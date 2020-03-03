@@ -72,7 +72,7 @@ include_once('classes/class.refProfTurma.php');
                <?php if(isset($listarTurmas)):?>
                  <option value="">Selecione a Turma</option>
                  <?php foreach ($listarTurmas as $linha):?>
-                   <option value="<?php echo $linha->getIdTurma();?>"><?php echo $linha->getNome();?></option>
+                   <option value="<?php echo $linha->getIdTurma();?>"><?php echo $linha->getNomeTurma();?></option>
                  <?php endforeach;?>
                <?php endif;?>
              </select>
@@ -84,7 +84,7 @@ include_once('classes/class.refProfTurma.php');
                <?php if(isset($listarProfessores)):?>
                  <option value="">Selecione o Professor</option>
                  <?php foreach($listarProfessores as $professor):?>
-                   <option value="<?php echo $professor->getIdProfessor();?>"> <?php echo $professor->getNome();?> </option>
+                   <option value="<?php echo $professor->getIdProfessor();?>"> <?php echo $professor->getNomeProfessor();?> </option>
                  <?php endforeach;?>
                <?php endif;?>
              </select>
@@ -105,9 +105,9 @@ include_once('classes/class.refProfTurma.php');
                     required:true
              },
               professor_id:{
-                    
+
                     required:true,
-             },                                  
+             },
        },
        messages:{
               turma_id:{
@@ -115,13 +115,13 @@ include_once('classes/class.refProfTurma.php');
              },
               professor_id:{
                     required:"Por favor, informe o Professor"
-             },  
+             },
        }
 
 });
 
 
        </script>
-  
+
 </body>
 </html>

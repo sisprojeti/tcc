@@ -26,7 +26,7 @@
   foreach($professores as $professor){?>
     <tr>
     <th scope="row"><?php echo $professor->getIdProfessor();?></th>
-    <td><?php echo $professor->getNome();?></td>
+    <td><?php echo $professor->getNomeProfessor();?></td>
     <td><?php echo $professor->getEmail();?></td>
     <td><?php echo $professor->getCpf();?></td>
     <td><?php echo $professor->getTelefone();?>

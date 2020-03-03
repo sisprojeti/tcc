@@ -90,7 +90,7 @@ include_once 'class.db.php';
         }
 
 
-        public function getNome(){
+        public function getNomeProfessor(){
           return $this->nome;
         }
 

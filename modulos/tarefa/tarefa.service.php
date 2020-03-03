@@ -19,6 +19,21 @@ class TarefaService {
 		$stmt->execute();
 	}
 
+	public function inserirTeste(){
+			$query = 'insert into tarefa(titulo,descricao,data_inicio,data_fim,data_conclusao,data_cadastro,status,responsavel) values (:titulo,:descricao,:data_inicio,:data_fim,data_conclusao,:data_cadastro,:status,:responsavel)';
+		$stmt = $this->conexao->prepare($query);
+		$stmt->bindValue(':titulo',$this->tarefa->__get('titulo'));
+		$stmt->bindValue(':data_inicio',$this->tarefa->__get('data_inicio'));
+		$stmt->bindValue(':data_fim',$this->tarefa->__get('data_fim'));
+		$stmt->bindValue(':data_conclusao',$this->tarefa->__get('data_conclusao'));
+		$stmt->bindValue(':descricao',$this->tarefa->__get('descricao'));
+		$stmt->bindValue(':data_cadastro',$this->tarefa->__get('data_cadastro'));
+		$stmt->bindValue(':responsavel',$this->tarefa->__get('responsavel'));
+		$stmt->bindValue(':fk_projeti',$this->tarefa->__get('fk_projeti'));
+		$stmt->bindValue(':fk_status_tarefa',$this->tarefa->__get('fk_status_tarefa'));
+		$stmt->execute();
+	}
+
 	public function recuperar() { //read
 		$query = '
 			select

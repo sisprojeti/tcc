@@ -103,7 +103,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
                $alunos = Aluno::listarAlunosTurma($turma_aluno->getIdTurma());
                foreach($alunos as $aluno){
                ?>
-                 <option value="<?php echo $aluno->getIdAluno();?>">     <?php echo $aluno->recuperaPessoa()->getNome();?></option>
+                 <option value="<?php echo $aluno->getIdAluno();?>"><?php echo $aluno->recuperaPessoa()->getNome();?></option>
                <?php }?>
              </select>
            </div>
