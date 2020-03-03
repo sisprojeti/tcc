@@ -8,11 +8,11 @@
 
       public function adicionar(){
         try {
-          $sql = "INSERT INTO ref_prof_turma (professor_id,turma_id) values (:fk_professor_id,:fk_turma)";
+          $sql = "INSERT INTO ref_prof_turma (fk_turma,fk_professor) values (:fk_turma,:fk_professor)";
           $conexao = DB::conexao();
           $stmt = $conexao->prepare($sql);
-          $stmt->bindParam(':fk_professor',$this->fk_professor);
           $stmt->bindParam(':fk_turma',$this->fk_turma);
+          $stmt->bindParam(':fk_professor',$this->fk_professor);
           $stmt->execute();
         } catch (PDOException $e) {
           echo "error".$e->getMessage();
