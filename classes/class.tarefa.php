@@ -3,7 +3,7 @@
 /**
  * Criando uma class com o nome "Tarefa" que será responsável por armazenar as tarefas referentes a cada oportunidade
  */
-    class Tarefa
+    class TarefaTeste
     {
       public $id_tarefa;
       public $fk_status_tarefa;
@@ -15,7 +15,60 @@
       public $responsavel_id;
       public $data_conclusao;
       public $data_cadastro;
+      public $nomeStatus;
+      public $id_status_tarefa;
 
+      public static function listarStatusTarefa()
+        {
+          try {
+            $query = "select * from status_tarefa";
+                        $stmt = DB::conexao()->prepare($query);
+                        $stmt->execute();
+                        $registros = $stmt->fetchAll();
+                        if($registros){
+                          foreach($registros as $objeto){
+                            $temporario = new TarefaTeste();
+                            $temporario->setIdStatusTarefa($objeto['id_status_tarefa']);
+                            $temporario->setNomeStatusTarefa($objeto['nome']);
+                            $itens[] = $temporario;
+                          }
+              return $itens;
+            }
+          } catch (Exception $e) {
+              echo "ERROR".$e->getMessage();
+          }
+        }
+
+        public function inserirTeste(){
+      			$query = 'insert into tarefa(titulo,descricao,data_inicio,data_fim,data_conclusao,data_cadastro,status,responsavel) values (:titulo,:descricao,:data_inicio,:data_fim,data_conclusao,:data_cadastro,:status,:responsavel)';
+      		$stmt = $this->conexao->prepare($query);
+      		$stmt->bindValue(':titulo',$this->tarefa->__get('titulo'));
+      		$stmt->bindValue(':data_inicio',$this->tarefa->__get('data_inicio'));
+      		$stmt->bindValue(':data_fim',$this->tarefa->__get('data_fim'));
+      		$stmt->bindValue(':data_conclusao',$this->tarefa->__get('data_conclusao'));
+      		$stmt->bindValue(':descricao',$this->tarefa->__get('descricao'));
+      		$stmt->bindValue(':data_cadastro',$this->tarefa->__get('data_cadastro'));
+      		$stmt->bindValue(':responsavel',$this->tarefa->__get('responsavel'));
+      		$stmt->bindValue(':fk_projeti',$this->tarefa->__get('fk_projeti'));
+      		$stmt->bindValue(':fk_status_tarefa',$this->tarefa->__get('fk_status_tarefa'));
+      		$stmt->execute();
+      	}
+
+        public function setIdStatusTarefa($id_status_tarefa){
+          $this->id_status_tarefa = $id_status_tarefa;
+        }
+
+        public function getIdStatusTarefa(){
+          return  $this->$id_status_tarefa;
+        }
+
+        public function setNomeStatusTarefa($nomeStatus){
+          $this->nomeStatus = $nomeStatus;
+        }
+
+        public function getNomeStatusTarefa(){
+          return $this->nomeStatus;
+        }
 
 /*---------------------------------------------------------------------
   DESCRIÇÃO
@@ -85,14 +138,6 @@
 
       public function setDataCadastro($data_cadastro){
         $this->data_cadastro = $data_cadastro;
-      }
-
-      public function __construct($titulo,$descricao,$data_inicio,$data_termino,$reponsavel){
-        $this->setTitulo($titulo);
-        $this->setDescricao($descricao);
-        $this->setDataInicio($data_inicio);
-        $this->setDataTermino($data_termino);
-        $this->setResponsavel($responsavel);
       }
 
 
