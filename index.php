@@ -390,6 +390,12 @@
                      <p>Visualizar Notas</p>
                    </a>
                  </li>
+                 <li class="nav-item">
+                   <a href="?modulo=graficos&acao=graficos" class="nav-link">
+                     <i class="fas fa-chart-bar nav-icon"></i>
+                     <p>Gráficos de Atividade</p>
+                   </a>
+                 </li>
                </ul> </li>
              <li class="nav-item has-treeview">
                <a href="#" class="nav-link">
