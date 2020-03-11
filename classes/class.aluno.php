@@ -90,6 +90,8 @@
           }
         }
 
+        
+
       public static function contarAlunos()
         {
           try {
