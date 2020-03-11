@@ -49,9 +49,11 @@
       		$stmt->bindValue(':descricao',$this->tarefa->__get('descricao'));
       		$stmt->bindValue(':data_cadastro',$this->tarefa->__get('data_cadastro'));
       		$stmt->bindValue(':responsavel',$this->tarefa->__get('responsavel'));
-      		$stmt->bindValue(':fk_projeti',$this->tarefa->__get('fk_projeti'));
+      		$stmt->bindValue(':fk_projeti',$this->tarefa->__get('fk_projeti')); // retornar através da sessão do usuário
       		$stmt->bindValue(':fk_status_tarefa',$this->tarefa->__get('fk_status_tarefa'));
       		$stmt->execute();
+          $ultimaTarefa = $conexao->lastInsertId();
+          return $ultimaTarefa;
       	}
 
         public function setIdStatusTarefa($id_status_tarefa){
@@ -59,7 +61,7 @@
         }
 
         public function getIdStatusTarefa(){
-          return  $this->$id_status_tarefa;
+          return $this->$id_status_tarefa;
         }
 
         public function setNomeStatusTarefa($nomeStatus){
