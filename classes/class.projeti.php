@@ -8,11 +8,11 @@
 
         public function adicionar()
         {
-          $sql = "INSERT INTO projeti(tema,decricao) values (:tema,:decricao)"; //COLOCAR O "s" EM DESCRICAO
+          $sql = "INSERT INTO projeti(tema,descricao) values (:tema,:descricao)"; //COLOCAR O "s" EM DESCRICAO
           $conexao = DB::conexao();
           $stmt = $conexao->prepare($sql);
           $stmt->bindParam(':tema',$this->tema);
-          $stmt->bindParam(':decricao',$this->decricao);
+          $stmt->bindParam(':descricao',$this->descricao);
           $stmt->execute();
           $ultimoIdProjeti = $conexao->lastInsertId();
           return $ultimoIdProjeti;
@@ -66,8 +66,8 @@
          return $this->descricao;
        }
 
-       public function setDescricao($decricao){ //adicionar o s de descricao
-         $this->decricao = $decricao;
+       public function setDescricao($descricao){ //adicionar o s de descricao
+         $this->descricao = $descricao;
        }
 
 

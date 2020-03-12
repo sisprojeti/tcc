@@ -27,7 +27,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
   // echo ->getIdAluno();
   //print_r($fk_aluno);
   $projeti->setTema($_POST['tema']);
-  $projeti->setDescricao($_POST['decricao']);
+  $projeti->setDescricao($_POST['descricao']);
   $ultimoIdProjeti = $projeti->adicionar();
 
   $integranteProjeti_um = new RefAlunoProjeti();
@@ -71,7 +71,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
      </div>
       <div class="form-group col-md-6">
         <label for="inputPassword4">Descrição</label>
-        <input name="decricao" type="text" class="form-control" id="inputPassword4" placeholder="Digite uma breve descrição do seu projeti">
+        <input name="descricao" type="text" class="form-control" id="inputPassword4" placeholder="Digite uma breve descrição do seu projeti">
       </div>
     </div>
 
