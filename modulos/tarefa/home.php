@@ -4,6 +4,8 @@
   require_once('tarefa.service.php');
   require_once('classes/class.tarefa.php');
   require_once('classes/class.db.php');
+  require_once('classes/class.refAlunoProjeti.php');
+
   $action = 'recuperar';
   // require_once 'tarefa_controller.php';
   $tarefa = new Tarefa();
@@ -16,6 +18,11 @@
     $listarStatus = TarefaTeste::listarStatusTarefa();
   } catch (PDOException $e) {
       echo "ERROR".$e->getMessage();
+  }
+  try{
+    $listarAlunosProjeti = RefAlunoProjeti::listarAlunosProjeti();
+  } catch(PDOException $e){
+    echo "ERROR".$e->getMessage();
   }
   //
   // echo "<pre>";
@@ -55,7 +62,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="">
+        <form action="?modulo=tarefa&acao=adicionar">
           <div class="form-group">
             <label class="col-form-label">Título:</label>
             <input type="text" class="form-control" name="titulo" id="titulo">
@@ -103,18 +110,25 @@
                      </div>
 
               </div>
-            <div class="form-group">
-              <label class="col-form-label">Responsável:</label>
-              <select class="form-control">
-               <option> Selecione.. </option>
-
-            </select>
-          </div>
+              <div class="col-sm-6">
+                <label>Status Tarefa</label>
+                <select class="form-control" name="fk_status" required autofocus>
+                 <option value="">Selecione o Responsável</option>
+                  <?php if(isset($listarAlunosProjeti)):?>
+                    <?php foreach ($listarAlunosProjeti as $alunosProjeti):?>
+                      <?php //if($aluno->getSituacaoAluno()):?>
+                      <option value="<?php echo $alunosProjeti->getIdRefAlunoProjeti();?>"><?php echo $alunosProjeti->getNomeAlunoProjeti();?></option>
+                    <?php// endif;?>
+                    <?php endforeach;?>
+                  <?php endif;?>
+                </select>
+              </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" name="save" class="btn btn-primary">Salvar</button>
+        <input type="submit" name="Salvar" class="btn btn-primary">Salvar</button>
       </div>
+      </form>
     </div>
   </div>
 </div>

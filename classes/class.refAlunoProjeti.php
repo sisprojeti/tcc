@@ -5,6 +5,7 @@
       public $id_ref_aluno_projeti;
       public $fk_projeti;
       public $fk_aluno;
+      public $nomeAluno;
 
       public function adicionar()
       {
@@ -18,9 +19,54 @@
 
       public function listar()
       {
-        $sql ="SELECT * FROM ref_aluno_projeti";
+        $query ="select nome from aluno
+         join pessoa on aluno.id_aluno = pessoa.id_pessoa
+         join ref_aluno_projeti on ref_aluno_projeti.fk_aluno = aluno.id_aluno";
+
       }
 
+      public static function listarAlunosProjeti()
+        {
+          try {
+
+              $query ="select nome as nome_aluno,ref_aluno_projeti.fk_aluno as fk_aluno from aluno
+               join pessoa on aluno.id_aluno = pessoa.id_pessoa
+               join ref_aluno_projeti on ref_aluno_projeti.fk_aluno = aluno.id_aluno";
+                        $stmt = DB::conexao()->prepare($query);
+                        $stmt->execute();
+                        $registros = $stmt->fetchAll();
+                        if($registros){
+                          foreach($registros as $objeto){
+                            $temporario = new RefAlunoProjeti();
+                            $temporario->setFkAlunoProjeti($objeto['fk_aluno']);
+                            $temporario->setNomeAlunoProjeti($objeto['nome_aluno']);
+                            $itens[] = $temporario;
+                          }
+              return $itens;
+            }
+          } catch (Exception $e) {
+              echo "ERROR".$e->getMessage();
+          }
+        }
+
+      public function setFkAlunoProjeti($fk_aluno){
+        $this->fk_aluno = $fk_aluno;
+      }
+
+      public function getIdRefAlunoProjeti()
+      {
+        return $this->fk_aluno;
+      }
+
+      public function setNomeAlunoProjeti($nome_aluno)
+      {
+        $this->nomeAluno = $nome_aluno;
+      }
+
+      public function getNomeAlunoProjeti()
+      {
+        return $this->nomeAluno;
+      }
       public function getFkAluno(){
         return $this->fk_aluno;
       }
