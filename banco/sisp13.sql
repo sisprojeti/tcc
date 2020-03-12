@@ -376,7 +376,7 @@ INSERT INTO `professor` (`id_professor`, `data_cadastro`, `fk_pessoa`) VALUES
 CREATE TABLE IF NOT EXISTS `projeti` (
   `id_projeti` int(11) NOT NULL AUTO_INCREMENT,
   `tema` varchar(255) NOT NULL,
-  `decricao` text NOT NULL,
+  `descricao` text NOT NULL,
   PRIMARY KEY (`id_projeti`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
