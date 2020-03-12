@@ -4,19 +4,35 @@
   {
   	public $id;
     public $tema;
-    public $descricao;
+    public $decricao;
 
         public function adicionar()
         {
-          $sql = "INSERT INTO projeti(tema,descricao) values (:tema,:descricao)";
+          $sql = "INSERT INTO projeti(tema,decricao) values (:tema,:decricao)"; //COLOCAR O "s" EM DESCRICAO
           $conexao = DB::conexao();
           $stmt = $conexao->prepare($sql);
           $stmt->bindParam(':tema',$this->tema);
-          $stmt->bindParam(':descricao',$this->descricao);
+          $stmt->bindParam(':decricao',$this->decricao);
           $stmt->execute();
           $ultimoIdProjeti = $conexao->lastInsertId();
           return $ultimoIdProjeti;
         }
+
+        public static function recuperaAlunoProjeti($fk_aluno)
+        {
+          $sql = "";
+          $conexao = DB::conexao();
+          $stmt = $conexao->prepare($sql);
+          $stmt->execute();
+          if($stmt){
+            foreach($stmt as $objeto){
+              $temporario = new Projeti();
+              $temporario->setIdTurma($objeto['id_turma']);
+              $temporario->setNomeTurma($objeto['nome_turma']);
+            }
+            return $temporario;
+            }
+          }
 
        /*------------------------------------/*
        ENCAPSULAMENTOS DO ID
@@ -50,8 +66,8 @@
          return $this->descricao;
        }
 
-       public function setDescricao($descricao){
-         $this->descricao = $descricao;
+       public function setDescricao($decricao){ //adicionar o s de descricao
+         $this->decricao = $decricao;
        }
 
 

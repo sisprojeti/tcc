@@ -15,6 +15,12 @@
         $stmt->bindParam(':fk_ref_aluno_projeti',$this->fk_ref_aluno_projeti);
         $stmt->execute();
       }
+
+      public function setFkTarefa($fk_tarefa){
+        $this->fk_tarefa = $fk_tarefa;
+      }
+
+      public function setFkRefAlunoTarefa($fk_ref_aluno_tarefa);
     }
 
 ?>

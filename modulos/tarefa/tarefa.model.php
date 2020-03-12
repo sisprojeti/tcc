@@ -17,7 +17,7 @@ class Tarefa {
 	public static function contarTarefas()
 	    {
 	      try {
-	        $query = "select * from tb_tarefas";
+	        $query = "select * from tarefa";
 	                    $stmt = DB::conexao()->prepare($query);
 	                    $stmt->execute();
 	                    $registros = $stmt->fetchAll();

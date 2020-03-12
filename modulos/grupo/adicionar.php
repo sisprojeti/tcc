@@ -9,6 +9,8 @@ include_once('Classes/class.refAlunoProjeti.php');
 $usuario = new Usuario($_SESSION['fk_pessoa']);
 //$turma = new Turma($_SESSION['fk_turma']);
 $turma_aluno = Turma::recuperaTurmaAluno($_SESSION['fk_pessoa']);
+//$aluno_projeti = RefAlunoProjeti::recuperaAlunoProjeti($_SESSION['fk_aluno']);
+
 //echo $_SESSION['fk_pessoa'];
 //print_r($turma_aluno);
 //print_r($turma_aluno);
@@ -25,7 +27,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
   // echo ->getIdAluno();
   //print_r($fk_aluno);
   $projeti->setTema($_POST['tema']);
-  $projeti->setDescricao($_POST['descricao']);
+  $projeti->setDescricao($_POST['decricao']);
   $ultimoIdProjeti = $projeti->adicionar();
 
   $integranteProjeti_um = new RefAlunoProjeti();
@@ -69,7 +71,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
      </div>
       <div class="form-group col-md-6">
         <label for="inputPassword4">Descrição</label>
-        <input name="descricao" type="text" class="form-control" id="inputPassword4" placeholder="Digite uma breve descrição do seu projeti">
+        <input name="decricao" type="text" class="form-control" id="inputPassword4" placeholder="Digite uma breve descrição do seu projeti">
       </div>
     </div>
 
