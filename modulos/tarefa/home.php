@@ -5,6 +5,7 @@
   require_once('classes/class.tarefa.php');
   require_once('classes/class.db.php');
   require_once('classes/class.refAlunoProjeti.php');
+  //require_once('classes/class.refAlunoTarefa.php');
 
   $action = 'recuperar';
   // require_once 'tarefa_controller.php';
@@ -20,7 +21,7 @@
       echo "ERROR".$e->getMessage();
   }
   try{
-    $listarAlunosProjeti = RefAlunoProjeti::listarAlunosProjeti();
+      $listarAlunosProjeti = RefAlunoProjeti::listarAlunosProjeti();
   } catch(PDOException $e){
     echo "ERROR".$e->getMessage();
   }
@@ -97,7 +98,7 @@
 
                      <div class="col-sm-6">
                        <label>Status Tarefa</label>
-                       <select class="form-control" name="fk_status" required autofocus>
+                       <select class="form-control" name="id_status_tarefa" required autofocus>
                         <option value="">Selecione o status</option>
                          <?php if(isset($listarStatus)):?>
                            <?php foreach ($listarStatus as $status):?>
@@ -108,11 +109,11 @@
                          <?php endif;?>
                        </select>
                      </div>
-
               </div>
+
               <div class="col-sm-6">
                 <label>Status Tarefa</label>
-                <select class="form-control" name="fk_status" required autofocus>
+                <select class="form-control" name="fk_ref_aluno_projeti" required autofocus>
                  <option value="">Selecione o Responsável</option>
                   <?php if(isset($listarAlunosProjeti)):?>
                     <?php foreach ($listarAlunosProjeti as $alunosProjeti):?>
@@ -122,6 +123,7 @@
                     <?php endforeach;?>
                   <?php endif;?>
                 </select>
+                <input type="hidden" name="" value="">
               </div>
       </div>
       <div class="modal-footer">
