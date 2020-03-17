@@ -32,7 +32,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
 
   $integranteProjeti_um = new RefAlunoProjeti();
   $integranteProjeti_um->setFkProjeti($ultimoIdProjeti);
-  $integranteProjeti_um->setFkAluno($pessoa->getIdPessoa());
+  $integranteProjeti_um->setFkAluno($pessoa->getIdPessoa()); //não está retornando o id de quem está logado
   $integranteProjeti_um->adicionar();
 
   $integranteProjeti_dois = new RefAlunoProjeti();
@@ -77,7 +77,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
 
     <div class="form-group">
         <label for="inputAddress2">Nome Integrante</label>
-        <input type="text" disabled class="form-control" value="<?php echo $pessoa->getNome();?>" id="inputAddress2" placeholder="Digite o nome do integrante do grupo" name="aluno1" value="">
+        <input type="text" disabled class="form-control" value="<?php echo $pessoa->getNome();?>" id="inputAddress2" placeholder="Digite o nome do integrante do grupo">
      </div>
      <div class="form-row">
            <!-- <div class="form-group col-md-4">

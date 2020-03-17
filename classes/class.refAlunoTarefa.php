@@ -20,7 +20,6 @@
         $this->fk_tarefa = $fk_tarefa;
       }
 
-      public function setFkRefAlunoTarefa($fk_ref_aluno_tarefa);
     }
 
 ?>
