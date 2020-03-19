@@ -1,11 +1,10 @@
 <?php
   require_once('tarefa.model.php');
   require_once('conexao.php');
-  require_once('tarefa.service.php');
+  //require_once('tarefa.service.php');
   require_once('classes/class.tarefa.php');
   require_once('classes/class.db.php');
   require_once('classes/class.refAlunoProjeti.php');
-  //require_once('classes/class.refAlunoTarefa.php');
 
   $action = 'recuperar';
   // require_once 'tarefa_controller.php';
@@ -13,8 +12,8 @@
   $tarefaTeste = new TarefaTeste();
   $conexao = new Conexao();
 
-  $tarefaService = new TarefaService($conexao, $tarefa);
-  $tarefas = $tarefaService->recuperar();
+  //$tarefaService = new TarefaService($conexao, $tarefa);
+  ///$tarefas = $tarefaService->recuperar();
   try{
     $listarStatus = TarefaTeste::listarStatusTarefa();
   } catch (PDOException $e) {
