@@ -1,6 +1,6 @@
 <?php
 
-
+/*
 //CRUD
 class TarefaService {
 
@@ -73,5 +73,5 @@ class TarefaService {
 		return $stmt->execute();
 	}
 }
-
+ */
 ?>
