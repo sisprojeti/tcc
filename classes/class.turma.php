@@ -39,6 +39,8 @@
           }
         }
 
+        
+
       public function adicionar(){
         try{
           $sql = "INSERT INTO turma (fk_exercicio,fk_etapa,fk_curso,nome,turno,lotacao,status_finalizada) values (:fk_exercicio,:fk_etapa,:fk_curso,:nome,:turno,:lotacao,:status_finalizada)";

@@ -27,6 +27,8 @@
           }
         }
 
+      
+
         public static function recuperaAluno($fk_pessoa)
         {
 
@@ -40,6 +42,20 @@
               $temporario = new Aluno($obj['id_aluno']);
             }
             return $temporario;
+            }
+          }
+
+          public static function recuperaIdAlunoLogado($fk_aluno){ //metodo pra recuperar o id do aluno que estiver logado (utilizar para realizar a criação de grupo)
+            $sql = "SELECT * from ref_aluno_projeti"; //terminar select para puxar a fk_aluno
+            $conexao = DB::conexao();
+            $stmt = $conexao->prepare($sql);
+            $stmt->execute();
+            if($stmt){
+              foreach($stmt as $objeto){
+                $temporario = new Aluno();
+                $temporario->setIdAlunoLogado($objeto['fk_aluno']);
+                $temporario->setNomeAluno($objeto['nome_aluno']);
+              }
             }
           }
 
@@ -90,7 +106,7 @@
           }
         }
 
-        
+
 
       public static function contarAlunos()
         {
