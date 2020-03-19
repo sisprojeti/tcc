@@ -13,7 +13,7 @@
   $conexao = new Conexao();
 
   //$tarefaService = new TarefaService($conexao, $tarefa);
-  //$tarefas = $tarefaService->recuperar();
+  ///$tarefas = $tarefaService->recuperar();
   try{
     $listarStatus = TarefaTeste::listarStatusTarefa();
   } catch (PDOException $e) {
