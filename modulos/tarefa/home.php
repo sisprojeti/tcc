@@ -30,7 +30,7 @@
   // echo "</pre>";
   if(isset($_POST["button"]) && ($_POST["button"] === "Salvar")){
     try{
-      $data_cadastro = date("d/m/Y");
+      $data_cadastro = date("Y-m-d");
       $tarefa = new TarefaTeste();
       $tarefa->setTitulo($_POST['titulo']);
       $tarefa->setDataInicio($_POST['data_inicio']);

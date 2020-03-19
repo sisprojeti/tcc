@@ -25,6 +25,15 @@
 
       }
 
+      public function recuperaPessoa()
+      {
+        return new Pessoa($this->fk_pessoa);
+      }
+
+      public function recuperaAlunoProjeti(){
+        return new RefAlunoProjeti($this->fk_aluno);
+      }
+
       public static function listarAlunosProjeti()
         {
           try {

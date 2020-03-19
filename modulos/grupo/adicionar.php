@@ -9,12 +9,15 @@ include_once('Classes/class.refAlunoProjeti.php');
 $usuario = new Usuario($_SESSION['fk_pessoa']);
 //$turma = new Turma($_SESSION['fk_turma']);
 $turma_aluno = Turma::recuperaTurmaAluno($_SESSION['fk_pessoa']);
-//$aluno_projeti = RefAlunoProjeti::recuperaAlunoProjeti($_SESSION['fk_aluno']);
+$aluno_projeti = RefAlunoProjeti::recuperaAlunoProjeti($_SESSION['fk_aluno']); //metodo pra recuperar o id do aluno que está logado
+$pessoa = $usuario->recuperaPessoa();
+
+//$aluno_logado = $
 
 //echo $_SESSION['fk_pessoa'];
 //print_r($turma_aluno);
 //print_r($turma_aluno);
-$pessoa = $usuario->recuperaPessoa();
+
 // echo "<pre>";
 //print_r($_SESSION);
 // echo "</pre>";
@@ -32,7 +35,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
 
   $integranteProjeti_um = new RefAlunoProjeti();
   $integranteProjeti_um->setFkProjeti($ultimoIdProjeti);
-  $integranteProjeti_um->setFkAluno($pessoa->getIdPessoa()); //não está retornando o id de quem está logado
+  $integranteProjeti_um->setFkAluno($_SESSION['fk_aluno']);//$aluno_projeti->getIdAlunoProjeti();//metodo pra retonar o id do aluno de projeti //não está retornando o id de quem está logado
   $integranteProjeti_um->adicionar();
 
   $integranteProjeti_dois = new RefAlunoProjeti();
