@@ -8,9 +8,10 @@
 
   $action = 'recuperar';
   // require_once 'tarefa_controller.php';
-  $tarefa = new Tarefa();
+  //$tarefa = new Tarefa();
   $tarefaTeste = new TarefaTeste();
   $conexao = new Conexao();
+
 
   //$tarefaService = new TarefaService($conexao, $tarefa);
   ///$tarefas = $tarefaService->recuperar();
@@ -24,6 +25,16 @@
   } catch(PDOException $e){
     echo "ERROR".$e->getMessage();
   }
+
+if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
+  try {
+      $tarefas = TarefaTeste::listarTarefas();
+  } catch (Exception $e) {
+    echo "ERROR:".$e->getMessage();
+   }
+}
+
+
   //
   // echo "<pre>";
   // print_r($tarefas);
@@ -183,11 +194,9 @@
     </ul>
   </div>
   <div class="card-body">
-    <h5 class="card-title">Montar Logo</h5>
-    <p class="card-text">Tarefa tem como objetivo produzir uma logo em vetor para usabilidade no sistema e demais.</p>
-    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalLogo">
-  Detalhes
-</button>
+    <h5 class="card-title">CONTEUDO DINAMICO</h5>
+    <p class="card-text">CONTEUDO DINAMICO</p>
+    <input type="submit" value="Detalhes" class="btn btn-info" data-toggle="modal" data-target="#modalLogo">
 
 <!-- Modal LOGO-->
 <div class="modal fade" id="modalLogo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -199,9 +208,13 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-       Aqui vai ficar os detalhes da logo
-      </div>
+      <div class="container col-lg-12 navbar-white">
+         <section class="content navbar-light navbar-white">
+           <div class="container-fluid navbar-white ">
+              teste
+           </div><!-- /.container-fluid -->
+         </section>
+       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
       </div>

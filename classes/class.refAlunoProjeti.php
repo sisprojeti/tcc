@@ -35,7 +35,7 @@
         $query ="select nome from aluno
          join pessoa on aluno.id_aluno = pessoa.id_pessoa
          join ref_aluno_projeti on ref_aluno_projeti.fk_aluno = aluno.id_aluno";
-
+         //select pra selecionar nome de alunos em projeti// select pessoa.nome from aluno join ref_aluno_projeti on aluno.id_aluno = ref_aluno_projeti.fk_aluno join pessoa on pessoa.id_pessoa = aluno.fk_pessoa;
       }
 
       // public static function verificaAlunoProjeti() //metodo pra verificar se o aluno esta fazendo parte de algum projeti
@@ -51,13 +51,24 @@
         return new RefAlunoProjeti($this->fk_aluno);
       }
 
+      // public function selecionaAlunoTarefa() //metodo pra selecionar o aluno vinculado a uma tarefa
+      // {
+      //   $query = "SELECT pessoa.nome from pessoa join aluno on pessoa.id_pessoa = aluno.fk_pessoa
+      //   join ref_aluno_projeti on aluno.id_aluno = ref_aluno_projeti.fk_aluno
+      //   join tarefa on tarefa.fk_ref_aluno_projeti = ref_aluno_projeti.fk_aluno";
+      // }
+
       public static function listarAlunosProjeti()
         {
           try {
 
-              $query ="select nome as nome_aluno,ref_aluno_projeti.fk_aluno as fk_aluno from aluno
-               join pessoa on aluno.id_aluno = pessoa.id_pessoa
-               join ref_aluno_projeti on ref_aluno_projeti.fk_aluno = aluno.id_aluno";
+              // $query ="select nome as nome_aluno,ref_aluno_projeti.fk_aluno as fk_aluno from aluno
+              //  join pessoa on aluno.fk_aluno = pessoa.id_pessoa
+              //  join ref_aluno_projeti on ref_aluno_projeti.fk_aluno = aluno.id_aluno"; //corrigindo select de alunos do grupo de projeti
+
+               $query = "select pessoa.nome as nome_aluno,ref_aluno_projeti.fk_aluno as fk_aluno from aluno join ref_aluno_projeti
+               on aluno.id_aluno = ref_aluno_projeti.fk_aluno
+                join pessoa on pessoa.id_pessoa = aluno.fk_pessoa";
                         $stmt = DB::conexao()->prepare($query);
                         $stmt->execute();
                         $registros = $stmt->fetchAll();
