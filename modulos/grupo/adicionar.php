@@ -7,12 +7,17 @@ include_once('Classes/class.projeti.php');
 include_once('Classes/class.refAlunoProjeti.php');
 //print_r($_SESSION);
 $usuario = new Usuario($_SESSION['fk_pessoa']);
-//$turma = new Turma($_SESSION['fk_turma']);
-$turma_aluno = Turma::recuperaTurmaAluno($_SESSION['fk_pessoa']);
-$aluno_projeti = RefAlunoProjeti::recuperaAlunoProjeti($_SESSION['fk_aluno']); //metodo pra recuperar o id do aluno que está logado
 $pessoa = $usuario->recuperaPessoa();
 
-//$aluno_logado = $
+$aluno_logado = new Aluno($_SESSION['fk_pessoa']);
+$aluno = $aluno_logado->recuperaAluno();
+
+//$turma = new Turma($_SESSION['fk_turma']);
+$turma_aluno = Turma::recuperaTurmaAluno($_SESSION['fk_pessoa']);
+//$aluno_projeti = RefAlunoProjeti::recuperaAlunoProjeti($_SESSION['fk_aluno']); //metodo pra recuperar o id do aluno que está logado
+
+
+
 
 //echo $_SESSION['fk_pessoa'];
 //print_r($turma_aluno);
@@ -35,17 +40,17 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
 
   $integranteProjeti_um = new RefAlunoProjeti();
   $integranteProjeti_um->setFkProjeti($ultimoIdProjeti);
-  $integranteProjeti_um->setFkAluno($_SESSION['fk_aluno']);//$aluno_projeti->getIdAlunoProjeti();//metodo pra retonar o id do aluno de projeti //não está retornando o id de quem está logado
+  $integranteProjeti_um->setFkAluno($_POST['aluno_um']);//$aluno_projeti->getIdAlunoProjeti();//metodo pra retonar o id do aluno de projeti //não está retornando o id de quem está logado
   $integranteProjeti_um->adicionar();
 
   $integranteProjeti_dois = new RefAlunoProjeti();
   $integranteProjeti_dois->setFkProjeti($ultimoIdProjeti);
-  $integranteProjeti_dois->setFkAluno($_POST['aluno_um']);
+  $integranteProjeti_dois->setFkAluno($_POST['aluno_dois']);
   $integranteProjeti_dois->adicionar();
 
   $integranteProjeti_tres = new RefAlunoProjeti();
   $integranteProjeti_tres->setFkProjeti($ultimoIdProjeti);
-  $integranteProjeti_tres->setFkAluno($_POST['aluno_dois']);
+  $integranteProjeti_tres->setFkAluno($_POST['aluno_tres']);
   $integranteProjeti_tres->adicionar();
 
 }
@@ -78,11 +83,20 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
       </div>
     </div>
 
-    <div class="form-group">
-        <label for="inputAddress2">Nome Integrante</label>
-        <input type="text" disabled class="form-control" value="<?php echo $pessoa->getNome();?>" id="inputAddress2" placeholder="Digite o nome do integrante do grupo">
-     </div>
+
      <div class="form-row">
+       <div class="form-group col-md-12">
+         <label for="inputState">Escolha o Aluno</label>
+         <select name="aluno_um" id="aluno_um" class="form-control" data-live-search="true">
+           <option value="">Selecione o ALuno</option>
+           <?php
+           $alunos = Aluno::listarAlunosTurma($turma_aluno->getIdTurma());
+           foreach($alunos as $aluno){
+           ?>
+             <option value="<?php echo $aluno->getIdAluno();?>"><?php echo $aluno->recuperaPessoa()->getNome();?></option>
+           <?php }?>
+         </select>
+       </div>
            <!-- <div class="form-group col-md-4">
              <label for="inputCity">Aluno</label>
              <input type="text" class="form-control" id="input_aluno_um">
@@ -90,7 +104,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
 
            <div class="form-group col-md-12">
              <label for="inputState">Escolha o Aluno</label>
-             <select name="aluno_um" id="aluno_um" class="form-control" data-live-search="true">
+             <select name="aluno_dois" id="aluno_dois" class="form-control" data-live-search="true">
                <option value="">Selecione o ALuno</option>
                <?php
                $alunos = Aluno::listarAlunosTurma($turma_aluno->getIdTurma());
@@ -102,7 +116,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
            </div>
            <div class="form-group col-md-12">
              <label for="inputState">Escolha o Aluno</label>
-             <select name="aluno_dois" id="aluno_dois" class="form-control" data-live-search="true">
+             <select name="aluno_tres" id="aluno_tres" class="form-control" data-live-search="true">
                <option value="">Selecione o ALuno</option>
                <?php
                $alunos = Aluno::listarAlunosTurma($turma_aluno->getIdTurma());

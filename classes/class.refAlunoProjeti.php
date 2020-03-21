@@ -7,6 +7,19 @@
       public $fk_aluno;
       public $nomeAluno;
 
+      // public function __construct($id_ref_aluno_projeti=false){
+      //     if($id_ref_aluno_projeti){
+      //       $sql = "SELECT * FROM ref_aluno_projeti where id_ref_aluno_projeti = :id_ref_aluno_projeti";
+      //       $stmt = DB::conexao()->prepare($sql);
+      //       $stmt->bindParam(":id_usuario",$id_usuario,PDO::PARAM_INT);
+      //       $stmt->execute();
+      //       foreach($stmt as $obj){
+      //         $this->setIdRefAlunoProjeti($obj['id_ref_aluno_projeti']);
+      //         $this->setFkPessoa($obj['fk_aluno']);
+      //       }
+      //     }
+      //   }
+
       public function adicionar()
       {
         $sql = "INSERT INTO ref_aluno_projeti(fk_projeti,fk_aluno) values (:fk_projeti,:fk_aluno)";
@@ -24,6 +37,10 @@
          join ref_aluno_projeti on ref_aluno_projeti.fk_aluno = aluno.id_aluno";
 
       }
+
+      // public static function verificaAlunoProjeti() //metodo pra verificar se o aluno esta fazendo parte de algum projeti
+      // {
+      // }
 
       public function recuperaPessoa()
       {
@@ -57,6 +74,28 @@
               echo "ERROR".$e->getMessage();
           }
         }
+
+        public function verificaAlunoProjeti($fk_aluno)
+          {
+            try {
+
+                $query ="select * from ref_aluno_projeti where fK_aluno = :fk_aluno";
+                          $stmt = DB::conexao()->prepare($query);
+                          $stmt->execute();
+                          $registros = $stmt->fetchAll();
+                          if($registros){
+                            foreach($registros as $objeto){
+                              $temporario = new RefAlunoProjeti();
+                              $temporario->setFkAlunoProjeti($objeto['fk_aluno']);
+                              $temporario->setNomeAlunoProjeti($objeto['nome_aluno']);
+                              $itens[] = $temporario;
+                            }
+                return $itens;
+              }
+            } catch (Exception $e) {
+                echo "ERROR".$e->getMessage();
+            }
+          }
 
       public function setFkAlunoProjeti($fk_aluno){
         $this->fk_aluno = $fk_aluno;

@@ -41,21 +41,20 @@
         return $ultimoIdUsuario;
       }
 
+      //fazer atualização na função de logar pra verificar se o usuário logado já esta em algum grupo de projeti
       public static function logar($cpf = false, $senha = false){
         if($cpf && $senha){
-          $sql = "SELECT aluno.id_aluno,ref_aluno_projeti.fk_aluno
-          ref_usuario_grupo.fk_grupo as fk_grupo,
+          $sql = "SELECT ref_usuario_grupo.fk_grupo as fk_grupo,
           grupo.nome as nome_grupo,
           pessoa.nome as nome_pessoa,
           ref_usuario_grupo.fk_usuario as fk_usuario,
           usuario.fk_pessoa as fk_pessoa,
           pessoa.cpf as cpf,
-          usuario.senha as senha,FROM usuario
+          usuario.senha as senha FROM usuario
           join pessoa on pessoa.id_pessoa = usuario.fk_pessoa
           join grupo on grupo.id_grupo = usuario.fk_pessoa
           join ref_usuario_grupo on ref_usuario_grupo.fk_grupo = usuario.id_usuario
-          where pessoa.cpf = :cpf and usuario.senha = :senha" join aluno on aluno.id_aluno = usuario.fk_pessoa
-           join ref_aluno_projeti on ref_aluno_projeti.fk_aluno = aluno.id_aluno;
+          where pessoa.cpf = :cpf and usuario.senha = :senha";
 
           //----#------TEM QUE FAZER O SELECT CERTO PRA FAZER O LOGIN POIS ESTA COM BOG ----#------//
           // $sql = "SELECT ref_usuario_grupo.fk_grupo as fk_grupo,
@@ -92,7 +91,6 @@
               $_SESSION['fk_pessoa'] = $objeto['fk_pessoa'];
               $_SESSION['cpf']  = $objeto['cpf'];
               $_SESSION['senha'] = $objeto['senha'];
-              $_SESSION['fk_aluno'] = $objeto['fk_aluno'];
               header('Location:index.php');
             }
           }else{
