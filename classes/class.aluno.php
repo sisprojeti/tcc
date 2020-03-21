@@ -17,7 +17,7 @@
 
       public function __construct($id_aluno=false){
           if($id_aluno){
-            $sql = "SELECT * FROM aluno where id_aluno = :id_aluno";
+            $sql = "SELECT aluno.id_aluno from aluno join pessoa on pessoa.id_pessoa = aluno.fk_pessoa";
             $stmt = DB::conexao()->prepare($sql);
             $stmt->bindParam(":id_aluno",$id_aluno,PDO::PARAM_INT);
             $stmt->execute();
@@ -27,9 +27,13 @@
           }
         }
 
-      
+        public function recuperaAluno()
+        {
+          return new Aluno($this->fk_pessoa);
+        }
 
-        public static function recuperaAluno($fk_pessoa)
+
+        public static function recuperaIdAluno($fk_pessoa)
         {
 
           $sql = "SELECT * FROM aluno where fk_pessoa = :fk_pessoa";
@@ -46,7 +50,7 @@
           }
 
           public static function recuperaIdAlunoLogado($fk_aluno){ //metodo pra recuperar o id do aluno que estiver logado (utilizar para realizar a criação de grupo)
-            $sql = "SELECT * from ref_aluno_projeti"; //terminar select para puxar a fk_aluno
+            $sql = "SELECT * from aluno join pessoa on pessoa.id_pessoa = aluno.fk_pessoa"; //terminar select para puxar a fk_aluno
             $conexao = DB::conexao();
             $stmt = $conexao->prepare($sql);
             $stmt->execute();

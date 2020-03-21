@@ -63,7 +63,7 @@ require_once('class.db.php');
 
       public function atualizar()
       {
-        if($this->cod_produto){
+        if($this->id_pessoa){
           $sql = "UPDATE pessoa set nome = :nome, email = :email, cpf = :cpf, telefone = :telefone";
           $stmt = DB::conexao()->prepare($sql);
           $stmt->bindParam(':nome',$this->nome);
