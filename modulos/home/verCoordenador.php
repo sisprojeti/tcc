@@ -249,30 +249,6 @@ try{
           <a href="?modulo=tarefa&acao=home" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
-      <div class="col-lg-3 col-6">
-        <div class="small-box bg-secondary">
-          <div class="inner">
-          <h4><?php echo $totalTarefas;?></h4>
-            <p><h4>Tarefas Cadastradas</h4></p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="?modulo=tarefa&acao=home" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-6">
-        <div class="small-box bg-success">
-          <div class="inner">
-          <h4><?php echo $totalTarefas;?></h4>
-            <p><h4>Tarefas Feitas</h4></p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="?modulo=tarefa&acao=home" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
       <!-- ./col -->
       <div class="col-lg-3 col-6">
         <!-- small box -->
@@ -291,7 +267,7 @@ try{
       <!-- ./col -->
       <div class="col-lg-3 col-6">
         <!-- small box -->
-        <div class="small-box bg-warning">
+        <div class="small-box bg-info">
           <div class="inner">
             <h3><i class="far fa-file-alt"></i></h3>
 
@@ -306,7 +282,7 @@ try{
       <!-- ./col -->
       <div class="col-lg-3 col-6">
         <!-- small box -->
-        <div class="small-box bg-danger">
+        <div class="small-box bg-info">
           <div class="inner">
             <h3 ><i class="fas fa-clipboard"></i></h3>
 
@@ -330,7 +306,56 @@ try{
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
+
           <a href="Visualizar Notas.php" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-secondary">
+          <div class="inner">
+          <h4><?php echo $totalTarefas;?></h4>
+            <p><h4>Tarefas Cadastradas</h4></p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="?modulo=tarefa&acao=home" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-danger">
+          <div class="inner">
+          <h4><?php echo $totalTarefas;?></h4>
+            <p><h4>Tarefas A Fázer</h4></p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="?modulo=tarefa&acao=home" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-warning">
+          <div class="inner">
+          <h4><?php echo $totalTarefas;?></h4>
+            <p><h4>Tarefas a Fazendo</h4></p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="?modulo=tarefa&acao=home" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-success">
+          <div class="inner">
+          <h4><?php echo $totalTarefas;?></h4>
+            <p><h4>Tarefas Feitas</h4></p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="?modulo=tarefa&acao=home" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
     <?php };?>
