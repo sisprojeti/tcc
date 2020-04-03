@@ -1,5 +1,5 @@
 <?php
-  require_once('tarefa.model.php');
+  //require_once('tarefa.model.php');
   require_once('conexao.php');
   //require_once('tarefa.service.php');
   require_once('classes/class.tarefa.php');
@@ -9,14 +9,14 @@
   $action = 'recuperar';
   // require_once 'tarefa_controller.php';
   //$tarefa = new Tarefa();
-  $tarefaTeste = new TarefaTeste();
+  $tarefaTeste = new Tarefa();
   $conexao = new Conexao();
 
 
   //$tarefaService = new TarefaService($conexao, $tarefa);
   ///$tarefas = $tarefaService->recuperar();
   try{
-    $listarStatus = TarefaTeste::listarStatusTarefa();
+    $listarStatus = Tarefa::listarStatusTarefa();
   } catch (PDOException $e) {
       echo "ERROR".$e->getMessage();
   }
@@ -26,9 +26,19 @@
     echo "ERROR".$e->getMessage();
   }
 
+ try{
+      $listarTarefas = Tarefa::listar();
+      //print_r($listarTarefas);
+  }catch(PDOException $e){
+    echo "ERROR".$e->getMessage();
+  }
+
 if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
   try {
-      $tarefas = TarefaTeste::listarTarefas();
+      $tarefas = TarefaTeste::listarAlunosTarefa();
+      foreach ($tarefas as $tarefa) {
+        print_r($tarefa);
+      }
   } catch (Exception $e) {
     echo "ERROR:".$e->getMessage();
    }
@@ -42,7 +52,7 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
   if(isset($_POST["button"]) && ($_POST["button"] === "Salvar")){
     try{
       $data_cadastro = date("Y-m-d");
-      $tarefa = new TarefaTeste();
+      $tarefa = new Tarefa();
       $tarefa->setTitulo($_POST['titulo']);
       $tarefa->setDataInicio($_POST['data_inicio']);
       $tarefa->setDataFim($_POST['data_fim']);
@@ -193,34 +203,60 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
       </li>
     </ul>
   </div>
+
+  <script type="text/javascript">
+      $(document).ready(function(){
+        $(".botao-detalhe").click(function(){
+            var id_tarefa = $(this).attr("id");
+            $("#conteudo_tarefa").load('modulos/tarefa/ajax/carrega_conteudo.php?id='+id_tarefa);
+            $("#modal_detalhe").fadeIn();
+        });
+        $(".fechar-detalhe").click(function(){
+            $("#modal_detalhe").fadeOut();
+        });
+      });
+  </script>
+
   <div class="card-body">
-    <h5 class="card-title">CONTEUDO DINAMICO</h5>
-    <p class="card-text">CONTEUDO DINAMICO</p>
-    <input type="submit" value="Detalhes" class="btn btn-info" data-toggle="modal" data-target="#modalLogo">
+    <?php if(isset($listarTarefas)){?>
+      <?php foreach ($listarTarefas as $tarefa){?>
+      <div class="card">
+          <div class="card-header">
+            <?= $tarefa->getTituloTarefa()?>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text"></p>
+            <a href="#" class="btn btn-primary botao-detalhe" id="<?php echo $tarefa->getIdTarefa()?>">Detalhes</a>
+          </div>
+      </div>
+      <?php }?>
+    <?php }?>
 
 <!-- Modal LOGO-->
-<div class="modal fade" id="modalLogo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal" style="display:none;" id="modal_detalhe" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Montar Logo</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+        <button type="button" class="close fechar-detalhe" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="container col-lg-12 navbar-white">
          <section class="content navbar-light navbar-white">
-           <div class="container-fluid navbar-white ">
-              teste
+           <div class="container-fluid navbar-white" id="conteudo_tarefa">
+
            </div><!-- /.container-fluid -->
          </section>
        </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button"  class="btn btn-secondary fechar-detalhe" data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
 </div>
+
   </div>
 
 </div>
