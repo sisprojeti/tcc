@@ -3,7 +3,7 @@
 /**
  * Criando uma class com o nome "Tarefa" que será responsável por armazenar as tarefas referentes a cada oportunidade
  */
-    class TarefaTeste
+    class Tarefa
     {
       public $id_tarefa;
       public $fk_status_tarefa;
@@ -19,6 +19,20 @@
       public $pessoa_nome;
       public $id_status_tarefa;
       public $fk_ref_aluno_projeti;
+      public $status_tarefa;
+
+      public function __construct($id_tarefa=false){
+          if($id_tarefa){
+            $sql = "select * from tarefa where id_tarefa = :id_tarefa";
+            $stmt = DB::conexao()->prepare($sql);
+            $stmt->bindParam(":id_tarefa",$id_tarefa,PDO::PARAM_INT);
+            $stmt->execute();
+            foreach($stmt as $obj){
+              print_r($obj);
+              $this->setTitulo($obj['titulo']);
+            }
+          }
+        }
 
       public static function listarStatusTarefa()
         {
@@ -29,7 +43,7 @@
                         $registros = $stmt->fetchAll();
                         if($registros){
                           foreach($registros as $objeto){
-                            $temporario = new TarefaTeste();
+                            $temporario = new Tarefa();
                             $temporario->setIdStatusTarefa($objeto['id_status_tarefa']);
                             $temporario->setNomeStatusTarefa($objeto['nome']);
                             $itens[] = $temporario;
@@ -39,6 +53,11 @@
           } catch (Exception $e) {
               echo "ERROR".$e->getMessage();
           }
+        }
+
+        public function getIdTarefa()
+        {
+          return $this->id_tarefa;
         }
 
         // public static function listarTarefas(){
@@ -75,7 +94,7 @@
                           if($registros){
                             foreach($registros as $objeto)
                             {
-                              $temporario = new TarefaTeste();
+                              $temporario = new Tarefa();
                               $temporario->setIdTarefa($objeto['id_tarefa']);
                               $temporario->setTitulo($objeto['titulo']);
                               $temporario->setDataInicio($objeto['data_inicio']);
@@ -94,6 +113,37 @@
             }
           }
 
+          public static function listar()
+            {
+              try {
+                $query = "select * from tarefa";
+                            $stmt = DB::conexao()->prepare($query);
+                            $stmt->execute();
+                            $registros = $stmt->fetchAll();
+                            if($registros){
+                              foreach($registros as $objeto){
+                                $temporario = new Tarefa();
+                                $temporario->setIdTarefa($objeto['id_tarefa']);
+                                $temporario->setTitulo($objeto['titulo']);
+                                $temporario->setDataInicio($objeto['data_inicio']);
+                                $temporario->setDataFim($objeto['data_fim']);
+                                $temporario->setDataConclusao($objeto['data_conclusao']);
+                                $temporario->setDataCadastro($objeto['data_cadastro']);
+                                $temporario->setFkStatusTarefa($objeto['fk_status_tarefa']);
+                                $temporario->setFkRefAlunoProjeti($objeto['fk_ref_aluno_projeti']);
+                                $itens[] = $temporario;
+                              }
+                  return $itens;
+                }
+              } catch (Exception $e) {
+                  echo "ERROR".$e->getMessage();
+              }
+            }
+
+
+          public function setFkStatusTarefa($fk_status_tarefa){
+            $this->fk_status_tarefa = $fk_status_tarefa;
+          }
 
           public function setIdTarefa($id_tarefa)
           {
@@ -112,8 +162,8 @@
                           $registros = $stmt->fetchAll();
                           if($registros){
                             foreach($registros as $objeto){
-                              $temporario = new TarefaTeste();
-                              $temporario->setIdResponsavelTarefa($objeto['fk_ref_aluno_projeti']);
+                              $temporario = new Tarefa();
+                              //$temporario->setIdResponsavelTarefa($objeto['fk_ref_aluno_projeti']);
                               $temporario->setNomeResponsavelTarefa($objeto['pessoa_nome']);
                               $temporario->setStatusTarefa($objeto['status_tarefa']);
                               $itens[] = $temporario;
@@ -123,6 +173,14 @@
             } catch (Exception $e) {
                 echo "ERROR".$e->getMessage();
             }
+          }
+
+          public function setNomeResponsavelTarefa($pessoa_nome){
+            return $this->pessoa_nome;
+          }
+
+          public function setStatusTarefa($status_tarefa){
+            return $this->status_tarefa;
           }
 
           public static function setIdResponsavelTarefa($fk_ref_aluno_projeti){
@@ -175,10 +233,6 @@
           $this->fk_ref_aluno_projeti = $fk_ref_aluno_projeti;
         }
 
-        public function setFkStatusTarefa($fk_status_tarefa)
-        {
-          $this->fk_status_tarefa = $fk_status_tarefa;
-        }
 
         public function setIdStatusTarefa($id_status_tarefa){
           $this->id_status_tarefa = $id_status_tarefa;
