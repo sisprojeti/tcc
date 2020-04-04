@@ -35,7 +35,7 @@
 
 if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
   try {
-      $tarefas = TarefaTeste::listarAlunosTarefa();
+      $tarefas = Tarefa::listarAlunosTarefa();
       foreach ($tarefas as $tarefa) {
         print_r($tarefa);
       }
@@ -222,7 +222,12 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
       <?php foreach ($listarTarefas as $tarefa){?>
       <div class="card">
           <div class="card-header">
-            <?= $tarefa->getTituloTarefa()?>
+            Titulo:<?= $tarefa->getTituloTarefa();?>
+            <br>
+            Responsável:
+            <?= $tarefa->getNomeResponsavelTarefa();?>
+            <br>
+            Status: <?= $tarefa->getNomeStatusTarefa();?>
           </div>
           <div class="card-body">
             <h5 class="card-title"></h5>

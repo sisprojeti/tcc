@@ -66,7 +66,11 @@
     public static function listar()
       {
         try {
-          $query = "select aluno.id_aluno ,pessoa.nome as nome  , aluno.situacao_aluno as situacao_aluno, aluno.matricula as matricula from aluno join pessoa on aluno.fk_pessoa = pessoa.id_pessoa";
+          $query = "SELECT aluno.id_aluno,
+          pessoa.nome as nome ,
+          aluno.situacao_aluno as situacao_aluno,
+          aluno.matricula as matricula
+          from aluno join pessoa on aluno.fk_pessoa = pessoa.id_pessoa";
                       $stmt = DB::conexao()->prepare($query);
                       $stmt->execute();
                       $registros = $stmt->fetchAll();
