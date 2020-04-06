@@ -78,11 +78,10 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
       echo "ERROR".$e->getMessage();
     }
   }
-  echo "<br>";
+  //echo "<br>";
 
 ?>
-
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-light navbar-white">
   <div class="container">
     <a class="navbar-brand" href="#">
       <!-- <img src="img/logo.png" width="150" height="100" class="d-inline-block align-center" alt=""> -->
@@ -90,7 +89,6 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
     </a>
   </div>
 </nav>
-<br>
 <div class="container">
   <!------------------------------------------------------------
 #INICIO BOTÃO DE NOVA TAREFA
@@ -190,16 +188,24 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
   <div class="card-header">
     <ul class="nav nav-tabs">
       <li class="nav-item col s3">
-        <a class="nav-link active" href="#">A Fazer</a>
+        <div>
+          <a class="nav-link active" href="#">A Fazer</a>
+        </div>
       </li>
       <li class="nav-item col s3">
-        <a class="nav-link" href="#">Fazendo</a>
+        <div>
+          <a class="nav-link" href="#">Fazendo</a>
+        </div>
       </li>
       <li class="nav-item col s3">
+        <div>
         <a class="nav-link" href="#">Revisão</a>
+      </div>
       </li>
       <li class="nav-item col s3">
-        <a class="nav-link" href="#">Feito</a>
+        <div>
+          <a class="nav-link" href="#">Feito</a>
+        </div>
       </li>
     </ul>
   </div>
@@ -221,18 +227,35 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
     <?php if(isset($listarTarefas)){?>
       <?php foreach ($listarTarefas as $tarefa){?>
       <div class="card">
-          <div class="card-header">
-            Titulo:<?= $tarefa->getTituloTarefa();?>
-            <br>
-            Responsável:
-            <?= $tarefa->getNomeResponsavelTarefa();?>
-            <br>
-            Status: <?= $tarefa->getNomeStatusTarefa();?>
-          </div>
           <div class="card-body">
-            <h5 class="card-title"></h5>
-            <p class="card-text"></p>
-            <a href="#" class="btn btn-primary botao-detalhe" id="<?php echo $tarefa->getIdTarefa()?>">Detalhes</a>
+            <div class="container">
+          <div class="row">
+            <div class="col-sm" >
+              Titulo: <?= $tarefa->getTituloTarefa();?>
+            </div>
+            <div class="col-sm">
+              Responsável:
+            <?= $tarefa->getNomeResponsavelTarefa();?>
+            </div>
+            <div class="col-sm">
+              Status: <?= $tarefa->getNomeStatusTarefa();?>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm">
+              Data de Início:
+              <?= $tarefa->getDataCadastro();?>
+            </div>
+            <div class="col-sm">
+              Data de Conclusao: 
+              <?= $tarefa->getDataConclusao();?>
+            </div>
+            <div class="col-sm">
+              <a href="#" class="btn btn-primary botao-detalhe" id="<?php echo $tarefa->getIdTarefa()?>">Detalhes</a>
+            </div>
+          </div>
+        </div>
           </div>
       </div>
       <?php }?>
@@ -243,7 +266,7 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Montar Logo</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Detalhes da tarefa</h5>
         <button type="button" class="close fechar-detalhe" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
