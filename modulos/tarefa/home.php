@@ -1,6 +1,6 @@
 <?php
   //require_once('tarefa.model.php');
-  require_once('conexao.php');
+  //require_once('conexao.php');
   //require_once('tarefa.service.php');
   require_once('classes/class.tarefa.php');
   require_once('classes/class.db.php');
@@ -10,8 +10,6 @@
   // require_once 'tarefa_controller.php';
   //$tarefa = new Tarefa();
   $tarefaTeste = new Tarefa();
-  $conexao = new Conexao();
-
 
   //$tarefaService = new TarefaService($conexao, $tarefa);
   ///$tarefas = $tarefaService->recuperar();
@@ -183,6 +181,9 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
  <!------------------------------------------------------------
 # FIM MODAL BOTÃO DE NOVA TAREFA
 --------------------------------------------------------------------------------------------------->
+ <!------------------------------------------------------------
+# MENU DE TAREFAS
+--------------------------------------------------------------------------------------------------->
   <br><br>
   <div class="card text-center">
   <div class="card-header">
@@ -210,6 +211,9 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
     </ul>
   </div>
 
+ <!------------------------------------------------------------
+# FIM MENU DE TAREFAS
+--------------------------------------------------------------------------------------------------->
   <script type="text/javascript">
       $(document).ready(function(){
         $(".botao-detalhe").click(function(){
@@ -224,6 +228,10 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
   </script>
 
   <div class="card-body">
+
+   <!------------------------------------------------------------
+# LISTAR TAREFAS
+--------------------------------------------------------------------------------------------------->
     <?php if(isset($listarTarefas)){?>
       <?php foreach ($listarTarefas as $tarefa){?>
       <div class="card">
@@ -234,11 +242,12 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
               Titulo: <?= $tarefa->getTituloTarefa();?>
             </div>
             <div class="col-sm">
-              Responsável:
-            <?= $tarefa->getNomeResponsavelTarefa();?>
+              Detalhes:
+            <?= $tarefa->getDescricao();?>
             </div>
             <div class="col-sm">
-              Status: <?= $tarefa->getNomeStatusTarefa();?>
+              Responsável:
+            <?= $tarefa->getNomeResponsavelTarefa();?>
             </div>
           </div>
           <br>
@@ -248,11 +257,12 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
               <?= $tarefa->getDataCadastro();?>
             </div>
             <div class="col-sm">
-              Data de Conclusao: 
+              Data de Conclusão: 
               <?= $tarefa->getDataConclusao();?>
             </div>
             <div class="col-sm">
-              <a href="#" class="btn btn-primary botao-detalhe" id="<?php echo $tarefa->getIdTarefa()?>">Detalhes</a>
+              <a href="#" class="btn btn-primary botao-detalhe" id="<?php echo $tarefa->getIdTarefa()?>">Detalhes </a> &nbsp;
+              <a href="#" class="btn btn-danger my-2 my-sm-0"> <i class="fas fa-trash-alt"> </i> </a>
             </div>
           </div>
         </div>
@@ -263,7 +273,7 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
 
 <!-- Modal LOGO-->
 <div class="modal" style="display:none;" id="modal_detalhe" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Detalhes da tarefa</h5>

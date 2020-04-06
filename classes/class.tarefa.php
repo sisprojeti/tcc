@@ -125,6 +125,7 @@
                           tarefa.data_inicio as data_inicio,
                           tarefa.data_fim as data_fim,
                           tarefa.data_conclusao as data_conclusao,
+                          tarefa.descricao as descricao,
                           tarefa.data_cadastro as data_cadastro,
                           tarefa.fk_ref_aluno_projeti as fk_ref_aluno_projeti,
                           tarefa.fk_status_tarefa as fk_status_tarefa,
@@ -150,6 +151,7 @@
                                 $temporario->setFkRefAlunoProjeti($objeto['fk_ref_aluno_projeti']);
                                 $temporario->setNomeResponsavelTarefa($objeto['nome_responsavel_tarefa']);
                                 $temporario->setNomeStatusTarefa($objeto['nome_status']);
+                                $temporario->setDescricao($objeto['descricao']);
                                 $itens[] = $temporario;
                               }
                   return $itens;
