@@ -327,7 +327,7 @@
       }
 
 /*---------------------------------------------------------------------
-  DATA TERMINO
+  DATA FIM
  ---------------------------------------------------------------------*/
 
       public function getDataFim(){
@@ -338,6 +338,13 @@
         $this->data_fim = $data_fim;
       }
 
+/*---------------------------------------------------------------------
+  DATA CONCLUSÃO
+ ---------------------------------------------------------------------*/
+
+       public function getDataConclusao(){
+        return $this->data_conclusao;
+      }
       public function setDataConclusao($data_conclusao)
       {
         $this->data_conclusao = $data_conclusao;

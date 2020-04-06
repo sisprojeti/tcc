@@ -231,7 +231,7 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
             <div class="container">
           <div class="row">
             <div class="col-sm" >
-              Titulo:<?= $tarefa->getTituloTarefa();?>
+              Titulo: <?= $tarefa->getTituloTarefa();?>
             </div>
             <div class="col-sm">
               Responsável:
@@ -245,10 +245,11 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
           <div class="row">
             <div class="col-sm">
               Data de Início:
-              <?= $tarefa->getNomeResponsavelTarefa();?>
+              <?= $tarefa->getDataCadastro();?>
             </div>
             <div class="col-sm">
-              Data de Entrega: 
+              Data de Conclusao: 
+              <?= $tarefa->getDataConclusao();?>
             </div>
             <div class="col-sm">
               <a href="#" class="btn btn-primary botao-detalhe" id="<?php echo $tarefa->getIdTarefa()?>">Detalhes</a>
