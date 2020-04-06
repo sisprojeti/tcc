@@ -188,16 +188,24 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
   <div class="card-header">
     <ul class="nav nav-tabs">
       <li class="nav-item col s3">
-        <a class="nav-link active" href="#">A Fazer</a>
+        <div>
+          <a class="nav-link active" href="#">A Fazer</a>
+        </div>
       </li>
       <li class="nav-item col s3">
-        <a class="nav-link" href="#">Fazendo</a>
+        <div>
+          <a class="nav-link" href="#">Fazendo</a>
+        </div>
       </li>
       <li class="nav-item col s3">
+        <div>
         <a class="nav-link" href="#">Revisão</a>
+      </div>
       </li>
       <li class="nav-item col s3">
-        <a class="nav-link" href="#">Feito</a>
+        <div>
+          <a class="nav-link" href="#">Feito</a>
+        </div>
       </li>
     </ul>
   </div>
@@ -219,18 +227,34 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
     <?php if(isset($listarTarefas)){?>
       <?php foreach ($listarTarefas as $tarefa){?>
       <div class="card">
-          <div class="card-header">
-            Titulo:<?= $tarefa->getTituloTarefa();?>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Responsável:
-            <?= $tarefa->getNomeResponsavelTarefa();?>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Status: <?= $tarefa->getNomeStatusTarefa();?>
-          </div>
           <div class="card-body">
-            <h5 class="card-title"></h5>
-            <p class="card-text"></p>
-            <a href="#" class="btn btn-primary botao-detalhe" id="<?php echo $tarefa->getIdTarefa()?>">Detalhes</a>
+            <div class="container">
+          <div class="row">
+            <div class="col-sm" >
+              Titulo:<?= $tarefa->getTituloTarefa();?>
+            </div>
+            <div class="col-sm">
+              Responsável:
+            <?= $tarefa->getNomeResponsavelTarefa();?>
+            </div>
+            <div class="col-sm">
+              Status: <?= $tarefa->getNomeStatusTarefa();?>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm">
+              Data de Início:
+              <?= $tarefa->getNomeResponsavelTarefa();?>
+            </div>
+            <div class="col-sm">
+              Data de Entrega: 
+            </div>
+            <div class="col-sm">
+              <a href="#" class="btn btn-primary botao-detalhe" id="<?php echo $tarefa->getIdTarefa()?>">Detalhes</a>
+            </div>
+          </div>
+        </div>
           </div>
       </div>
       <?php }?>
