@@ -78,11 +78,10 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
       echo "ERROR".$e->getMessage();
     }
   }
-  echo "<br>";
+  //echo "<br>";
 
 ?>
-
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-light navbar-white">
   <div class="container">
     <a class="navbar-brand" href="#">
       <!-- <img src="img/logo.png" width="150" height="100" class="d-inline-block align-center" alt=""> -->
@@ -90,7 +89,6 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
     </a>
   </div>
 </nav>
-<br>
 <div class="container">
   <!------------------------------------------------------------
 #INICIO BOTÃO DE NOVA TAREFA
@@ -223,10 +221,10 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
       <div class="card">
           <div class="card-header">
             Titulo:<?= $tarefa->getTituloTarefa();?>
-            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             Responsável:
             <?= $tarefa->getNomeResponsavelTarefa();?>
-            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             Status: <?= $tarefa->getNomeStatusTarefa();?>
           </div>
           <div class="card-body">
@@ -243,7 +241,7 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Montar Logo</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Detalhes da tarefa</h5>
         <button type="button" class="close fechar-detalhe" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
