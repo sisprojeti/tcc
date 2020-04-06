@@ -271,10 +271,10 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
       <?php }?>
     <?php }?>
 
-<!-- Modal LOGO-->
+<!-- Modal Detalhe-->
 <div class="modal" style="display:none;" id="modal_detalhe" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
+    <div class="modal-content" style="text-align: left">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Detalhes da tarefa</h5>
         <button type="button" class="close fechar-detalhe" data-dismiss="modal" aria-label="Fechar">
@@ -329,7 +329,8 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
                      </div>
               </div>
 
-              <div class="col-sm-6">
+              <div class="row">  
+              <div class="col-sm-12">
                 <label>Responsável</label>
                 <select class="form-control" name="fk_ref_aluno_projeti" required autofocus>
                  <option value="">Selecione o Responsável</option>
@@ -340,6 +341,7 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
                     <?php endforeach;?>
                   <?php endif;?>
                 </select>
+              </div>
               </div>
       </div>
       <div class="modal-footer">
