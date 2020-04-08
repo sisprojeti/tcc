@@ -58,6 +58,20 @@
           }
         }
 
+        //metodo pra atualizar tarefa
+        public function atualizar(){
+        if($this->id_tarefa){
+          $sql = "UPDATE tarefa SET titulo = :nome where id_tarefa = :id_tarefa";
+          $stmt = DB::conexao()->prepare($sql);
+          $stmt->bindParam(':titulo',$this->titulo);
+          $stmt->execute();
+        }
+      }
+
+      // public function arquivarTarefa(){
+      //   if($this->id_tarefa)
+      // }
+
         public function getIdTarefa()
         {
           return $this->id_tarefa;
