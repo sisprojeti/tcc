@@ -271,7 +271,9 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
       <?php }?>
     <?php }?>
 
-<!-- Modal Detalhe-->
+<!------------------------------------------------------------
+# MODAL DETALHES
+--------------------------------------------------------------------------------------------------->
 <div class="modal" style="display:none;" id="modal_detalhe" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content" style="text-align: left">
@@ -281,6 +283,21 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
+<!------------------------------------------------------------
+# ARRAY PARA RETORNAR
+--------------------------------------------------------------------------------------------------->
+      <div class="container col-lg-12 navbar-white">
+         <section class="content navbar-light navbar-white">
+
+       <div class="container-fluid navbar-white" id="conteudo_tarefa">
+
+           </div><!-- /.container-fluid -->
+         </section>
+       </div>
+<!-------------- FIM ARRAY----------------------------------------------
+# INICIO DO FORMULARIO DE EDIÇÃO
+--------------------------------------------------------------------------------------------------->
       <div class="modal-body">
         <form action="#" method="post">
           <div class="form-group">
@@ -328,7 +345,6 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
                        </select>
                      </div>
               </div>
-
               <div class="row">  
               <div class="col-sm-12">
                 <label>Responsável</label>
@@ -344,6 +360,9 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
               </div>
               </div>
       </div>
+<!------------------------------------------------------------
+# FIM DO FORMULARIO DE EDIÇÃO
+--------------------------------------------------------------------------------------------------->
       <div class="modal-footer">
         <input type="submit" name="button" value="Salvar" class="btn btn-primary" >
       </div>
