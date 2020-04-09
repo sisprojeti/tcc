@@ -257,7 +257,7 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
               <?= $tarefa->getDataCadastro();?>
             </div>
             <div class="col-sm">
-              Data de Conclusão: 
+              Data de Conclusão:
               <?= $tarefa->getDataConclusao();?>
             </div>
             <div class="col-sm">
@@ -345,7 +345,7 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
                        </select>
                      </div>
               </div>
-              <div class="row">  
+              <div class="row">
               <div class="col-sm-12">
                 <label>Responsável</label>
                 <select class="form-control" name="fk_ref_aluno_projeti" required autofocus>
