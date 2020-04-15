@@ -1,18 +1,9 @@
 <?php
-  //require_once('tarefa.model.php');
-  //require_once('conexao.php');
-  //require_once('tarefa.service.php');
   require_once('classes/class.tarefa.php');
   require_once('classes/class.db.php');
   require_once('classes/class.refAlunoProjeti.php');
-
-  //$action = 'recuperar';
-  // require_once 'tarefa_controller.php';
-  //$tarefa = new Tarefa();
   $tarefaTeste = new Tarefa();
 
-  //$tarefaService = new TarefaService($conexao, $tarefa);
-  ///$tarefas = $tarefaService->recuperar();
   try{
     $listarStatus = Tarefa::listarStatusTarefa();
   } catch (PDOException $e) {
@@ -26,7 +17,6 @@
 
  try{
       $listarTarefas = Tarefa::listar();
-      //print_r($listarTarefas);
   }catch(PDOException $e){
     echo "ERROR".$e->getMessage();
   }
@@ -42,11 +32,6 @@
 //    }
 // }
 
-
-  //
-  // echo "<pre>";
-  // print_r($tarefas);
-  // echo "</pre>";
   if(isset($_POST["button"]) && ($_POST["button"] === "Salvar")){
     try{
       $data_cadastro = date("Y-m-d");
@@ -66,18 +51,10 @@
       //   $turma->setStatusFinalizada(false);
       //  }
 
-
-      // $refAlunoTarefa = new RefAlunoTarefa();
-      // $refAlunoTarefa->setFkTarefa($ultimaTarefa);
-      // $refAlunoTarefa->setFkRefAlunoTarefa();
-      // $refAlunoTarefa->adicionar();
-
     }catch(PDOException $e){
       echo "ERROR".$e->getMessage();
     }
   }
-  //echo "<br>";
-
 ?>
 <nav class="navbar navbar-light navbar-white">
   <div class="container">
