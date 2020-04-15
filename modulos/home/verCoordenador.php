@@ -9,6 +9,8 @@ include_once('classes/class.curso.php');
 include_once('classes/class.exercicio.php');
 include_once('classes/class.etapa.php');
 include_once('classes/class.grupo.php');
+include_once('classes/class.tarefa.php');
+
 
 try{
   $totalPessoas = Pessoa::contarPessoas();
@@ -16,7 +18,7 @@ try{
   $totalProfessores = Professor::contarProfessores();
   $totalCoordenadores = Coordenador::contarCoordenadores();
   $totalTurmas = Turma::contarTurmas();
-  //$totalTarefas = Tarefa::contarTarefas();
+  $totalTarefas = Tarefa::contarTarefas();
   $totalCursos = Curso::contarCursos();
   $totalExercicios = Exercicio::contarExercicio();
   $totalEtapas = Etapa::contarEtapas();
