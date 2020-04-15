@@ -1,18 +1,9 @@
 <?php
-  //require_once('tarefa.model.php');
-  //require_once('conexao.php');
-  //require_once('tarefa.service.php');
   require_once('classes/class.tarefa.php');
   require_once('classes/class.db.php');
   require_once('classes/class.refAlunoProjeti.php');
-
-  $action = 'recuperar';
-  // require_once 'tarefa_controller.php';
-  //$tarefa = new Tarefa();
   $tarefaTeste = new Tarefa();
 
-  //$tarefaService = new TarefaService($conexao, $tarefa);
-  ///$tarefas = $tarefaService->recuperar();
   try{
     $listarStatus = Tarefa::listarStatusTarefa();
   } catch (PDOException $e) {
@@ -26,27 +17,21 @@
 
  try{
       $listarTarefas = Tarefa::listar();
-      //print_r($listarTarefas);
   }catch(PDOException $e){
     echo "ERROR".$e->getMessage();
   }
 
-if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
-  try {
-      $tarefas = Tarefa::listarAlunosTarefa();
-      foreach ($tarefas as $tarefa) {
-        print_r($tarefa);
-      }
-  } catch (Exception $e) {
-    echo "ERROR:".$e->getMessage();
-   }
-}
+// if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
+//   try {
+//       $tarefas = Tarefa::listarAlunosTarefa();
+//       foreach ($tarefas as $tarefa) {
+//         print_r($tarefa);
+//       }
+//   } catch (Exception $e) {
+//     echo "ERROR:".$e->getMessage();
+//    }
+// }
 
-
-  //
-  // echo "<pre>";
-  // print_r($tarefas);
-  // echo "</pre>";
   if(isset($_POST["button"]) && ($_POST["button"] === "Salvar")){
     try{
       $data_cadastro = date("Y-m-d");
@@ -66,18 +51,10 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
       //   $turma->setStatusFinalizada(false);
       //  }
 
-
-      // $refAlunoTarefa = new RefAlunoTarefa();
-      // $refAlunoTarefa->setFkTarefa($ultimaTarefa);
-      // $refAlunoTarefa->setFkRefAlunoTarefa();
-      // $refAlunoTarefa->adicionar();
-
     }catch(PDOException $e){
       echo "ERROR".$e->getMessage();
     }
   }
-  //echo "<br>";
-
 ?>
 <nav class="navbar navbar-light navbar-white">
   <div class="container">
@@ -290,7 +267,7 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
       <div class="container col-lg-12 navbar-white">
          <section class="content navbar-light navbar-white">
 
-       <div class="container-fluid navbar-white" id="conteudo_tarefa">
+           <div class="container-fluid navbar-white" id="conteudo_tarefa">
 
            </div><!-- /.container-fluid -->
          </section>
@@ -298,68 +275,7 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
 <!-------------- FIM ARRAY----------------------------------------------
 # INICIO DO FORMULARIO DE EDIÇÃO
 --------------------------------------------------------------------------------------------------->
-      <div class="modal-body">
-        <form action="#" method="post">
-          <div class="form-group">
-            <label class="col-form-label">Título:</label>
-            <input type="text" class="form-control" name="titulo" id="titulo">
-          </div>
-          <div class="form-group">
-            <label class="col-form-label">Descrição:</label>
-            <textarea class="form-control" id="descricao" name="descricao"></textarea>
-          </div>
-           <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Data de Ínicio:</label>
-                        <input type="date" class="form-control" name="data_inicio" id="data_inicio" >
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Data de Término:</label>
-                        <input type="date" class="form-control" name="data_fim" id="data_fim">
-                      </div>
-                    </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Data de Entrega:</label>
-                        <input type="date" class="form-control" name="data_conclusao" id="data_entrega">
-                      </div>
-                    </div>
-                     <!-- select -->
 
-                     <div class="col-sm-6">
-                       <label>Status Tarefa</label>
-                       <select class="form-control" name="fk_status_tarefa" required autofocus>
-                        <option value="">Selecione o status</option>
-                         <?php if(isset($listarStatus)):?>
-                           <?php foreach ($listarStatus as $status):?>
-                             <?php //if($aluno->getSituacaoAluno()):?>
-                             <option value="<?php echo $status->getIdStatusTarefa();?>"><?php echo $status->getNomeStatusTarefa();?></option>
-                           <?php endforeach;?>
-                         <?php endif;?>
-                       </select>
-                     </div>
-              </div>
-              <div class="row">
-              <div class="col-sm-12">
-                <label>Responsável</label>
-                <select class="form-control" name="fk_ref_aluno_projeti" required autofocus>
-                 <option value="">Selecione o Responsável</option>
-                  <?php if(isset($listarAlunosProjeti)):?>
-                    <?php foreach ($listarAlunosProjeti as $alunosProjeti):?>
-                      <?php //if($aluno->getSituacaoAluno()):?>
-                      <option value="<?php echo $alunosProjeti->getIdRefAlunoProjeti();?>"><?php echo $alunosProjeti->getNomeAlunoProjeti();?></option>
-                    <?php endforeach;?>
-                  <?php endif;?>
-                </select>
-              </div>
-              </div>
-      </div>
 <!------------------------------------------------------------
 # FIM DO FORMULARIO DE EDIÇÃO
 --------------------------------------------------------------------------------------------------->

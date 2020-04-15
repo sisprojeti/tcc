@@ -175,13 +175,6 @@
               }
             }
 
-
-
-          public function getNomeResponsavelTarefa()
-          {
-            return $this->nome_responsavel_tarefa;
-          }
-
           public function setFkStatusTarefa($fk_status_tarefa){
             $this->fk_status_tarefa = $fk_status_tarefa;
           }
@@ -254,6 +247,11 @@
 
           public function setNomeResponsavelTarefa($nome_responsavel_tarefa){
             $this->nome_responsavel_tarefa = $nome_responsavel_tarefa;
+          }
+
+          public function getNomeResponsavelTarefa()
+          {
+            return $this->nome_responsavel_tarefa;
           }
 
           public function setStatusTarefa($status_tarefa){
@@ -376,7 +374,7 @@
         return $this->responsavel;
       }
 
-      public function setResponsavel(){
+      public function setResponsavel($responsavel){
         $this->responsavel = $responsavel;
       }
 
