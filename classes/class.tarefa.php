@@ -59,11 +59,12 @@
         }
 
         //metodo pra atualizar tarefa
-        public function atualizar(){
+        public function AtualizarTarefa($idm,$titulo){
         if($this->id_tarefa){
-          $sql = "UPDATE tarefa SET titulo = :nome where id_tarefa = :id_tarefa";
+          $sql = "UPDATE tarefa SET titulo = :titulo where id_tarefa = :id_tarefa";
           $stmt = DB::conexao()->prepare($sql);
-          $stmt->bindParam(':titulo',$this->titulo);
+          $stmt->bindParam(':id',$id,PDO::PARAM_INT)
+          $stmt->bindParam(':titulo',$this->titulo,PDO::PARAM_STR);
           $stmt->execute();
         }
       }
