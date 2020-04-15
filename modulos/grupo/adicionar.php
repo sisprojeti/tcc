@@ -75,11 +75,11 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
       <input class="form-control" disabled value="<?php echo $turma_aluno->getNomeTurma();?>" type="text" name="turma" placeholder="trazer de forma autormatica">
       </div>
       <label for="inputEmail4">Tema do Projeti</label>
-      <input type="text" class="form-control" id="inputEmail4" placeholder="Insira o tema do projeti" name="tema">
+      <input type="text" class="form-control" id="inputEmail4" placeholder="Insira o tema do projeti" name="tema" required>
      </div>
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-12">
         <label for="inputPassword4">Descrição</label>
-        <input name="descricao" type="text" class="form-control" id="inputPassword4" placeholder="Digite uma breve descrição do seu projeti">
+        <textarea name="descricao" type="text" class="form-control" id="inputPassword4" placeholder="Digite uma breve descrição do seu projeti" required></textarea>
       </div>
     </div>
 
@@ -87,7 +87,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
      <div class="form-row">
        <div class="form-group col-md-12">
          <label for="inputState">Escolha o Aluno</label>
-         <select name="aluno_um" id="aluno_um" class="form-control" data-live-search="true">
+         <select name="aluno_um" id="aluno_um" class="form-control" data-live-search="true" required>
            <option value="">Selecione o ALuno</option>
            <?php
            $alunos = Aluno::listarAlunosTurma($turma_aluno->getIdTurma());
@@ -104,8 +104,8 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
 
            <div class="form-group col-md-12">
              <label for="inputState">Escolha o Aluno</label>
-             <select name="aluno_dois" id="aluno_dois" class="form-control" data-live-search="true">
-               <option value="">Selecione o ALuno</option>
+             <select name="aluno_dois" id="aluno_dois" class="form-control" data-live-search="true" required>
+               <option value="">Selecione o Aluno</option>
                <?php
                $alunos = Aluno::listarAlunosTurma($turma_aluno->getIdTurma());
                foreach($alunos as $aluno){
@@ -116,7 +116,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
            </div>
            <div class="form-group col-md-12">
              <label for="inputState">Escolha o Aluno</label>
-             <select name="aluno_tres" id="aluno_tres" class="form-control" data-live-search="true">
+             <select name="aluno_tres" id="aluno_tres" class="form-control" data-live-search="true" required>
                <option value="">Selecione o ALuno</option>
                <?php
                $alunos = Aluno::listarAlunosTurma($turma_aluno->getIdTurma());
