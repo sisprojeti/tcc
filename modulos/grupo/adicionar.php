@@ -57,6 +57,13 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
 
 
 ?>
+<style>
+       .error{
+             color:red
+       }
+</style>
+
+
 <div>
   <br>
   <p> CADASTRAR GRUPO</p>
@@ -67,7 +74,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
 <div class="col-sm">
 </div>
 <div class="col-sm-12">
-  <form action="#" method="POST">
+  <form action="#" id="cad_grupos" method="POST">
     <div class="form-row">
       <div class="form-group col-lg-12">
       <div class="form-group">
@@ -75,11 +82,11 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
       <input class="form-control" disabled value="<?php echo $turma_aluno->getNomeTurma();?>" type="text" name="turma" placeholder="trazer de forma autormatica">
       </div>
       <label for="inputEmail4">Tema do Projeti</label>
-      <input type="text" class="form-control" id="inputEmail4" placeholder="Insira o tema do projeti" name="tema" required>
+      <input type="text" class="form-control" id="projeti" placeholder="Insira o tema do projeti" name="projeti" required>
      </div>
       <div class="form-group col-md-12">
         <label for="inputPassword4">Descrição</label>
-        <textarea name="descricao" type="text" class="form-control" id="inputPassword4" placeholder="Digite uma breve descrição do seu projeti" required></textarea>
+        <textarea name="descricao" type="text" class="form-control" id="descricao" placeholder="Digite uma breve descrição do seu projeti" required></textarea>
       </div>
     </div>
 
@@ -135,3 +142,68 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
     </div>
   </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+      <script>
+            $("#cad_grupos").validate({
+       rules : {
+              projeti:{
+                    required:true,
+                    minlength:6,
+                    accept: "[a-zA-Z]+",
+                    lettersonly: true,
+             },
+             descricao:{
+                    required:true,
+                    minlength:6,
+                    accept: "[a-zA-Z]+",
+                    lettersonly: true,
+
+             },
+              aluno_um:{
+
+                    required:true,
+
+             },
+              aluno_dois:{
+
+                    required:true,
+
+             },
+              aluno_tres:{
+
+                    required:true,
+
+             },
+       },
+       messages:{
+            projeti:{
+                    required:"Por favor, insira o tema do projeti",
+                    minlength:"No mínimo 6 letras",
+                    accept: "Cuidado! preencha o tema sem caracteres especiais",
+                    lettersonly: "Apenas Letras"
+             },
+             descricao:{
+                    required:"Por favor, informe a descricao",
+                    minlength:"No mínimo 6 letras",
+                    accept: "Cuidado! preencha a descricao sem caracteres especiais",
+                    lettersonly: "Apenas Letras"
+             },
+             aluno_um:{
+                    required:"Por favor, selecione um aluno",
+                    
+             },
+             aluno_dois:{
+                    required:"Por favor, selecione um aluno",
+             },
+             aluno_tres:{
+                    required:"Por favor, selecione um aluno",
+             },
+
+       }
+
+});
+
+       </script>
