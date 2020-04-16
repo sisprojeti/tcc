@@ -1,5 +1,4 @@
 <?php
-    include "css/include.php";
     session_start();
 
     if(isset($_POST['botao']) && $_POST["botao"] == "Sair"){
@@ -441,7 +440,7 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
+<?php include "css/include.php"; ?>
 </body>
 </html>
 <?php } ?>

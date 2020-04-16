@@ -1,0 +1,12 @@
+.area_menu{
+box-sizing: border-box;
+  margin-top: 20px;
+  padding: 0 20px;
+  display: flex;
+ flex-flow: row wrap;
+  justify-content: space-between;
+}
+.texto-area{
+	font-size: 1.5em;
+	width: 200px;
+}
