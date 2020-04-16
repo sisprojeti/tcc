@@ -41,7 +41,13 @@
         return $ultimoIdUsuario;
       }
 
+      //+=============QUERY PRA VERIFICAR SE O ACADÊMICO
+      // $query = "SELECT pessoa.nome as nome_aluno,ref_aluno_projeti.fk_aluno as fk_aluno from aluno join ref_aluno_projeti
+      // on aluno.id_aluno = ref_aluno_projeti.fk_aluno
+      //  join pessoa on pessoa.id_pessoa = aluno.fk_pessoa";
+
       //fazer atualização na função de logar pra verificar se o usuário logado já esta em algum grupo de projeti
+      //veficiar como fazer lógica de verificar se o usuário está em algum grupo antes de realizar o login dele
       public static function logar($cpf = false, $senha = false){
         if($cpf && $senha){
           $sql = "SELECT ref_usuario_grupo.fk_grupo as fk_grupo,
