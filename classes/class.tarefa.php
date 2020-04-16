@@ -59,11 +59,13 @@
         }
 
         //metodo pra atualizar tarefa
-        public function AtualizarTarefa($idm,$titulo){
+        //atualizar o atributo status para a tarefa mudar de aba
+        //verificar se é possível alterar a chave estrangeira do status pra alterar a aba da tarefa
+        public function AtualizarTarefa($id,$titulo){
         if($this->id_tarefa){
           $sql = "UPDATE tarefa SET titulo = :titulo where id_tarefa = :id_tarefa";
           $stmt = DB::conexao()->prepare($sql);
-          $stmt->bindParam(':id',$id,PDO::PARAM_INT)
+          $stmt->bindParam(':id',$id,PDO::PARAM_INT);
           $stmt->bindParam(':titulo',$this->titulo,PDO::PARAM_STR);
           $stmt->execute();
         }
