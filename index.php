@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     if(isset($_POST['botao']) && $_POST["botao"] == "Sair"){
       session_destroy();
       header('Location:login.php');
@@ -17,19 +16,14 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SISP - Conteudo Dinamico</title>
+  <link rel="stylesheet" type="text/css" href="publico/css/import.css">
   <link rel="shortcut icon" href="img/logos.png">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+ 
 </head>
 <!--<body class="hold-transition sidebar-mini layout-fixed"> -->
 <body class="sidebar-mini skin-yellow-light" style="height: auto; min-height: 100%;">
 <div class="wrapper">
-
-
   <nav class="main-header navbar navbar-expand navbar-light navbar-orange">
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -440,7 +434,117 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
-<?php include "css/include.php"; ?>
+<html>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script type="text/javascript" src="js/anexos.js"></script>
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="publico/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="publico/plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="publico/plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="publico/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="publico/plugins/jqvmap/maps/jquery.vmap.world.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="publico/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="publico/plugins/moment/moment.min.js"></script>
+<script src="publico/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="publico/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="publico/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="publico/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script><!-- PELO CDN -->
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"> </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+  <script src="publico/plugins/jquery-ui/jquery-ui.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+  <script src="publico/plugins/jquery-ui/jquery-ui.min.js"></script>
+  <script>
+
+      function editar(id, txt_tarefa) {
+
+        //criar um form de edição
+        let form = document.createElement('form')
+        form.action = 'index.php?modulo=tarefa&acao=tarefa_atualizar'
+        form.method = 'post'
+        form.className = 'row'
+
+        //criar um input para entrada do texto
+        let inputTarefa = document.createElement('input')
+        inputTarefa.type = 'text'
+        inputTarefa.name = 'tarefa'
+        inputTarefa.className = 'col-9 form-control'
+        inputTarefa.value = txt_tarefa
+
+        //criar um input hidden para guardar o id da tarefa
+        let inputId = document.createElement('input')
+        inputId.type = 'hidden'
+        inputId.name = 'id'
+        inputId.value = id
+
+        //criar um button para envio do form
+        let button = document.createElement('button')
+        button.type = 'submit'
+        button.className = 'col-3 btn btn-info'
+        button.innerHTML = 'Atualizar'
+
+        //incluir inputTarefa no form
+        form.appendChild(inputTarefa)
+
+        //incluir inputId no form
+        form.appendChild(inputId)
+
+        //incluir button no form
+        form.appendChild(button)
+
+        //teste
+        //console.log(form)
+
+        //selecionar a div tarefa
+        let tarefa = document.getElementById('tarefa_'+id)
+
+        //limpar o texto da tarefa para inclusão do form
+        tarefa.innerHTML = ''
+
+        //incluir form na página
+        tarefa.insertBefore(form, tarefa[0])
+
+      }
+
+      function remover(id) {
+        location.href = 'todas_tarefas.php?acao=remover&id='+id;
+      }
+
+      function marcarRealizada(id) {
+        location.href = 'todas_tarefas.php?acao=marcarRealizada&id='+id;
+      }
+    </script>
+</html>
 </body>
 </html>
 <?php } ?>
