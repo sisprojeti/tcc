@@ -76,7 +76,7 @@
   <!------------------------------------------------------------
 #MODAL BOTÃO DE NOVA TAREFA
 --------------------------------------------------------------------------------------------------->
-<?php 
+<?php
   include "adicionar.php";
 ?>
 
@@ -117,11 +117,12 @@
       $(document).ready(function(){
         $(".botao-detalhe").click(function(){
             var id_tarefa = $(this).attr("id");
+            //alert(id_tarefa);
             $("#conteudo_tarefa").load('modulos/tarefa/ajax/carrega_conteudo.php?id='+id_tarefa);
-            $("#modal_detalhe").fadeIn();
+            $("#modal_detalhe").show();
         });
         $(".fechar-detalhe").click(function(){
-            $("#modal_detalhe").fadeOut();
+            $("#modal_detalhe").hide();
         });
       });
   </script>

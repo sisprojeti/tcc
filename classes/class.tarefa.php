@@ -26,16 +26,49 @@
 
       public function __construct($id_tarefa=false){
           if($id_tarefa){
-            $sql = "select * from tarefa where id_tarefa = :id_tarefa";
+            $sql = "SELECT pessoa.nome as nome_responsavel_tarefa,
+                        tarefa.id_tarefa as id_tarefa,
+                        tarefa.titulo as titulo,
+                        tarefa.data_inicio as data_inicio,
+                        tarefa.data_fim as data_fim,
+                        tarefa.data_conclusao as data_conclusao,
+                        tarefa.descricao as descricao,
+                        tarefa.data_cadastro as data_cadastro,
+                        tarefa.fk_ref_aluno_projeti as fk_ref_aluno_projeti,
+                        tarefa.fk_status_tarefa as fk_status_tarefa,
+                        status_tarefa.nome as nome_status
+                        from tarefa
+                        join ref_aluno_projeti on tarefa.fk_ref_aluno_projeti = ref_aluno_projeti.id_ref_aluno_projeti
+                        join aluno on ref_aluno_projeti.fk_aluno = aluno.id_aluno
+                        join pessoa on aluno.fk_pessoa = pessoa.id_pessoa
+                        join status_tarefa on status_tarefa.id_status_tarefa = tarefa.fk_status_tarefa";
             $stmt = DB::conexao()->prepare($sql);
             $stmt->bindParam(":id_tarefa",$id_tarefa,PDO::PARAM_INT);
             $stmt->execute();
             foreach($stmt as $obj){
-              print_r($obj);
               $this->setTitulo($obj['titulo']);
+              $this->setDataInicio($obj['data_inicio']);
+              $this->setDataFim($obj['data_fim']);
+              $this->setDataConclusao($obj['data_conclusao']);
+              $this->setDescricao($obj['descricao']);
+              $this->setDataCadastro($obj['descricao']);
+              $this->setFkStatusTarefa($obj['fk_status_tarefa']);
+              $this->setFkRefAlunoProjeti($obj['fk_ref_aluno_projeti']);
+              $this->setNomeResponsavelTarefa($obj['nome_responsavel_tarefa']);
+              $this->setNomeStatusTarefa($obj['nome_status']);
             }
           }
         }
+
+      public function getFkStatusTarefa()
+      {
+        return $this->fk_status_tarefa;
+      }
+
+      public function getFkRefAlunoProjeti()
+      {
+        return $this->fk_ref_aluno_projeti;
+      }
 
       public static function listarStatusTarefa(){
         try {
@@ -106,8 +139,13 @@
                 echo "ERROR".$e->getMessage();
             }
           }
+
+          //query pra listar o nome e a fk do Aluno
+          //select pessoa.nome,ref_aluno_projeti.fk_aluno
+          //from pessoa join aluno join ref_aluno_projeti on pessoa.id_pessoa = aluno.fk_pessoa;
           public static function listar(){
-            try { $query = "SELECT pessoa.nome as nome_responsavel_tarefa,
+            try {
+              $query = "SELECT pessoa.nome as nome_responsavel_tarefa,
                           tarefa.id_tarefa as id_tarefa,
                           tarefa.titulo as titulo,
                           tarefa.data_inicio as data_inicio,
@@ -136,7 +174,7 @@
                                 $temporario->setDataConclusao($objeto['data_conclusao']);
                                 $temporario->setDataCadastro($objeto['data_cadastro']);
                                 $temporario->setFkStatusTarefa($objeto['fk_status_tarefa']);
-                                $temporario->setFkRefAlunoProjeti($objeto['fk_ref_aluno_projeti']);
+                                $temporario->setFkAluno($objeto['fk_aluno']);
                                 $temporario->setNomeResponsavelTarefa($objeto['nome_responsavel_tarefa']);
                                 $temporario->setNomeStatusTarefa($objeto['nome_status']);
                                 $temporario->setDescricao($objeto['descricao']);
@@ -307,7 +345,7 @@
   DATA INICIO
  ---------------------------------------------------------------------*/
       public function getDataInicio(){
-        return $this->$data_inicio;
+        return $this->data_inicio;
       }
 
       public function setDataInicio($data_inicio){

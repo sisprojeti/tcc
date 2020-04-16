@@ -3,7 +3,7 @@
         $(".botao-detalhe").click(function(){
             var id_tarefa = $(this).attr("id");
             $("#conteudo_tarefa").load('modulos/tarefa/ajax/carrega_conteudo.php?id='+id_tarefa);
-            $("#modal_detalhe").fadeIn();
+            $("#modal_detalhe").hide();
         });
         $(".fechar-detalhe").click(function(){
             $("#modal_detalhe").fadeOut();
