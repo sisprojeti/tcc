@@ -153,13 +153,13 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
                     required:true,
                     minlength:6,
                     accept: "[a-zA-Z]+",
-                    lettersonly: true,
+                    
              },
              descricao:{
                     required:true,
                     minlength:6,
                     accept: "[a-zA-Z]+",
-                    lettersonly: true,
+            
 
              },
               aluno_um:{
@@ -183,13 +183,12 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
                     required:"Por favor, insira o tema do projeti",
                     minlength:"No mínimo 6 letras",
                     accept: "Cuidado! preencha o tema sem caracteres especiais",
-                    lettersonly: "Apenas Letras"
+                    
              },
              descricao:{
                     required:"Por favor, informe a descricao",
                     minlength:"No mínimo 6 letras",
                     accept: "Cuidado! preencha a descricao sem caracteres especiais",
-                    lettersonly: "Apenas Letras"
              },
              aluno_um:{
                     required:"Por favor, selecione um aluno",
