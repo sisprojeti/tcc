@@ -204,5 +204,8 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
        }
 
 });
+            jQuery.validator.addMethod("accept", function(value, element, param) {
+              return value.match(new RegExp("." + param + "$"));
+            });
 
        </script>
