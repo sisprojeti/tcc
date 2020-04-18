@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18-Abr-2020 às 21:23
+-- Generation Time: 18-Abr-2020 às 21:34
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `sisp13`
+-- Database: `sisp14`
 --
 
 -- --------------------------------------------------------
@@ -96,7 +96,6 @@ INSERT INTO `aluno` (`id_aluno`, `data_matricula`, `situacao_aluno`, `fk_pessoa`
 CREATE TABLE IF NOT EXISTS `boletim` (
   `id_boletim` int(11) NOT NULL AUTO_INCREMENT,
   `nota_final` double DEFAULT NULL,
-  `fk_ref_aluno_projeti` int(11) NOT NULL,
   PRIMARY KEY (`id_boletim`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -281,10 +280,8 @@ CREATE TABLE IF NOT EXISTS `nota` (
   `id_nota` int(11) NOT NULL AUTO_INCREMENT,
   `valor` double NOT NULL,
   `data_modificacao` date NOT NULL,
-  `fk_ref_aluno_projeti` int(11) NOT NULL,
   `fk_ref_criterio_formulario` int(11) NOT NULL,
   PRIMARY KEY (`id_nota`),
-  KEY `fk_nota_ref_aluno_projeti1` (`fk_ref_aluno_projeti`),
   KEY `fk_nota_ref_criterio_formulario1` (`fk_ref_criterio_formulario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -422,18 +419,9 @@ INSERT INTO `professor` (`id_professor`, `data_cadastro`, `fk_pessoa`) VALUES
 CREATE TABLE IF NOT EXISTS `projeti` (
   `id_projeti` int(11) NOT NULL AUTO_INCREMENT,
   `tema` varchar(255) NOT NULL,
-  `descricao` text NOT NULL,
+  `decricao` text NOT NULL,
   PRIMARY KEY (`id_projeti`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
-
---
--- Extraindo dados da tabela `projeti`
---
-
-INSERT INTO `projeti` (`id_projeti`, `tema`, `descricao`) VALUES
-(1, 'tema 1', 'fadfadfaf'),
-(2, '', ''),
-(3, '', '');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -448,16 +436,7 @@ CREATE TABLE IF NOT EXISTS `ref_aluno_projeti` (
   PRIMARY KEY (`id_ref_aluno_projeti`),
   KEY `fk_ref_aluno_projeti_projeti1` (`fk_projeti`),
   KEY `fk_ref_aluno_projeti_aluno1` (`fk_aluno`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
-
---
--- Extraindo dados da tabela `ref_aluno_projeti`
---
-
-INSERT INTO `ref_aluno_projeti` (`id_ref_aluno_projeti`, `fk_projeti`, `fk_aluno`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 1, 3);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -598,22 +577,13 @@ CREATE TABLE IF NOT EXISTS `tarefa` (
   `descricao` varchar(255) DEFAULT NULL,
   `data_cadastro` date DEFAULT NULL,
   `fk_status_tarefa` int(11) NOT NULL,
-  `fk_ref_aluno_projeti` int(11) NOT NULL,
+  `fk_projeti` int(11) NOT NULL,
+  `fk_aluno` int(11) NOT NULL,
   PRIMARY KEY (`id_tarefa`),
   KEY `fk_tarefa_status_tarefa1` (`fk_status_tarefa`),
-  KEY `fk_tarefa_ref_aluno_projeti1` (`fk_ref_aluno_projeti`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
---
--- Extraindo dados da tabela `tarefa`
---
-
-INSERT INTO `tarefa` (`id_tarefa`, `titulo`, `data_inicio`, `data_fim`, `data_conclusao`, `descricao`, `data_cadastro`, `fk_status_tarefa`, `fk_ref_aluno_projeti`) VALUES
-(1, 'Mon Hang', '2020-03-03', '2020-03-27', '0000-00-00', 'fasfafa', '2020-03-31', 1, 1),
-(2, 'teste', '2020-04-02', '2020-04-16', '0000-00-00', 'aaaaaaaa', '2020-04-07', 1, 2),
-(3, 'teste', '2020-04-02', '2020-04-16', '0000-00-00', 'aaaaaaaa', '2020-04-07', 1, 2),
-(4, 'sensei', '2020-04-10', '2020-04-03', '2020-04-23', 'aaaaa', '2020-04-16', 1, 2),
-(5, 'sensei', '2020-04-10', '2020-04-03', '2020-04-23', 'aaaaa', '2020-04-16', 1, 2);
+  KEY `fk_tarefa_projeti1` (`fk_projeti`),
+  KEY `fk_tarefa_aluno1` (`fk_aluno`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -695,16 +665,15 @@ ALTER TABLE `coordenador`
 -- Limitadores para a tabela `nota`
 --
 ALTER TABLE `nota`
-  ADD CONSTRAINT `fk_nota_ref_aluno_projeti1` FOREIGN KEY (`fk_ref_aluno_projeti`) REFERENCES `ref_aluno_projeti` (`id_ref_aluno_projeti`),
   ADD CONSTRAINT `fk_nota_ref_criterio_formulario1` FOREIGN KEY (`fk_ref_criterio_formulario`) REFERENCES `ref_criterio_formulario` (`id_ref_criterio_formulario`);
 
 --
 -- Limitadores para a tabela `operacao`
 --
 ALTER TABLE `operacao`
+  ADD CONSTRAINT `fk_operacao_modulo1` FOREIGN KEY (`fk_modulo`) REFERENCES `modulo` (`id_modulo`),
   ADD CONSTRAINT `fk_operacao_acao1` FOREIGN KEY (`fk_acao`) REFERENCES `acao` (`id_acao`),
-  ADD CONSTRAINT `fk_operacao_grupo1` FOREIGN KEY (`fk_grupo`) REFERENCES `grupo` (`id_grupo`),
-  ADD CONSTRAINT `fk_operacao_modulo1` FOREIGN KEY (`fk_modulo`) REFERENCES `modulo` (`id_modulo`);
+  ADD CONSTRAINT `fk_operacao_grupo1` FOREIGN KEY (`fk_grupo`) REFERENCES `grupo` (`id_grupo`);
 
 --
 -- Limitadores para a tabela `professor`
@@ -716,8 +685,8 @@ ALTER TABLE `professor`
 -- Limitadores para a tabela `ref_aluno_projeti`
 --
 ALTER TABLE `ref_aluno_projeti`
-  ADD CONSTRAINT `fk_ref_aluno_projeti_aluno1` FOREIGN KEY (`fk_aluno`) REFERENCES `aluno` (`id_aluno`),
-  ADD CONSTRAINT `fk_ref_aluno_projeti_projeti1` FOREIGN KEY (`fk_projeti`) REFERENCES `projeti` (`id_projeti`);
+  ADD CONSTRAINT `fk_ref_aluno_projeti_projeti1` FOREIGN KEY (`fk_projeti`) REFERENCES `projeti` (`id_projeti`),
+  ADD CONSTRAINT `fk_ref_aluno_projeti_aluno1` FOREIGN KEY (`fk_aluno`) REFERENCES `aluno` (`id_aluno`);
 
 --
 -- Limitadores para a tabela `ref_aluno_turma`
@@ -737,29 +706,30 @@ ALTER TABLE `ref_coordenador_curso`
 -- Limitadores para a tabela `ref_criterio_formulario`
 --
 ALTER TABLE `ref_criterio_formulario`
-  ADD CONSTRAINT `fk_ref_criterio_formulario_criterio1` FOREIGN KEY (`fk_criterio`) REFERENCES `criterio` (`id_criterio`),
-  ADD CONSTRAINT `fk_ref_criterio_formulario_formulario1` FOREIGN KEY (`fk_formulario`) REFERENCES `formulario` (`id_formulario`);
+  ADD CONSTRAINT `fk_ref_criterio_formulario_formulario1` FOREIGN KEY (`fk_formulario`) REFERENCES `formulario` (`id_formulario`),
+  ADD CONSTRAINT `fk_ref_criterio_formulario_criterio1` FOREIGN KEY (`fk_criterio`) REFERENCES `criterio` (`id_criterio`);
 
 --
 -- Limitadores para a tabela `ref_prof_turma`
 --
 ALTER TABLE `ref_prof_turma`
-  ADD CONSTRAINT `fk_ref_prof_turma_professor1` FOREIGN KEY (`fk_professor`) REFERENCES `professor` (`id_professor`),
-  ADD CONSTRAINT `fk_ref_prof_turma_turma1` FOREIGN KEY (`fk_turma`) REFERENCES `turma` (`id_turma`);
+  ADD CONSTRAINT `fk_ref_prof_turma_turma1` FOREIGN KEY (`fk_turma`) REFERENCES `turma` (`id_turma`),
+  ADD CONSTRAINT `fk_ref_prof_turma_professor1` FOREIGN KEY (`fk_professor`) REFERENCES `professor` (`id_professor`);
 
 --
 -- Limitadores para a tabela `ref_usuario_grupo`
 --
 ALTER TABLE `ref_usuario_grupo`
-  ADD CONSTRAINT `fk_ref_usuario_grupo_grupo1` FOREIGN KEY (`fk_grupo`) REFERENCES `grupo` (`id_grupo`),
-  ADD CONSTRAINT `fk_ref_usuario_grupo_usuario1` FOREIGN KEY (`fk_usuario`) REFERENCES `usuario` (`id_usuario`);
+  ADD CONSTRAINT `fk_ref_usuario_grupo_usuario1` FOREIGN KEY (`fk_usuario`) REFERENCES `usuario` (`id_usuario`),
+  ADD CONSTRAINT `fk_ref_usuario_grupo_grupo1` FOREIGN KEY (`fk_grupo`) REFERENCES `grupo` (`id_grupo`);
 
 --
 -- Limitadores para a tabela `tarefa`
 --
 ALTER TABLE `tarefa`
-  ADD CONSTRAINT `fk_tarefa_ref_aluno_projeti1` FOREIGN KEY (`fk_ref_aluno_projeti`) REFERENCES `ref_aluno_projeti` (`id_ref_aluno_projeti`),
-  ADD CONSTRAINT `fk_tarefa_status_tarefa1` FOREIGN KEY (`fk_status_tarefa`) REFERENCES `status_tarefa` (`id_status_tarefa`);
+  ADD CONSTRAINT `fk_tarefa_status_tarefa1` FOREIGN KEY (`fk_status_tarefa`) REFERENCES `status_tarefa` (`id_status_tarefa`),
+  ADD CONSTRAINT `fk_tarefa_projeti1` FOREIGN KEY (`fk_projeti`) REFERENCES `projeti` (`id_projeti`),
+  ADD CONSTRAINT `fk_tarefa_aluno1` FOREIGN KEY (`fk_aluno`) REFERENCES `aluno` (`id_aluno`);
 
 --
 -- Limitadores para a tabela `turma`
