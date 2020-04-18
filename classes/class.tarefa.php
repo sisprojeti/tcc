@@ -143,6 +143,7 @@
           //query pra listar o nome e a fk do Aluno
           //select pessoa.nome,ref_aluno_projeti.fk_aluno
           //from pessoa join aluno join ref_aluno_projeti on pessoa.id_pessoa = aluno.fk_pessoa;
+          //realizar alteração no select de listar pra listar o fk do aluno
           public static function listar(){
             try {
               $query = "SELECT pessoa.nome as nome_responsavel_tarefa,
