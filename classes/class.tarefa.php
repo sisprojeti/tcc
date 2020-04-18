@@ -148,18 +148,17 @@
             try {
               $query = "SELECT pessoa.nome as nome_responsavel_tarefa,
                           tarefa.id_tarefa as id_tarefa,
+                          tarefa.fk_aluno as fk_aluno,
                           tarefa.titulo as titulo,
                           tarefa.data_inicio as data_inicio,
                           tarefa.data_fim as data_fim,
                           tarefa.data_conclusao as data_conclusao,
                           tarefa.descricao as descricao,
                           tarefa.data_cadastro as data_cadastro,
-                          tarefa.fk_ref_aluno_projeti as fk_ref_aluno_projeti,
                           tarefa.fk_status_tarefa as fk_status_tarefa,
                           status_tarefa.nome as nome_status
                           from tarefa
-                          join ref_aluno_projeti on tarefa.fk_ref_aluno_projeti = ref_aluno_projeti.id_ref_aluno_projeti
-                          join aluno on ref_aluno_projeti.fk_aluno = aluno.id_aluno
+                          join aluno on tarefa.fk_aluno = aluno.id_aluno
                           join pessoa on aluno.fk_pessoa = pessoa.id_pessoa
                           join status_tarefa on status_tarefa.id_status_tarefa = tarefa.fk_status_tarefa";
                             $stmt = DB::conexao()->prepare($query);
@@ -278,7 +277,7 @@
 
 
         public function adicionar(){
-      		$query = 'insert into tarefa(titulo,data_inicio,data_fim,data_conclusao,descricao,data_cadastro,fk_status_tarefa,fk_ref_aluno_projeti) values (:titulo,:data_inicio,:data_fim,:data_conclusao,:descricao,:data_cadastro,:fk_status_tarefa,:fk_ref_aluno_projeti)';
+      		$query = 'INSERT into tarefa(titulo,data_inicio,data_fim,data_conclusao,descricao,data_cadastro,fk_status_tarefa,fk_projeti,fk_aluno) values (:titulo,:data_inicio,:data_fim,:data_conclusao,:descricao,:data_cadastro,:fk_status_tarefa,:fk_projeti,:fk_aluno)';
           $conexao = DB::conexao();
           $stmt = $conexao->prepare($query);
       		$stmt->bindValue(':titulo',$this->titulo);
@@ -288,7 +287,8 @@
       		$stmt->bindValue(':descricao',$this->descricao);
           $stmt->bindValue(':data_cadastro',$this->data_cadastro);
           $stmt->bindValue(':fk_status_tarefa',$this->fk_status_tarefa);
-      		$stmt->bindValue(':fk_ref_aluno_projeti',$this->fk_ref_aluno_projeti);
+          $stmt->bindValue(':fk_projeti',$this->fk_projeti);
+      		$stmt->bindValue(':fk_aluno',$this->fk_aluno);
       		//$stmt->bindValue(':fk_projeti',$this->tarefa->__get('fk_projeti')); // retornar através da sessão do usuário
       		$stmt->execute();
           // $ultimaTarefa = $conexao->lastInsertId();

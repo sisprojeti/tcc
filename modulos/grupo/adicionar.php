@@ -82,7 +82,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
       <input class="form-control" disabled value="<?php echo $turma_aluno->getNomeTurma();?>" type="text" name="turma" placeholder="trazer de forma autormatica">
       </div>
       <label for="inputEmail4">Tema do Projeti</label>
-      <input type="text" class="form-control" id="projeti" placeholder="Insira o tema do projeti" name="projeti" required>
+      <input type="text" class="form-control" id="projeti" placeholder="Insira o tema do projeti" name="tema" required>
      </div>
       <div class="form-group col-md-12">
         <label for="inputPassword4">Descrição</label>
@@ -153,13 +153,13 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
                     required:true,
                     minlength:6,
                     accept: "[a-zA-Z]+",
-                    
+
              },
              descricao:{
                     required:true,
                     minlength:6,
                     accept: "[a-zA-Z]+",
-            
+
 
              },
               aluno_um:{
@@ -183,7 +183,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
                     required:"Por favor, insira o tema do projeti",
                     minlength:"No mínimo 6 letras",
                     accept: "Cuidado! preencha o tema sem caracteres especiais",
-                    
+
              },
              descricao:{
                     required:"Por favor, informe a descricao",
@@ -192,7 +192,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
              },
              aluno_um:{
                     required:"Por favor, selecione um aluno",
-                    
+
              },
              aluno_dois:{
                     required:"Por favor, selecione um aluno",

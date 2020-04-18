@@ -237,12 +237,12 @@ try{
      -->
       <!-- ./col -->
     <?php }else if($_SESSION['nome_grupo'] === 'aluno'){ ?>
+      <!--fazer verificação se o usuário faz parte de algum grupo se não fizer não mostrar o menu de tarefa-->
       <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-info">
           <div class="inner">
             <h3><i class="fas fa-tasks"></i></h3>
-
             <p>Lista de Tarefas</p>
           </div>
           <div class="icon">

@@ -34,6 +34,21 @@
             }
           }
 
+          public static function recuperaIdProjeti($fk_aluno)
+          {
+            $sql = "select * from ref_aluno_projeti";
+            $conexao = DB::conexao();
+            $stmt = $conexao->prepare($sql);
+            $stmt->execute();
+            if($stmt){
+              foreach($stmt as $objeto){
+                $temporario = new Projeti();
+                $temporario->setIdProjeti($objeto['id_projeti']);
+              }
+              return $temporario;
+              }
+            }
+
        /*------------------------------------/*
        ENCAPSULAMENTOS DO ID
        /*------------------------------------*/

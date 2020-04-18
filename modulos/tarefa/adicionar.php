@@ -46,7 +46,8 @@ require_once('classes/class.tarefa.php');
       $tarefa->setDescricao($_POST['descricao']);
       $tarefa->setDataCadastro($data_cadastro);
       $tarefa->setFkStatusTarefa($_POST['fk_status_tarefa']);
-      $tarefa->setFkRefAlunoProjeti($_POST['fk_ref_aluno_projeti']);
+      $tarefa->setFkProjeti($_POST['fk_projeti']);
+      $tarefa->setFkAluno($_POST['fk_aluno']);
       $tarefa->adicionar();
       // if(isset($_POST['status_finalizada'])){ essa lógica de status vai ser util
       //   $turma->setStatusFinalizada(true);
