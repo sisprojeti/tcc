@@ -443,7 +443,6 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
-<!--
 <!-- Bootstrap 4 -->
 <script src="publico/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
@@ -461,7 +460,7 @@
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="publico/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
-<script src="publico/plugins/summernote/summernote-bs4.min.js"></script> -->
+<script src="publico/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- PELO CDN -->
   <!-- Tell the browser to be responsive to screen width -->
   <!-- Font Awesome -->
