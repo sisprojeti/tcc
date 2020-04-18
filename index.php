@@ -530,7 +530,7 @@
       function marcarRealizada(id) {
         location.href = 'todas_tarefas.php?acao=marcarRealizada&id='+id;
       }
-    </script> -->
+    </script>
 </html>
 </body>
 </html>

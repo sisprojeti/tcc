@@ -151,24 +151,11 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
        rules : {
               projeti:{
                     required:true,
-<<<<<<< HEAD
                     minlength:6,
-                    accept: "[a-zA-Z]+",
-
              },
              descricao:{
                     required:true,
-                    minlength:6,
-                    accept: "[a-zA-Z]+",
-
-
-=======
-                    minlength:6,                
-             },
-             descricao:{
-                    required:true,
-                    minlength:6,          
->>>>>>> 03eb4c9e5b423948168ce1d51bfbb16403606b4a
+                    minlength:6,         
              },
               aluno_um:{
                     required:true,
@@ -186,12 +173,6 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
             projeti:{
                     required:"Por favor, insira o tema do projeti",
                     minlength:"No mínimo 6 letras",
-<<<<<<< HEAD
-                    accept: "Cuidado! preencha o tema sem caracteres especiais",
-
-=======
-                    
->>>>>>> 03eb4c9e5b423948168ce1d51bfbb16403606b4a
              },
              descricao:{
                     required:"Por favor, informe a descricao",
@@ -207,16 +188,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
              aluno_tres:{
                     required:"Por favor, selecione um aluno",
              },
-
        }
-
 });
-<<<<<<< HEAD
-            jQuery.validator.addMethod("accept", function(value, element, param) {
-              return value.match(new RegExp("." + param + "$"));
-            });
 
-       </script>
-=======
-       </script>
->>>>>>> 03eb4c9e5b423948168ce1d51bfbb16403606b4a
+</script>
