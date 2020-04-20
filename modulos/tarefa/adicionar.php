@@ -1,7 +1,8 @@
 <?php
-require_once('classes/class.tarefa.php');
+  require_once('classes/class.tarefa.php');
   require_once('classes/class.db.php');
   require_once('classes/class.refAlunoProjeti.php');
+
 
 //include_once("classs/class.etapa.php");
 
@@ -13,7 +14,8 @@ require_once('classes/class.tarefa.php');
       echo "ERROR".$e->getMessage();
   }
   try{
-      $listarAlunosProjeti = RefAlunoProjeti::listarAlunosProjeti();
+      $listarAlunosProjeti = RefAlunoProjeti::listarAlunosProjeti($_SESSION['fk_pessoa']);
+
   } catch(PDOException $e){
     echo "ERROR".$e->getMessage();
   }
@@ -119,12 +121,13 @@ require_once('classes/class.tarefa.php');
 
               <div class="col-sm-6">
                 <label>Responsável</label>
+
                 <select class="form-control" name="fk_ref_aluno_projeti" required autofocus>
                  <option value="">Selecione o Responsável</option>
                   <?php if(isset($listarAlunosProjeti)):?>
                     <?php foreach ($listarAlunosProjeti as $alunosProjeti):?>
                       <?php //if($aluno->getSituacaoAluno()):?>
-                      <option value="<?php echo $alunosProjeti->getIdRefAlunoProjeti();?>"><?php echo $alunosProjeti->getNomeAlunoProjeti();?></option>
+                      <option value="<?php echo $alunosProjeti->getIdAluno();?>"><?php echo $alunosProjeti->getNomeAluno();?></option>
                     <?php endforeach;?>
                   <?php endif;?>
                 </select>

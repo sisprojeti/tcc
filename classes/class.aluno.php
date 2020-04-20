@@ -9,7 +9,7 @@
       public $situacao_aluno;
       public $matricula;
       public $fk_pessoa;
-
+      public $nome_aluno;
       //---------Provavelmente vamos utilizar esses atributos em outra classe-------
       //public $turma;
       //public $grupo_projeti;
@@ -17,12 +17,14 @@
 
       public function __construct($id_aluno=false){
           if($id_aluno){
-            $sql = "SELECT aluno.id_aluno from aluno join pessoa on pessoa.id_pessoa = aluno.fk_pessoa";
+            $sql = "SELECT aluno.id_aluno,pessoa.nome as nome_aluno from aluno
+            join pessoa on pessoa.id_pessoa = aluno.fk_pessoa";
             $stmt = DB::conexao()->prepare($sql);
             $stmt->bindParam(":id_aluno",$id_aluno,PDO::PARAM_INT);
             $stmt->execute();
             foreach($stmt as $obj){
               $this->setIdAluno($obj['id_aluno']);
+              $this->setNomeAluno($obj['nome_aluno']);
             }
           }
         }
@@ -35,15 +37,18 @@
 
         public static function recuperaIdAluno($fk_pessoa)
         {
-
-          $sql = "SELECT * FROM aluno where fk_pessoa = :fk_pessoa";
+          print_r($fk_pessoa);
+          $sql = "SELECT aluno.id_aluno as id_aluno,pessoa.nome as nome_aluno from aluno
+          join pessoa on pessoa.id_pessoa = aluno.fk_pessoa where aluno.fk_pessoa = :fk_pessoa";
           $conexao = DB::conexao();
           $stmt = $conexao->prepare($sql);
           $stmt->bindParam(':fk_pessoa',$fk_pessoa);
           $stmt->execute();
           if($stmt){
             foreach($stmt as $obj){
-              $temporario = new Aluno($obj['id_aluno']);
+              $temporario = new Aluno();
+              $temporario->setIdAluno($obj['id_aluno']);
+              $temporario->setNomeAluno($obj['nome_aluno']);
             }
             return $temporario;
             }
@@ -63,11 +68,16 @@
             }
           }
 
+          public function setNomeAluno($nome_aluno)
+          {
+            $this->nome_aluno = $nome_aluno;
+          }
+
     public static function listar()
       {
         try {
           $query = "SELECT aluno.id_aluno,
-          pessoa.nome as nome ,
+          pessoa.nome as nome,
           aluno.situacao_aluno as situacao_aluno,
           aluno.matricula as matricula
           from aluno join pessoa on aluno.fk_pessoa = pessoa.id_pessoa";
@@ -78,7 +88,7 @@
                         foreach($registros as $objeto){
                           $temporario = new Aluno();
                           $temporario->setIdAluno($objeto['id_aluno']);
-                          $temporario->setNome($objeto['nome']);
+                          $temporario->setNomeAluno($objeto['nome']);
                           $temporario->setSituacaoAluno($objeto['situacao_aluno']);
                           $temporario->setMatricula($objeto['matricula']);
                           $itens[] = $temporario;
@@ -90,12 +100,18 @@
         }
       }
 
-      public static function listarAlunosTurma($fk_turma)
+      public static function listarAlunosTurma($fk_turma,$sem_projeti = null)
         {
           try {
-            $query = "SELECT * FROM ref_aluno_turma
-            join aluno on aluno.id_aluno = ref_aluno_turma.fk_aluno
-            where ref_aluno_turma.fk_turma = :fk_turma";
+            $query = "SELECT * FROM aluno
+            join ref_aluno_turma on aluno.id_aluno = ref_aluno_turma.fk_aluno ";
+            if($sem_projeti == true){
+              $query .= "where NOT EXISTS (SELECT * FROM ref_aluno_projeti
+              WHERE ref_aluno_projeti.fk_aluno = aluno.id_aluno)
+              ";
+            }
+
+              //$query .= " where ref_aluno_turma.fk_turma = :fk_turma";
                         $stmt = DB::conexao()->prepare($query);
                         $stmt->bindParam(':fk_turma',$fk_turma);
                         $stmt->execute();
@@ -176,8 +192,9 @@
               ENCAPSULAMENTO NOME
              ---------------------------------------------------------------------*/
             public function getNomeAluno(){
-              return $this->nome;
+              return $this->nome_aluno;
             }
+
 
             public function setNome($nome){
               $this->nome = $nome;

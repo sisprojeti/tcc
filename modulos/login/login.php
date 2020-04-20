@@ -1,3 +1,9 @@
+<?php
+
+print_r($)
+
+?>
+
 <div class="container">
   <form class="form-signin" action="config/login.php" method="POST">
 
