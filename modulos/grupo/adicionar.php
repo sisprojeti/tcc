@@ -148,22 +148,8 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
                     minlength:6,
              },
              descricao:{
-                    required:true,
-<<<<<<< HEAD
-                    minlength:6,         
-=======
+                    required:true,        
                     minlength:6,
-                    accept: "[a-zA-Z]+",
-
-
-=======
-                    minlength:6,
-             },
-             descricao:{
-                    required:true,
-                    minlength:6,
->>>>>>> 03eb4c9e5b423948168ce1d51bfbb16403606b4a
->>>>>>> 17d46e03329b2d59ea4e79d21cadd27e05d3039a
              },
               aluno_um:{
                     required:true,
@@ -181,15 +167,6 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
             projeti:{
                     required:"Por favor, insira o tema do projeti",
                     minlength:"No mínimo 6 letras",
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-                    accept: "Cuidado! preencha o tema sem caracteres especiais",
-
-=======
-
->>>>>>> 03eb4c9e5b423948168ce1d51bfbb16403606b4a
->>>>>>> 17d46e03329b2d59ea4e79d21cadd27e05d3039a
              },
              descricao:{
                     required:"Por favor, informe a descricao",
