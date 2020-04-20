@@ -33,20 +33,28 @@
             return $temporario;
             }
           }
-
-          public static function recuperaIdProjeti($fk_aluno)
+          public static function recuperaIdProjeti($fk_pessoa)
           {
-            $sql = "select * from ref_aluno_projeti";
+            $sql = "SELECT * from pessoa
+            inner join aluno on pessoa.id_pessoa = aluno.fk_pessoa
+            inner join ref_aluno_projeti on aluno.id_aluno = ref_aluno_projeti.fk_aluno
+            where aluno.fk_pessoa = :fk_pessoa";
             $conexao = DB::conexao();
             $stmt = $conexao->prepare($sql);
+            $stmt->bindParam(':fk_pessoa',$fk_pessoa,PDO::PARAM_INT);
             $stmt->execute();
             if($stmt){
+              $temporario = null;
               foreach($stmt as $objeto){
                 $temporario = new Projeti();
-                $temporario->setIdProjeti($objeto['id_projeti']);
+                $temporario->setIdProjeti($objeto['fk_projeti']);
               }
               return $temporario;
               }
+            }
+
+            public function setIdProjeti($fk_projeti){
+              $this->fk_projeti = $fk_projeti;
             }
 
        /*------------------------------------/*

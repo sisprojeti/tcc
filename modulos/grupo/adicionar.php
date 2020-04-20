@@ -54,8 +54,6 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
   $integranteProjeti_tres->adicionar();
 
 }
-
-
 ?>
 <style>
        .error{
@@ -93,15 +91,11 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
 
      <div class="form-row">
        <div class="form-group col-md-12">
-         <label for="inputState">Escolha o Aluno</label>
+         <label for="inputState">Integrante 1</label>
          <select name="aluno_um" id="aluno_um" class="form-control" data-live-search="true" required>
-           <option value="">Selecione o ALuno</option>
-           <?php
-           $alunos = Aluno::listarAlunosTurma($turma_aluno->getIdTurma());
-           foreach($alunos as $aluno){
+           <?php $aluno_um = Aluno::recuperaIdAluno($_SESSION['fk_pessoa']);
+           echo "<option value='".$aluno_um->getIdAluno()."'>".$aluno_um->getNomeAluno()."</option>";
            ?>
-             <option value="<?php echo $aluno->getIdAluno();?>"><?php echo $aluno->recuperaPessoa()->getNome();?></option>
-           <?php }?>
          </select>
        </div>
            <!-- <div class="form-group col-md-4">
@@ -110,11 +104,11 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
            </div> -->
 
            <div class="form-group col-md-12">
-             <label for="inputState">Escolha o Aluno</label>
+             <label for="inputState">Integrante 2</label>
              <select name="aluno_dois" id="aluno_dois" class="form-control" data-live-search="true" required>
                <option value="">Selecione o Aluno</option>
                <?php
-               $alunos = Aluno::listarAlunosTurma($turma_aluno->getIdTurma());
+               $alunos = Aluno::listarAlunosTurma($turma_aluno->getIdTurma(),true);
                foreach($alunos as $aluno){
                ?>
                  <option value="<?php echo $aluno->getIdAluno();?>"><?php echo $aluno->recuperaPessoa()->getNome();?></option>
@@ -122,11 +116,11 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
              </select>
            </div>
            <div class="form-group col-md-12">
-             <label for="inputState">Escolha o Aluno</label>
+             <label for="inputState">Integrante 3</label>
              <select name="aluno_tres" id="aluno_tres" class="form-control" data-live-search="true" required>
                <option value="">Selecione o ALuno</option>
                <?php
-               $alunos = Aluno::listarAlunosTurma($turma_aluno->getIdTurma());
+               $alunos = Aluno::listarAlunosTurma($turma_aluno->getIdTurma(),true);
                foreach($alunos as $aluno){
                ?>
                  <option value="<?php echo $aluno->getIdAluno();?>"><?php echo $aluno->recuperaPessoa()->getNome();?></option>
@@ -163,11 +157,11 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
 
 
 =======
-                    minlength:6,                
+                    minlength:6,
              },
              descricao:{
                     required:true,
-                    minlength:6,          
+                    minlength:6,
 >>>>>>> 03eb4c9e5b423948168ce1d51bfbb16403606b4a
              },
               aluno_um:{
@@ -190,7 +184,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
                     accept: "Cuidado! preencha o tema sem caracteres especiais",
 
 =======
-                    
+
 >>>>>>> 03eb4c9e5b423948168ce1d51bfbb16403606b4a
              },
              descricao:{

@@ -1,13 +1,23 @@
 <?php
     session_start();
+    include_once('classes/class.projeti.php');
+    include_once('classes/class.db.php');
     if(isset($_POST['botao']) && $_POST["botao"] == "Sair"){
       session_destroy();
       header('Location:login.php');
     }
-    //print_r($_SESSION);
+
     if(!isset($_SESSION['cpf']) || !isset($_SESSION['fk_usuario'])){
       echo "<script>location.href='login.php?msg=erro'</script>";
     } else {
+
+    $id_projeti = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
+    print_r($id_projeti);
+    if($id_projeti){
+      echo "tem projeti";
+    }else{
+      echo "Você precisa ser cadastrado em algum projeti";
+    }
 
 ?>
 <!DOCTYPE html>

@@ -2,7 +2,7 @@
     require('Classes/class.usuario.php');
     session_start();
     if(isset($_POST['botao']) && $_POST["botao"] == "Logar"){
-      //print_r($_POST);
+      print_r($_POST);
       $u = Usuario::logar($_POST['cpf'], $_POST['senha']);
       //die();
     }
