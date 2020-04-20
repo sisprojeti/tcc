@@ -25,7 +25,6 @@
 <th scope="col">#</th>
 <th scope="col">Nome</th>
 <th scope="col">Curso</th>
-<th scope="col">Professor<th>
 <th scope="col">Etapa</th>
 <th scope="col">Turno</th>
 <th scope="col">Ação</th>
@@ -38,7 +37,6 @@
     <th scope="row"><?php echo $turma->getIdTurma();?></th>
     <td><?php echo $turma->getNomeTurma();?></td>
     <td><?php echo $turma->getCurso();?></td>
-    <td>TRAZER DINÂMICO DO BANCO DE DADOS O PROFESSOR VICULADO A ESSA TURMA</td>
     <td><?php echo $turma->getEtapa();?></td>
     <td><?php echo $turma->getTurno();?></td>
     <td width=250>
