@@ -72,27 +72,27 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="#" method="post">
+        <form action="#" id="nova_tarefa" method="post">
           <div class="form-group">
             <label class="col-form-label">Título:</label>
-            <input type="text" class="form-control" name="titulo" id="titulo">
+            <input type="text" class="form-control" name="titulo" id="titulo" required>
           </div>
           <div class="form-group">
             <label class="col-form-label">Descrição:</label>
-            <textarea class="form-control" id="descricao" name="descricao"></textarea>
+            <textarea class="form-control" id="descricao" name="descricao" required></textarea>
           </div>
            <div class="row">
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
                         <label>Data de Ínicio:</label>
-                        <input type="date" class="form-control" name="data_inicio" id="data_inicio" >
+                        <input type="date" class="form-control" name="data_inicio" id="data_inicio" required>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Data de Término:</label>
-                        <input type="date" class="form-control" name="data_fim" id="data_fim">
+                        <input type="date" class="form-control" name="data_fim" id="data_fim" required>
                       </div>
                     </div>
             </div>
@@ -100,7 +100,7 @@
                 <div class="col-sm-6">
                       <div class="form-group">
                         <label>Data de Entrega:</label>
-                        <input type="date" class="form-control" name="data_conclusao" id="data_entrega">
+                        <input type="date" class="form-control" name="data_entrega" id="data_entrega" required>
                       </div>
                     </div>
                      <!-- select -->
@@ -141,3 +141,52 @@
     </div>
   </div>
 </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
+
+      <script>
+            $("#nova_tarefa").validate({
+       rules : {
+             titulo:{
+                    required:true,
+                    minlength:6,
+             },
+             descricao:{
+                    required:true,        
+                    minlength:6,
+             },
+              data_inicio:{
+                    required:true,
+
+             },
+              data_fim:{
+                    required:true,
+             },
+              data_entrega:{
+                    required:true,
+
+             },
+       },
+       messages:{
+            projeti:{
+                    required:"Por favor, insira o tema do projeti",
+                    minlength:"No mínimo 6 letras",
+             },
+             descricao:{
+                    required:"Por favor, informe a descricao",
+                    minlength:"No mínimo 6 letras",
+             },
+             aluno_um:{
+                    required:"Por favor, selecione um aluno",
+
+             },
+             aluno_dois:{
+                    required:"Por favor, selecione um aluno",
+             },
+             aluno_tres:{
+                    required:"Por favor, selecione um aluno",
+             },
+       }
+});
+
+</script>
