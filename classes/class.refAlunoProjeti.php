@@ -1,5 +1,6 @@
 <?php
-    require_once('classes/class.aluno.php');
+    require_once('class.aluno.php');
+
     class RefAlunoProjeti
     {
       public $id_ref_aluno_projeti;
@@ -61,7 +62,6 @@
       public static function listarAlunosProjeti($fk_pessoa=null)
         {
           try {
-
                $query = "SELECT ref_aluno_projeti.fk_projeti as fk_projeti,aluno.id_aluno as id_aluno,aluno.fk_pessoa as id_pessoa,pessoa.nome as nome_aluno FROM aluno
                inner join pessoa on aluno.fk_pessoa = pessoa.id_pessoa
                inner join ref_aluno_projeti on aluno.id_aluno = ref_aluno_projeti.fk_aluno";
@@ -87,6 +87,41 @@
               echo "ERROR".$e->getMessage();
           }
         }
+
+
+
+        public static function listarAlunosProjetiTeste($fk_projeti=null)
+          {
+            try {
+                 $query = "SELECT pessoa.nome as nome_aluno, aluno.id_aluno as id_aluno,
+                          ref_aluno_projeti.fk_projeti as id_projeti
+                          FROM pessoa
+                          JOIN aluno on pessoa.id_pessoa = aluno.fk_pessoa
+                          JOIN ref_aluno_projeti on aluno.id_aluno = ref_aluno_projeti.fk_aluno
+                          WHERE ref_aluno_projeti.fk_projeti = $fk_projeti";
+                 // if($fk_pessoa){
+                 //   $query = "";
+                 // }
+                 //fazer verificação de onde o fk_projeti seja igual ao f
+                          $stmt = DB::conexao()->prepare($query);
+                          $stmt->execute();
+                          //$stmt->bindParam(':fk_projeti',$fk_projeti,PDO::PARAM_INT);
+                          //print_r($fk_projeti);
+                          $registros = $stmt->fetchAll();
+                          if($registros){
+                            foreach($registros as $objeto){
+                              $temporario = new Aluno();
+                              $temporario->setIdAluno($objeto['id_aluno']);
+                              $temporario->setNomeAluno($objeto['nome_aluno']);
+                              $itens[] = $temporario;
+                            }
+                return $itens;
+                print_r($itens);
+              }
+            } catch (Exception $e) {
+                echo "ERROR".$e->getMessage();
+            }
+          }
 
         public function verificaAlunoProjeti($fk_aluno)
           {

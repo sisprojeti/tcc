@@ -2,9 +2,24 @@
 
   class Projeti
   {
-  	public $id;
-    public $tema;
-    public $decricao;
+  	public $id_projeti;
+    public $tema_projeti;
+    public $descricao_projeti;
+
+    public function __construct($id_projeti=false){
+        if($id_projeti){
+          $sql = "SELECT * from projeti where id_projeti = :id_projeti";
+          $stmt = DB::conexao()->prepare($sql);
+          $stmt->bindParam(":id_projeti",$id_projeti,PDO::PARAM_INT);
+          $stmt->execute();
+          foreach($stmt as $obj){
+            $this->setIdProjeti($obj['id_projeti']);
+            $this->setTema($obj['tema']);
+            $this->setDescricao($obj['descricao']);
+          }
+        }
+      }
+
 
         public function adicionar()
         {
@@ -33,11 +48,19 @@
             return $temporario;
             }
           }
+
+          // SELECT ref_aluno_projeti.fk_projeti,pessoa.id_pessoa,aluno.fk_pessoa,projeti.tema as tema_projeti,projeti.descricao as descricao_projeti from pessoa
+          // inner join aluno on pessoa.id_pessoa = aluno.fk_pessoa
+          // inner join ref_aluno_projeti on aluno.id_aluno = ref_aluno_projeti.fk_aluno
+          // inner join projeti on projeti.id_projeti = ref_aluno_projeti.fk_projeti
+          // where aluno.fk_pessoa = :fk_pessoa;
+
           public static function recuperaIdProjeti($fk_pessoa)
           {
-            $sql = "SELECT * from pessoa
+            $sql = "SELECT ref_aluno_projeti.fk_projeti,pessoa.id_pessoa,aluno.fk_pessoa,projeti.tema as tema_projeti,projeti.descricao as descricao_projeti from pessoa
             inner join aluno on pessoa.id_pessoa = aluno.fk_pessoa
             inner join ref_aluno_projeti on aluno.id_aluno = ref_aluno_projeti.fk_aluno
+            inner join projeti on projeti.id_projeti = ref_aluno_projeti.fk_projeti
             where aluno.fk_pessoa = :fk_pessoa";
             $conexao = DB::conexao();
             $stmt = $conexao->prepare($sql);
@@ -48,25 +71,42 @@
               foreach($stmt as $objeto){
                 $temporario = new Projeti();
                 $temporario->setIdProjeti($objeto['fk_projeti']);
+                $temporario->setTemaProjeti($objeto['tema_projeti']);
+                $temporario->setDescricaoProjeti($objeto['descricao_projeti']);
               }
               return $temporario;
               }
             }
 
-            public function setIdProjeti($fk_projeti){
-              $this->fk_projeti = $fk_projeti;
+            public function getFkProjeti(){
+              return $this->fk_projeti;
             }
+
+            public function getTemaProjeti(){
+              return $this->tema_projeti;
+            }
+
+            public function setDescricaoProjeti($descricao_projeti){
+              $this->descricao_projeti = $descricao_projeti;
+            }
+
+            public function setTemaProjeti($tema_projeti)
+            {
+              $this->tema_projeti = $tema_projeti;
+            }
+
+
 
        /*------------------------------------/*
        ENCAPSULAMENTOS DO ID
        /*------------------------------------*/
 
-       public function getId(){
-         return $this->id;
+       public function getIdProjeti(){
+         return $this->id_projeti;
        }
 
-       public function setId($id){
-         $this->id = $id;
+       public function setIdProjeti($id_projeti){
+         $this->id_projeti = $id_projeti;
        }
 
        /*------------------------------------/*
