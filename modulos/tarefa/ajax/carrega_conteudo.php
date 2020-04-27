@@ -2,9 +2,12 @@
 require_once('../../../classes/class.tarefa.php');
 require_once('../../../classes/class.db.php');
 require_once('../../../classes/class.refAlunoProjeti.php');
+require_once('../../../classes/class.projeti.php');
   //echo $_GET['id'];
+  session_start();
+  $id_projeti_aluno = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
   try{
-      $listarAlunosProjeti = RefAlunoProjeti::listarAlunosProjeti();
+      $listarAlunosProjeti = RefAlunoProjeti::listarAlunosProjetiTeste($id_projeti_aluno->getIdProjeti());
   } catch(PDOException $e){
     echo "ERROR".$e->getMessage();
   }
@@ -16,7 +19,7 @@ require_once('../../../classes/class.refAlunoProjeti.php');
   }
 
   $tarefa = new Tarefa($_GET['id']);
-  print_r($tarefa);
+  //print_r($tarefa);
   //echo $tarefa->getTituloTarefa();
 ?>
 
@@ -66,17 +69,15 @@ require_once('../../../classes/class.refAlunoProjeti.php');
                  </select>
                </div>
         </div>
-        <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-6">
           <label>Responsável</label>
-          <select class="form-control" name="fk_ref_aluno_projeti" required autofocus>
-           <option value="<?= $tarefa->getNomeResponsavelTarefa();?>">Selecione o Responsável</option>
+
+          <select class="form-control" name="fk_aluno" required autofocus>
             <?php if(isset($listarAlunosProjeti)):?>
               <?php foreach ($listarAlunosProjeti as $alunosProjeti):?>
-                <option <?php if($alunosProjeti->getIdFKRefAlunoProjeti() === $tarefa->getFkRefAlunoProjeti()){echo "selected";}?> value="<?php echo $alunosProjeti->getIdRefAlunoProjeti();?>"><?php echo $alunosProjeti->getNomeAlunoProjeti();?></option>
+                <option <?php if($alunosProjeti->getIdAluno() === $tarefa->getFkAluno()){echo "selected";}?> value="<?php echo $alunosProjeti->getIdAluno();?>"><?php echo $alunosProjeti->getNomeAluno();?></option>
               <?php endforeach;?>
             <?php endif;?>
           </select>
-        </div>
         </div>
 </div>

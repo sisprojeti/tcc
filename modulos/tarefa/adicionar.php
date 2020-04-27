@@ -2,30 +2,24 @@
   require_once('classes/class.tarefa.php');
   require_once('classes/class.db.php');
   require_once('classes/class.refAlunoProjeti.php');
-
-
-//include_once("classs/class.etapa.php");
-
-  $tarefaTeste = new Tarefa();
-
+  include_once('classes/class.projeti.php');
+  //include_once("classs/class.etapa.php");
+  $id_projeti_aluno = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
   try{
     $listarStatus = Tarefa::listarStatusTarefa();
   } catch (PDOException $e) {
       echo "ERROR".$e->getMessage();
   }
   try{
-      $listarAlunosProjeti = RefAlunoProjeti::listarAlunosProjeti($_SESSION['fk_pessoa']);
-
+      $listarAlunosProjeti = RefAlunoProjeti::listarAlunosProjetiTeste($id_projeti_aluno->getIdProjeti());
   } catch(PDOException $e){
     echo "ERROR".$e->getMessage();
   }
-
- try{
+  try{
       $listarTarefas = Tarefa::listar();
   }catch(PDOException $e){
     echo "ERROR".$e->getMessage();
   }
-
 // if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
 //   try {
 //       $tarefas = Tarefa::listarAlunosTarefa();
@@ -48,9 +42,10 @@
       $tarefa->setDescricao($_POST['descricao']);
       $tarefa->setDataCadastro($data_cadastro);
       $tarefa->setFkStatusTarefa($_POST['fk_status_tarefa']);
-      $tarefa->setFkProjeti($_POST['fk_projeti']);
+      $tarefa->setFkProjeti($id_projeti_aluno->getIdProjeti());
       $tarefa->setFkAluno($_POST['fk_aluno']);
       $tarefa->adicionar();
+      //print_r($tarefa);
       // if(isset($_POST['status_finalizada'])){ essa lógica de status vai ser util
       //   $turma->setStatusFinalizada(true);
       //  }else{
@@ -122,7 +117,7 @@
               <div class="col-sm-6">
                 <label>Responsável</label>
 
-                <select class="form-control" name="fk_ref_aluno_projeti" required autofocus>
+                <select class="form-control" name="fk_aluno" required autofocus>
                  <option value="">Selecione o Responsável</option>
                   <?php if(isset($listarAlunosProjeti)):?>
                     <?php foreach ($listarAlunosProjeti as $alunosProjeti):?>

@@ -8,6 +8,7 @@
       public $id_tarefa;
       public $fk_status_tarefa;
       public $fk_projeti;
+      public $fk_aluno;
       public $titulo;
       public $descricao;
       public $data_inicio;
@@ -34,12 +35,11 @@
                         tarefa.data_conclusao as data_conclusao,
                         tarefa.descricao as descricao,
                         tarefa.data_cadastro as data_cadastro,
-                        tarefa.fk_ref_aluno_projeti as fk_ref_aluno_projeti,
+                        tarefa.fk_aluno as fk_aluno,
                         tarefa.fk_status_tarefa as fk_status_tarefa,
                         status_tarefa.nome as nome_status
                         from tarefa
-                        join ref_aluno_projeti on tarefa.fk_ref_aluno_projeti = ref_aluno_projeti.id_ref_aluno_projeti
-                        join aluno on ref_aluno_projeti.fk_aluno = aluno.id_aluno
+                        join aluno on tarefa.fk_aluno = aluno.id_aluno
                         join pessoa on aluno.fk_pessoa = pessoa.id_pessoa
                         join status_tarefa on status_tarefa.id_status_tarefa = tarefa.fk_status_tarefa";
             $stmt = DB::conexao()->prepare($sql);
@@ -53,12 +53,22 @@
               $this->setDescricao($obj['descricao']);
               $this->setDataCadastro($obj['descricao']);
               $this->setFkStatusTarefa($obj['fk_status_tarefa']);
-              $this->setFkRefAlunoProjeti($obj['fk_ref_aluno_projeti']);
+              $this->setFkAlunoProjeti($obj['fk_aluno']);
               $this->setNomeResponsavelTarefa($obj['nome_responsavel_tarefa']);
               $this->setNomeStatusTarefa($obj['nome_status']);
             }
           }
         }
+
+      public function setFkAlunoProjeti($fk_aluno)
+      {
+        $this->fk_aluno = $fk_aluno;
+      }
+
+      public function setFkProjeti($fk_projeti)
+      {
+        $this->fk_projeti = $fk_projeti;
+      }
 
       public function getFkStatusTarefa()
       {
@@ -187,6 +197,11 @@
               }
             }
 
+          public function setFkAluno($fk_aluno)
+          {
+            $this->fk_aluno = $fk_aluno;
+          }
+
           public function setFkStatusTarefa($fk_status_tarefa){
             $this->fk_status_tarefa = $fk_status_tarefa;
           }
@@ -275,9 +290,27 @@
           }
 
 
-
         public function adicionar(){
-      		$query = 'INSERT into tarefa(titulo,data_inicio,data_fim,data_conclusao,descricao,data_cadastro,fk_status_tarefa,fk_projeti,fk_aluno) values (:titulo,:data_inicio,:data_fim,:data_conclusao,:descricao,:data_cadastro,:fk_status_tarefa,:fk_projeti,:fk_aluno)';
+      		$query = 'INSERT into tarefa(
+            titulo,
+            data_inicio,
+            data_fim,
+            data_conclusao,
+            descricao,
+            data_cadastro,
+            fk_status_tarefa,
+            fk_projeti,
+            fk_aluno)
+          values
+          ( :titulo,
+            :data_inicio,
+            :data_fim,
+            :data_conclusao,
+            :descricao,
+            :data_cadastro,
+            :fk_status_tarefa,
+            :fk_projeti,
+            :fk_aluno)';
           $conexao = DB::conexao();
           $stmt = $conexao->prepare($query);
       		$stmt->bindValue(':titulo',$this->titulo);
@@ -289,10 +322,7 @@
           $stmt->bindValue(':fk_status_tarefa',$this->fk_status_tarefa);
           $stmt->bindValue(':fk_projeti',$this->fk_projeti);
       		$stmt->bindValue(':fk_aluno',$this->fk_aluno);
-      		//$stmt->bindValue(':fk_projeti',$this->tarefa->__get('fk_projeti')); // retornar através da sessão do usuário
-      		$stmt->execute();
-          // $ultimaTarefa = $conexao->lastInsertId();
-          // return $ultimaTarefa;
+          $stmt->execute();
       	}
 
         public static function contarTarefas()
@@ -369,7 +399,7 @@
   DATA CONCLUSÃO
  ---------------------------------------------------------------------*/
 
-       public function getDataConclusao(){
+      public function getDataConclusao(){
         return $this->data_conclusao;
       }
       public function setDataConclusao($data_conclusao)
@@ -377,6 +407,10 @@
         $this->data_conclusao = $data_conclusao;
       }
 
+      public function getFkAluno()
+      {
+        return $this->fk_aluno;
+      }
 
 
 /*---------------------------------------------------------------------
