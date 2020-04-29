@@ -64,6 +64,8 @@ try {
        }
 </style>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+ <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+ <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
@@ -124,11 +126,27 @@ try {
     <label>Matricula</label>
     <input type="text" class="form-control" name="matricula" id="matricula" placeholder="Insira a Matricula no Aluno" required>
 </div>
+
+
+<div class="form-group">
+  <label>Situação</label><br>
+  <input type="checkbox" name="situacao_adm" data-toggle="toggle" data-on="Ativo" data-off="Não Ativo" data-onstyle="success" data-offstyle="danger">
+
+
+    <!--
+      botão antigo
+    <input type="checkbox" name="situacao_adm" class="custom-control-input" id="customSwitch3" value="true">
+    <label class="custom-control-label" for="customSwitch3"> Situação  </label>
+  -->
+</div>
+<!--
 <div class="form-group">
     <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
     <input type="checkbox" name="situacao_aluno" class="custom-control-input" id="customSwitch3" value="true">
     <label class="custom-control-label" for="customSwitch3"> Ativo  </label>
-</div>
+</div>-->
+
+
  </div>
  <!-- /.card-body -->
 <div class="form-group navbar-white">
