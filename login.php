@@ -49,7 +49,7 @@
 <div class="login-form">
     <form action="#" id="form_login" method="post">
 		<div class="avatar">
-			<img src="img/user.png" alt="Avatar" />
+			<img src="publico/img/user.png" alt="Avatar" />
 		</div>
         <h2 class="text-center">Login</h2>
         <div class="form-group">
