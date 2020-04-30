@@ -436,7 +436,7 @@
       SISP
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2019 <a href="https://solutiondevempresa.wixsite.com/corp">SolutionDev</a>.</strong> Todos os Direitos Reservados.
+    <strong>Copyright &copy; 2019 <a href="http://solutiondev.ga/">SolutionDev</a>.</strong> Todos os Direitos Reservados.
   </footer>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
