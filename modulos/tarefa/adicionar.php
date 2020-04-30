@@ -38,7 +38,7 @@
       $tarefa->setTitulo($_POST['titulo']);
       $tarefa->setDataInicio($_POST['data_inicio']);
       $tarefa->setDataFim($_POST['data_fim']);
-      $tarefa->setDataConclusao($_POST['data_conclusao']);
+      $tarefa->setDataConclusao($_POST['data_fim']);
       $tarefa->setDescricao($_POST['descricao']);
       $tarefa->setDataCadastro($data_cadastro);
       $tarefa->setFkStatusTarefa($_POST['fk_status_tarefa']);
@@ -184,7 +184,7 @@
                     minlength:6,
              },
              descricao:{
-                    required:true,        
+                    required:true,
                     minlength:6,
              },
               data_inicio:{

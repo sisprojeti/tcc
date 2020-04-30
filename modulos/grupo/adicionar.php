@@ -16,9 +16,6 @@ $aluno = $aluno_logado->recuperaAluno();
 $turma_aluno = Turma::recuperaTurmaAluno($_SESSION['fk_pessoa']);
 //$aluno_projeti = RefAlunoProjeti::recuperaAlunoProjeti($_SESSION['fk_aluno']); //metodo pra recuperar o id do aluno que está logado
 
-
-
-
 //echo $_SESSION['fk_pessoa'];
 //print_r($turma_aluno);
 //print_r($turma_aluno);
@@ -148,7 +145,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
                     minlength:6,
              },
              descricao:{
-                    required:true,        
+                    required:true,
                     minlength:6,
              },
               aluno_um:{
