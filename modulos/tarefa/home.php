@@ -94,7 +94,7 @@
       </li>
       <li class="nav-item col s3">
         <div>
-          <a class="nav-link" href="#">Fazendo</a>
+          <a class="nav-link" href="?modulo=tarefas&acao=listar&tipo=1">Fazendo</a>
         </div>
       </li>
       <li class="nav-item col s3">

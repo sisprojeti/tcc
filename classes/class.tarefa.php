@@ -140,7 +140,7 @@
                     $temporario->setDescricao($objeto['descricao']);
                     $temporario->setDataCadastro($objeto['data_cadastro']);
                     $temporario->setStatusTarefa($objeto['fk_status_tarefa']);
-                    $temporario->setFkRefAlunoProjeti($objeto['fk_ref_aluno_projeti']);
+                    //$temporario->setFkRefAlunoProjeti($objeto['fk_ref_aluno_projeti']);
                     $itens[] = $temporario;
                     }
                       return $itens;
