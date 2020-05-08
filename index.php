@@ -296,7 +296,7 @@
                    </a>
                  </li>
                  <li class="nav-item">
-                   <a href="?modulo=graficos&acao=graficos" class="nav-link">
+                   <a href="modulos/graficos/teste.php" class="nav-link">
                      <i class="fas fa-chart-bar nav-icon"></i>
                      <p>Gráficos de Atividade</p>
                    </a>
