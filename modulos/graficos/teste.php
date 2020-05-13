@@ -23,6 +23,6 @@
   </head>
 
   <body>
-    <div id="area_grafico"></div>
+    <div id="area_grafico" style="align-items: center"></div>
   </body>
 </html>

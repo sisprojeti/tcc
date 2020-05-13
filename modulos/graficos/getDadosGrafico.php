@@ -11,8 +11,8 @@ $grafico = array(
     ),
     'config' => array(
         'title' => 'Quantidade de tarefas por Responsável',
-        'width' => 400,
-        'height' => 300
+        'width' => 500,
+        'height' => 400
     )
 );
 
