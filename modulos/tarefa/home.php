@@ -6,7 +6,7 @@
   include_once('classes/class.projeti.php');
 
   $id_projeti_aluno = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
-  
+
   try{
     $listarStatus = Tarefa::listarStatusTarefa();
   } catch (PDOException $e) {
@@ -95,7 +95,7 @@
                         <label>Data de Entrega:</label>
                         <input type="date" class="form-control" id="data_entrega" name="data_entrega" required>
                       </div>
-                    </div>        
+                    </div>
             </div>
             <div class="row">
               <div class="col-sm-6" >
@@ -150,22 +150,22 @@
     <ul class="nav nav-tabs">
       <li class="nav-item col s3">
         <div>
-          <a class="nav-link "  href="?modulo=tarefa&acao=home&status=1">A Fazer</a>
+          <a class="nav-link <?php if($_GET['status'] == 1){echo "active";}else{echo "";}?>"  href="?modulo=tarefa&acao=home&status=1">A Fazer</a>
         </div>
       </li>
       <li class="nav-item col s3">
         <div>
-          <a class="nav-link" href="?modulo=tarefa&acao=home&status=2">Fazendo</a>
+          <a class="nav-link <?php if($_GET['status'] == 2){echo "active";}else{echo "";}?>" href="?modulo=tarefa&acao=home&status=2">Fazendo</a>
         </div>
       </li>
       <li class="nav-item col s3">
         <div>
-        <a class="nav-link" href="?modulo=tarefa&acao=home&status=3">Revisão</a>
+        <a class="nav-link <?php if($_GET['status'] == 3){echo "active";}else{echo "";}?>" href="?modulo=tarefa&acao=home&status=3">Revisão</a>
       </div>
       </li>
       <li class="nav-item col s3">
         <div>
-          <a class="nav-link" href="?modulo=tarefa&acao=home&status=4">Feito</a>
+          <a class="nav-link <?php if($_GET['status'] == 4){echo "active";}else{echo "";}?>" href="?modulo=tarefa&acao=home&status=4">Feito</a>
         </div>
       </li>
     </ul>
@@ -189,7 +189,7 @@
   </script>
 
   <div class="card-body" >
-   
+
    <!------------------------------------------------------------
 # LISTAR TAREFAS
 --------------------------------------------------------------------------------------------------->
@@ -270,31 +270,31 @@
     </div>
   </div>
 </div>
-  </div> 
+  </div>
 </div>
 </div>
 <script>
 $(document).ready(function(){
-  fetchUser(); 
+  fetchUser();
     function fetchUser(){
     var action = "Load";
     $.ajax({
-      url : "modulos/tarefa/action_tarefa.php", 
-      method:"POST", 
-      data:{action:action}, 
+      url : "modulos/tarefa/action_tarefa.php",
+      method:"POST",
+      data:{action:action},
         success:function(data){
         $('#listar').html(data);
         }
-      }); 
+      });
     }
 /*---------------------------------------------------------
  # RESET DO FORMULARIO
 ------------------------------------------------------------------------------*/
 
   $('#nova_tarefa').click(function(){
-    $('#modal_formulario').modal('show'); 
-    $('#titulo').val(''); 
-    $('#descricao').val(''); 
+    $('#modal_formulario').modal('show');
+    $('#titulo').val('');
+    $('#descricao').val('');
     $('#data_inicio').val('');
     $('#data_entrega').val('');
     $('#data_fim').val('');
@@ -303,7 +303,7 @@ $(document).ready(function(){
     $('.modal-title').text("Adicionar Tarefa");
     $('#action').val('Adicionar');
 
-  }); 
+  });
 
 /*---------------------------------------------------------
  # EXLUIR DADOS
@@ -333,21 +333,21 @@ $(document).ready(function(){
 ------------------------------------------------------------------------------
 
   $('#action').click(function(){
-    var nome = $('#nome').val(); 
+    var nome = $('#nome').val();
     var idade = $('#idade').val();
-    var telefone = $('#telefone').val(); 
-    var id = $('#id').val(); 
-    var action = $('#action').val(); 
-    
+    var telefone = $('#telefone').val();
+    var id = $('#id').val();
+    var action = $('#action').val();
+
     if(nome != '' && idade != ''&& telefone != ''){
       $.ajax({
-      url : "modulos/tarefa/action_tarefa.php", 
+      url : "modulos/tarefa/action_tarefa.php",
       method:"POST",
       data:{nome:nome, idade:idade, telefone:telefone, id:id, action:action},
         success:function(data){
-          alert(data);    
+          alert(data);
           $('#modal_formulario').modal('hide');
-          fetchUser();   
+          fetchUser();
         }
       });
     }else{
@@ -359,8 +359,8 @@ $(document).ready(function(){
   var id = $(this).attr("id");
   var action = "Select";
     $.ajax({
-    url:"modulos/tarefa/action_tarefa.php",   
-    method:"POST",     
+    url:"modulos/tarefa/action_tarefa.php",
+    method:"POST",
     data:{id:id, action:action},
     dataType:"json",
       success:function(data){
@@ -368,8 +368,8 @@ $(document).ready(function(){
         $('.modal-title').text("Atualizar Dados");
         $('#action').val("Editar");
         $('#id').val(id);
-        $('#nome').val(data.nome); 
-        $('#idade').val(data.idade); 
+        $('#nome').val(data.nome);
+        $('#idade').val(data.idade);
         $('#telefone').val(data.telefone);
    }
   });
