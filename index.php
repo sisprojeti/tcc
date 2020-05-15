@@ -28,6 +28,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SISP - Conteudo Dinamico</title>
   <link rel="stylesheet" type="text/css" href="publico/css/import.css">
+  <link rel="stylesheet" type="text/css" href="publico/css/adminlte.min.css">
   <link rel="shortcut icon" href="publico/img/logos.png">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
@@ -272,7 +273,7 @@
                  </ul>
                  </li> -->
                  <li class="nav-item">
-                   <a href="index.php?modulo=tarefa&acao=home" class="nav-link">
+                   <a href="index.php?modulo=tarefa&acao=home&status=1" class="nav-link">
                      <i class="fas fa-tasks nav-icon"></i>
                      <p>Lista de Tarefas</p>
                    </a>
@@ -284,19 +285,19 @@
                    </a>
                  </li>
                  <li class="nav-item">
-                   <a href="Modelo_Documentacao.php" class="nav-link">
+                   <a href="?modulo=documentacao&acao=documentacao" class="nav-link">
                      <i class="fas fa-file-alt nav-icon"></i>
                      <p>Modelo de Doc</p>
                    </a>
                  </li>
                  <li class="nav-item">
-                   <a href="Visualizar_Notas.php" class="nav-link">
+                   <a href="?modulo=notas&acao=visualizar_notas" class="nav-link">
                      <i class="fas fa-clipboard nav-icon"></i>
                      <p>Visualizar Notas</p>
                    </a>
                  </li>
                  <li class="nav-item">
-                   <a href="modulos/graficos/teste.php" class="nav-link">
+                   <a href="?modulo=graficos&acao=grafico" class="nav-link">
                      <i class="fas fa-chart-bar nav-icon"></i>
                      <p>Gráficos de Atividade</p>
                    </a>
