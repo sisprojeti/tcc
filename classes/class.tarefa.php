@@ -154,7 +154,7 @@
           //select pessoa.nome,ref_aluno_projeti.fk_aluno
           //from pessoa join aluno join ref_aluno_projeti on pessoa.id_pessoa = aluno.fk_pessoa;
           //realizar alteração no select de listar pra listar o fk do aluno
-          public static function listar(){
+          public static function listar($status=null){
             try {
               $query = "SELECT pessoa.nome as nome_responsavel_tarefa,
                           tarefa.id_tarefa as id_tarefa,
@@ -171,6 +171,11 @@
                           join aluno on tarefa.fk_aluno = aluno.id_aluno
                           join pessoa on aluno.fk_pessoa = pessoa.id_pessoa
                           join status_tarefa on status_tarefa.id_status_tarefa = tarefa.fk_status_tarefa";
+                if($status){
+
+                  $query.=" WHERE fk_status_tarefa = $status";
+                } 
+
                             $stmt = DB::conexao()->prepare($query);
                             $stmt->execute();
                             $registros = $stmt->fetchAll();
@@ -323,7 +328,7 @@
           $stmt->bindValue(':fk_projeti',$this->fk_projeti);
       		$stmt->bindValue(':fk_aluno',$this->fk_aluno);
           $stmt->execute();
-      	}
+      	} 
 
         public static function contarTarefas()
       	    {

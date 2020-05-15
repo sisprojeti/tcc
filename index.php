@@ -29,7 +29,7 @@
   <title>SISP - Conteudo Dinamico</title>
   <link rel="stylesheet" type="text/css" href="publico/css/import.css">
   <link rel="shortcut icon" href="publico/img/logos.png">
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <!--<body class="hold-transition sidebar-mini layout-fixed"> -->
 <body class="sidebar-mini skin-yellow-light" style="height: auto; min-height: 100%;">
@@ -450,9 +450,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script type="text/javascript" src="publico/js/adminlte.js"></script>
 <script type="text/javascript" src="publico/js/anexos.js"></script>
-<script>
+<!--<script>
   $.widget.bridge('uibutton', $.ui.button)
-</script>
+</script> -->
 <!-- Bootstrap 4 -->
 <script src="publico/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
@@ -480,6 +480,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
   <script src="publico/plugins/jquery-ui/jquery-ui.min.js"></script>
+  
   <script>
 
       function editar(id, txt_tarefa) {

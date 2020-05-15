@@ -1,25 +1,36 @@
 <?php
+  print_r($_REQUEST);
   require_once('classes/class.tarefa.php');
   require_once('classes/class.db.php');
   require_once('classes/class.refAlunoProjeti.php');
-  $tarefaTeste = new Tarefa();
+  include_once('classes/class.projeti.php');
 
+  $id_projeti_aluno = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
+  
   try{
     $listarStatus = Tarefa::listarStatusTarefa();
   } catch (PDOException $e) {
       echo "ERROR".$e->getMessage();
   }
   try{
-      $listarAlunosProjeti = RefAlunoProjeti::listarAlunosProjeti();
+      $listarAlunosProjeti = RefAlunoProjeti::listarAlunosProjetiTeste($id_projeti_aluno->getIdProjeti());
   } catch(PDOException $e){
     echo "ERROR".$e->getMessage();
   }
+  try{
+      if(isset($_GET['status'])){
+        $status = $_GET['status'];
+      }else{
+        $status = NULL;
+      }
 
- try{
-      $listarTarefas = Tarefa::listar();
+      $listarTarefas = Tarefa::listar($status);
+
   }catch(PDOException $e){
     echo "ERROR".$e->getMessage();
   }
+
+  $tarefaTeste = new Tarefa();
 
 /*// if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
 //   try {
@@ -32,29 +43,6 @@
 //    }
 // }
 
-  if(isset($_POST["button"]) && ($_POST["button"] === "Salvar")){
-    try{
-      $data_cadastro = date("Y-m-d");
-      $tarefa = new Tarefa();
-      $tarefa->setTitulo($_POST['titulo']);
-      $tarefa->setDataInicio($_POST['data_inicio']);
-      $tarefa->setDataFim($_POST['data_fim']);
-      $tarefa->setDataConclusao($_POST['data_conclusao']);
-      $tarefa->setDescricao($_POST['descricao']);
-      $tarefa->setDataCadastro($data_cadastro);
-      $tarefa->setFkStatusTarefa($_POST['fk_status_tarefa']);
-      $tarefa->setFkRefAlunoProjeti($_POST['fk_ref_aluno_projeti']);
-      $tarefa->adicionar();
-      // if(isset($_POST['status_finalizada'])){ essa lógica de status vai ser util
-      //   $turma->setStatusFinalizada(true);
-      //  }else{
-      //   $turma->setStatusFinalizada(false);
-      //  }
-
-    }catch(PDOException $e){
-      echo "ERROR".$e->getMessage();
-    }
-  }
 */?>
 <nav class="navbar navbar-light navbar-white">
   <div class="container">
@@ -76,9 +64,82 @@
   <!------------------------------------------------------------
 #MODAL BOTÃO DE NOVA TAREFA
 --------------------------------------------------------------------------------------------------->
-<?php
-  include "adicionar.php";
-?>
+<div class="modal-dialog modal-lg" id="modal_formulario">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Adicionar Tarefa</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="modulos/tarefa/action_tarefa.php" id="tarefa" method="post">
+          <div class="form-group">
+            <label class="col-form-label">Título:</label>
+            <input type="text" class="form-control" id="titulo" name="titulo" required>
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">Descrição:</label>
+            <textarea class="form-control"  id="descricao" name="descricao" required></textarea>
+          </div>
+           <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Data de Ínicio:</label>
+                        <input type="date" class="form-control" id="data_inicio" name="data_inicio" required>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Data de Entrega:</label>
+                        <input type="date" class="form-control" id="data_entrega" name="data_entrega" required>
+                      </div>
+                    </div>        
+            </div>
+            <div class="row">
+              <div class="col-sm-6" >
+                      <div class="form-group">
+                        <label>Data de Término:</label>
+                        <input type="date" class="form-control" id="data_fim"  name="data_fim" required>
+                      </div>
+                    </div>
+                     <!-- select -->
+
+                     <div class="col-sm-6">
+                       <label>Status Tarefa</label>
+                       <select class="form-control" id="fk_status_tarefa"  name="fk_status_tarefa" required autofocus>
+                        <option value="">Selecione o status</option>
+                         <?php if(isset($listarStatus)):?>
+                           <?php foreach ($listarStatus as $status):?>
+                             <?php //if($aluno->getSituacaoAluno()):?>
+                             <option value="<?php echo $status->getIdStatusTarefa();?>"><?php echo $status->getNomeStatusTarefa();?></option>
+                           <?php endforeach;?>
+                         <?php endif;?>
+                       </select>
+                     </div>
+              </div>
+              <div class="col-sm-6">
+                <label>Responsável</label>
+                <select class="form-control" id="fk_aluno" name="fk_aluno" required autofocus>
+                 <option value="">Selecione o Responsável</option>
+                  <?php if(isset($listarAlunosProjeti)):?>
+                    <?php foreach ($listarAlunosProjeti as $alunosProjeti):?>
+                      <?php //if($aluno->getSituacaoAluno()):?>
+                      <option value="<?php echo $alunosProjeti->getIdAluno();?>"><?php echo $alunosProjeti->getNomeAluno();?></option>
+                    <?php endforeach;?>
+                  <?php endif;?>
+                </select>
+              </div>
+      </div>
+      <div class="modal-footer">
+        <input type="submit" name="action" id="action" value="Adicionar" class="btn btn-primary" >
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 
  <!------------------------------------------------------------
 # MENU DE TAREFAS
@@ -89,22 +150,22 @@
     <ul class="nav nav-tabs">
       <li class="nav-item col s3">
         <div>
-          <a class="nav-link active" href="#">A Fazer</a>
+          <a class="nav-link "  href="?modulo=tarefa&acao=home&status=1">A Fazer</a>
         </div>
       </li>
       <li class="nav-item col s3">
         <div>
-          <a class="nav-link" href="?modulo=tarefas&acao=listar&tipo=1">Fazendo</a>
+          <a class="nav-link" href="?modulo=tarefa&acao=home&status=2">Fazendo</a>
         </div>
       </li>
       <li class="nav-item col s3">
         <div>
-        <a class="nav-link" href="#">Revisão</a>
+        <a class="nav-link" href="?modulo=tarefa&acao=home&status=3">Revisão</a>
       </div>
       </li>
       <li class="nav-item col s3">
         <div>
-          <a class="nav-link" href="#">Feito</a>
+          <a class="nav-link" href="?modulo=tarefa&acao=home&status=4">Feito</a>
         </div>
       </li>
     </ul>
@@ -127,12 +188,13 @@
       });
   </script>
 
-  <div class="card-body">
-
+  <div class="card-body" >
+   
    <!------------------------------------------------------------
 # LISTAR TAREFAS
 --------------------------------------------------------------------------------------------------->
-    <?php if(isset($listarTarefas)){?>
+
+     <?php if(isset($listarTarefas)){?>
       <?php foreach ($listarTarefas as $tarefa){?>
       <div class="card">
           <div class="card-body">
@@ -208,9 +270,109 @@
     </div>
   </div>
 </div>
-
-  </div>
-
+  </div> 
 </div>
-
 </div>
+<script>
+$(document).ready(function(){
+  fetchUser(); 
+    function fetchUser(){
+    var action = "Load";
+    $.ajax({
+      url : "modulos/tarefa/action_tarefa.php", 
+      method:"POST", 
+      data:{action:action}, 
+        success:function(data){
+        $('#listar').html(data);
+        }
+      }); 
+    }
+/*---------------------------------------------------------
+ # RESET DO FORMULARIO
+------------------------------------------------------------------------------*/
+
+  $('#nova_tarefa').click(function(){
+    $('#modal_formulario').modal('show'); 
+    $('#titulo').val(''); 
+    $('#descricao').val(''); 
+    $('#data_inicio').val('');
+    $('#data_entrega').val('');
+    $('#data_fim').val('');
+    $('#fk_status_tarefa').val('');
+    $('#fk_aluno').val('');
+    $('.modal-title').text("Adicionar Tarefa");
+    $('#action').val('Adicionar');
+
+  }); 
+
+/*---------------------------------------------------------
+ # EXLUIR DADOS
+------------------------------------------------------------------------------
+ $(document).on('click', '.excluir', function(){
+  var id = $(this).attr("id");
+  if(confirm("Tem certeza que deseja excluir o cadastro?")){
+    var action = "Excluir";
+    $.ajax({
+    url:"modulos/tarefa/action_tarefa.php",
+    method:"POST",
+    data:{id:id, action:action},
+      success:function(data){
+        fetchUser();
+        alert(data);
+      }
+    })
+  }
+  else
+  {
+   return false;
+  }
+ }); */
+
+/*---------------------------------------------------------
+ # EDITAR DADOS
+------------------------------------------------------------------------------
+
+  $('#action').click(function(){
+    var nome = $('#nome').val(); 
+    var idade = $('#idade').val();
+    var telefone = $('#telefone').val(); 
+    var id = $('#id').val(); 
+    var action = $('#action').val(); 
+    
+    if(nome != '' && idade != ''&& telefone != ''){
+      $.ajax({
+      url : "modulos/tarefa/action_tarefa.php", 
+      method:"POST",
+      data:{nome:nome, idade:idade, telefone:telefone, id:id, action:action},
+        success:function(data){
+          alert(data);    
+          $('#modal_formulario').modal('hide');
+          fetchUser();   
+        }
+      });
+    }else{
+      alert("PREENCHA TUDO DESGRAÇA! ");
+    }
+  });
+
+  $(document).on('click', '.editar', function(){
+  var id = $(this).attr("id");
+  var action = "Select";
+    $.ajax({
+    url:"modulos/tarefa/action_tarefa.php",   
+    method:"POST",     
+    data:{id:id, action:action},
+    dataType:"json",
+      success:function(data){
+        $('#modal_formulario').modal('show');
+        $('.modal-title').text("Atualizar Dados");
+        $('#action').val("Editar");
+        $('#id').val(id);
+        $('#nome').val(data.nome); 
+        $('#idade').val(data.idade); 
+        $('#telefone').val(data.telefone);
+   }
+  });
+ }); */
+});
+</script>
