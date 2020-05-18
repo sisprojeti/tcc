@@ -104,12 +104,30 @@
         //metodo pra atualizar tarefa
         //atualizar o atributo status para a tarefa mudar de aba
         //verificar se é possível alterar a chave estrangeira do status pra alterar a aba da tarefa
-        public function AtualizarTarefa($id,$titulo){
+        public function AtualizarTarefa($id_tarefa,$titulo,$data_inicio,$data_conclusao,$descricao,$data_cadastro,$fk_status_tarefa,$fk_projeti,$fk_aluno){
         if($this->id_tarefa){
-          $sql = "UPDATE tarefa SET titulo = :titulo where id_tarefa = :id_tarefa";
+          $sql = "UPDATE tarefa
+          SET
+          titulo = :titulo,
+          data_inicio = :data_inicio,
+          data_fim = :data_fim,
+          data_conclusao = :data_conclusao,
+          descricao = :descricao,
+          data_cadastro = :data_cadastro,
+          fk_status_tarefa = :fk_status_tarefa,
+          fk_projeti = :fk_projeti,
+          fk_aluno = :fk_aluno
+           where id_tarefa = :id_tarefa";
           $stmt = DB::conexao()->prepare($sql);
-          $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+          $stmt->bindParam(':id_tarefa',$id_tarefa,PDO::PARAM_INT);
           $stmt->bindParam(':titulo',$this->titulo,PDO::PARAM_STR);
+          $stmt->bindParam(':data_inicio',$this->data_inicio,PDO::PARAM_STR);
+          $stmt->bindParam(':data_fim',$this->data_fim,PDO::PARAM_STR);
+          $stmt->bindParam(':data_conclusao',$this->data_conclusao,PDO::PARAM_STR);
+          $stmt->bindParam(':descricao',$this->descricao,PDO::PARAM_STR);
+          $stmt->bindParam(':fk_status_tarefa',$this->fk_status_tarefa,PDO::PARAM_INT);
+          $stmt->bindParam(':fk_projeti',$this->fk_projeti,PDO::PARAM_INT);
+          $stmt->bindParam(':fk_aluno',$this->fk_aluno,PDO::PARAM_INT);
           $stmt->execute();
         }
       }
@@ -174,7 +192,7 @@
                 if($status){
 
                   $query.=" WHERE fk_status_tarefa = $status";
-                } 
+                }
 
                             $stmt = DB::conexao()->prepare($query);
                             $stmt->execute();
@@ -328,7 +346,7 @@
           $stmt->bindValue(':fk_projeti',$this->fk_projeti);
       		$stmt->bindValue(':fk_aluno',$this->fk_aluno);
           $stmt->execute();
-      	} 
+      	}
 
         public static function contarTarefas()
       	    {

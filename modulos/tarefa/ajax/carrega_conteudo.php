@@ -12,6 +12,24 @@ require_once('../../../classes/class.projeti.php');
     echo "ERROR".$e->getMessage();
   }
 
+  if(isset($_POST['Atualizar']) && $_POST['Atualizar'] == "Atualizar"){
+    try {
+      $tarefa = new Tarefa($id_tarefa); //recuperar o id da tarefa que está selecionada pra editar
+      $tarefa->setTitulo($_POST['titulo']);
+      $tarefa->setDataInicio($_POST['data_inicio']);
+      $tarefa->setDataFim($_POST['data_fim']);
+      $tarefa->setDataConclusao($_POST['data_conclusao']);
+      $tarefa->setDescricao($_POST['descricao']);
+      $tarefa->setDataCadastro($_POST['data_cadastro']);
+      $tarefa->setFkStatusTarefa($_POST['fk_status_tarefa']);
+      $tarefa->setFkProjeti(1);
+      $tarefa->setFkAluno(1);
+      $tarefa->AtualizarTarefa();
+    } catch (PDOException $e) {
+      echo "ERROR".$e->getMessage();
+    }
+  }
+
   try {
     $listarStatus = Tarefa::listarStatusTarefa();
   } catch (PDOException $e) {
@@ -80,4 +98,6 @@ require_once('../../../classes/class.projeti.php');
             <?php endif;?>
           </select>
         </div>
+
+        <input type="submit" name="Atualizar" value="Atualizar" class="btn btn-primary" >
 </div>

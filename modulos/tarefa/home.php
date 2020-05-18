@@ -5,6 +5,8 @@
   require_once('classes/class.refAlunoProjeti.php');
   include_once('classes/class.projeti.php');
 
+
+
   $id_projeti_aluno = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
 
   try{
@@ -29,6 +31,8 @@
   }catch(PDOException $e){
     echo "ERROR".$e->getMessage();
   }
+
+
 
   $tarefaTeste = new Tarefa();
 
@@ -265,7 +269,8 @@
 # FIM DO FORMULARIO DE EDIÇÃO
 --------------------------------------------------------------------------------------------------->
       <div class="modal-footer">
-        <input type="submit" name="button" value="Salvar" class="btn btn-primary" >
+
+          <input type="submit" name="button" value="Salvar" class="btn btn-primary">
       </div>
     </div>
   </div>
