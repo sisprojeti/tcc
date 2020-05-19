@@ -41,11 +41,13 @@
                         from tarefa
                         join aluno on tarefa.fk_aluno = aluno.id_aluno
                         join pessoa on aluno.fk_pessoa = pessoa.id_pessoa
-                        join status_tarefa on status_tarefa.id_status_tarefa = tarefa.fk_status_tarefa";
+                        join status_tarefa on status_tarefa.id_status_tarefa = tarefa.fk_status_tarefa
+                        where tarefa.id_tarefa = :id_tarefa";
             $stmt = DB::conexao()->prepare($sql);
             $stmt->bindParam(":id_tarefa",$id_tarefa,PDO::PARAM_INT);
             $stmt->execute();
             foreach($stmt as $obj){
+              $this->setIdTarefa($obj['id_tarefa']);
               $this->setTitulo($obj['titulo']);
               $this->setDataInicio($obj['data_inicio']);
               $this->setDataFim($obj['data_fim']);
@@ -58,6 +60,13 @@
               $this->setNomeStatusTarefa($obj['nome_status']);
             }
           }
+        }
+
+        public function Excluir($id_tarefa){
+          $sql = "DELETE from tarefa where id_tarefa = :id_tarefa";
+          $stmt = DB::conexao()->prepare($sql);
+          $stmt->bindParam(":id_tarefa",$id_tarefa,PDO::PARAM_INT);
+          $stmt->execute();
         }
 
       public function setFkAlunoProjeti($fk_aluno)
@@ -104,7 +113,7 @@
         //metodo pra atualizar tarefa
         //atualizar o atributo status para a tarefa mudar de aba
         //verificar se é possível alterar a chave estrangeira do status pra alterar a aba da tarefa
-        public function AtualizarTarefa($id_tarefa,$titulo,$data_inicio,$data_conclusao,$descricao,$data_cadastro,$fk_status_tarefa,$fk_projeti,$fk_aluno){
+        public function AtualizarTarefa(){
         if($this->id_tarefa){
           $sql = "UPDATE tarefa
           SET
@@ -113,20 +122,17 @@
           data_fim = :data_fim,
           data_conclusao = :data_conclusao,
           descricao = :descricao,
-          data_cadastro = :data_cadastro,
           fk_status_tarefa = :fk_status_tarefa,
-          fk_projeti = :fk_projeti,
           fk_aluno = :fk_aluno
-           where id_tarefa = :id_tarefa";
+          where id_tarefa = :id_tarefa";
           $stmt = DB::conexao()->prepare($sql);
-          $stmt->bindParam(':id_tarefa',$id_tarefa,PDO::PARAM_INT);
+          $stmt->bindParam(':id_tarefa',$this->id_tarefa,PDO::PARAM_INT);
           $stmt->bindParam(':titulo',$this->titulo,PDO::PARAM_STR);
           $stmt->bindParam(':data_inicio',$this->data_inicio,PDO::PARAM_STR);
           $stmt->bindParam(':data_fim',$this->data_fim,PDO::PARAM_STR);
           $stmt->bindParam(':data_conclusao',$this->data_conclusao,PDO::PARAM_STR);
           $stmt->bindParam(':descricao',$this->descricao,PDO::PARAM_STR);
           $stmt->bindParam(':fk_status_tarefa',$this->fk_status_tarefa,PDO::PARAM_INT);
-          $stmt->bindParam(':fk_projeti',$this->fk_projeti,PDO::PARAM_INT);
           $stmt->bindParam(':fk_aluno',$this->fk_aluno,PDO::PARAM_INT);
           $stmt->execute();
         }
@@ -348,7 +354,7 @@
           $stmt->execute();
       	}
 
-        public static function contarTarefas()
+        public static function contarTotalTarefas()
       	    {
       	      try {
       	        $query = "select * from tarefa";
@@ -361,6 +367,62 @@
       	            echo "ERROR".$e->getMessage();
       	        }
       	      }
+
+        public static function contarTarefasFazer()
+      	    {
+      	      try {
+      	        $query = "select * from tarefa where fk_status_tarefa = 1";
+      	                    $stmt = DB::conexao()->prepare($query);
+      	                    $stmt->execute();
+      	                    $registros = $stmt->fetchAll();
+      	                    $totalTarefas = count($registros);
+      	                    return $totalTarefas;
+      	        }catch(Exception $e){
+      	            echo "ERROR".$e->getMessage();
+      	        }
+      	      }
+
+              public static function contarTarefasFazendo()
+            	    {
+            	      try {
+            	        $query = "select * from tarefa where fk_status_tarefa = 2";
+            	                    $stmt = DB::conexao()->prepare($query);
+            	                    $stmt->execute();
+            	                    $registros = $stmt->fetchAll();
+            	                    $totalTarefas = count($registros);
+            	                    return $totalTarefas;
+            	        }catch(Exception $e){
+            	            echo "ERROR".$e->getMessage();
+            	        }
+            	      }
+
+                    public static function contarTarefasRevisao()
+                  	    {
+                  	      try {
+                  	        $query = "select * from tarefa where fk_status_tarefa = 3";
+                  	                    $stmt = DB::conexao()->prepare($query);
+                  	                    $stmt->execute();
+                  	                    $registros = $stmt->fetchAll();
+                  	                    $totalTarefas = count($registros);
+                  	                    return $totalTarefas;
+                  	        }catch(Exception $e){
+                  	            echo "ERROR".$e->getMessage();
+                  	        }
+                  	      }
+
+                          public static function contarTarefasFeito()
+                              {
+                                try {
+                                  $query = "select * from tarefa where fk_status_tarefa = 4";
+                                              $stmt = DB::conexao()->prepare($query);
+                                              $stmt->execute();
+                                              $registros = $stmt->fetchAll();
+                                              $totalTarefas = count($registros);
+                                              return $totalTarefas;
+                                  }catch(Exception $e){
+                                      echo "ERROR".$e->getMessage();
+                                  }
+                                }
 
         public function setFkRefAlunoProjeti($fk_ref_aluno_projeti)
         {

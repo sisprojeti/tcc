@@ -5,7 +5,6 @@ include_once('classes/class.professor.php');
 include_once('classes/class.coordenador.php');
 include_once('classes/class.turma.php');
 include_once('classes/class.curso.php');
-//include_once('modulos/tarefa/tarefa.model.php');
 include_once('classes/class.exercicio.php');
 include_once('classes/class.etapa.php');
 include_once('classes/class.grupo.php');
@@ -18,7 +17,11 @@ try{
   $totalProfessores = Professor::contarProfessores();
   $totalCoordenadores = Coordenador::contarCoordenadores();
   $totalTurmas = Turma::contarTurmas();
-  $totalTarefas = Tarefa::contarTarefas();
+  $totalTarefasFazer = Tarefa::contarTarefasFazer();
+  $totalTarefas = Tarefa::contarTotalTarefas();
+  $totalTarefasFazendo = Tarefa::contarTarefasFazendo();
+  $totalTarefasRevisao = Tarefa::contarTarefasRevisao();
+  $totalTarefasFeito = Tarefa::contarTarefasFeito();
   $totalCursos = Curso::contarCursos();
   $totalExercicios = Exercicio::contarExercicio();
   $totalEtapas = Etapa::contarEtapas();
@@ -327,7 +330,7 @@ try{
       <div class="col-lg-3 col-6">
         <div class="small-box bg-danger">
           <div class="inner">
-          <h4><?php echo $totalTarefas;?></h4>
+          <h4><?php echo $totalTarefasFazer;?></h4>
             <p><h4>Tarefas A Fázer</h4></p>
           </div>
           <div class="icon">
@@ -339,7 +342,19 @@ try{
       <div class="col-lg-3 col-6">
         <div class="small-box bg-warning">
           <div class="inner">
-          <h4><?php echo $totalTarefas;?></h4>
+          <h4><?php echo $totalTarefasFazendo;?></h4>
+            <p><h4>Tarefas a Fazendo</h4></p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="?modulo=tarefa&acao=home" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-info">
+          <div class="inner">
+          <h4><?php echo $totalTarefasRevisao;?></h4>
             <p><h4>Tarefas a Fazendo</h4></p>
           </div>
           <div class="icon">
@@ -351,7 +366,7 @@ try{
       <div class="col-lg-3 col-6">
         <div class="small-box bg-success">
           <div class="inner">
-          <h4><?php echo $totalTarefas;?></h4>
+          <h4><?php echo $totalTarefasFeito;?></h4>
             <p><h4>Tarefas Feitas</h4></p>
           </div>
           <div class="icon">

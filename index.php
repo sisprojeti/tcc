@@ -12,12 +12,12 @@
     } else {
 
     $id_projeti = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
-    print_r($id_projeti);
-    if($id_projeti){
-      echo "tem projeti";
-    }else{
-      echo "Você precisa ser cadastrado em algum projeti";
-    }
+    // print_r($id_projeti);
+    // if($id_projeti){
+    //   echo "tem projeti";
+    // }else{
+    //   echo "Você precisa ser cadastrado em algum projeti";
+    // }
 
 ?>
 <!DOCTYPE html>
@@ -481,7 +481,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
   <script src="publico/plugins/jquery-ui/jquery-ui.min.js"></script>
-  
+
   <script>
 
       function editar(id, txt_tarefa) {

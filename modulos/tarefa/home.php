@@ -1,5 +1,5 @@
 <?php
-  print_r($_REQUEST);
+  //print_r($_REQUEST);
   require_once('classes/class.tarefa.php');
   require_once('classes/class.db.php');
   require_once('classes/class.refAlunoProjeti.php');
@@ -23,7 +23,7 @@
       if(isset($_GET['status'])){
         $status = $_GET['status'];
       }else{
-        $status = NULL;
+        $status = 1;
       }
 
       $listarTarefas = Tarefa::listar($status);
@@ -32,9 +32,7 @@
     echo "ERROR".$e->getMessage();
   }
 
-
-
-  $tarefaTeste = new Tarefa();
+  //$tarefaTeste = new Tarefa();
 
 /*// if(isset($_POST["button"]) && ($_POST["button"] === "Detalhes")){
 //   try {
@@ -182,7 +180,7 @@
       $(document).ready(function(){
         $(".botao-detalhe").click(function(){
             var id_tarefa = $(this).attr("id");
-            //alert(id_tarefa);
+            //qalert(id_tarefa);
             $("#conteudo_tarefa").load('modulos/tarefa/ajax/carrega_conteudo.php?id='+id_tarefa);
             $("#modal_detalhe").show();
         });
@@ -227,8 +225,8 @@
               <?= $tarefa->getDataConclusao();?>
             </div>
             <div class="col-sm">
-              <a href="#" class="btn btn-primary botao-detalhe" id="<?php echo $tarefa->getIdTarefa()?>">Detalhes </a> &nbsp;
-              <a href="#" class="btn btn-danger my-2 my-sm-0"> <i class="fas fa-trash-alt"> </i> </a>
+              <a href="#" class="btn btn-primary botao-detalhe" id="<?php echo $tarefa->getIdTarefa();?>">Detalhes </a> &nbsp;
+              <a href="index.php?modulo=tarefa&acao=excluir&id_tarefa=<?= $tarefa->getIdTarefa()?>" class="btn btn-danger my-2 my-sm-0" id="<?php echo $tarefa->getIdTarefa();?>"> <i class="fas fa-trash-alt"> </i> </a>
             </div>
           </div>
         </div>
