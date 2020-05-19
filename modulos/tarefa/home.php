@@ -88,7 +88,7 @@
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
-                        <label>Data de Ínicio:</label>
+                        <label>Data de Início:</label>
                         <input type="date" class="form-control" id="data_inicio" name="data_inicio" required>
                       </div>
                     </div>
@@ -266,10 +266,7 @@
 <!------------------------------------------------------------
 # FIM DO FORMULARIO DE EDIÇÃO
 --------------------------------------------------------------------------------------------------->
-      <div class="modal-footer">
-
-          <input type="submit" name="button" value="Salvar" class="btn btn-primary">
-      </div>
+      
     </div>
   </div>
 </div>

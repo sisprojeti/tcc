@@ -49,7 +49,7 @@ require_once('../../../classes/class.projeti.php');
               <div class="col-sm-6">
                 <!-- text input -->
                 <div class="form-group">
-                  <label>Data de Ínicio:</label>
+                  <label>Data de Início:</label>
                   <input type="date" class="form-control input" name="data_inicio" id="data_inicio" value="<?php echo $tarefa->getDataInicio();?>">
                 </div>
               </div>
@@ -92,7 +92,11 @@ require_once('../../../classes/class.projeti.php');
             <?php endif;?>
           </select>
         </div>
+<div class="modal-footer">
 
-        <input type="submit" name="Atualizar" value="Atualizar" class="btn btn-primary input">
+           <input type="submit" name="Atualizar" value="Atualizar" class="btn btn-primary input">
+
+      </div>
+       
         </>
 </div>
