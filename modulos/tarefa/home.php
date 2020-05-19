@@ -82,7 +82,7 @@
           </div>
           <div class="form-group">
             <label class="col-form-label">Descrição:</label>
-            <textarea class="form-control"  id="descricao" name="descricao" required></textarea>
+            <textarea class="form-control"  id="descricao" maxlength="250" name="descricao" required></textarea>
           </div>
            <div class="row">
                     <div class="col-sm-6">
