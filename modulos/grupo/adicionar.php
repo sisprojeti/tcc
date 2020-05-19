@@ -140,7 +140,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
       <script>
             $("#cad_grupos").validate({
        rules : {
-              projeti:{
+              tema:{
                     required:true,
                     minlength:6,
              },
@@ -161,7 +161,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
              },
        },
        messages:{
-            projeti:{
+            tema:{
                     required:"Por favor, insira o tema do projeti",
                     minlength:"No mínimo 6 letras",
              },

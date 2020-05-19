@@ -92,10 +92,8 @@ require_once('../../../classes/class.projeti.php');
             <?php endif;?>
           </select>
         </div>
-<div class="modal-footer">
-
+      <div class="modal-footer">
            <input type="submit" name="Atualizar" value="Atualizar" class="btn btn-primary input">
-
       </div>
        
         </>
