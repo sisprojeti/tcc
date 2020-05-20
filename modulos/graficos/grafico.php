@@ -2,21 +2,9 @@
 <html>
   <head>
     <meta charset="UTF-8"/>
-    <title>Exemplo de gráfico</title>
+    <title>Gráficos</title>
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
-    <script type="text/javascript">
-      google.load('visualization', '1.0', {'packages':['corechart']});
-      google.setOnLoadCallback(function(){
-        var json_text = $.ajax({url: "modulos/graficos/getDadosGrafico.php", dataType:"json", async: false}).responseText; // getDadosGrafico.php é o arquivo php para puxar os dados do gráfico no banco
-        var json = eval("(" + json_text + ")");
-        var dados = new google.visualization.DataTable(json.dados);
-
-        var chart = new google.visualization.PieChart(document.getElementById('area_grafico'));
-        chart.draw(dados, json.config);
-      });
-    </script>
   </head>
 
   <body>
@@ -41,10 +29,23 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-4">
             <!-- DIV RESPONSÁVEL POR EXIBIR OS GRÁFICOS -->
-             <div id="area_grafico" style="align-items: center"></div>
+             <?php include 'primeiroGrafico.php' ?>
           </div>
+          <div class="col-md-4">
+            <!-- DIV RESPONSÁVEL POR EXIBIR OS GRÁFICOS -->
+             <?php include 'segundoGrafico.php' ?>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+            <?php 
+              //-----SE QUISER QUER O SEGUNDO GRAFICO VENHA PRA BAIXO-----
+              //-----APAGAR DA DIV EM CIMA OU COMENTAR E ATIVAR ESSA-----
+            
+              //php include 'segundoGrafico.php'
+             ?>
         </div>
       </div>
     </section>
