@@ -28,6 +28,7 @@ require_once('../../../classes/class.projeti.php');
                 $('#edita_tarefa').submit(function(){
                     $.post('modulos/tarefa/atualizar.php', $('#edita_tarefa .input'), function(retorno){
                         alert('Tarefa atualizada com sucesso');
+                        window.location.reload();
                     }, 'html');
                     return false;
                 });
