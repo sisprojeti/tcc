@@ -55,20 +55,25 @@ require_once('../../../classes/class.projeti.php');
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label>Data de Término:</label>
-                  <input type="date" class="form-control input" name="data_fim" id="data_fim" value="<?= $tarefa->getDataFim();?>">
+                  <label>Data de Entrega:</label>
+                  <input type="date" class="form-control input" name="data_entrega" id="data_entrega" value="<?= $tarefa->getDataEntrega();?>">
                 </div>
               </div>
       </div>
       <div class="row">
-          <div class="col-sm-6">
-                <div class="form-group">
-                  <label>Data de Entrega:</label>
-                  <input type="date" class="form-control input" name="data_conclusao" id="data_entrega" value="<?= $tarefa->getDataConclusao();?>">
-                </div>
-              </div>
-               <!-- select -->
-
+        <div class="col-sm-12">
+          <label>Responsável</label>
+          <select class="form-control input" name="fk_aluno" required autofocus>
+            <?php if(isset($listarAlunosProjeti)):?>
+              <?php foreach ($listarAlunosProjeti as $alunosProjeti):?>
+                <option <?php if($alunosProjeti->getIdAluno() === $tarefa->getFkAluno()){echo "selected";}?> value="<?php echo $alunosProjeti->getIdAluno();?>"><?php echo $alunosProjeti->getNomeAluno();?></option>
+              <?php endforeach;?>
+            <?php endif;?>
+          </select>
+        </div>
+      </div>
+        <br>
+      <div class="row">
                <div class="col-sm-6">
                  <label>Status Tarefa</label>
                  <select class="form-control input" name="fk_status_tarefa" required autofocus>
@@ -81,20 +86,7 @@ require_once('../../../classes/class.projeti.php');
                  </select>
                </div>
         </div>
-        <div class="col-sm-6">
-          <label>Responsável</label>
-
-          <select class="form-control input" name="fk_aluno" required autofocus>
-            <?php if(isset($listarAlunosProjeti)):?>
-              <?php foreach ($listarAlunosProjeti as $alunosProjeti):?>
-                <option <?php if($alunosProjeti->getIdAluno() === $tarefa->getFkAluno()){echo "selected";}?> value="<?php echo $alunosProjeti->getIdAluno();?>"><?php echo $alunosProjeti->getNomeAluno();?></option>
-              <?php endforeach;?>
-            <?php endif;?>
-          </select>
-        </div>
       <div class="modal-footer">
            <input type="submit" name="Atualizar" value="Atualizar" class="btn btn-primary input">
       </div>
-       
-        </>
 </div>

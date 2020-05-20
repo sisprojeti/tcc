@@ -71,22 +71,28 @@
  # ADICIONAR DADOS
 ------------------------------------------------------------------------------*/
   if($_POST["action"] == "Adicionar"){
-      echo "<script> alert('teste');  </script>";
       $data_cadastro = date("Y-m-d");
       $tarefa = new Tarefa();
       $tarefa->setTitulo($_POST['titulo']);
       $tarefa->setDataInicio($_POST['data_inicio']);
-      $tarefa->setDataFim($_POST['data_fim']);
-      $tarefa->setDataConclusao($_POST['data_fim']);
+      $tarefa->setDataEntrega($_POST['data_entrega']);
       $tarefa->setDescricao($_POST['descricao']);
       $tarefa->setDataCadastro($data_cadastro);
       $tarefa->setFkStatusTarefa($_POST['fk_status_tarefa']);
       $tarefa->setFkProjeti($id_projeti_aluno->getIdProjeti());
       $tarefa->setFkAluno($_POST['fk_aluno']);
       $tarefa->adicionar();
+/*
+<div class="alert alert-success" role="alert">
+  Um simples alerta success. Olha só!
+</div>
+*/
       
       header('Location: ../../index.php?modulo=tarefa&acao=home');
 
+      if(isset($tarefa)){
+          echo 'Cadastro Inserida!';
+          }
  }
 
  /*---------------------------------------------------------
@@ -101,8 +107,7 @@
     $output ["titulo"] = $row["titulo"];
     $output ["descricao"] = $row["descricao"];
     $output ["data_inicio"] = $row["data_inicio"];
-    $output ["data_fim"] = $row["data_fim"];
-    $output ["data_conclusao"] = $row["data_conclusao"];
+    $output ["data_entrega"] = $row["data_entrega"];
     $output ["fk_status_tarefa"] = $row["fk_status_tarefa"];
     $output ["fk_projeti"] = $row["fk_projeti"];
     $output ["fk_aluno"] = $row["fk_aluno"];
@@ -123,24 +128,6 @@
   }
  }
 }
-
- /*---------------------------------------------------------
- # EDITAR DADOS
-------------------------------------------------------------------------------*/
- if($_POST["action"] == "Editar"){
-  $statement = $connection->prepare("UPDATE pessoa SET nome = :nome, idade = :idade, telefone = :telefone WHERE id = :id");
-  $listar = $statement->execute(
-   array(
-    ':nome' => $_POST["nome"],
-    ':idade' => $_POST["idade"],
-    ':telefone' => $_POST["telefone"],
-    ':id'   => $_POST["id"]
-   )
-  );
-    if(!empty($listar)){
-    echo 'Dados Atualizados';
-    }
- }
 
 ?>
  

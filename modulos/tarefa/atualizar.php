@@ -8,8 +8,7 @@ if(isset($_POST['Atualizar']) && $_POST['Atualizar'] == "Atualizar"){
     $tarefa = new Tarefa($_POST['id_tarefa']); //recuperar o id da tarefa que está selecionada pra editar
     $tarefa->setTitulo($_POST['titulo']);
     $tarefa->setDataInicio($_POST['data_inicio']);
-    $tarefa->setDataFim($_POST['data_fim']);
-    $tarefa->setDataConclusao($_POST['data_conclusao']);
+    $tarefa->setDataEntrega($_POST['data_entrega']);
     $tarefa->setDescricao($_POST['descricao']);
     $tarefa->setFkStatusTarefa($_POST['fk_status_tarefa']);
     $tarefa->setFkAluno($_POST['fk_aluno']);

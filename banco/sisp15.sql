@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18-Abr-2020 às 21:23
+-- Tempo de geração: 20/05/2020 às 17:00
 -- Versão do servidor: 5.6.17
--- PHP Version: 5.5.12
+-- Versão do PHP: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `sisp13`
+-- Banco de dados: `sisp14`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `acao`
+-- Estrutura para tabela `acao`
 --
 
 CREATE TABLE IF NOT EXISTS `acao` (
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `acao` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Extraindo dados da tabela `acao`
+-- Fazendo dump de dados para tabela `acao`
 --
 
 INSERT INTO `acao` (`id_acao`, `nome`, `diretorio`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `acao` (`id_acao`, `nome`, `diretorio`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `administrador`
+-- Estrutura para tabela `administrador`
 --
 
 CREATE TABLE IF NOT EXISTS `administrador` (
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `administrador` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `aluno`
+-- Estrutura para tabela `aluno`
 --
 
 CREATE TABLE IF NOT EXISTS `aluno` (
@@ -76,34 +76,36 @@ CREATE TABLE IF NOT EXISTS `aluno` (
   `matricula` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_aluno`),
   KEY `fk_aluno_pessoa1` (`fk_pessoa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Extraindo dados da tabela `aluno`
+-- Fazendo dump de dados para tabela `aluno`
 --
 
 INSERT INTO `aluno` (`id_aluno`, `data_matricula`, `situacao_aluno`, `fk_pessoa`, `matricula`) VALUES
 (1, '2019-12-11', 1, 2, '1258742'),
 (2, '2019-12-10', 1, 7, '123123'),
-(3, '2019-12-05', 1, 8, '123123123');
+(3, '2019-12-05', 1, 8, '123123123'),
+(4, '2020-04-10', 1, 9, '2020'),
+(5, '2020-04-20', 1, 10, '3030'),
+(6, '2020-04-17', 1, 11, '4040');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `boletim`
+-- Estrutura para tabela `boletim`
 --
 
 CREATE TABLE IF NOT EXISTS `boletim` (
   `id_boletim` int(11) NOT NULL AUTO_INCREMENT,
   `nota_final` double DEFAULT NULL,
-  `fk_ref_aluno_projeti` int(11) NOT NULL,
   PRIMARY KEY (`id_boletim`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `coordenador`
+-- Estrutura para tabela `coordenador`
 --
 
 CREATE TABLE IF NOT EXISTS `coordenador` (
@@ -115,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `coordenador` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Extraindo dados da tabela `coordenador`
+-- Fazendo dump de dados para tabela `coordenador`
 --
 
 INSERT INTO `coordenador` (`id_coordenador`, `data_cadastro`, `fk_pessoa`) VALUES
@@ -125,7 +127,7 @@ INSERT INTO `coordenador` (`id_coordenador`, `data_cadastro`, `fk_pessoa`) VALUE
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `criterio`
+-- Estrutura para tabela `criterio`
 --
 
 CREATE TABLE IF NOT EXISTS `criterio` (
@@ -138,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `criterio` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `curso`
+-- Estrutura para tabela `curso`
 --
 
 CREATE TABLE IF NOT EXISTS `curso` (
@@ -152,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `curso` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Extraindo dados da tabela `curso`
+-- Fazendo dump de dados para tabela `curso`
 --
 
 INSERT INTO `curso` (`id_curso`, `nome`, `sigla`, `ano_total`, `carga_horaria`, `status_curso`) VALUES
@@ -161,7 +163,7 @@ INSERT INTO `curso` (`id_curso`, `nome`, `sigla`, `ano_total`, `carga_horaria`, 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `etapa`
+-- Estrutura para tabela `etapa`
 --
 
 CREATE TABLE IF NOT EXISTS `etapa` (
@@ -173,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `etapa` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Extraindo dados da tabela `etapa`
+-- Fazendo dump de dados para tabela `etapa`
 --
 
 INSERT INTO `etapa` (`id_etapa`, `nome`, `ordem`, `status_etapa`) VALUES
@@ -182,7 +184,7 @@ INSERT INTO `etapa` (`id_etapa`, `nome`, `ordem`, `status_etapa`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `exercicio`
+-- Estrutura para tabela `exercicio`
 --
 
 CREATE TABLE IF NOT EXISTS `exercicio` (
@@ -194,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `exercicio` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Extraindo dados da tabela `exercicio`
+-- Fazendo dump de dados para tabela `exercicio`
 --
 
 INSERT INTO `exercicio` (`id_exercicio`, `nome_ano`, `data_inicio`, `data_fim`) VALUES
@@ -203,7 +205,7 @@ INSERT INTO `exercicio` (`id_exercicio`, `nome_ano`, `data_inicio`, `data_fim`) 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `formulario`
+-- Estrutura para tabela `formulario`
 --
 
 CREATE TABLE IF NOT EXISTS `formulario` (
@@ -216,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `formulario` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `grupo`
+-- Estrutura para tabela `grupo`
 --
 
 CREATE TABLE IF NOT EXISTS `grupo` (
@@ -226,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `grupo` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Extraindo dados da tabela `grupo`
+-- Fazendo dump de dados para tabela `grupo`
 --
 
 INSERT INTO `grupo` (`id_grupo`, `nome`) VALUES
@@ -238,7 +240,7 @@ INSERT INTO `grupo` (`id_grupo`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `modulo`
+-- Estrutura para tabela `modulo`
 --
 
 CREATE TABLE IF NOT EXISTS `modulo` (
@@ -249,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `modulo` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
--- Extraindo dados da tabela `modulo`
+-- Fazendo dump de dados para tabela `modulo`
 --
 
 INSERT INTO `modulo` (`id_modulo`, `nome`, `diretorio`) VALUES
@@ -274,24 +276,22 @@ INSERT INTO `modulo` (`id_modulo`, `nome`, `diretorio`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `nota`
+-- Estrutura para tabela `nota`
 --
 
 CREATE TABLE IF NOT EXISTS `nota` (
   `id_nota` int(11) NOT NULL AUTO_INCREMENT,
   `valor` double NOT NULL,
   `data_modificacao` date NOT NULL,
-  `fk_ref_aluno_projeti` int(11) NOT NULL,
   `fk_ref_criterio_formulario` int(11) NOT NULL,
   PRIMARY KEY (`id_nota`),
-  KEY `fk_nota_ref_aluno_projeti1` (`fk_ref_aluno_projeti`),
   KEY `fk_nota_ref_criterio_formulario1` (`fk_ref_criterio_formulario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `operacao`
+-- Estrutura para tabela `operacao`
 --
 
 CREATE TABLE IF NOT EXISTS `operacao` (
@@ -307,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `operacao` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=51 ;
 
 --
--- Extraindo dados da tabela `operacao`
+-- Fazendo dump de dados para tabela `operacao`
 --
 
 INSERT INTO `operacao` (`id_operacao`, `_delete_`, `fk_modulo`, `fk_acao`, `fk_grupo`) VALUES
@@ -365,7 +365,7 @@ INSERT INTO `operacao` (`id_operacao`, `_delete_`, `fk_modulo`, `fk_acao`, `fk_g
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pessoa`
+-- Estrutura para tabela `pessoa`
 --
 
 CREATE TABLE IF NOT EXISTS `pessoa` (
@@ -375,10 +375,10 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `cpf` varchar(14) DEFAULT NULL,
   `telefone` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id_pessoa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
--- Extraindo dados da tabela `pessoa`
+-- Fazendo dump de dados para tabela `pessoa`
 --
 
 INSERT INTO `pessoa` (`id_pessoa`, `nome`, `email`, `cpf`, `telefone`) VALUES
@@ -389,12 +389,15 @@ INSERT INTO `pessoa` (`id_pessoa`, `nome`, `email`, `cpf`, `telefone`) VALUES
 (5, 'ALESSANDRA KARLEN', 'administrador@proesc.com', '911.969.710-48', '(96) 99207-2330'),
 (6, 'Gabriela proffff', 'gabriela.proesc@gmail.com', '608.430.220-35', '(68) 79781-564'),
 (7, 'DIEGO BARBOSA', 'rafael.proesc@gmail.com', '076.531.910-10', '(68) 79781-564'),
-(8, 'marcelo cargodos', 'rafael.proesc@gmail.com', '243.836.040-21', '(96) 99207-2330');
+(8, 'marcelo cargodos', 'rafael.proesc@gmail.com', '243.836.040-21', '(96) 99207-2330'),
+(9, 'amerson', 'rafael.proesc@gmail.com', '660.454.890-20', '(68) 79781-5643'),
+(10, 'aluno 2', 'gabrielaexposto1@gmail.com', '815.724.450-17', '(68) 79781-5643'),
+(11, 'batata', 'rafael.proesc@gmail.com', '053.458.610-48', '(68) 79781-5643');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `professor`
+-- Estrutura para tabela `professor`
 --
 
 CREATE TABLE IF NOT EXISTS `professor` (
@@ -406,7 +409,7 @@ CREATE TABLE IF NOT EXISTS `professor` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Extraindo dados da tabela `professor`
+-- Fazendo dump de dados para tabela `professor`
 --
 
 INSERT INTO `professor` (`id_professor`, `data_cadastro`, `fk_pessoa`) VALUES
@@ -416,7 +419,7 @@ INSERT INTO `professor` (`id_professor`, `data_cadastro`, `fk_pessoa`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `projeti`
+-- Estrutura para tabela `projeti`
 --
 
 CREATE TABLE IF NOT EXISTS `projeti` (
@@ -424,21 +427,20 @@ CREATE TABLE IF NOT EXISTS `projeti` (
   `tema` varchar(255) NOT NULL,
   `descricao` text NOT NULL,
   PRIMARY KEY (`id_projeti`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Extraindo dados da tabela `projeti`
+-- Fazendo dump de dados para tabela `projeti`
 --
 
 INSERT INTO `projeti` (`id_projeti`, `tema`, `descricao`) VALUES
-(1, 'tema 1', 'fadfadfaf'),
-(2, '', ''),
-(3, '', '');
+(1, 'tema 1', 'sla a descriÃ§Ã£o'),
+(4, 'tema 2', 'uma ai');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ref_aluno_projeti`
+-- Estrutura para tabela `ref_aluno_projeti`
 --
 
 CREATE TABLE IF NOT EXISTS `ref_aluno_projeti` (
@@ -448,21 +450,24 @@ CREATE TABLE IF NOT EXISTS `ref_aluno_projeti` (
   PRIMARY KEY (`id_ref_aluno_projeti`),
   KEY `fk_ref_aluno_projeti_projeti1` (`fk_projeti`),
   KEY `fk_ref_aluno_projeti_aluno1` (`fk_aluno`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
--- Extraindo dados da tabela `ref_aluno_projeti`
+-- Fazendo dump de dados para tabela `ref_aluno_projeti`
 --
 
 INSERT INTO `ref_aluno_projeti` (`id_ref_aluno_projeti`, `fk_projeti`, `fk_aluno`) VALUES
 (1, 1, 1),
 (2, 1, 2),
-(3, 1, 3);
+(3, 1, 3),
+(10, 4, 6),
+(11, 4, 4),
+(12, 4, 5);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ref_aluno_turma`
+-- Estrutura para tabela `ref_aluno_turma`
 --
 
 CREATE TABLE IF NOT EXISTS `ref_aluno_turma` (
@@ -472,21 +477,24 @@ CREATE TABLE IF NOT EXISTS `ref_aluno_turma` (
   PRIMARY KEY (`id_ref_aluno_turma`),
   KEY `fk_ref_aluno_turma_aluno1` (`fk_aluno`),
   KEY `fk_ref_aluno_turma_turma1` (`fk_turma`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Extraindo dados da tabela `ref_aluno_turma`
+-- Fazendo dump de dados para tabela `ref_aluno_turma`
 --
 
 INSERT INTO `ref_aluno_turma` (`id_ref_aluno_turma`, `fk_aluno`, `fk_turma`) VALUES
 (1, 1, 1),
 (2, 2, 1),
-(3, 3, 1);
+(3, 3, 1),
+(4, 4, 1),
+(5, 5, 1),
+(6, 6, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ref_coordenador_curso`
+-- Estrutura para tabela `ref_coordenador_curso`
 --
 
 CREATE TABLE IF NOT EXISTS `ref_coordenador_curso` (
@@ -499,7 +507,7 @@ CREATE TABLE IF NOT EXISTS `ref_coordenador_curso` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Extraindo dados da tabela `ref_coordenador_curso`
+-- Fazendo dump de dados para tabela `ref_coordenador_curso`
 --
 
 INSERT INTO `ref_coordenador_curso` (`id_ref_coordenador_curso`, `fk_coordenador`, `fk_curso`) VALUES
@@ -508,7 +516,7 @@ INSERT INTO `ref_coordenador_curso` (`id_ref_coordenador_curso`, `fk_coordenador
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ref_criterio_formulario`
+-- Estrutura para tabela `ref_criterio_formulario`
 --
 
 CREATE TABLE IF NOT EXISTS `ref_criterio_formulario` (
@@ -523,7 +531,7 @@ CREATE TABLE IF NOT EXISTS `ref_criterio_formulario` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ref_prof_turma`
+-- Estrutura para tabela `ref_prof_turma`
 --
 
 CREATE TABLE IF NOT EXISTS `ref_prof_turma` (
@@ -538,7 +546,7 @@ CREATE TABLE IF NOT EXISTS `ref_prof_turma` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ref_usuario_grupo`
+-- Estrutura para tabela `ref_usuario_grupo`
 --
 
 CREATE TABLE IF NOT EXISTS `ref_usuario_grupo` (
@@ -548,10 +556,10 @@ CREATE TABLE IF NOT EXISTS `ref_usuario_grupo` (
   PRIMARY KEY (`id_ref_usuario_grupo`),
   KEY `fk_ref_usuario_grupo_usuario1` (`fk_usuario`),
   KEY `fk_ref_usuario_grupo_grupo1` (`fk_grupo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Extraindo dados da tabela `ref_usuario_grupo`
+-- Fazendo dump de dados para tabela `ref_usuario_grupo`
 --
 
 INSERT INTO `ref_usuario_grupo` (`id_ref_usuario_grupo`, `fk_usuario`, `fk_grupo`) VALUES
@@ -559,12 +567,15 @@ INSERT INTO `ref_usuario_grupo` (`id_ref_usuario_grupo`, `fk_usuario`, `fk_grupo
 (2, 2, 2),
 (3, 4, 3),
 (4, 5, 2),
-(5, 6, 2);
+(5, 6, 2),
+(6, 7, 2),
+(7, 8, 2),
+(8, 9, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `status_tarefa`
+-- Estrutura para tabela `status_tarefa`
 --
 
 CREATE TABLE IF NOT EXISTS `status_tarefa` (
@@ -574,7 +585,7 @@ CREATE TABLE IF NOT EXISTS `status_tarefa` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Extraindo dados da tabela `status_tarefa`
+-- Fazendo dump de dados para tabela `status_tarefa`
 --
 
 INSERT INTO `status_tarefa` (`id_status_tarefa`, `nome`) VALUES
@@ -586,39 +597,41 @@ INSERT INTO `status_tarefa` (`id_status_tarefa`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tarefa`
+-- Estrutura para tabela `tarefa`
 --
 
 CREATE TABLE IF NOT EXISTS `tarefa` (
   `id_tarefa` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(255) NOT NULL,
   `data_inicio` date NOT NULL,
-  `data_fim` date NOT NULL,
-  `data_conclusao` date DEFAULT NULL,
+  `data_entrega` date NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
   `data_cadastro` date DEFAULT NULL,
   `fk_status_tarefa` int(11) NOT NULL,
-  `fk_ref_aluno_projeti` int(11) NOT NULL,
+  `fk_projeti` int(11) NOT NULL,
+  `fk_aluno` int(11) NOT NULL,
   PRIMARY KEY (`id_tarefa`),
   KEY `fk_tarefa_status_tarefa1` (`fk_status_tarefa`),
-  KEY `fk_tarefa_ref_aluno_projeti1` (`fk_ref_aluno_projeti`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  KEY `fk_tarefa_projeti1` (`fk_projeti`),
+  KEY `fk_tarefa_aluno1` (`fk_aluno`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
--- Extraindo dados da tabela `tarefa`
+-- Fazendo dump de dados para tabela `tarefa`
 --
 
-INSERT INTO `tarefa` (`id_tarefa`, `titulo`, `data_inicio`, `data_fim`, `data_conclusao`, `descricao`, `data_cadastro`, `fk_status_tarefa`, `fk_ref_aluno_projeti`) VALUES
-(1, 'Mon Hang', '2020-03-03', '2020-03-27', '0000-00-00', 'fasfafa', '2020-03-31', 1, 1),
-(2, 'teste', '2020-04-02', '2020-04-16', '0000-00-00', 'aaaaaaaa', '2020-04-07', 1, 2),
-(3, 'teste', '2020-04-02', '2020-04-16', '0000-00-00', 'aaaaaaaa', '2020-04-07', 1, 2),
-(4, 'sensei', '2020-04-10', '2020-04-03', '2020-04-23', 'aaaaa', '2020-04-16', 1, 2),
-(5, 'sensei', '2020-04-10', '2020-04-03', '2020-04-23', 'aaaaa', '2020-04-16', 1, 2);
+INSERT INTO `tarefa` (`id_tarefa`, `titulo`, `data_inicio`, `data_entrega`, `descricao`, `data_cadastro`, `fk_status_tarefa`, `fk_projeti`, `fk_aluno`) VALUES
+(6, ' Cadastrar Tarefa 1', '2020-05-14', '2020-05-20', ' Cadastrar Tarefa 1 Cadastrar Tarefa 1', '2020-05-15', 2, 1, 1),
+(9, 'teste 4', '2020-05-27', '2020-05-31', 'teste 4teste 4teste 4', '2020-05-20', 4, 1, 3),
+(10, 'teste tarefa ', '2020-05-18', '2020-05-21', 'teste tarefa teste5555 ', '2020-05-20', 1, 1, 1),
+(11, ' Cadastrar Tarefa 2', '2020-05-17', '2020-05-27', 'asdasdasda', '2020-05-20', 3, 1, 2),
+(12, 'teste tarefa ', '2020-05-20', '2020-05-21', 'adsfasda', '2020-05-20', 1, 1, 1),
+(17, ' TAREFA NOTIFICAÃ‡ÃƒO', '2020-05-21', '2020-05-27', 'BBBBBBB', '2020-05-20', 1, 1, 3);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `turma`
+-- Estrutura para tabela `turma`
 --
 
 CREATE TABLE IF NOT EXISTS `turma` (
@@ -637,7 +650,7 @@ CREATE TABLE IF NOT EXISTS `turma` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Extraindo dados da tabela `turma`
+-- Fazendo dump de dados para tabela `turma`
 --
 
 INSERT INTO `turma` (`id_turma`, `nome`, `turno`, `lotacao`, `status_finalizada`, `fk_curso`, `fk_etapa`, `fk_exercicio`) VALUES
@@ -646,7 +659,7 @@ INSERT INTO `turma` (`id_turma`, `nome`, `turno`, `lotacao`, `status_finalizada`
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Estrutura para tabela `usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
@@ -655,10 +668,10 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `fk_pessoa` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`),
   KEY `fk_usuario_pessoa` (`fk_pessoa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
--- Extraindo dados da tabela `usuario`
+-- Fazendo dump de dados para tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `senha`, `fk_pessoa`) VALUES
@@ -667,39 +680,41 @@ INSERT INTO `usuario` (`id_usuario`, `senha`, `fk_pessoa`) VALUES
 (3, '123456', 4),
 (4, '123456', 5),
 (5, '123456', 7),
-(6, '123456', 8);
+(6, '123456', 8),
+(7, '123456', 9),
+(8, '123456', 10),
+(9, '123456', 11);
 
 --
--- Constraints for dumped tables
+-- Restrições para dumps de tabelas
 --
 
 --
--- Limitadores para a tabela `administrador`
+-- Restrições para tabelas `administrador`
 --
 ALTER TABLE `administrador`
   ADD CONSTRAINT `fk_administrador_pessoa1` FOREIGN KEY (`fk_pessoa`) REFERENCES `pessoa` (`id_pessoa`);
 
 --
--- Limitadores para a tabela `aluno`
+-- Restrições para tabelas `aluno`
 --
 ALTER TABLE `aluno`
   ADD CONSTRAINT `fk_aluno_pessoa1` FOREIGN KEY (`fk_pessoa`) REFERENCES `pessoa` (`id_pessoa`);
 
 --
--- Limitadores para a tabela `coordenador`
+-- Restrições para tabelas `coordenador`
 --
 ALTER TABLE `coordenador`
   ADD CONSTRAINT `fk_coordenador_pessoa1` FOREIGN KEY (`fk_pessoa`) REFERENCES `pessoa` (`id_pessoa`);
 
 --
--- Limitadores para a tabela `nota`
+-- Restrições para tabelas `nota`
 --
 ALTER TABLE `nota`
-  ADD CONSTRAINT `fk_nota_ref_aluno_projeti1` FOREIGN KEY (`fk_ref_aluno_projeti`) REFERENCES `ref_aluno_projeti` (`id_ref_aluno_projeti`),
   ADD CONSTRAINT `fk_nota_ref_criterio_formulario1` FOREIGN KEY (`fk_ref_criterio_formulario`) REFERENCES `ref_criterio_formulario` (`id_ref_criterio_formulario`);
 
 --
--- Limitadores para a tabela `operacao`
+-- Restrições para tabelas `operacao`
 --
 ALTER TABLE `operacao`
   ADD CONSTRAINT `fk_operacao_acao1` FOREIGN KEY (`fk_acao`) REFERENCES `acao` (`id_acao`),
@@ -707,62 +722,63 @@ ALTER TABLE `operacao`
   ADD CONSTRAINT `fk_operacao_modulo1` FOREIGN KEY (`fk_modulo`) REFERENCES `modulo` (`id_modulo`);
 
 --
--- Limitadores para a tabela `professor`
+-- Restrições para tabelas `professor`
 --
 ALTER TABLE `professor`
   ADD CONSTRAINT `fk_professor_pessoa1` FOREIGN KEY (`fk_pessoa`) REFERENCES `pessoa` (`id_pessoa`);
 
 --
--- Limitadores para a tabela `ref_aluno_projeti`
+-- Restrições para tabelas `ref_aluno_projeti`
 --
 ALTER TABLE `ref_aluno_projeti`
   ADD CONSTRAINT `fk_ref_aluno_projeti_aluno1` FOREIGN KEY (`fk_aluno`) REFERENCES `aluno` (`id_aluno`),
   ADD CONSTRAINT `fk_ref_aluno_projeti_projeti1` FOREIGN KEY (`fk_projeti`) REFERENCES `projeti` (`id_projeti`);
 
 --
--- Limitadores para a tabela `ref_aluno_turma`
+-- Restrições para tabelas `ref_aluno_turma`
 --
 ALTER TABLE `ref_aluno_turma`
   ADD CONSTRAINT `fk_ref_aluno_turma_aluno1` FOREIGN KEY (`fk_aluno`) REFERENCES `aluno` (`id_aluno`),
   ADD CONSTRAINT `fk_ref_aluno_turma_turma1` FOREIGN KEY (`fk_turma`) REFERENCES `turma` (`id_turma`);
 
 --
--- Limitadores para a tabela `ref_coordenador_curso`
+-- Restrições para tabelas `ref_coordenador_curso`
 --
 ALTER TABLE `ref_coordenador_curso`
   ADD CONSTRAINT `fk_ref_coordenador_curso_coordenador1` FOREIGN KEY (`fk_coordenador`) REFERENCES `coordenador` (`id_coordenador`),
   ADD CONSTRAINT `fk_ref_coordenador_curso_curso1` FOREIGN KEY (`fk_curso`) REFERENCES `curso` (`id_curso`);
 
 --
--- Limitadores para a tabela `ref_criterio_formulario`
+-- Restrições para tabelas `ref_criterio_formulario`
 --
 ALTER TABLE `ref_criterio_formulario`
   ADD CONSTRAINT `fk_ref_criterio_formulario_criterio1` FOREIGN KEY (`fk_criterio`) REFERENCES `criterio` (`id_criterio`),
   ADD CONSTRAINT `fk_ref_criterio_formulario_formulario1` FOREIGN KEY (`fk_formulario`) REFERENCES `formulario` (`id_formulario`);
 
 --
--- Limitadores para a tabela `ref_prof_turma`
+-- Restrições para tabelas `ref_prof_turma`
 --
 ALTER TABLE `ref_prof_turma`
   ADD CONSTRAINT `fk_ref_prof_turma_professor1` FOREIGN KEY (`fk_professor`) REFERENCES `professor` (`id_professor`),
   ADD CONSTRAINT `fk_ref_prof_turma_turma1` FOREIGN KEY (`fk_turma`) REFERENCES `turma` (`id_turma`);
 
 --
--- Limitadores para a tabela `ref_usuario_grupo`
+-- Restrições para tabelas `ref_usuario_grupo`
 --
 ALTER TABLE `ref_usuario_grupo`
   ADD CONSTRAINT `fk_ref_usuario_grupo_grupo1` FOREIGN KEY (`fk_grupo`) REFERENCES `grupo` (`id_grupo`),
   ADD CONSTRAINT `fk_ref_usuario_grupo_usuario1` FOREIGN KEY (`fk_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
--- Limitadores para a tabela `tarefa`
+-- Restrições para tabelas `tarefa`
 --
 ALTER TABLE `tarefa`
-  ADD CONSTRAINT `fk_tarefa_ref_aluno_projeti1` FOREIGN KEY (`fk_ref_aluno_projeti`) REFERENCES `ref_aluno_projeti` (`id_ref_aluno_projeti`),
+  ADD CONSTRAINT `fk_tarefa_aluno1` FOREIGN KEY (`fk_aluno`) REFERENCES `aluno` (`id_aluno`),
+  ADD CONSTRAINT `fk_tarefa_projeti1` FOREIGN KEY (`fk_projeti`) REFERENCES `projeti` (`id_projeti`),
   ADD CONSTRAINT `fk_tarefa_status_tarefa1` FOREIGN KEY (`fk_status_tarefa`) REFERENCES `status_tarefa` (`id_status_tarefa`);
 
 --
--- Limitadores para a tabela `turma`
+-- Restrições para tabelas `turma`
 --
 ALTER TABLE `turma`
   ADD CONSTRAINT `fk_turma_curso1` FOREIGN KEY (`fk_curso`) REFERENCES `curso` (`id_curso`),
@@ -770,7 +786,7 @@ ALTER TABLE `turma`
   ADD CONSTRAINT `fk_turma_exercicio1` FOREIGN KEY (`fk_exercicio`) REFERENCES `exercicio` (`id_exercicio`);
 
 --
--- Limitadores para a tabela `usuario`
+-- Restrições para tabelas `usuario`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `fk_usuario_pessoa` FOREIGN KEY (`fk_pessoa`) REFERENCES `pessoa` (`id_pessoa`);

@@ -82,7 +82,7 @@
           </div>
           <div class="form-group">
             <label class="col-form-label">Descrição:</label>
-            <textarea class="form-control"  id="descricao" maxlength="250" name="descricao" required></textarea>
+            <textarea class="form-control"  id="descricao" maxlength="250" name="descricao" rows="3" required></textarea>
           </div>
            <div class="row">
                     <div class="col-sm-6">
@@ -100,14 +100,21 @@
                     </div>
             </div>
             <div class="row">
-              <div class="col-sm-6" >
-                      <div class="form-group">
-                        <label>Data de Término:</label>
-                        <input type="date" class="form-control" id="data_fim"  name="data_fim" required>
-                      </div>
-                    </div>
-                     <!-- select -->
-
+              <div class="col-sm-12">
+                <label>Responsável</label>
+                <select class="form-control" id="fk_aluno" name="fk_aluno" required autofocus>
+                 <option value="">Selecione o Responsável</option>
+                  <?php if(isset($listarAlunosProjeti)):?>
+                    <?php foreach ($listarAlunosProjeti as $alunosProjeti):?>
+                      <?php //if($aluno->getSituacaoAluno()):?>
+                      <option value="<?php echo $alunosProjeti->getIdAluno();?>"><?php echo $alunosProjeti->getNomeAluno();?></option>
+                    <?php endforeach;?>
+                  <?php endif;?>
+                </select>
+              </div>
+            </div>
+            <br>
+            <div class="row">
                      <div class="col-sm-6">
                        <label>Status Tarefa</label>
                        <select class="form-control" id="fk_status_tarefa"  name="fk_status_tarefa" required autofocus>
@@ -120,18 +127,6 @@
                          <?php endif;?>
                        </select>
                      </div>
-              </div>
-              <div class="col-sm-6">
-                <label>Responsável</label>
-                <select class="form-control" id="fk_aluno" name="fk_aluno" required autofocus>
-                 <option value="">Selecione o Responsável</option>
-                  <?php if(isset($listarAlunosProjeti)):?>
-                    <?php foreach ($listarAlunosProjeti as $alunosProjeti):?>
-                      <?php //if($aluno->getSituacaoAluno()):?>
-                      <option value="<?php echo $alunosProjeti->getIdAluno();?>"><?php echo $alunosProjeti->getNomeAluno();?></option>
-                    <?php endforeach;?>
-                  <?php endif;?>
-                </select>
               </div>
       </div>
       <div class="modal-footer">
@@ -218,11 +213,11 @@
           <div class="row">
             <div class="col-sm">
               Data de Início:
-              <?= $tarefa->getDataCadastro();?>
+              <?= $tarefa->getDataInicio();?>
             </div>
             <div class="col-sm">
-              Data de Conclusão:
-              <?= $tarefa->getDataConclusao();?>
+              Data de Entrega:
+              <?= $tarefa->getDataEntrega();?>
             </div>
             <div class="col-sm">
               <a href="#" class="btn btn-primary botao-detalhe" id="<?php echo $tarefa->getIdTarefa();?>">Detalhes </a> &nbsp;
@@ -297,7 +292,6 @@ $(document).ready(function(){
     $('#descricao').val('');
     $('#data_inicio').val('');
     $('#data_entrega').val('');
-    $('#data_fim').val('');
     $('#fk_status_tarefa').val('');
     $('#fk_aluno').val('');
     $('.modal-title').text("Adicionar Tarefa");

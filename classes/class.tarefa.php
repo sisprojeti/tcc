@@ -12,9 +12,8 @@
       public $titulo;
       public $descricao;
       public $data_inicio;
-      public $data_fim;
+      public $data_entrega;
       public $responsavel_id;
-      public $data_conclusao;
       public $data_cadastro;
       public $nomeStatus;
       public $pessoa_nome;
@@ -31,8 +30,7 @@
                         tarefa.id_tarefa as id_tarefa,
                         tarefa.titulo as titulo,
                         tarefa.data_inicio as data_inicio,
-                        tarefa.data_fim as data_fim,
-                        tarefa.data_conclusao as data_conclusao,
+                        tarefa.data_entrega as data_entrega,
                         tarefa.descricao as descricao,
                         tarefa.data_cadastro as data_cadastro,
                         tarefa.fk_aluno as fk_aluno,
@@ -50,8 +48,7 @@
               $this->setIdTarefa($obj['id_tarefa']);
               $this->setTitulo($obj['titulo']);
               $this->setDataInicio($obj['data_inicio']);
-              $this->setDataFim($obj['data_fim']);
-              $this->setDataConclusao($obj['data_conclusao']);
+              $this->setDataEntrega($obj['data_entrega']);
               $this->setDescricao($obj['descricao']);
               $this->setDataCadastro($obj['descricao']);
               $this->setFkStatusTarefa($obj['fk_status_tarefa']);
@@ -119,8 +116,7 @@
           SET
           titulo = :titulo,
           data_inicio = :data_inicio,
-          data_fim = :data_fim,
-          data_conclusao = :data_conclusao,
+          data_entrega = :data_entrega,
           descricao = :descricao,
           fk_status_tarefa = :fk_status_tarefa,
           fk_aluno = :fk_aluno
@@ -129,8 +125,7 @@
           $stmt->bindParam(':id_tarefa',$this->id_tarefa,PDO::PARAM_INT);
           $stmt->bindParam(':titulo',$this->titulo,PDO::PARAM_STR);
           $stmt->bindParam(':data_inicio',$this->data_inicio,PDO::PARAM_STR);
-          $stmt->bindParam(':data_fim',$this->data_fim,PDO::PARAM_STR);
-          $stmt->bindParam(':data_conclusao',$this->data_conclusao,PDO::PARAM_STR);
+          $stmt->bindParam(':data_entrega',$this->data_entrega,PDO::PARAM_STR);
           $stmt->bindParam(':descricao',$this->descricao,PDO::PARAM_STR);
           $stmt->bindParam(':fk_status_tarefa',$this->fk_status_tarefa,PDO::PARAM_INT);
           $stmt->bindParam(':fk_aluno',$this->fk_aluno,PDO::PARAM_INT);
@@ -159,8 +154,7 @@
                     $temporario->setIdTarefa($objeto['id_tarefa']);
                     $temporario->setTitulo($objeto['titulo']);
                     $temporario->setDataInicio($objeto['data_inicio']);
-                    $temporario->setDataFim($objeto['data_fim']);
-                    $temporario->setDataConclusao($objeto['data_conclusao']);
+                    $temporario->setDataEntrega($objeto['data_entrega']);
                     $temporario->setDescricao($objeto['descricao']);
                     $temporario->setDataCadastro($objeto['data_cadastro']);
                     $temporario->setStatusTarefa($objeto['fk_status_tarefa']);
@@ -185,8 +179,7 @@
                           tarefa.fk_aluno as fk_aluno,
                           tarefa.titulo as titulo,
                           tarefa.data_inicio as data_inicio,
-                          tarefa.data_fim as data_fim,
-                          tarefa.data_conclusao as data_conclusao,
+                          tarefa.data_entrega as data_entrega,
                           tarefa.descricao as descricao,
                           tarefa.data_cadastro as data_cadastro,
                           tarefa.fk_status_tarefa as fk_status_tarefa,
@@ -209,8 +202,7 @@
                                 $temporario->setIdTarefa($objeto['id_tarefa']);
                                 $temporario->setTitulo($objeto['titulo']);
                                 $temporario->setDataInicio($objeto['data_inicio']);
-                                $temporario->setDataFim($objeto['data_fim']);
-                                $temporario->setDataConclusao($objeto['data_conclusao']);
+                                $temporario->setDataEntrega($objeto['data_entrega']);
                                 $temporario->setDataCadastro($objeto['data_cadastro']);
                                 $temporario->setFkStatusTarefa($objeto['fk_status_tarefa']);
                                 $temporario->setFkAluno($objeto['fk_aluno']);
@@ -323,8 +315,7 @@
       		$query = 'INSERT into tarefa(
             titulo,
             data_inicio,
-            data_fim,
-            data_conclusao,
+            data_entrega,
             descricao,
             data_cadastro,
             fk_status_tarefa,
@@ -333,8 +324,7 @@
           values
           ( :titulo,
             :data_inicio,
-            :data_fim,
-            :data_conclusao,
+            :data_entrega,
             :descricao,
             :data_cadastro,
             :fk_status_tarefa,
@@ -344,8 +334,7 @@
           $stmt = $conexao->prepare($query);
       		$stmt->bindValue(':titulo',$this->titulo);
       		$stmt->bindValue(':data_inicio',$this->data_inicio);
-      		$stmt->bindValue(':data_fim',$this->data_fim);
-      		$stmt->bindValue(':data_conclusao',$this->data_conclusao);
+      		$stmt->bindValue(':data_entrega',$this->data_entrega);
       		$stmt->bindValue(':descricao',$this->descricao);
           $stmt->bindValue(':data_cadastro',$this->data_cadastro);
           $stmt->bindValue(':fk_status_tarefa',$this->fk_status_tarefa);
@@ -469,28 +458,20 @@
       }
 
 /*---------------------------------------------------------------------
-  DATA FIM
+  DATA ENTREGA
  ---------------------------------------------------------------------*/
 
-      public function getDataFim(){
-        return $this->data_fim;
+      public function getDataEntrega(){
+        return $this->data_entrega;
       }
 
-      public function setDataFim($data_fim){
-        $this->data_fim = $data_fim;
+      public function setDataEntrega($data_entrega){
+        $this->data_entrega = $data_entrega;
       }
 
 /*---------------------------------------------------------------------
-  DATA CONCLUSÃO
+  FK DO ALUNO
  ---------------------------------------------------------------------*/
-
-      public function getDataConclusao(){
-        return $this->data_conclusao;
-      }
-      public function setDataConclusao($data_conclusao)
-      {
-        $this->data_conclusao = $data_conclusao;
-      }
 
       public function getFkAluno()
       {
