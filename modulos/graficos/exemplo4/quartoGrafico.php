@@ -8,15 +8,23 @@
 
         function drawChart() {
           var data = google.visualization.arrayToDataTable([
-            ['Responsáveis da Tarefa', 'Total Tarefas'],
+            ['Responsáveis da Tarefa', 'Total de Tarefas'],
             <?php 
 
             include 'conexao.php';
-            $query = $conexao->prepare("SELECT fk_aluno, COUNT(*) as id_tarefa FROM tarefa GROUP BY fk_aluno");
+            $query = $conexao->prepare("SELECT pessoa.nome as nome_responsavel_tarefa,
+            COUNT(*) as id_tarefa,
+            tarefa.fk_aluno as fk_aluno
+            from tarefa
+            join aluno on tarefa.fk_aluno = aluno.id_aluno
+            join pessoa on aluno.fk_pessoa = pessoa.id_pessoa
+            GROUP BY nome_responsavel_tarefa
+            ");
+            //$query = $conexao->prepare("SELECT fk_aluno, COUNT(*) as id_tarefa FROM tarefa GROUP BY fk_aluno");
             $query->execute(); 
 
             while ($dados = $query->fetch(PDO::FETCH_ASSOC)) {
-              $nome = $dados['fk_aluno'];
+              $nome = $dados['nome_responsavel_tarefa'];
               $total_tarefas = (int)$dados['id_tarefa'];
 
              ?>
