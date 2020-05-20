@@ -221,7 +221,7 @@
             </div>
             <div class="col-sm">
               <a href="#" class="btn btn-primary botao-detalhe" id="<?php echo $tarefa->getIdTarefa();?>">Detalhes </a> &nbsp;
-              <a href="index.php?modulo=tarefa&acao=excluir&id_tarefa=<?= $tarefa->getIdTarefa()?>" class="btn btn-danger my-2 my-sm-0" id="<?php echo $tarefa->getIdTarefa();?>"> <i class="fas fa-trash-alt"> </i> </a>
+              <a href="index.php?modulo=tarefa&acao=excluir&id_tarefa=<?= $tarefa->getIdTarefa()?>" class="btn btn-danger my-2 my-sm-0" id="<?php echo $tarefa->getIdTarefa();?>" onclick="return confirm('Deseja mesmo excluir a Tarefa?');"> <i class="fas fa-trash-alt"> </i> </a>
             </div>
           </div>
         </div>
@@ -299,74 +299,5 @@ $(document).ready(function(){
 
   });
 
-/*---------------------------------------------------------
- # EXLUIR DADOS
-------------------------------------------------------------------------------
- $(document).on('click', '.excluir', function(){
-  var id = $(this).attr("id");
-  if(confirm("Tem certeza que deseja excluir o cadastro?")){
-    var action = "Excluir";
-    $.ajax({
-    url:"modulos/tarefa/action_tarefa.php",
-    method:"POST",
-    data:{id:id, action:action},
-      success:function(data){
-        fetchUser();
-        alert(data);
-      }
-    })
-  }
-  else
-  {
-   return false;
-  }
- }); */
-
-/*---------------------------------------------------------
- # EDITAR DADOS
-------------------------------------------------------------------------------
-
-  $('#action').click(function(){
-    var nome = $('#nome').val();
-    var idade = $('#idade').val();
-    var telefone = $('#telefone').val();
-    var id = $('#id').val();
-    var action = $('#action').val();
-
-    if(nome != '' && idade != ''&& telefone != ''){
-      $.ajax({
-      url : "modulos/tarefa/action_tarefa.php",
-      method:"POST",
-      data:{nome:nome, idade:idade, telefone:telefone, id:id, action:action},
-        success:function(data){
-          alert(data);
-          $('#modal_formulario').modal('hide');
-          fetchUser();
-        }
-      });
-    }else{
-      alert("PREENCHA TUDO DESGRAÇA! ");
-    }
-  });
-
-  $(document).on('click', '.editar', function(){
-  var id = $(this).attr("id");
-  var action = "Select";
-    $.ajax({
-    url:"modulos/tarefa/action_tarefa.php",
-    method:"POST",
-    data:{id:id, action:action},
-    dataType:"json",
-      success:function(data){
-        $('#modal_formulario').modal('show');
-        $('.modal-title').text("Atualizar Dados");
-        $('#action').val("Editar");
-        $('#id').val(id);
-        $('#nome').val(data.nome);
-        $('#idade').val(data.idade);
-        $('#telefone').val(data.telefone);
-   }
-  });
- }); */
 });
 </script>

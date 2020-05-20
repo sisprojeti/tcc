@@ -25,48 +25,7 @@
 
   if(isset($_POST["action"])){
 
-  /*if($_POST["action"] == "Load"){
-  $statement = $connection->prepare("SELECT * FROM pessoa");
-  $statement->execute();
-  $listar = $statement->fetchAll();
-  $output = '';
-  $output .= '
-    <table class="table table-bordered">
-    <tr>
-      <th width="5%">ID</th>
-      <th width="50%">Nome</th>
-      <th width="5%">Idade</th>
-      <th width="20%">Celular</th>
-      <th width="5%">Editar</th>
-      <th width="5%">Apagar</th>
-    </tr>
-  ';
   
-  if($statement->rowCount() > 0){
-    foreach($listar as $row){
-    $output .= '
-  <tr>
-    <td>'.$row["id"].'</td>
-    <td>'.$row["nome"].'</td>
-    <td>'.$row["idade"].'</td>
-    <td>'.$row["telefone"].'</td>
-    <td><button type="button" id="'.$row["id"].'" class="btn btn-warning btn-xs editar">
-    <img src="edit-tools.png">
-    </button></td>
-    <td><button type="button" id="'.$row["id"].'" class="btn btn-danger btn-xs excluir"> <img src= "rubbish-can.png"> </button></td>
-  </tr>
-    ';
-   }
-  }else{
-   $output .= '
-    <tr> 
-    <td align="center">Dado não encontrado</td>
-    </tr>
-   ';
-  }$output .= '</table>';
-  echo $output;
- }*/
-
 /*---------------------------------------------------------
  # ADICIONAR DADOS
 ------------------------------------------------------------------------------*/
