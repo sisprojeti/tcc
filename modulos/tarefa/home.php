@@ -5,8 +5,6 @@
   require_once('classes/class.refAlunoProjeti.php');
   include_once('classes/class.projeti.php');
 
-
-
   $id_projeti_aluno = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
 
   try{
@@ -31,6 +29,16 @@
   }catch(PDOException $e){
     echo "ERROR".$e->getMessage();
   }
+
+  if(isset($_GET['excluir']) && $_GET['excluir'] == 1){
+    echo "<script>alert('Tarefa Excluida')</script>";
+  }
+
+  if(isset($_GET['tarefa_adicionar']) && $_GET['tarefa_adicionar'] == 1){
+    echo "<script>alert('Tarefa Adicionada')</script>";
+  }
+
+  //echo "<script>window.location.href = 'index.php?modulo=tarefa&acao=home&excluir=1'</script>";
 
   //$tarefaTeste = new Tarefa();
 
@@ -261,7 +269,7 @@
 <!------------------------------------------------------------
 # FIM DO FORMULARIO DE EDIÇÃO
 --------------------------------------------------------------------------------------------------->
-      
+
     </div>
   </div>
 </div>

@@ -6,7 +6,7 @@
   include_once('../../classes/class.projeti.php');
 
   $id_projeti_aluno = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
-  
+
   try{
     $listarStatus = Tarefa::listarStatusTarefa();
   } catch (PDOException $e) {
@@ -25,7 +25,7 @@
 
   if(isset($_POST["action"])){
 
-  
+
 /*---------------------------------------------------------
  # ADICIONAR DADOS
 ------------------------------------------------------------------------------*/
@@ -46,12 +46,9 @@
   Um simples alerta success. Olha só!
 </div>
 */
-      
-      header('Location: ../../index.php?modulo=tarefa&acao=home');
 
-      if(isset($tarefa)){
-          echo 'Cadastro Inserida!';
-          }
+      header('Location: ../../index.php?modulo=tarefa&acao=home&tarefa_adicionar=1');
+
  }
 
  /*---------------------------------------------------------
@@ -89,4 +86,3 @@
 }
 
 ?>
- 
