@@ -3,10 +3,8 @@
   <head>
     <meta charset="UTF-8"/>
     <title>Gráficos</title>
-
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+   <script src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
-
   <body>
      <!-- Content Header (Page header) -->
     <section class="content-header">

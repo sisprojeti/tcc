@@ -13,19 +13,19 @@
             include 'conexao.php';
             $query = $conexao->prepare("
                SELECT pessoa.nome as nome_responsavel_tarefa,
-               COUNT(*) as id_tarefa,
-               tarefa.titulo as titulo,
-               tarefa.data_inicio as data_inicio,
-               tarefa.data_entrega as data_entrega,
-               tarefa.descricao as descricao,
-               tarefa.data_cadastro as data_cadastro,
-               tarefa.fk_aluno as fk_aluno,
-               tarefa.fk_status_tarefa as fk_status_tarefa,
-               status_tarefa.nome as nome_status
-               from tarefa
-               join aluno on tarefa.fk_aluno = aluno.id_aluno
-               join pessoa on aluno.fk_pessoa = pessoa.id_pessoa
-               join status_tarefa on status_tarefa.id_status_tarefa = tarefa.fk_status_tarefa
+                        COUNT(*) as id_tarefa,
+                        tarefa.titulo as titulo,
+                        tarefa.data_inicio as data_inicio,
+                        tarefa.data_entrega as data_entrega,
+                        tarefa.descricao as descricao,
+                        tarefa.data_cadastro as data_cadastro,
+                        tarefa.fk_aluno as fk_aluno,
+                        tarefa.fk_status_tarefa as fk_status_tarefa,
+                        status_tarefa.nome as nome_status
+                        from tarefa
+                        join aluno on tarefa.fk_aluno = aluno.id_aluno
+                        join pessoa on aluno.fk_pessoa = pessoa.id_pessoa
+                        join status_tarefa on status_tarefa.id_status_tarefa = tarefa.fk_status_tarefa
                GROUP BY nome_responsavel_tarefa
                 ");
 
