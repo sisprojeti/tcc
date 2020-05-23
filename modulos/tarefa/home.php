@@ -309,3 +309,80 @@ $(document).ready(function(){
 
 });
 </script>
+
+
+
+<!-- VALIDAÇÕES -->
+<style>
+       .error{
+             color:red
+       }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script>
+  $(function () {
+   
+    $.validator.addMethod("dateAfter", 
+    function(value, element, params) {
+
+        if (!/Invalid|NaN/.test(new Date(value))) {
+            return new Date(value) > new Date($(params).val());
+        }
+
+        return isNaN(value) && isNaN($(params).val()) 
+            || (Number(value) > Number($(params).val())); 
+    },'Deve ser maior que data de início.');
+   $("#tarefa").validate({
+       rules : {
+             titulo:{
+                    required:true,
+                    minlength:6,
+             },
+             descricao:{
+                    required:true,
+                    minlength:6,
+             },
+              data_inicio:{
+                    required:true,
+
+             },
+              data_entrega:{
+                    dateAfter: '#data_inicio',
+                    required:true,
+
+             },
+             fk_status_tarefa:{
+                    required:true,
+             },
+             fk_aluno:{
+                    required:true,
+             }
+       },
+       messages:{
+            titulo:{
+                    required:"Por favor, insira o título da tarefa",
+                    minlength:"No mínimo 6 letras",
+             },
+             descricao:{
+                    required:"Por favor, informe a descricao",
+                    minlength:"No mínimo 6 letras",
+             },
+             data_inicio:{
+                    required:"Por favor, informe a data de inicio",
+
+             },
+             data_entrega:{
+                    dataAfter: "Deve ser maior que data de Início",
+                    required:"Por favor, informe a data de entrega",
+             },
+             fk_status_tarefa:{
+                    required:" Informe o status da tarefa!",
+             },
+             fk_aluno:{
+                    required:"Selecione um Responsável",
+             }
+       }
+});
+});
+</script>
