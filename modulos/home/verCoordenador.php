@@ -79,7 +79,7 @@ try{
           <div class="inner">
             <h3><?= $totalGrupos?></h3>
 
-            <p><h4>Grupos de Projeti</h4></p>
+            <p><h4>Grupos de Projete</h4></p>
           </div>
           <div class="icon">
             <i class="ion ion-bag"></i>
@@ -112,7 +112,7 @@ try{
           <div class="icon">
             <i class="ion ion-person-add"></i>
           </div>
-          <a href="#" class="small-box-footer"> <span style="color:white;"> More info   <i class="fas fa-arrow-circle-right"></i></span></a>
+          <a href="#" class="small-box-footer"> <span style="color:white;"> Visualizar  <i class="fas fa-arrow-circle-right"></i></span></a>
         </div>
       </div>
       <!-- ./col -->
@@ -141,7 +141,7 @@ try{
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="#" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -155,7 +155,7 @@ try{
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="#" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -169,7 +169,7 @@ try{
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="#" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -183,7 +183,7 @@ try{
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="#" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -210,7 +210,7 @@ try{
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
-          <a href="#" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="#" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
@@ -222,7 +222,7 @@ try{
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
-          <a href="#" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="#" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
@@ -234,7 +234,7 @@ try{
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
-          <a href="#" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="#" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
      -->
@@ -266,7 +266,7 @@ try{
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="Documentação.php" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=anexos&acao=adicionar" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
@@ -281,7 +281,7 @@ try{
           <div class="icon">
             <i class="ion ion-person-add"></i>
           </div>
-          <a href="Modelo de Documentação.php" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=documentacao&acao=modelo_documentacao" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
@@ -296,7 +296,7 @@ try{
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
-          <a href="Visualizar Notas.php" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=notas&acao=visualizar_notas" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -306,13 +306,13 @@ try{
           <div class="inner">
             <h3 ><i class="fas fa-clipboard"></i></h3>
 
-            <p>Grupo de Projeti</p>
+            <p>Grupo de Projete</p>
           </div>
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
 
-          <a href="Visualizar Notas.php" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=grupo&acao=listar_grupos" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
@@ -324,55 +324,55 @@ try{
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="?modulo=tarefa&acao=home" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=tarefa&acao=home" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
         <div class="small-box bg-danger">
           <div class="inner">
           <h4><?php echo $totalTarefasFazer;?></h4>
-            <p><h4>Tarefas A Fázer</h4></p>
+            <p><h4>A Fazer</h4></p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="?modulo=tarefa&acao=home" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=tarefa&acao=home&status=1" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
         <div class="small-box bg-warning">
           <div class="inner">
           <h4><?php echo $totalTarefasFazendo;?></h4>
-            <p><h4>Tarefas a Fazendo</h4></p>
+            <p><h4>Fazendo</h4></p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="?modulo=tarefa&acao=home" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=tarefa&acao=home&status=2" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
         <div class="small-box bg-info">
           <div class="inner">
           <h4><?php echo $totalTarefasRevisao;?></h4>
-            <p><h4>Tarefas a Fazendo</h4></p>
+            <p><h4>Revisão</h4></p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="?modulo=tarefa&acao=home" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=tarefa&acao=home&status=3" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
         <div class="small-box bg-success">
           <div class="inner">
           <h4><?php echo $totalTarefasFeito;?></h4>
-            <p><h4>Tarefas Feitas</h4></p>
+            <p><h4>Feitas</h4></p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="?modulo=tarefa&acao=home" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=tarefa&acao=home&status=4" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
     <?php };?>

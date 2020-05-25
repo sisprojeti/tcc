@@ -62,7 +62,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="publico/img/user.png" class="img-circle elevation-2" alt="User Image"> <?php echo $_SESSION['nome_pessoa'];?><br><br><?php if($id_projeti){echo "Projeti: ".$id_projeti->getTemaProjeti();}?>
+          <img src="publico/img/user.png" class="img-circle elevation-2" alt="User Image"> <?php echo $_SESSION['nome_pessoa'];?><br><br><?php if($id_projeti){echo "Projete: ".$id_projeti->getTemaProjeti();}?>
         </div>
         <div class="info">
           <a href="#" class="d-block"></a>

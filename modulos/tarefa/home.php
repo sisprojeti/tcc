@@ -36,6 +36,7 @@
 
   if(isset($_GET['tarefa_adicionar']) && $_GET['tarefa_adicionar'] == 1){
     echo "<script>alert('Tarefa Adicionada')</script>";
+    //echo '<div id="snoAlertBox" class="alert alert-success" data-alert="alert">Tarefa adicionada com sucesso</div>';
   }
 
   //echo "<script>window.location.href = 'index.php?modulo=tarefa&acao=home&excluir=1'</script>";
