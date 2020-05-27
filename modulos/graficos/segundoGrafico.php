@@ -7,7 +7,7 @@
 
         function drawChart() {
           var data = google.visualization.arrayToDataTable([
-            ['Responsáveis da Tarefa', 'Total Tarefas'],
+            ['Responsáveis da Tarefa', 'Total Tarefas', 'Tarefas feitas'],
             <?php 
 
             include 'conexao.php';
@@ -38,7 +38,7 @@
 
              ?>
 
-            ['<?php echo $nome ?>', <?php echo $total_tarefas ?>],
+            ['<?php echo $nome ?>', <?php echo $total_tarefas ?>, <?php echo $totalTarefasFeito;?>],
             <?php } ?>
           ]);
 
@@ -47,11 +47,8 @@
                        { calc: "stringify",
                          sourceColumn: 1,
                          type: "string",
-                         role: "annotation" }
-                         ]);
-
-                         //role: "annotation" },
-                         //2]);
+                         role: "annotation" },
+                         2]);
 
       var options = {
          title: 'Quantitativo de tarefas por aluno',

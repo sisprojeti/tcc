@@ -1,3 +1,38 @@
+<?php
+include_once('classes/class.pessoa.php');
+include_once('classes/class.aluno.php');
+include_once('classes/class.professor.php');
+include_once('classes/class.coordenador.php');
+include_once('classes/class.turma.php');
+include_once('classes/class.curso.php');
+include_once('classes/class.exercicio.php');
+include_once('classes/class.etapa.php');
+include_once('classes/class.grupo.php');
+include_once('classes/class.tarefa.php');
+
+
+try{
+  $totalPessoas = Pessoa::contarPessoas();
+  $totalAlunos = Aluno::contarAlunos();
+  $totalProfessores = Professor::contarProfessores();
+  $totalCoordenadores = Coordenador::contarCoordenadores();
+  $totalTurmas = Turma::contarTurmas();
+  $totalTarefasFazer = Tarefa::contarTarefasFazer();
+  $totalTarefas = Tarefa::contarTotalTarefas();
+  $totalTarefasFazendo = Tarefa::contarTarefasFazendo();
+  $totalTarefasRevisao = Tarefa::contarTarefasRevisao();
+  $totalTarefasFeito = Tarefa::contarTarefasFeito();
+  $totalCursos = Curso::contarCursos();
+  $totalExercicios = Exercicio::contarExercicio();
+  $totalEtapas = Etapa::contarEtapas();
+  $totalGrupos = Grupo::contarGrupos();
+  //$totalTarefas = Tarefa::contarTarefas();
+}catch(PDOException $e) {
+  echo "ERROR".$e->getMessage();
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
