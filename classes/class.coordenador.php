@@ -83,6 +83,11 @@ require_once 'class.db.php';
             $stmt->bindParam(':fk_pessoa',$this->fk_pessoa);
             $stmt->bindParam(':data_cadastro',$this->data_cadastro);
             $stmt->execute();
+            if($stmt){
+                    echo '
+                    <div id="snoAlertBox" class="alert alert-success" data-alert="alert">Adicionado com sucesso</div>
+                    ';
+                  }
           } catch (PDOException $e) {
             echo "ERROR:".$e->getMessage();
           }

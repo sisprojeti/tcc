@@ -166,6 +166,11 @@
                   $stmt->bindParam(':data_matricula',$this->data_matricula);
                   $stmt->bindParam(':situacao_aluno',$this->situacao_aluno);
                   $stmt->execute();
+                  if($stmt){
+                    echo '
+                    <div id="snoAlertBox" class="alert alert-success" data-alert="alert">Adicionado com sucesso</div>
+                    ';
+                  }
                   $ultimoIdAluno = $conexao->lastInsertId(); //RECUPERANDO O ULTIMO ID INSERIDO
                   return $ultimoIdAluno;
         }catch(PDOException $e){
