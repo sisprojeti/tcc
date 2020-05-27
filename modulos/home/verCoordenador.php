@@ -141,7 +141,7 @@ try{
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
-          <a href="#" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=aluno&acao=listar" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -183,7 +183,7 @@ try{
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
-          <a href="#" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=turma&acao=listar" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
