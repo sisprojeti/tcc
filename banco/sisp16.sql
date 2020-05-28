@@ -627,17 +627,6 @@ CREATE TABLE IF NOT EXISTS `tarefa` (
   KEY `fk_tarefa_aluno1` (`fk_aluno`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
 
---
--- Fazendo dump de dados para tabela `tarefa`
---
-
-INSERT INTO `tarefa` (`id_tarefa`, `titulo`, `data_inicio`, `data_entrega`, `descricao`, `data_cadastro`, `fk_status_tarefa`, `fk_projeti`, `fk_aluno`) VALUES
-(6, ' Cadastrar Tarefa 1', '2020-05-14', '2020-05-20', ' Cadastrar Tarefa 1 Cadastrar Tarefa 1', '2020-05-15', 2, 1, 1),
-(9, 'teste 4', '2020-05-27', '2020-05-31', 'teste 4teste 4teste 4', '2020-05-20', 4, 1, 3),
-(10, 'teste tarefa ', '2020-05-18', '2020-05-21', 'teste tarefa teste5555 ', '2020-05-20', 1, 1, 1),
-(11, ' Cadastrar Tarefa 2', '2020-05-17', '2020-05-27', 'asdasdasda', '2020-05-20', 3, 1, 2),
-(12, 'teste tarefa ', '2020-05-20', '2020-05-21', 'adsfasda', '2020-05-20', 1, 1, 1),
-(17, ' TAREFA NOTIFICAÃ‡ÃƒO', '2020-05-21', '2020-05-27', 'BBBBBBB', '2020-05-20', 1, 1, 3);
 
 -- --------------------------------------------------------
 
