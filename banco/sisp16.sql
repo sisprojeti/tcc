@@ -443,8 +443,6 @@ CREATE TABLE IF NOT EXISTS `projeti` (
 --
 
 INSERT INTO `projeti` (`id_projeti`, `tema`, `descricao`) VALUES
-(1, 'Tema 1', 'sla a desscrição'),
-(2, 'tema 2', 'to com fome'),
 (3, 'Gerenciador de Tarefas', 'alguma descriÃ§Ã£o'),
 (4, 'TEMA 2', 'alguma descriÃ§Ã£o');
 
