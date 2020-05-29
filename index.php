@@ -247,7 +247,7 @@
 
             <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+              <i class="nav-icon fas fa-tasks"></i>
               <p>
                 Avaliação
                 <i class="fas fa-angle-left right"></i>
