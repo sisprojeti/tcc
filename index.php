@@ -244,6 +244,27 @@
                 </a>
               </li>
             </ul>
+
+            <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Avaliação
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+<!----------------------------------------------------------------------------
+---------- TURMAS
+---------------------------------------------------------------------------->
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="?modulo=criterios&acao=adicionar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Adicionar Critérios</p>
+                </a>
+              </li>
+            </ul>
+
           <?php }else{?>
             <li class="nav-item has-treeview menu-open">
                <ul class="nav nav-treeview">

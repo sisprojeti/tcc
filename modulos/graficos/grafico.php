@@ -1,4 +1,5 @@
 <?php
+include_once('classes/class.db.php');
 include_once('classes/class.pessoa.php');
 include_once('classes/class.aluno.php');
 include_once('classes/class.professor.php');
