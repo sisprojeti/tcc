@@ -212,11 +212,10 @@ INSERT INTO `exercicio` (`id_exercicio`, `nome_ano`, `data_inicio`, `data_fim`) 
 --
 
 CREATE TABLE IF NOT EXISTS `formulario_avaliacao` (
-  `id_ref_formulario` int(11) NOT NULL AUTO_INCREMENT,
-  `fk_formulario` int(11) NOT NULL,
+  `id_formulario_avaliacao` int(11) NOT NULL AUTO_INCREMENT,
   `fk_turma` int(11) NOT NULL,
   `data_avaliacao` date DEFAULT NULL,
-  PRIMARY KEY (`id_ref_formulario`),
+  PRIMARY KEY (`id_formulario_avaliacao`),
   KEY `fk_ref_criterio_formulario_turma1` (`fk_turma`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -529,11 +528,11 @@ INSERT INTO `ref_coordenador_curso` (`id_ref_coordenador_curso`, `fk_coordenador
 --
 
 CREATE TABLE IF NOT EXISTS `ref_formulario_criterio` (
-  `id_ref_formulario_creterio` int(11) NOT NULL AUTO_INCREMENT,
-  `fk_ref_formulario` int(11) NOT NULL,
+  `id_ref_formulario_criterio` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_formulario_avaliacao` int(11) NOT NULL,
   `fk_criterio` int(11) NOT NULL,
-  PRIMARY KEY (`id_ref_formulario_creterio`),
-  KEY `fk_ref_formulario_criterio_formulario_avaliacao1` (`fk_ref_formulario`),
+  PRIMARY KEY (`id_ref_formulario_criterio`),
+  KEY `fk_ref_formulario_criterio_formulario_avaliacao1` (`fk_formulario_avaliacao`),
   KEY `fk_ref_formulario_criterio_criterio1` (`fk_criterio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -765,7 +764,7 @@ ALTER TABLE `ref_coordenador_curso`
 -- Restrições para tabelas `ref_formulario_criterio`
 --
 ALTER TABLE `ref_formulario_criterio`
-  ADD CONSTRAINT `fk_ref_formulario_criterio_formulario_avaliacao1` FOREIGN KEY (`fk_ref_formulario`) REFERENCES `formulario_avaliacao` (`id_ref_formulario`),
+  ADD CONSTRAINT `fk_ref_formulario_criterio_formulario_avaliacao1` FOREIGN KEY (`fk_formulario_avaliacao`) REFERENCES `formulario_avaliacao` (`id_formulario_avaliacao`),
   ADD CONSTRAINT `fk_ref_formulario_criterio_criterio1` FOREIGN KEY (`fk_criterio`) REFERENCES `criterio` (`id_criterio`);
 
 --
