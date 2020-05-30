@@ -1,69 +1,49 @@
 <?php
 
-//Criando uma class que sera responsável por armazenar a estrutura de notas e também armazena metodos para fazer o calculo da media de projeti
-
-    class Notas
+    class Nota
     {
-/*
-  Atributos da class Notas
-*/
-      public $nota1;
-      public $nota2;
-      public $nota3;
-      public $total;
-      public $media;
-/*
-  Termino de atributos da class Nota
-*/
+      public $id_nota;
+      public $valor;
+      public $data_modificao;
+      public $fk_criterio;
+      public $fk_aluno;
+      public $fk_professor;
 
-/*
-  Criando encapsulamentos do tipo get para as notas
-*/
-
-      public function getNota1(){
-        return $this->nota1;
+      public function adicionar()
+      {
+        $sql = "INSERT INTO nota(valor,data_modificao,fk_criterio,fk_aluno,fk_professor) values (:valor,:data_modificao,:fk_criterio,:fk_aluno,:fk_professor)";
+        $conexao = DB::conexao();
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindParam(':valor',$this->valor);
+        $stmt->bindParam(':data_modificao',$this->data_modificao);
+        $stmt->bindParam(':fk_criterio',$this->fk_projeti);
+        $stmt->bindParam(':fk_aluno',$this->fk_professor);
+        $stmt->bindParam(':fk_professor',$this->fk_projeti);
+        $stmt->execute();
       }
 
-      public function getNota2(){
-        return $this->nota2;
+      public function setValor($valor){
+        $this->valor = $valor;
       }
 
-      public function getNota3(){
-        return $this->nota2;
-      }
-/*
-  Termino do encapsulamento dos metodos gets da classe Notas
-*/
-
-/*
-  Criando encapsulamentos do tipo set para as notas
-*/
-      public function setNota1($nota1){ //criando um metodo publico pra retornar a nota1
-        $this->nota1 = $nota1;
+      public function setDataModificacao($data_modificacao){
+        $this->data_modificacao = $data_modificacao;
       }
 
-      public function setNota2($nota2){
-        $this->nota2 = $nota2;
+      public function setFkCriterio($fk_criterio){
+        $this->fk_criterio = $fk_criterio;
       }
 
-      public function setNota3($nota3){
-        $this->nota3 = $nota3;
+      public function setFkAluno($fk_aluno){
+        $this->fk_aluno = $fk_aluno;
       }
-/*
-  Termino dos encapsulamentos do tipo get da classe Notas
-*/
 
-/*
-  Inicio do metodo de calculo da media de projeti
-*/
-      public function calculaMediaProjeti($nota1,$nota2,$nota3){
-        //fazer lógica de calcular a media de projeti
-        $this->media = ($nota1 + $nota2 + $nota3)/3; //revisar como é feito o calculo da média para fazer calculo da media corretamente
+      public function setFkProfessor($fk_professor){
+        $this->fk_professor = $fk_professor;
       }
-/*
-  Final do metodo de calculo da media de projeti
-*/
 
-}
+
+
+    }
 
 ?>
