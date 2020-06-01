@@ -1,17 +1,7 @@
-<?php
-  require_once('classes/class.criterio.php');
-    if(isset($_POST['button']) && $_POST['button'] === 'Salvar'){
-      try{
-        $exercicio = new Criterio();
-        $exercicio->setNomeCriterio($_POST['nome']);
-        $exercicio->setValorMaximo($_POST['valor_maximo']);
-        $exercicio->adicionar();
-      }catch(PDOExeption $e){
-        echo "ERROR".$e->getMessage();
-      }
-    }
+<?php 
 
-?>
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +27,7 @@
 </script>
 </head>
 <body>
-
+  
   <div class="content-header navbar-white">
           <div class="container-fluid navbar-white">
             <div class="row mb-2">
@@ -66,7 +56,7 @@
       </div>
       <div class="form-group">
         <label>Valor Máximo</label>
-        <input type="text" class="form-control" name="valor_maximo" id="valor_maximo" placeholder="Ex: 1" required>
+        <input type="text" class="form-control" name="valor_maximo" id="valor_maximo" placeholder="Ex: 1" required> 
       </div>
        </div>
         <br>
@@ -92,9 +82,9 @@
                     accept: "[a-zA-Z]+",
              },
              valor_maximo:{
-
+                    
                     required:true,
-             },
+             },                                  
        },
        messages:{
             nome:{
@@ -103,7 +93,7 @@
              },
              valor_maximo:{
                     required:"Por favor, informe o valor máximo"
-             },
+             },  
        }
 
 });
@@ -117,3 +107,4 @@
 
 </body>
 </html>
+    
