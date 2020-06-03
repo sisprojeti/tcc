@@ -16,6 +16,11 @@ require_once("class.db.php");
         $stmt->bindParam(':data_inicio',$this->data_inicio);
         $stmt->bindParam(':data_fim',$this->data_fim);
         $stmt->execute();
+         if($stmt){
+                    echo '
+                    <div id="snoAlertBox" class="alert alert-success" data-alert="alert">Adicionado com sucesso</div>
+                    ';
+                  }
       }
 
       // public static function listar(){

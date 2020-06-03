@@ -17,7 +17,8 @@ $fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
        $professor->setPessoaId($ultimoIdPessoa);
        $professor->setDataCadastro($_POST['data_cadastro']);
        $professor->adicionar();
-
+       
+       $senha = '123456';
        $usuario = new Usuario();
        $usuario->setPessoaUsuarioId($ultimoIdPessoa);
        $usuario->setSenha($senha);

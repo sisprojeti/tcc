@@ -21,6 +21,11 @@ require_once('class.db.php');
         $stmt->bindParam(':carga_horaria',$this->carga_horaria);
         $stmt->bindParam(':status_curso',$this->status_curso);
         $stmt->execute();
+         if($stmt){
+                    echo '
+                    <div id="snoAlertBox" class="alert alert-success" data-alert="alert">Adicionado com sucesso</div>
+                    ';
+                  }
       }
       public static function listar(){
         try {

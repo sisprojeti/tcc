@@ -56,6 +56,11 @@
           $stmt->bindParam(':lotacao',$this->lotacao);
           $stmt->bindParam(':status_finalizada',$this->status_finalizada);
           $stmt->execute();
+           if($stmt){
+                    echo '
+                    <div id="snoAlertBox" class="alert alert-success" data-alert="alert">Adicionado com sucesso</div>
+                    ';
+                  }
           // $resultado = $stmt->rowCount();
           // echo $resultado;
         }catch(PDOException $e){

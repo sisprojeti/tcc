@@ -16,6 +16,11 @@ include_once('classes/class.db.php');
         $stmt->bindParam(':nome',$this->nome);
         $stmt->bindParam(':valor_maximo',$this->valor_maximo);
         $stmt->execute();
+         if($stmt){
+                    echo '
+                    <div id="snoAlertBox" class="alert alert-success" data-alert="alert">Adicionado com sucesso</div>
+                    ';
+                  }
       }
 
       public static function listar(){

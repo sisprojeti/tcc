@@ -52,6 +52,7 @@ require_once('class.db.php');
             $stmt->bindParam(':cpf',$this->cpf);
             $stmt->bindParam(':telefone',$this->telefone);
             $stmt->execute();
+
             $ultimoIdPessoa = $conexao->lastInsertId();
             return $ultimoIdPessoa;
             header('Location:?modulo=aluno&acao=listar');
