@@ -323,7 +323,7 @@
                    </a>
                  </li>
                  <li class="nav-item">
-                   <a href="#" class="nav-link">
+                   <a href="?modulo=grupo&acao=listar" class="nav-link">
                      <i class="far fa-edit nav-icon"></i>
                      <p>Visualizar Grupo<span class="right badge badge-primary">Edit</span></p>
                    </a>
