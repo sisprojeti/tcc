@@ -161,12 +161,6 @@
                   <p>Vicular Coordenador</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="?modulo=criterio&acao=adicionar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Critérios Avaliativos</p>
-                </a>
-              </li>
             </ul>
           </li>
 <!----------------------------------------------------------------------------
