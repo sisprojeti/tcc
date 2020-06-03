@@ -42,10 +42,3 @@ FROM ref_aluno_projeti JOIN alu
 /*-------------- TURMA E ALUNOS ----------------------*/
 
 select turma.nome as nome_turma, turma.id_turma as id_turma, pessoa.nome as nome_aluno from ref_aluno_turma join turma on turma.id_turma= ref_aluno_turma.fk_turma join aluno on aluno.id_aluno = ref_aluno_turma.fk_aluno join pessoa on pessoa.id_pessoa = aluno.fk_pessoa;
-
-/* ----------------- CHAMAR NOME INDIVIDUALMENTE -----------*/
-SELECT pessoa.nome as nome_aluno, aluno.id_aluno as id_aluno, ref_aluno_projeti.fk_projeti as id_projeti FROM pessoa JOIN aluno on pessoa.id_pessoa = aluno.fk_pessoa JOIN ref_aluno_projeti on aluno.id_aluno = ref_aluno_projeti.fk_aluno WHERE ref_aluno_projeti.fk_projeti = 4 limit 1 ;
-
-SELECT pessoa.nome as nome_aluno, aluno.id_aluno as id_aluno, ref_aluno_projeti.fk_projeti as id_projeti FROM pessoa JOIN aluno on pessoa.id_pessoa = aluno.fk_pessoa JOIN ref_aluno_projeti on aluno.id_aluno = ref_aluno_projeti.fk_aluno WHERE ref_aluno_projeti.fk_projeti = 4 limit 2,2 ;
-
-SELECT pessoa.nome as nome_aluno, aluno.id_aluno as id_aluno, ref_aluno_projeti.fk_projeti as id_projeti FROM pessoa JOIN aluno on pessoa.id_pessoa = aluno.fk_pessoa JOIN ref_aluno_projeti on aluno.id_aluno = ref_aluno_projeti.fk_aluno WHERE ref_aluno_projeti.fk_projeti = 4 limit 1,1 ;
