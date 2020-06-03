@@ -9,6 +9,8 @@ include_once('classes/class.exercicio.php');
 include_once('classes/class.etapa.php');
 include_once('classes/class.grupo.php');
 include_once('classes/class.tarefa.php');
+include_once('classes/class.projeti.php');
+include_once('classes/class.refAlunoProjeti.php');
 
 
 try{

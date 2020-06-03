@@ -5,16 +5,36 @@ include_once('Classes/class.aluno.php');
 include_once('Classes/class.turma.php');
 include_once('Classes/class.projeti.php');
 include_once('Classes/class.refAlunoProjeti.php');
-//print_r($_SESSION);
+print_r($_SESSION);
+
 $usuario = new Usuario($_SESSION['fk_pessoa']);
 $pessoa = $usuario->recuperaPessoa();
-
 $aluno_logado = new Aluno($_SESSION['fk_pessoa']);
 $aluno = $aluno_logado->recuperaAluno();
 
+
+$projeti = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
+echo "<pre>";
+print_r($projeti);
+echo "</pre>";
+
+$id_projeti_aluno = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
+
+try{
+    $listarAlunosProjeti = RefAlunoProjeti::listarAlunosProjetiTeste($id_projeti_aluno->getIdProjeti());
+    echo "<pre>";
+    print_r($listarAlunosProjeti);
+    echo "</pre>";
+} catch(PDOException $e){
+  echo "ERROR".$e->getMessage();
+}
+
+
 //$turma = new Turma($_SESSION['fk_turma']);
 $turma_aluno = Turma::recuperaTurmaAluno($_SESSION['fk_pessoa']);
-//$aluno_projeti = RefAlunoProjeti::recuperaAlunoProjeti($_SESSION['fk_aluno']); //metodo pra recuperar o id do aluno que está logado
+//$aluno_projeti = RefAlunoProjeti::recuperaAlunoProjeti($_SESSION['fk_pessoa']); //metodo pra recuperar o id do aluno que está logado
+
+//print_r($aluno_prjeti);
 
 //echo $_SESSION['fk_pessoa'];
 //print_r($turma_aluno);
@@ -24,7 +44,7 @@ $turma_aluno = Turma::recuperaTurmaAluno($_SESSION['fk_pessoa']);
 //print_r($_SESSION);
 // echo "</pre>";
 if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grupo'){
-  // $fk_aluno = Aluno::recuperaAluno($_SESSION['fk_pessoa']);
+  $fk_aluno = Aluno::recuperaAluno($_SESSION['fk_pessoa']);
   // print_r($fk_aluno);
   // echo $fk_aluno->getIdAluno();
 
@@ -77,11 +97,13 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
       <input class="form-control" disabled value="<?php echo $turma_aluno->getNomeTurma();?>" type="text" name="turma" placeholder="trazer de forma autormatica">
       </div>
       <label for="inputEmail4">Tema do Projeti</label>
-      <input type="text" class="form-control" id="projeti" placeholder="Insira o tema do projeti" name="tema" required>
+      <input type="text" class="form-control" id="projeti" placeholder="Insira o tema do projeti" name="tema" required value="<?php if(isset($projeti)){echo $projeti->getTemaProjeti();}?>">
      </div>
       <div class="form-group col-md-12">
         <label for="inputPassword4">Descrição</label>
-        <textarea name="descricao" type="text" class="form-control" id="descricao" placeholder="Digite uma breve descrição do seu projeti" required></textarea>
+        <textarea value="" name="descricao" type="text" class="form-control" id="descricao" placeholder="Digite uma breve descrição do seu projeti" required>
+          <?php if(isset($projeti)){echo $projeti->getDescricao();}?>
+        </textarea>
       </div>
     </div>
 
@@ -124,6 +146,21 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
                <?php }?>
              </select>
            </div>
+     </div>
+
+     <div class="row">
+       <div class="col-sm-12">
+         <label>Responsável</label>
+         <select class="form-control" id="fk_aluno" name="fk_aluno" required autofocus>
+          <option value="">Selecione o Responsável</option>
+           <?php if(isset($listarAlunosProjeti)):?>
+             <?php foreach ($listarAlunosProjeti as $alunosProjeti):?>
+               <?php //if($aluno->getSituacaoAluno()):?>
+               <option value="<?php echo $alunosProjeti->getIdAluno();?>"><?php echo $alunosProjeti->getNomeAluno();?></option>
+             <?php endforeach;?>
+           <?php endif;?>
+         </select>
+       </div>
      </div>
 <input type="submit" class="btn btn-primary" value="Cadastrar Grupo" name="cadastroGrupo">
  <input type="reset" class="btn btn-danger" value="Limpar">

@@ -5,6 +5,7 @@
   	public $id_projeti;
     public $tema_projeti;
     public $descricao_projeti;
+    public $aluno_um;
 
     public function __construct($id_projeti=false){
         if($id_projeti){
@@ -57,7 +58,12 @@
 
           public static function recuperaIdProjeti($fk_pessoa)
           {
-            $sql = "SELECT ref_aluno_projeti.fk_projeti,pessoa.id_pessoa,aluno.fk_pessoa,projeti.tema as tema_projeti,projeti.descricao as descricao_projeti from pessoa
+            $sql = "SELECT ref_aluno_projeti.fk_projeti,
+            pessoa.id_pessoa,
+            aluno.fk_pessoa,
+            pessoa.nome as aluno_um,
+            projeti.tema as tema_projeti,
+            projeti.descricao as descricao_projeti from pessoa
             inner join aluno on pessoa.id_pessoa = aluno.fk_pessoa
             inner join ref_aluno_projeti on aluno.id_aluno = ref_aluno_projeti.fk_aluno
             inner join projeti on projeti.id_projeti = ref_aluno_projeti.fk_projeti
@@ -73,9 +79,18 @@
                 $temporario->setIdProjeti($objeto['fk_projeti']);
                 $temporario->setTemaProjeti($objeto['tema_projeti']);
                 $temporario->setDescricaoProjeti($objeto['descricao_projeti']);
+                $temporario->setNomeAlunoUm($objeto['aluno_um']);
               }
               return $temporario;
               }
+            }
+
+            public function setNomeAlunoUm($aluno_um){
+              $this->aluno_um = $aluno_um;
+            }
+
+            public function setNomeAlunoDois($aluno_dois){
+              $this->aluno_dois = $aluno_dois;
             }
 
             public function getFkProjeti(){
@@ -126,7 +141,7 @@
        /*------------------------------------*/
 
        public function getDescricao(){
-         return $this->descricao;
+         return $this->descricao_projeti;
        }
 
        public function setDescricao($descricao){ //adicionar o s de descricao

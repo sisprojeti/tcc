@@ -40,9 +40,9 @@
     <td><?php echo $turma->getEtapa();?></td>
     <td><?php echo $turma->getTurno();?></td>
     <td width=250>
-      <a class="btn btn-primary" href="">Info</a>
+      <a class="btn btn-primary" href="?modulo=turma&acao=listagem_alunos_turma&id=<?php echo $turma->getIdTurma();?>">Info</a>
       <a class="btn btn-warning" href="?modulo=turma&acao=editar&id=<?php echo $turma->getIdTurma();?>">Editar</a>
-    <a class="btn btn-danger" href="?modulo=turma&acao=excluir&id=<?php echo $turma->getIdTurma();?>">Excluir</a>
+      <a class="btn btn-danger" href="?modulo=turma&acao=excluir&id=<?php echo $turma->getIdTurma();?>">Excluir</a>
   </td>
 
     </tr>

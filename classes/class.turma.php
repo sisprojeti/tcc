@@ -18,6 +18,8 @@
       public $turno;
       public $lotacao;
       public $status_finalizada;
+      public $nome_aluno;
+
 
       public static function recuperaTurmaAluno($fk_aluno)
       {
@@ -39,7 +41,7 @@
           }
         }
 
-        
+
 
       public function adicionar(){
         try{
@@ -91,6 +93,49 @@
       }
     }
 
+    //implementando metodo de listar alunos de uma turma
+    public static function listarAlunosTurma($id_turma=false){
+      try {
+        $query = "SELECT aluno.data_matricula as data_matricula,
+                  aluno.situacao_aluno as situacao_aluno,
+                  aluno.matricula as matricula,
+                  aluno.fk_pessoa as fk_pessoa,
+                  aluno.id_aluno as id_aluno,
+                  pessoa.nome as nome_aluno,
+                  turma.id_turma as id_turma from aluno
+                  join ref_aluno_turma on aluno.id_aluno = ref_aluno_turma.fk_aluno
+                  join pessoa on aluno.fk_pessoa = pessoa.id_pessoa
+                  join turma on ref_aluno_turma.fk_turma = turma.id_turma where id_turma = $id_turma";
+                    $stmt = DB::conexao()->prepare($query);
+                    $stmt->execute();
+                    $registros = $stmt->fetchAll();
+                    if($registros){
+                      foreach($registros as $objeto){
+                        $temporario = new Aluno();
+                        $temporario->setIdTurma($objeto['id_turma']);
+                        $temporario->setIdAluno($objeto['id_aluno']);
+                        $temporario->setNomeAluno($objeto['nome_aluno']);
+                        $temporario->setDataMatricula($objeto['data_matricula']);
+                        $temporario->setSituacaoAluno($objeto['situacao_aluno']);
+                        $temporario->setMatricula($objeto['matricula']);
+                        $temporario->setFkPessoa($objeto['fk_pessoa']);
+                        $itens[] = $temporario;
+                      }
+          return $itens;
+      }
+    }catch (PDOException $e){
+      echo "ERROR".$e->getMessage();
+    }
+  }
+
+  public function setNomeAluno($nome_aluno){
+    $this->nome_aluno = $nome_aluno;
+  }
+
+  public function getNomeAlunoTurma(){
+    return $this->nome_aluno;
+  }
+
     public static function contarTurmas()
       {
         try {
@@ -113,12 +158,12 @@
         }
 
 /* =========Inicio encapsulamento id de turma =========*/
-      public function setIdTurma($id){
-        $this->id = $id;
+      public function setIdTurma($id_turma){
+        $this->id_turma = $id_turma;
       }
 
       public function getIdTurma(){
-          return $this->id;
+          return $this->id_turma;
       }
 
       public function setCurso($curso)

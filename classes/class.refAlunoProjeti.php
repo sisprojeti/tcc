@@ -7,6 +7,7 @@
       public $fk_projeti;
       public $fk_aluno;
       public $nomeAluno;
+      public $id_grupo;
 
       // public function __construct($id_ref_aluno_projeti=false){
       //     if($id_ref_aluno_projeti){
@@ -62,12 +63,14 @@
       public static function listarAlunosProjeti($fk_pessoa=null)
         {
           try {
-               $query = "SELECT ref_aluno_projeti.fk_projeti as fk_projeti,aluno.id_aluno as id_aluno,aluno.fk_pessoa as id_pessoa,pessoa.nome as nome_aluno FROM aluno
+               $query = "SELECT ref_aluno_projeti.fk_projeti as fk_projeti,aluno.id_aluno as id_aluno,
+               aluno.fk_pessoa as id_pessoa,
+               pessoa.nome as nome_aluno FROM aluno
                inner join pessoa on aluno.fk_pessoa = pessoa.id_pessoa
                inner join ref_aluno_projeti on aluno.id_aluno = ref_aluno_projeti.fk_aluno";
-               if($fk_pessoa){
-                 $query .= " where aluno.fk_pessoa = '9' and ref_aluno_projeti.fk_projeti = (SELECT fk_projeti FROM ref_aluno_projeti where fk_aluno = aluno.id_aluno)";
-               }
+               // if($fk_pessoa){
+               //   $query .= " where aluno.fk_pessoa = '2' and ref_aluno_projeti.fk_projeti = (SELECT fk_projeti FROM ref_aluno_projeti where fk_aluno = aluno.id_aluno)";
+               // }
                //fazer verificação de onde o fk_projeti seja igual ao f
                         $stmt = DB::conexao()->prepare($query);
                         $stmt->execute();
@@ -88,7 +91,7 @@
           }
         }
 
-
+        //temrminar função de listar alunos do projeti
 
         public static function listarAlunosProjetiTeste($fk_projeti=null)
           {
@@ -144,6 +147,11 @@
                 echo "ERROR".$e->getMessage();
             }
           }
+
+
+                  public function setIdGrupo($id_grupo){
+                    $this->id_grupo = $id_grupo;
+                  }
 
       public function setFkAlunoProjeti($fk_aluno){
         $this->fk_aluno = $fk_aluno;

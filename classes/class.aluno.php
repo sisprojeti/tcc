@@ -5,11 +5,14 @@
 
       public $id_aluno;
       public $data_matricula;
-      public $id_grupo;
       public $situacao_aluno;
       public $matricula;
       public $fk_pessoa;
       public $nome_aluno;
+
+      public function setIdTurma($id_turma){
+        $this->id_turma = $id_turma;
+      }
       //---------Provavelmente vamos utilizar esses atributos em outra classe-------
       //public $turma;
       //public $grupo_projeti;
@@ -17,7 +20,9 @@
 
       public function __construct($id_aluno=false){
           if($id_aluno){
-            $sql = "SELECT aluno.id_aluno,pessoa.nome as nome_aluno from aluno
+            $sql = "SELECT aluno.id_aluno,
+            pessoa.nome as nome_aluno,
+            aluno.data_matricula as data_matricula from aluno
             join pessoa on pessoa.id_pessoa = aluno.fk_pessoa";
             $stmt = DB::conexao()->prepare($sql);
             $stmt->bindParam(":id_aluno",$id_aluno,PDO::PARAM_INT);
@@ -27,6 +32,10 @@
               $this->setNomeAluno($obj['nome_aluno']);
             }
           }
+        }
+
+        public function setIdGrupo($id_grupo){
+          $this->id_grupo = $id_grupo;
         }
 
         public function recuperaAluno()
