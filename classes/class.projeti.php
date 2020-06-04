@@ -21,6 +21,19 @@
         }
       }
 
+      public static function contarProjeti()
+        {
+          try {
+            $query = "select * from projeti";
+                        $stmt = DB::conexao()->prepare($query);
+                        $stmt->execute();
+                        $registros = $stmt->fetchAll();
+                        $totalProjetis = count($registros);
+                        return $totalProjetis;
+            }catch(Exception $e){
+                echo "ERROR".$e->getMessage();
+            }
+          }
 
         public function adicionar()
         {
