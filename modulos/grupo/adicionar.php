@@ -11,24 +11,18 @@ $usuario = new Usuario($_SESSION['fk_pessoa']);
 $pessoa = $usuario->recuperaPessoa();
 $aluno_logado = new Aluno($_SESSION['fk_pessoa']);
 $aluno = $aluno_logado->recuperaAluno();
-
-
 $projeti = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
-echo "<pre>";
-print_r($projeti);
-echo "</pre>";
-
+// echo "<pre>";
+// print_r($projeti);
+// echo "</pre>";
 $id_projeti_aluno = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
-
 try{
+  if($id_projeti_aluno){
     $listarAlunosProjeti = RefAlunoProjeti::listarAlunosProjetiTeste($id_projeti_aluno->getIdProjeti());
-    echo "<pre>";
-    print_r($listarAlunosProjeti);
-    echo "</pre>";
+  }
 } catch(PDOException $e){
   echo "ERROR".$e->getMessage();
 }
-
 
 //$turma = new Turma($_SESSION['fk_turma']);
 $turma_aluno = Turma::recuperaTurmaAluno($_SESSION['fk_pessoa']);
@@ -107,6 +101,18 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
       </div>
     </div>
 
+    <?php if($id_projeti_aluno){
+      foreach ($listarAlunosProjeti as $alunos_projeti){ ?>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="inputState">Integrante 1</label>
+            <select name="aluno_um" id="aluno_um" class="form-control" data-live-search="true" required>
+              <?php
+              echo "<option value='".$alunos_projeti->getIdAluno()."'>".$alunos_projeti->getNomeAluno()."</option>";
+              ?>
+            </select>
+          </div>
+    <?php }}else { ?>
 
      <div class="form-row">
        <div class="form-group col-md-12">
@@ -148,20 +154,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
            </div>
      </div>
 
-     <div class="row">
-       <div class="col-sm-12">
-         <label>Responsável</label>
-         <select class="form-control" id="fk_aluno" name="fk_aluno" required autofocus>
-          <option value="">Selecione o Responsável</option>
-           <?php if(isset($listarAlunosProjeti)):?>
-             <?php foreach ($listarAlunosProjeti as $alunosProjeti):?>
-               <?php //if($aluno->getSituacaoAluno()):?>
-               <option value="<?php echo $alunosProjeti->getIdAluno();?>"><?php echo $alunosProjeti->getNomeAluno();?></option>
-             <?php endforeach;?>
-           <?php endif;?>
-         </select>
-       </div>
-     </div>
+       <?php }?>
 <input type="submit" class="btn btn-primary" value="Cadastrar Grupo" name="cadastroGrupo">
  <input type="reset" class="btn btn-danger" value="Limpar">
   </form>

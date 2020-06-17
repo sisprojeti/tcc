@@ -28,6 +28,7 @@ try{
   $totalExercicios = Exercicio::contarExercicio();
   $totalEtapas = Etapa::contarEtapas();
   $totalGrupos = Grupo::contarGrupos();
+  $totalProjetis = Projeti::contarProjeti();
   //$totalTarefas = Tarefa::contarTarefas();
 }catch(PDOException $e) {
   echo "ERROR".$e->getMessage();
@@ -79,7 +80,7 @@ try{
         <!-- small box -->
         <div class="small-box bg-green">
           <div class="inner">
-            <h3><?= $totalGrupos?></h3>
+            <h3><?= $totalProjetis;?></h3>
 
             <p><h4>Grupos de Projete</h4></p>
           </div>
