@@ -238,7 +238,12 @@
                 </a>
               </li>
             </ul>
-
+<!----------------------------------------------------------------------------
+---------- TURMAS
+---------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------
+---------- AVALIAÇÕES
+---------------------------------------------------------------------------->
             <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tasks"></i>
@@ -247,9 +252,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-<!----------------------------------------------------------------------------
----------- TURMAS
----------------------------------------------------------------------------->
+
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="?modulo=criterios&acao=adicionar" class="nav-link">
@@ -257,7 +260,16 @@
                   <p>Adicionar Critérios</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="?modulo=formulario_avaliativo&acao=listar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Formulário Avaliativo</p>
+                </a>
+              </li>
             </ul>
+<!----------------------------------------------------------------------------
+---------- AVALIAÇÕES
+---------------------------------------------------------------------------->
 
           <?php }else{?>
             <li class="nav-item has-treeview menu-open">

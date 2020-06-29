@@ -13,6 +13,7 @@
       public $fk_curso;
       public $curso;
       public $etapa;
+      public $nome_exercicio;
       public $fk_etapa;
       public $nome;
       public $turno;
@@ -63,16 +64,23 @@
         }
       }
 
-      public static function listar(){
+      public static function listar($fk_exercicio = false){
         try {
           $query = "SELECT turma.nome as turma,
                     turma.id_turma as id_turma,
                     turma.nome as nome,
                     turma.turno as turno,
+                    turma.lotacao as lotacao,
+                    turma.status_finalizada as status,
                     curso.nome as curso,
-                    etapa.nome as etapa
+                    etapa.nome as etapa,
+                    exercicio.nome_ano as nome_exercicio
                     from turma join etapa on turma.fk_etapa = etapa.id_etapa
-                     join curso on turma.fk_curso = curso.id_curso";
+                    join curso on turma.fk_curso = curso.id_curso
+                    join exercicio on turma.fk_exercicio = exercicio.id_exercicio WHERE id_turma>= 1";
+                    if($fk_exercicio){
+                    $sql.= " and fk_exercicio = $fk_exercicio";}
+
                       $stmt = DB::conexao()->prepare($query);
                       $stmt->execute();
                       $registros = $stmt->fetchAll();
@@ -84,6 +92,7 @@
                           $temporario->setCurso($objeto['curso']);
                           $temporario->setEtapa($objeto['etapa']);
                           $temporario->setTurno($objeto['turno']);
+                          $temporario->setNomeExercicio($objeto['nome_exercicio']);
                           $itens[] = $temporario;
                         }
             return $itens;
@@ -185,6 +194,17 @@
       {
         return $this->etapa;
       }
+
+       public function setNomeExercicio($nome_exercicio)
+      {
+        $this->nome_exercicio = $nome_exercicio;
+      }
+
+      public function getNomeExercicio()
+      {
+        return $this->nome_exercicio;
+      }
+
 
 /* =========Inicio encapsulamento da FK exercicio =========*/
       public function setExercicioId($fk_exercicio){
