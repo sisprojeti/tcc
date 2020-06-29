@@ -200,7 +200,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="?modulo=criteriosAvaliativos&acao=ver" class="nav-link">
+                <a href="?modulo=criterios&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Critérios Avaliativos</p>
                 </a>
