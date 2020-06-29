@@ -1,7 +1,16 @@
-<?php 
-
-
- ?>
+<?php
+  require_once('classes/class.formulario_avaliacao.php');
+    if(isset($_POST['button']) && $_POST['button'] === 'Salvar'){
+      try{
+        $formulario_avaliacao = new FormularioAvaliacao();
+        $formulario_avaliacao->setFkTurma();
+        $formulario_avaliacao->setDataAvaliacao();
+        $formulario_avaliacao->adicionar();
+      }catch(PDOExeption $e){
+        echo "ERROR".$e->getMessage();
+      }
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,17 +36,17 @@
 </script>
 </head>
 <body>
-  
+
   <div class="content-header navbar-white">
           <div class="container-fluid navbar-white">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Adicionar Critérios</h1>
+                <h1 class="m-0 text-dark">Adicionar Formulário Avaliativo</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                  <li class="breadcrumb-item active">Adicionar Critérios</li>
+                  <li class="breadcrumb-item active">Adicionar Formulário</li>
                 </ol>
               </div>
             </div>
@@ -56,7 +65,7 @@
       </div>
       <div class="form-group">
         <label>Valor Máximo</label>
-        <input type="text" class="form-control" name="valor_maximo" id="valor_maximo" placeholder="Ex: 1" required> 
+        <input type="text" class="form-control" name="valor_maximo" id="valor_maximo" placeholder="Ex: 1" required>
       </div>
        </div>
         <br>
@@ -82,9 +91,9 @@
                     accept: "[a-zA-Z]+",
              },
              valor_maximo:{
-                    
+
                     required:true,
-             },                                  
+             },
        },
        messages:{
             nome:{
@@ -93,7 +102,7 @@
              },
              valor_maximo:{
                     required:"Por favor, informe o valor máximo"
-             },  
+             },
        }
 
 });
@@ -107,4 +116,3 @@
 
 </body>
 </html>
-    
