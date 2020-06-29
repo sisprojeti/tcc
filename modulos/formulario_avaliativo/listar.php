@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php 
   include('classes/class.turma.php');
   include ('classes/class.exercicio.php');
