@@ -23,9 +23,9 @@
     <th scope="row"><?php echo $criterio->getIdCriterio();?></th>
     <td><?php echo $criterio->getNome();?></td>
     <td><?php echo $criterio->getValorMaximo();?></td>
-    <td><a href="?modulo=Academico&acao=editar&id=<?php echo $criterio->getIdCriterio();?>"><button class="btn btn-info">Info</button></a>
-    <a href="?modulo=Academico&acao=editar&id=<?php echo $criterio->getNome();?>"><button class="btn btn-warning">Editar</button></a>
-    <a href="?modulo=Academico&acao=excluir&id=<?php echo $criterio->getValorMaximo();?>"><button class="btn btn-danger">Excluir</button></a></td>
+    <td><a href="?modulo=Criterio&acao=editar&id=<?php echo $criterio->getIdCriterio();?>"><button class="btn btn-info">Info</button></a>
+    <a href="?modulo=Criterio&acao=editar&id=<?php echo $criterio->getNome();?>"><button class="btn btn-warning">Editar</button></a>
+    <a href="?modulo=Criterio&acao=excluir&id=<?php echo $criterio->getValorMaximo();?>"><button class="btn btn-danger">Excluir</button></a></td>
 
     </tr>
 <?php }}?>
