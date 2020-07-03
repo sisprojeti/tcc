@@ -64,7 +64,7 @@
         }
       }
 
-      public static function listar($fk_exercicio = false){
+      public static function listar($fk_exercicio = false,$fk_curso = false){
         try {
           $query = "SELECT turma.nome as turma,
                     turma.id_turma as id_turma,
@@ -79,8 +79,9 @@
                     join curso on turma.fk_curso = curso.id_curso
                     join exercicio on turma.fk_exercicio = exercicio.id_exercicio WHERE id_turma>= 1";
                     if($fk_exercicio){
-                    $sql.= " and fk_exercicio = $fk_exercicio";}
-
+                    $query.= " and fk_exercicio = $fk_exercicio";}
+                    if($fk_curso){
+                      $query .= " and fk_curso = $fk_curso";}
                       $stmt = DB::conexao()->prepare($query);
                       $stmt->execute();
                       $registros = $stmt->fetchAll();

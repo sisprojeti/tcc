@@ -2,10 +2,13 @@
   require_once('classes/class.formulario_avaliacao.php');
     if(isset($_POST['button']) && $_POST['button'] === 'Salvar'){
       try{
+        $fk_turma = $_GET['id'];
         $formulario_avaliacao = new FormularioAvaliacao();
-        $formulario_avaliacao->setFkTurma();
+        $formulario_avaliacao->setFkFormulario();
+        $formulario_avaliacao->setFkTurma($fk_turma);
         $formulario_avaliacao->setDataAvaliacao();
-        $formulario_avaliacao->adicionar();
+        //print_r($formulario_avaliacao);
+        //$formulario_avaliacao->adicionar();
       }catch(PDOExeption $e){
         echo "ERROR".$e->getMessage();
       }
