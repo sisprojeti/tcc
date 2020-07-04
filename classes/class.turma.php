@@ -101,7 +101,8 @@
       }catch (PDOException $e){
         echo "ERROR".$e->getMessage();
       }
-    }
+    return false;
+  }
 
     //implementando metodo de listar alunos de uma turma
     public static function listarAlunosTurma($id_turma=false){

@@ -1,6 +1,7 @@
 <?php
   include('classes/class.turma.php');
   include('classes/class.exercicio.php');
+  include('classes/class.curso.php');
  ?>
 <?php
 
@@ -25,11 +26,30 @@
         <?php
             $exercicios = Exercicio::listar();
             foreach ($exercicios as $c) {
-                echo "<option value= '".$c->getIdExercicio()."'>".$c->getNomeAno()."</option>";
+              if($_POST['exercicio']==$c->getIdExercicio()){
+                echo "<option selected value= '".$c->getIdExercicio()."'>".$c->getNomeAno()."</option>";
+              } else {
+                 echo "<option value= '".$c->getIdExercicio()."'>".$c->getNomeAno()."</option>";
+              }
             }
         ?>
     </select>
-    
+    </div>
+    <div class="controls">
+       Curso:
+    <select class="form-control col-md-2"  name='curso'>
+        <option value=""> Todos </option>
+        <?php
+            $cursos = Curso::listar();
+            foreach ($cursos as $c) {
+              if($_POST['curso']==$c->getIdCurso()){
+                echo "<option selected value= '".$c->getIdCurso()."'>".$c->getNomeCurso()."</option>";
+              }else{
+                echo "<option value= '".$c->getIdCurso()."'>".$c->getNomeCurso()."</option>";
+              }
+            }
+        ?>
+    </select>
     </div>
     <input type="submit" name="btnBuscar" value="buscar" class="btn btn-warning">
 </div>
@@ -42,6 +62,12 @@
    }else{
         $exercicio=false;
     }
+     if(isset($_POST["curso"])){
+        $curso = $_POST['curso'];
+   }else{
+        $curso=false;
+    }
+
 ?>
 
 <!------------------------------------- TABELA ----------------------------------->
@@ -62,7 +88,8 @@
 </thead>
 <tbody>
 <?php
-  $turmas = Turma::listar($exercicio);
+  $turmas = Turma::listar($exercicio,$curso);
+  if($turmas){
   foreach($turmas as $turma){ ?>
     <tr>
     <th scope="row"><?php echo $turma->getIdTurma();?></th>
@@ -76,7 +103,9 @@
   </td>
 
     </tr>
-<?php } ?>
+<?php }}else{
+  echo "<tr> <td colspan=6> Nenhum registro encontrado </td> </tr>";
+} ?>
 </tbody>
 </table>
 
