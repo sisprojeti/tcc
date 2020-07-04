@@ -13,6 +13,8 @@
           $stmt->bindParam(':fk_turma',$this->fk_turma);
           $stmt->bindParam(':data_avaliacao',$this->data_avaliacao);
           $stmt->execute();
+          $ultimoIdFormulario = $conexao->lastInsertId();
+          return $ultimoIdFormulario;
         }
 
         public function setFkTurma($fk_turma){
