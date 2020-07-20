@@ -1,8 +1,10 @@
 <?php
-include_once("classes/class.professor.php");
-include_once("classes/class.pessoa.php");
-include_once("classes/class.grupo.php");
-include_once("classes/class.usuario.php");
+require_once("classes/class.professor.php");
+require_once("classes/class.pessoa.php");
+require_once("classes/class.grupo.php");
+require_once("classes/class.usuario.php");
+require_once('classes/class.refUsuarioGrupo.php');
+
 $fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
     try {
     if(isset($_POST["button"]) && ($_POST["button"] === "Salvar")){
@@ -18,10 +20,17 @@ $fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
        $professor->setDataCadastro($_POST['data_cadastro']);
        $professor->adicionar();
 
+      $senha = '123456';
        $usuario = new Usuario();
        $usuario->setPessoaUsuarioId($ultimoIdPessoa);
        $usuario->setSenha($senha);
        $ultimoIdUsuario = $usuario->adicionar();
+
+       $novo_ref_usuario_grupo = new RefUsuarioGrupo();
+       $novo_ref_usuario_grupo->setIdUsuario($ultimoIdUsuario);
+       $novo_ref_usuario_grupo->setIdGrupo($fk_grupo);
+       $novo_ref_usuario_grupo->adicionar();
+       
     }
   } catch (PDOException $e) {
       echo "ERROR".$e->getMessage();
@@ -113,7 +122,7 @@ $fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
        rules : {
               nome:{
                     required:true,
-                    minlength:16,
+                    minlength:10,
                     accept: "[a-zA-Z]+",
              },
              email:{
