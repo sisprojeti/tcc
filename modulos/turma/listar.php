@@ -27,7 +27,6 @@
 <th scope="col">Curso</th>
 <th scope="col">Etapa</th>
 <th scope="col">Turno</th>
-<th scope="col">Professor da Turma</th>
 <th scope="col">Ação</th>
 </tr>
 </thead>
@@ -40,7 +39,6 @@
     <td><?php echo $turma->getCurso();?></td>
     <td><?php echo $turma->getEtapa();?></td>
     <td><?php echo $turma->getTurno();?></td>
-    <td>Professor da turma</td>
     <td width=250>
       <a class="btn btn-primary" href="?modulo=turma&acao=listagem_alunos_turma&id=<?php echo $turma->getIdTurma();?>">Info</a>
       <a class="btn btn-warning" href="?modulo=turma&acao=editar&id=<?php echo $turma->getIdTurma();?>">Editar</a>

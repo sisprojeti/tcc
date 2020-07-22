@@ -87,9 +87,8 @@
               </p>
             </a>
           </li>
-<!----------------------------------------------------------------------------
----------- CADASTROS DE PESSOAS
----------------------------------------------------------------------------->
+
+<!--------------------------------- CADASTRO DE PESSOAS -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -125,9 +124,8 @@
               </li>
             </ul>
           </li>
-<!----------------------------------------------------------------------------
----------- CURSOS
----------------------------------------------------------------------------->
+
+<!--------------------------------- CURSOS -->
 <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chalkboard-teacher"></i>
@@ -152,7 +150,7 @@
               <li class="nav-item">
                 <a href="?modulo=etapa&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Etapa</p>
+                  <p>Etapas</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -163,9 +161,7 @@
               </li>
             </ul>
           </li>
-<!----------------------------------------------------------------------------
----------- RELATORIOS
----------------------------------------------------------------------------->
+<!--------------------------------- RELATORIOS  -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -192,21 +188,15 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Coordenador</p>
                 </a>
-              </li>
               <li class="nav-item">
-                <a href="?modulo=anexos&acao=ver" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Anexos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=criteriosAvaliativos&acao=ver" class="nav-link">
+                <a href="?modulo=criterios&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Critérios Avaliativos</p>
                 </a>
               </li>
             </ul>
           </li>
+<!--------------------------------- TURMAS  -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
@@ -215,9 +205,6 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-<!----------------------------------------------------------------------------
----------- TURMAS
----------------------------------------------------------------------------->
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="?modulo=turma&acao=listar" class="nav-link">
@@ -238,6 +225,8 @@
                 </a>
               </li>
             </ul>
+          </li>
+<!--------------------------------- AVALIAÇÕES  -->
 
             <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -247,9 +236,6 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-<!----------------------------------------------------------------------------
----------- TURMAS
----------------------------------------------------------------------------->
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="?modulo=criterios&acao=adicionar" class="nav-link">
@@ -257,9 +243,21 @@
                   <p>Adicionar Critérios</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="?modulo=formulario_avaliativo&acao=listar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Formulário Avaliativo</p>
+                </a>
+              </li>
             </ul>
+          </li>
 
-          <?php }else{?>
+<!----------------------------------------------------------------------------
+---------- MENU DO ALUNO
+---------------------------------------------------------------------------->
+          <?php 
+          }if($_SESSION['nome_grupo'] === 'aluno'){
+            ?>
             <li class="nav-item has-treeview menu-open">
                <ul class="nav nav-treeview">
                 <li class="nav-item has-treeview menu-open">
@@ -324,8 +322,144 @@
                  </li>
                </ul>
           </li>
-          <?php };?>
-          <!-- final ambiente aluno-->
+<!----------------------------------------------------------------------------
+---------- MENU DO COORDENADOR
+---------------------------------------------------------------------------->
+          <?php }if ($_SESSION['nome_grupo'] === 'coordenador'){ ?>
+            <li class="nav-item has-treeview menu-open">
+              <a href="index.php" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p> Home Coordenador</p>
+            </a>
+            </li>
+<!--------------------------------- CADASTRO DE PESSOAS -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Cadastros
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="?modulo=aluno&acao=adicionar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Acadêmico</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?modulo=professor&acao=adicionar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Professor</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+<!--------------------------------- TURMAS  -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Turmas
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="?modulo=turma&acao=listar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Lista de Turmas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?modulo=vinculoProfessor&acao=adicionar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Vincular Professor</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?modulo=vinculoAluno&acao=adicionar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Vicular Aluno a Turma</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+<!--------------------------------- AVALIAÇÕES  -->
+
+            <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tasks"></i>
+              <p>
+                Avaliação
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="?modulo=criterios&acao=adicionar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Adicionar Critérios</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?modulo=formulario_avaliativo&acao=listar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Formulário Avaliativo</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+<!----------------------------------------------------------------------------
+---------- MENU DO PROFESSOR
+---------------------------------------------------------------------------->       
+          <?php  }if ($_SESSION['nome_grupo'] === 'professor'){ ?>
+
+            <li class="nav-item has-treeview menu-open">
+              <a href="index.php" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p> Home Professor</p>
+            </a>
+            </li>
+<!--------------------------------- TURMAS  -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Turmas
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="?modulo=turma&acao=listar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Lista de Turmas</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+<!--------------------------------- AVALIAÇÕES  -->
+
+            <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tasks"></i>
+              <p>
+                Avaliação
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="?modulo=formulario_avaliativo&acao=listar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Formulário Avaliativo</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <?php  }; ?>
       </nav>
       <!-- /.sidebar-menu -->
     </div>

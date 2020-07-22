@@ -31,7 +31,7 @@ include_once('classes/class.db.php');
                       $registros = $stmt->fetchAll();
                       if($registros){
                         foreach($registros as $objeto){
-                          $temporario = new Etapa();
+                          $temporario = new Criterio();
                           $temporario->setIdCriterio($objeto['id_criterio']);
                           $temporario->setNomeCriterio($objeto['nome']);
                           $temporario->setValorMaximo($objeto['valor_maximo']);
@@ -68,6 +68,19 @@ include_once('classes/class.db.php');
 
       public function setValorMaximo($valor_maximo){
         $this->valor_maximo = $valor_maximo;
+      }
+
+      public function getIdCriterio(){
+        return $this->id_criterio;
+      }
+
+      public function getNome(){
+        return $this->nome;
+      }
+
+      public function getValorMaximo()
+      {
+        return $this->valor_maximo;
       }
     }
 
