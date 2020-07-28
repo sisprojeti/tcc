@@ -51,6 +51,7 @@
         ?>
     </select>
     </div>
+    <br>
     <input type="submit" name="btnBuscar" value="buscar" class="btn btn-warning">
 </div>
 <br>

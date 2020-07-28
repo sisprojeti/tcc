@@ -19,15 +19,36 @@
   }; //criar teste se o botão for precionado
   $criterios = Criterio::listar();
   if($criterios){
-    echo "<form action='' method='post'>";
-    echo "<input class='form-control' type='date' name='data_avaliacao'>";
+    echo "<br>";
+    echo "<div class='container col-lg-12 navbar-white'>";
+    echo "<div class='container col-lg-8 navbar-white'>";
+    echo "<section class='content navbar-light navbar-white'>";
+    echo "<div class='container-fluid navbar-white ''>";
+    echo "<forma ction='' method='post'>";
+     echo " <div class='form-row'>";
+        echo "<div class='form-group col-md-6'>";
+          echo "<label for=''>Data de Avaliação</label>";
+          echo "<input type='date' class='form-control' name='data_avaliacao'>";
+        echo "</div>";
+      echo "</div>";
     foreach ($criterios as $criterio) {
 
-      echo $criterio->getNome();
-      echo "<input type='checkbox' value='".$criterio->getIdCriterio()."' name='criterio[]'>";
-      echo "<br>";
+    echo "<div class='form-group'>";
+    echo "  <div class='form-check'>";
+    echo " <input class='form-check-input' type='checkbox' id='gridCheck' value='".$criterio->getIdCriterio()."' name='criterio[]'>";
+    echo " <label class='form-check-label' for='gridCheck'>";
+    echo $criterio->getNome();    
+    echo "  </label>";
+    echo "  </div>";
+    echo " </div>";
     }
-    echo "<button type='submit' name='cadastra_formulario' value='cadastra_formulario'> Cadastrar Formulário </button>";
-    echo "</form>";
+    echo "<button type='submit' class='btn btn-primary' name='cadastra_formulario' value='cadastra_formulario'> Cadastrar Formulário </button>";
+    echo " </form>";
+    echo " </div>";
+    echo "</section>";
+    echo " </div>";
+    echo "</div>";
   }
 ?>
+
+
