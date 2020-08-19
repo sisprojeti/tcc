@@ -73,7 +73,7 @@
                 <!-- /.card-body -->
 
                 <div class="form-group navbar-white">
-                  <input type="submit" name="button" value="Salvar" class="btn btn-primary" >
+                  <input type="submit" name="button" value="Salvar" class="btn btn-success" >
                   <button type="reset" class="btn btn-danger ">Limpar</button>
                 </div>
               </form>

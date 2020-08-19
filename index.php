@@ -188,12 +188,6 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Coordenador</p>
                 </a>
-              <li class="nav-item">
-                <a href="?modulo=criterios&acao=listar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Critérios Avaliativos</p>
-                </a>
-              </li>
             </ul>
           </li>
 <!--------------------------------- TURMAS  -->
@@ -238,9 +232,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="?modulo=criterios&acao=adicionar" class="nav-link">
+                <a href="?modulo=criterios&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Adicionar Critérios</p>
+                  <p>Critérios Avaliativos</p>
                 </a>
               </li>
               <li class="nav-item">
