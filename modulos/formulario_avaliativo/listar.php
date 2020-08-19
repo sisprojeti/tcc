@@ -51,7 +51,12 @@
         ?>
     </select>
     </div>
+<<<<<<< HEAD
     <input type="submit" name="btnBuscar" value="Buscar" class="btn btn-warning" style="margin-left: 5%; width: 10%;">
+=======
+    <br>
+    <input type="submit" name="btnBuscar" value="buscar" class="btn btn-warning">
+>>>>>>> 2ef4a57b2b1e021660c90c426bbc9af3751a2408
 </div>
 <br>
 </form>
