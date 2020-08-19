@@ -11,8 +11,8 @@ include('classes/class.aluno.php');?>
 <!------------------------------------- MENU ----------------------------------->
 <div class="area_menu">
   <p></p>
-   <p class="texto-area">Lista de Turma </p>
-    <div><a href="index.php?modulo=turma&acao=adicionar" class="btn btn-success">Adicionar</a> </div>
+   <p class="texto-area">Lista de Alunos  selec * turma</p>
+  <p> </p>
 </div>
 
 <!------------------------------------- TABELA ----------------------------------->
@@ -26,7 +26,7 @@ include('classes/class.aluno.php');?>
 <th scope="col">Nome</th>
 <th scope="col">Situação</th>
 <th scope="col">Matricula</th>
-<th scope="col">Ação</th>
+<th scope="col">Status</th>
 </tr>
 </thead>
 <tbody>
@@ -42,9 +42,7 @@ include('classes/class.aluno.php');?>
    };?></td>
    <td><?php echo $aluno->getMatricula();?></td>
    <td>
-     <a class="btn btn-primary" href="">Info</a>
-     <a class="btn btn-warning" href="?modulo=Academico&acao=editar&id=<?php echo $aluno->getIdAluno();?>">Editar</a>
-   <a class="btn btn-danger" href="?modulo=Academico&acao=excluir&id=<?php echo $aluno->getIdAluno();?>">Excluir</a>
+     
  </td>
 
    </tr>
@@ -54,3 +52,9 @@ include('classes/class.aluno.php');?>
      </div><!-- /.container-fluid -->
    </section>
  </div>
+
+SELECT aluno.id_aluno  FROM aluno
+join ref_aluno_turma on aluno.id_aluno = ref_aluno_turma.fk_aluno
+join turma on ref_aluno_turma.fk_turma = turma.id_turma
+ where turma.id_turma = 2 and NOT EXISTS (SELECT * FROM ref_aluno_projeti
+              WHERE ref_aluno_projeti.fk_aluno = aluno.id_aluno) ;
