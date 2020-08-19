@@ -17,11 +17,11 @@
 </div>
 <!------------------------------------- FILTO ----------------------------------->
 <form name="FormConsulta" class="form-horizontal" action="" method="post" style="border-bottom: solid 1px #ccc;">
-<div style="padding: 0 3%;">
+<div style="padding: 0 3%; width: 100%; display:flex; justify-content: center;">
 
-    <div class="controls">
-       Exercicío:
-    <select class="form-control col-md-2"  name='exercicio'>
+    <div class="controls" style="display:flex; width: 30%; align-content: center; justify-content: space-around;">
+       <p> Exercicío: </p>
+    <select class="form-control col-md-8"  name='exercicio'>
         <option value=""> Todos </option>
         <?php
             $exercicios = Exercicio::listar();
@@ -35,9 +35,9 @@
         ?>
     </select>
     </div>
-    <div class="controls">
-       Curso:
-    <select class="form-control col-md-2"  name='curso'>
+    <div class="controls" style="display:flex; width: 33%; align-items: center; justify-content: space-around;" >
+       <p> Curso: </p>
+    <select class="form-control col-md-10"  name='curso'>
         <option value=""> Todos </option>
         <?php
             $cursos = Curso::listar();
@@ -51,7 +51,7 @@
         ?>
     </select>
     </div>
-    <input type="submit" name="btnBuscar" value="buscar" class="btn btn-warning">
+    <input type="submit" name="btnBuscar" value="Buscar" class="btn btn-warning" style="margin-left: 5%; width: 10%;">
 </div>
 <br>
 </form>
@@ -179,3 +179,9 @@ try {
 });
 
 </script>
+
+<style type="text/css">
+  .redq{
+  font-size: 25em;
+}
+</style>

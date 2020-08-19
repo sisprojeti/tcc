@@ -10,3 +10,9 @@ box-sizing: border-box;
 	font-size: 1.5em;
 	width: 200px;
 }
+.menufi{
+	padding: 0 3%; 
+	width: 100%; 
+	display:flex; 
+	justify-content: center;
+}
