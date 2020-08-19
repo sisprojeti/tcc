@@ -42,9 +42,9 @@
       echo "Ativo";
     };?></td>
     <td width=250>
-      <a class="btn btn-primary" href="">Info</a>
-      <a class="btn btn-warning" href="?modulo=etapa&acao=editar&id=<?php echo $etapa->getIdEtapa();?>">Editar</a>
-    <a class="btn btn-danger" href="?modulo=etapa&acao=excluir&id=<?php echo $etapa->getIdEtapa();?>">Excluir</a>
+      <a class="btn btn-info" href=""><i class="fas fa-eye"></i></a>
+      <a class="btn btn-warning" href="?modulo=etapa&acao=editar&id=<?php echo $etapa->getIdEtapa();?>"><i class="fas fa-edit"></i></a>
+    <a class="btn btn-danger" href="?modulo=etapa&acao=excluir&id=<?php echo $etapa->getIdEtapa();?>"><i class="fas fa-trash-alt"></i></a>
   </td>
 
     </tr>

@@ -34,9 +34,8 @@
     <th scope="row"><?php echo $exercicio->getIdExercicio();?></th>
     <td><?php echo $exercicio->getNomeAno();?></td>
     <td width=250>
-      <a class="btn btn-primary" href="">Info</a>
-      <a class="btn btn-warning" href="?modulo=exercicio&acao=editar&id=<?php echo $exercicio->getIdExercicio();?>">Editar</a>
-    <a class="btn btn-danger" href="?modulo=exercicio&acao=excluir&id=<?php echo $exercicio->getIdExercicio();?>">Excluir</a>
+      <a class="btn btn-warning" href="?modulo=exercicio&acao=editar&id=<?php echo $exercicio->getIdExercicio();?>"><i class="fas fa-edit"></i></a>
+    <a class="btn btn-danger" href="?modulo=exercicio&acao=excluir&id=<?php echo $exercicio->getIdExercicio();?>"><i class="fas fa-trash-alt"></i></a>
   </td>
 
     </tr>

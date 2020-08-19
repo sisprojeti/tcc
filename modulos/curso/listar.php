@@ -43,9 +43,9 @@
       echo "Ativo";
     };?></td>
     <td width=250>
-      <a class="btn btn-primary" href="">Info</a>
-      <a class="btn btn-warning" href="?modulo=curso&acao=editar&id=<?php echo $curso->getIdcurso();?>">Editar</a>
-    <a class="btn btn-danger" href="?modulo=curso&acao=excluir&id=<?php echo $curso->getIdcurso();?>">Excluir</a>
+      <a class="btn btn-info" href=""><i class="fas fa-eye"></i></a>
+      <a class="btn btn-warning" href="?modulo=curso&acao=editar&id=<?php echo $curso->getIdcurso();?>"><i class="fas fa-edit"></i></a>
+    <a class="btn btn-danger" href="?modulo=curso&acao=excluir&id=<?php echo $curso->getIdcurso();?>"><i class="fas fa-trash-alt"></i></a>
   </td>
 
     </tr>
