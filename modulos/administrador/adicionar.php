@@ -124,8 +124,8 @@ try {
  </div>
  <!-- /.card-body -->
 <div class="form-group navbar-white">
-    <input type="submit" name="button" value="Salvar" class="btn btn-primary" >
-    <button type="reset" class="btn btn-danger ">Limpar</button>
+  <br>
+    <input type="submit" name="button" value="Salvar" class="btn btn-success" >
 </div>
 </form>
     <!-- /.row (main row) -->
