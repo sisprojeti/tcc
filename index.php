@@ -20,6 +20,9 @@
     // }
 
 ?>
+<style type="text/css">
+  *{font-family: sans-serif;}
+</style>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +57,7 @@
     <a href="index.php" class="brand-link navbar-orange">
       <img src="publico/img/logobranca.png" alt="SISP Logo" class="brand-image"
            style="opacity: ">
-      <span class="brand-text font-weight-light text-white"><?php echo $_SESSION['nome_grupo'];?></span>
+      <span class="brand-text font-weight-light text-white"><?php echo '<b>'.ucfirst($_SESSION['nome_grupo']).'</b>';?></span>
     </a>
 
     <!-- Sidebar -->

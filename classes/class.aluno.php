@@ -82,14 +82,17 @@
             $this->nome_aluno = $nome_aluno;
           }
 
-    public static function listar()
+    public static function listar($busca = false)
       {
         try {
           $query = "SELECT aluno.id_aluno,
-          pessoa.nome as nome,
+          pessoa.nome as nome, 
           aluno.situacao_aluno as situacao_aluno,
           aluno.matricula as matricula
           from aluno join pessoa on aluno.fk_pessoa = pessoa.id_pessoa";
+            if($busca){
+              $query.= " and pessoa.nome like '%$busca%'";
+            }   
                       $stmt = DB::conexao()->prepare($query);
                       $stmt->execute();
                       $registros = $stmt->fetchAll();
