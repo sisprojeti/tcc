@@ -149,9 +149,9 @@ try {
 
  </div>
  <!-- /.card-body -->
-<div class="form-group navbar-white">
-  <br>
-    <input type="submit" name="button" value="Salvar" class="btn btn-success" > 
+<div class="form-group navbar-white" style="text-align: center;">
+    <input type="submit" style="width: 20%; height: 6%;" name="button" value="Salvar" class="btn btn-success" >
+     <br> 
 </div>
 </form>
     <!-- /.row (main row) -->

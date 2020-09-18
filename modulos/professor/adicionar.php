@@ -108,9 +108,9 @@ $fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
                  </div>
                <!-- /.card-body -->
 
-               <div class="form-group navbar-white">
+               <div class="form-group navbar-white" style="text-align: center;">
                 <br>
-                 <input type="submit" name="button" value="Salvar" class="btn btn-success" >
+                 <input  style="width: 20%; height: 6%;" type="submit" name="button" value="Salvar" class="btn btn-success" >
                </div>
                <br>
              </form>

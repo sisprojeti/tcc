@@ -104,9 +104,10 @@ require_once('classes/class.refUsuarioGrupo.php');
                   </div>
                 <!-- /.card-body -->
 
-                <div class="form-group">
-                  <br>
-                  <input type="submit" name="button" value="Salvar" class="btn btn-success" >
+                <div class="form-group" style="text-align: center;"> 
+                <br>    
+                  <input type="submit" style="width: 20%; height: 6%;" name="button" value="Salvar" class="btn btn-success" >
+                  
                 </div>
               </form>
         <!-- /.row (main row) -->
