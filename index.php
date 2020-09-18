@@ -147,7 +147,7 @@
               <li class="nav-item">
                 <a href="?modulo=exercicio&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Exercicio</p>
+                  <p>Exercício</p>
                 </a>
               </li>
               <li class="nav-item">
