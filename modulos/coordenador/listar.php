@@ -43,11 +43,11 @@
 <thead>
 <tr>
 <th scope="col">#</th>
-<th scope="col">Nome</th>
-<th scope="col">Email</th>
-<th scope="col">Cpf</th>
-<th scope="col">Telefone</th>
-<th scope="col">Ação</th>
+<th scope="col">NOME</th>
+<th scope="col">E-MAIL</th>
+<th scope="col">CPF</th>
+<th scope="col">TELEFONE</th>
+<th scope="col">AÇÃO</th>
 </tr>
 </thead>
 <tbody>

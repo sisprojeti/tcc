@@ -87,7 +87,7 @@ require_once('classes/class.refUsuarioGrupo.php');
                     <input type="text" name="nome" class="form-control"  placeholder="Insira o Nome Completo" required>
                   </div>
                   <div class="form-group">
-                    <label>Email</label>
+                    <label>E-mail</label>
                     <input type="email" class="form-control" name="email" placeholder="Insira o E-mail" required>
                   </div>
                   <div class="form-group">
@@ -101,6 +101,9 @@ require_once('classes/class.refUsuarioGrupo.php');
                   <div class="form-group">
                     <label>Data Cadastro</label>
                     <input type="date" class="form-control" name="data_cadastro" required>
+                  </div>
+                  <div style="text-align: center;" class="form-group">
+                    <label>Senha: SispCoordenador </label>
                   </div>
                 <!-- /.card-body -->
 

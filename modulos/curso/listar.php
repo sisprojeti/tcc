@@ -23,10 +23,10 @@
 <thead>
 <tr>
 <th scope="col">#</th>
-<th scope="col">Nome</th>
-<th scope="col">Sigla</th>
-<th scope="col">Situação</th>
-<th scope="col">Ação</th>
+<th scope="col">NOME</th>
+<th scope="col">SIGLA</th>
+<th scope="col">SITUAÇÃO</th>
+<th scope="col">AÇÃO</th>
 </tr>
 </thead>
 <tbody>
