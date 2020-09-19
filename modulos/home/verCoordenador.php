@@ -192,7 +192,7 @@ try{
         <div class="small-box bg-primary">
           <div class="inner">
                       <h3 style="color:white;"><?= $totalExercicios;?></h3>
-              <p><h4>Exercicios</h4></p>
+              <p><h4>Exercícios</h4></p>
           </div>
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
