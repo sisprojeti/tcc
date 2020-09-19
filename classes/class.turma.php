@@ -9,6 +9,7 @@
     class Turma
     {
       public $id_turma;
+      public $id_projeti;
       public $fk_exercicio;
       public $fk_curso;
       public $curso;
@@ -20,6 +21,8 @@
       public $lotacao;
       public $status_finalizada;
       public $nome_aluno;
+      public $tema;
+      public $descricao;
 
 
       public static function recuperaTurmaAluno($fk_aluno)
@@ -109,6 +112,77 @@
     return false;
   }
 
+  public static function alunosProjeti($id_projeti){
+    $query = "SELECT pessoa.nome as nome_aluno
+    from ref_aluno_projeti
+    join aluno on ref_aluno_projeti.fk_aluno = aluno.id_aluno
+    join pessoa on aluno.fk_pessoa = pessoa.id_pessoa
+    where ref_aluno_projeti.fk_projeti = $id_projeti";
+    $stmt = DB::conexao()->prepare($query);
+    $stmt->execute();
+    $registros = $stmt->fetchAll();
+    if($registros){
+      foreach($registros as $objeto){
+        $temporario = new Pessoa();
+        $temporario->setNome($objeto['nome_aluno']);
+        $itens[] = $temporario;
+            }
+      return $itens;
+      }
+  }
+
+  public function getNome(){
+    return $this->nome;
+  }
+
+  public static function listarProjetiTurma($id_turma){
+    try {
+      $query = "SELECT projeti.tema,projeti.id_projeti FROM projeti
+      join ref_aluno_projeti on projeti.id_projeti = ref_aluno_projeti.fk_projeti
+      join aluno on ref_aluno_projeti.fk_aluno = aluno.id_aluno
+      join pessoa on aluno.fk_pessoa = pessoa.id_pessoa
+      join ref_aluno_turma on aluno.id_aluno = ref_aluno_turma.fk_aluno
+      join turma on ref_aluno_turma.fk_turma = turma.id_turma
+      where turma.id_turma = $id_turma group by projeti.id_projeti";
+                  $stmt = DB::conexao()->prepare($query);
+                  $stmt->execute();
+                  $registros = $stmt->fetchAll();
+                  if($registros){
+                    foreach($registros as $objeto){
+                      $temporario = new Projeti();
+                      $temporario->setIdProjeti($objeto['id_projeti']);
+                      $temporario->setTemaProjeti($objeto['tema']);
+                      $itens[] = $temporario;
+                    }
+        return $itens;
+    }
+  }catch (PDOException $e){
+    echo "ERROR".$e->getMessage();
+  }
+}
+
+public function setTemaProjeti($tema){
+  $this->tema = $tema;
+}
+
+public function getTemaProjeti(){
+  return $this->tema;
+}
+
+public function getNomeIntegrantes(){
+  return $this->nome_aluno;
+}
+
+public function setDescricaoProjeti($descricao){
+  $this->$descricao = $descricao;
+}
+
+public function setNomeIntegrantes($nome_aluno){
+  $this->$nome_aluno = $nome_aluno;
+}
+
+
+
     //implementando metodo de listar alunos de uma turma
     public static function listarAlunosTurma($id_turma=false){
       try {
@@ -181,6 +255,11 @@
       public function getIdTurma(){
           return $this->id_turma;
       }
+
+      public function getIdProjeti(){
+          return $this->id_projeti;
+      }
+
 
       public function setCurso($curso)
       {

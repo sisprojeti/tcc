@@ -13,6 +13,14 @@
       public function setIdTurma($id_turma){
         $this->id_turma = $id_turma;
       }
+
+      public function setNomeIntegrantes($nome_aluno){
+        $this->nome_aluno = $nome_aluno;
+      }
+
+      public function getNomeIntegrantes(){
+        return $this->nome_aluno;
+      }
       //---------Provavelmente vamos utilizar esses atributos em outra classe-------
       //public $turma;
       //public $grupo_projeti;
@@ -167,7 +175,11 @@
 
       public function adicionar(){
         try{
-                  $sql = "INSERT INTO aluno(fk_pessoa,matricula,data_matricula,situacao_aluno) values(:fk_pessoa,:matricula,:data_matricula,:situacao_aluno)"; //criando uma variavel $stmt e atribuindo o valor da variavel $pdo e utilizand operador de acesso a objetos pra utilizar o metodo prepare pra preparar o insert no banco de dados
+                  $sql = "INSERT INTO aluno(
+                    fk_pessoa,
+                    matricula,
+                    data_matricula,situacao_aluno)
+                    values(:fk_pessoa,:matricula,:data_matricula,:situacao_aluno)"; //criando uma variavel $stmt e atribuindo o valor da variavel $pdo e utilizand operador de acesso a objetos pra utilizar o metodo prepare pra preparar o insert no banco de dados
                   $conexao = DB::conexao();
                   $stmt = $conexao->prepare($sql);
                   $stmt->bindParam(':fk_pessoa',$this->fk_pessoa);

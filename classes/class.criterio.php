@@ -23,6 +23,8 @@ include_once('classes/class.db.php');
                   }
       }
 
+
+
       public static function listar(){
         try {
           $query = "SELECT * FROM criterio";
@@ -43,6 +45,25 @@ include_once('classes/class.db.php');
         echo "ERROR".$e->getMessage();
       }
     }
+
+    public static function listarCriterios($fk_projeti){
+      try {
+        $query = "SELECT criterio.nome as nome_criterio from criterio";
+                    $stmt = DB::conexao()->prepare($query);
+                    $stmt->execute();
+                    $registros = $stmt->fetchAll();
+                    if($registros){
+                      foreach($registros as $objeto){
+                        $temporario = new RefFormularioAvaliacaoProjeti();
+                        $temporario->setPessoaNome($objeto['nome_criterio']);
+                        $itens[] = $temporario;
+                      }
+          return $itens;
+      }
+    }catch (PDOException $e){
+      echo "ERROR".$e->getMessage();
+    }
+  }
 
     public static function contarCriterios()
       {
@@ -74,7 +95,7 @@ include_once('classes/class.db.php');
         return $this->id_criterio;
       }
 
-      public function getNome(){
+      public function getNomeCriterio(){
         return $this->nome;
       }
 

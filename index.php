@@ -249,13 +249,19 @@
                   <p>Formulário Avaliativo</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="?modulo=formulario_avaliativo&acao=listagem_formularios" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listagem Formulários</p>
+                </a>
+              </li>
             </ul>
           </li>
 
 <!----------------------------------------------------------------------------
 ---------- MENU DO ALUNO
 ---------------------------------------------------------------------------->
-          <?php 
+          <?php
           }if($_SESSION['nome_grupo'] === 'aluno'){
             ?>
             <li class="nav-item has-treeview menu-open">
@@ -413,7 +419,7 @@
           </li>
 <!----------------------------------------------------------------------------
 ---------- MENU DO PROFESSOR
----------------------------------------------------------------------------->       
+---------------------------------------------------------------------------->
           <?php  }if ($_SESSION['nome_grupo'] === 'professor'){ ?>
 
             <li class="nav-item has-treeview menu-open">
@@ -431,6 +437,14 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="?modulo=turma&acao=listar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Lista de Alunos</p>
+                </a>
+              </li>
+            </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="?modulo=turma&acao=listar" class="nav-link">

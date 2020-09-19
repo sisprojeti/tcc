@@ -1,7 +1,7 @@
-<?php 
+<?php
   include('classes/class.turma.php');
   include('classes/class.exercicio.php');
-  include('classes/class.curso.php'); 
+  include('classes/class.curso.php');
 ?>
 <?php
 
@@ -57,7 +57,7 @@
       <input type="submit" name="btnBuscar" value="Buscar" class="btn btn-warning" style="flex-grow: 0.3;" >
       <a href="index.php?modulo=turma&acao=adicionar" class="btn btn-success" style="flex-grow: 0.2;" >
         Adicionar
-      </a> 
+      </a>
     </div>
 </div>
 <br>
@@ -92,7 +92,7 @@
 </tr>
 </thead>
 <tbody>
-<?php 
+<?php
   $turmas = Turma::listar($exercicio,$curso);
   if($turmas){
   foreach($turmas as $turma){ ?>
@@ -104,7 +104,7 @@
     <td><?php echo $turma->getTurno();?></td>
     <td width=250>
       <a class="btn btn-info" href="?modulo=turma&acao=listagem_alunos_turma&id=<?php echo $turma->getIdTurma();?>"><i class="fas fa-eye"></i></a>
-      <a class="btn btn-dark" href="?modulo=turma&acao=excluir&id=<?php echo $turma->getIdTurma();?>"><i class="fas fa-users"></i></a>
+      <a class="btn btn-dark" href="?modulo=turma&acao=listagem_projeti_turma&id=<?php echo $turma->getIdTurma();?>"><i class="fas fa-users"></i></a>
       <a class="btn btn-warning" href="?modulo=turma&acao=editar&id=<?php echo $turma->getIdTurma();?>"><i class="fas fa-edit"></i></a>
       <a class="btn btn-danger" href="?modulo=turma&acao=excluir&id=<?php echo $turma->getIdTurma();?>"><i class="fas fa-trash-alt"></i></a>
   </td>

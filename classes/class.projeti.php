@@ -69,6 +69,29 @@
           // inner join projeti on projeti.id_projeti = ref_aluno_projeti.fk_projeti
           // where aluno.fk_pessoa = :fk_pessoa;
 
+
+          public function listar(){
+            try {
+              $sql = "SELECT * FROM projeti";
+              $stmt = DB::conexao()->prepare($sql);
+              $stmt->execute();
+              $registros = $stmt->fetchAll();
+              if($registros){
+                foreach($registros as $objeto){
+                  $temporario = new Projeti();
+                  $temporario->setIdProjeti($objeto['id_projeti']);
+                  $temporario->setTemaProjeti($objeto['tema']);
+                  $temporario->setTemaProjeti($objeto['descricao']);
+                  $temporario->setDescricao($objeto['descricao']);
+                  $itens[] = $temporario;
+                }
+                return $itens;
+              }
+            } catch (PDOException $e) {
+              echo "Deu erro".$e->getMessage();
+            }
+          }
+
           public static function recuperaIdProjeti($fk_pessoa)
           {
             $sql = "SELECT ref_aluno_projeti.fk_projeti,

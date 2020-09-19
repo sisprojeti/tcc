@@ -24,7 +24,7 @@
     echo "<div class='container col-lg-8 navbar-white'>";
     echo "<section class='content navbar-light navbar-white'>";
     echo "<div class='container-fluid navbar-white ''>";
-    echo "<forma ction='' method='post'>";
+    echo "<form action='' method='post'>";
      echo " <div class='form-row'>";
         echo "<div class='form-group col-md-6'>";
           echo "<label for=''>Data de Avaliação</label>";
@@ -37,7 +37,7 @@
     echo "  <div class='form-check'>";
     echo " <input class='form-check-input' type='checkbox' id='gridCheck' value='".$criterio->getIdCriterio()."' name='criterio[]'>";
     echo " <label class='form-check-label' for='gridCheck'>";
-    echo $criterio->getNome();    
+    echo $criterio->getNome();
     echo "  </label>";
     echo "  </div>";
     echo " </div>";
@@ -50,5 +50,3 @@
     echo "</div>";
   }
 ?>
-
-

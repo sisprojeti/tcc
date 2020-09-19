@@ -1,57 +1,36 @@
 <?php
 
-if(isset($_GET['msgerro']) && $_GET['msgerro'] === 'erro_cadastro'){
-  echo "<script>alert('Usuário já cadastrado no sistema')</script>";
-};
-
 require_once("classes/class.aluno.php");
-require_once("classes/class.pessoa.php");
-require_once("classes/class.usuario.php");
-require_once("classes/class.grupo.php");
-require_once('classes/class.refUsuarioGrupo.php');
+include('classes/class.turma.php');
+include('classes/class.refFormularioAvaliacaoProjeti.php');
+include('classes/class.criterio.php');
+include('classes/class.professor.php');
+
 try {
-  $fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
-  // print_r($_REQUEST);
-  // echo $fk_grupo;
-  //como adicionar o usuario pegando o modulo do qual ele faz parte e pegando o id do grupo que ele faz parte atraves do modulos
-} catch (PDOException $e) {
-  echo "ERROR".$e->getMessage();
+    $formularios_avaliacao_projeti = RefFormularioAvaliacaoProjeti::listarProjeti($_GET['fk_projeti']);
+    foreach ($formularios_avaliacao_projeti as $formulario_avaliacao_projeti){
+      $nome_turma = $formulario_avaliacao_projeti->getNomeTurma();
+      $nome_projeti = $formulario_avaliacao_projeti->getNomeProjeti();
+      $data_avaliacao = $formulario_avaliacao_projeti->getDataAvaliacao();
+    }
+} catch (Exception $e) {
+  echo "ERROR:".$e->getMessage();
 }
 
-    try {
-    if(isset($_POST["button"]) && ($_POST["button"] === "Salvar")){
-       $pessoa = new Pessoa();
-       $pessoa->setNome($_POST['nome']);
-       $pessoa->setEmail($_POST['email']);
-       $pessoa->setCpf($_POST['cpf']);
-       $pessoa->setTelefone($_POST['telefone']);
-       $ultimoIdPessoa = $pessoa->adicionar();
+try {
+    $criterios = Criterio::listar($_GET['fk_projeti']);
 
-       $aluno = new Aluno();
-       $aluno->setPessoaId($ultimoIdPessoa);
-       $aluno->setDataMatricula($_POST['data_matricula']);
-       if(isset($_POST['situacao_aluno'])){
-        $aluno->setSituacaoAluno(true);
-       }else{
-        $aluno->setSituacaoAluno(false);
-       }
-       $aluno->setMatricula($_POST['matricula']);
-       $aluno->adicionar();
+} catch (Exception $e) {
+  echo "ERROR:".$e->getMessage();
+}
 
-       $senha = '123456';
-       $usuario = new Usuario();
-       $usuario->setPessoaUsuarioId($ultimoIdPessoa);
-       $usuario->setSenha($senha);
-       $ultimoIdUsuario = $usuario->adicionar();
+try {
+    $professores = Professor::listar();
+} catch (Exception $e) {
+  echo "ERROR:".$e->getMessage();
+ }
 
-       $novo_ref_usuario_grupo = new RefUsuarioGrupo();
-       $novo_ref_usuario_grupo->setIdUsuario($ultimoIdUsuario);
-       $novo_ref_usuario_grupo->setIdGrupo($fk_grupo);
-       $novo_ref_usuario_grupo->adicionar();
-    }
-  } catch (PDOException $e) {
-      echo "ERROR".$e->getMessage();
-  }
+
 
 ?>
 <!DOCTYPE html>
@@ -82,7 +61,7 @@ try {
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Cadastro Acadêmicos</h1>
+            <h1 class="m-0 text-dark">Aplicação de formulário avaliativo.</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -101,44 +80,53 @@ try {
 
 <section class="content navbar-light navbar-white">
 <div class="container-fluid navbar-white ">
-<form role="form" id="form_academicos" action="#" method="POST">
+<form role="form" id="form_avaliacao_projeti" action="#" method="POST">
   <div class="form-group">
-    <label>Nome</label>
-    <input type="text" class="form-control"  placeholder="Insira o Nome Completo" name="nome" minlength="15" required>
+    <label for="">Nome Turma</label>
+    <input class="form-control" disabled type="" name="nome_turma" value="<?php echo $nome_turma;?>">
   </div>
   <div class="form-group">
-    <label>Email</label>
-    <input type="email" class="form-control"  placeholder="Insira o E-mail" name="email" required>
-</div>
-<div class="form-group">
-    <label>CPF</label>
-    <input type="text" class="form-control"  name="cpf" id="cpf" placeholder="000.000.000-00" required >
-</div>
-<div class="form-group">
-    <label>Telefone</label>
-    <input type="tel" class="form-control" name="telefone" id="celular" placeholder="(00) 00000-0000" required>
-</div>
-<div class="form-group">
-    <label>Data Matricula</label>
-    <input type="date" class="form-control" name="data_matricula" id="data_matricula" required >
-</div>
-<div class="form-group">
-    <label>Matricula</label>
-    <input type="text" class="form-control" name="matricula" id="matricula" placeholder="Insira a Matricula no Aluno" required>
-</div>
-
-
-<div class="form-group">
-  <label>Situação</label><br>
-  <input type="checkbox" name="situacao_aluno" data-toggle="toggle" data-on="Ativo" data-off="Não Ativo" data-onstyle="success" data-offstyle="danger">
-
-
-    <!--
-      botão antigo
-    <input type="checkbox" name="situacao_adm" class="custom-control-input" id="customSwitch3" value="true">
-    <label class="custom-control-label" for="customSwitch3"> Situação  </label>
-  -->
-</div>
+    <label for="">Nome Projeti</label>
+    <input class="form-control" disabled type="" name="nome_projeti" value="<?php echo $nome_projeti;?>">
+  </div>
+  <div class="form-group">
+    <label for="">Data Avaliacao</label>
+    <input class="form-control" disabled type="" name="" value="<?php echo $data_avaliacao;?>">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Seleção de Avaliadores</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+    <?php foreach ($professores as $professor):?>
+        <option><?php echo $professor->getNomeProfessor();?></option>
+    <?php endforeach; ?>
+    </select>
+    <br>
+    <select class="form-control" id="exampleFormControlSelect1">
+    <?php foreach ($professores as $professor):?>
+        <option><?php echo $professor->getNomeProfessor();?></option>
+    <?php endforeach; ?>
+    </select>
+    <br>
+    <select class="form-control" id="exampleFormControlSelect1">
+    <?php foreach ($professores as $professor):?>
+        <option><?php echo $professor->getNomeProfessor();?></option>
+    <?php endforeach; ?>
+    </select>
+  </div>
+  <?php foreach ($formularios_avaliacao_projeti as $formularios_avaliacao_projeti): ?>
+    <div class="form-group">
+      <label>Nome Integrante projeti</label>
+      <input type="text" class="form-control" disabled value="<?php echo $formularios_avaliacao_projeti->getNomePessoa()?>" placeholder="Insira o Nome Completo" name="nome" minlength="15" required>
+      <?php if($criterios):?>
+          <?php foreach ($criterios as $criterio):?>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1"><?php echo $criterio->getNomeCriterio();?></label>
+      </div>
+    <?php endforeach;?>
+    <?php endif ;?>
+    </div>
+  <?php endforeach; ?>
 <!--
 <div class="form-group">
     <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
