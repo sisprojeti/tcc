@@ -103,7 +103,7 @@ $fk_grupo = Grupo::recuperaIdModulo($_REQUEST['modulo'])->getIdGrupo();
                    <input type="tel" class="form-control" name="telefone" id="celular" placeholder="Insira o Celular" required>
                  </div>
                  <div class="form-group">
-                   <label>Data Cadastro</label>
+                   <label>Data do Cadastro</label>
                    <input type="date" class="form-control" name="data_cadastro" required>
                  </div>
                  <div style="text-align: center;" class="form-group">
