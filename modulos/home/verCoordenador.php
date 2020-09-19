@@ -114,7 +114,7 @@ try{
             <p><h4>Acadêmicos</h4></p>
           </div>
           <div class="icon">
-            <i class="ion ion-pie-graph"></i>
+            <i class="icon ion-ios-person"></i>
           </div>
           <a href="?modulo=aluno&acao=listar" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
@@ -128,9 +128,9 @@ try{
             <p><h4>Professores</h4></p>
           </div>
           <div class="icon">
-            <i class="ion ion-pie-graph"></i>
+           <i class="icon ion-ios-person-outline"></i>
           </div>
-          <a href="#" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=professor&acao=listar" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -142,9 +142,9 @@ try{
             <p><h4>Coordenadores</h4></p>
           </div>
           <div class="icon">
-            <i class="ion ion-pie-graph"></i>
+            <i class="icon ion-ios-people"></i>
           </div>
-          <a href="#" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=coordenador&acao=listar" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -156,7 +156,7 @@ try{
             <p><h4>Turmas</h4></p>
           </div>
           <div class="icon">
-            <i class="ion ion-pie-graph"></i>
+            <i class="icon ion-compose"></i>
           </div>
           <a href="?modulo=turma&acao=listar" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
@@ -183,7 +183,7 @@ try{
               <p><h4>Cursos</h4></p>
           </div>
           <div class="icon">
-            <i class="ion ion-pie-graph"></i>
+            <i class="icon ion-clipboard"></i>
           </div>
           <a href="?modulo=curso&acao=listar" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
@@ -195,9 +195,9 @@ try{
               <p><h4>Exercícios</h4></p>
           </div>
           <div class="icon">
-            <i class="ion ion-pie-graph"></i>
+            <i class="icon ion-checkmark-round"></i>
           </div>
-          <a href="#" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=exercicio&acao=listar" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
@@ -207,12 +207,12 @@ try{
               <p><h4>Etapas</h4></p>
           </div>
           <div class="icon">
-            <i class="ion ion-pie-graph"></i>
+            <i class="icon ion-forward"></i>
           </div>
-          <a href="#" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="?modulo=etapa&acao=listar" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
-     -->
+     
       <!-- ./col -->
     <?php }else if($_SESSION['nome_grupo'] === 'aluno'){ ?>
       <!--fazer verificação se o usuário faz parte de algum grupo se não fizer não mostrar o menu de tarefa-->
