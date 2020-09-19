@@ -37,7 +37,7 @@
     echo "  <div class='form-check'>";
     echo " <input class='form-check-input' type='checkbox' id='gridCheck' value='".$criterio->getIdCriterio()."' name='criterio[]'>";
     echo " <label class='form-check-label' for='gridCheck'>";
-    echo $criterio->getNome();
+    echo $criterio->getNomeCriterio();
     echo "  </label>";
     echo "  </div>";
     echo " </div>";
