@@ -25,10 +25,13 @@ include_once 'class.db.php';
         }
       }
 
-      public static function listar()
+      public static function listar($busca = false)
         {
           try {
             $query = "SELECT professor.id_professor as id_professor , pessoa.nome as nome_prof, pessoa.email as email_prof, pessoa.cpf as cpf_prof, pessoa.telefone as telefone_prof, professor.data_cadastro as data_cadastro_prof from pessoa join professor on pessoa.id_pessoa = professor.fk_pessoa";
+            if($busca){
+              $query.= " and pessoa.nome like '%$busca%'";
+            }
                         $stmt = DB::conexao()->prepare($query);
                         $stmt->execute();
                         $registros = $stmt->fetchAll();

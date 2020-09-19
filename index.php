@@ -20,6 +20,9 @@
     // }
 
 ?>
+<style type="text/css">
+  *{font-family: sans-serif;}
+</style>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +57,7 @@
     <a href="index.php" class="brand-link navbar-orange">
       <img src="publico/img/logobranca.png" alt="SISP Logo" class="brand-image"
            style="opacity: ">
-      <span class="brand-text font-weight-light text-white"><?php echo $_SESSION['nome_grupo'];?></span>
+      <span class="brand-text font-weight-light text-white"><?php echo '<b>'.ucfirst($_SESSION['nome_grupo']).'</b>';?></span>
     </a>
 
     <!-- Sidebar -->
@@ -144,7 +147,7 @@
               <li class="nav-item">
                 <a href="?modulo=exercicio&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Exercicio</p>
+                  <p>Exercício</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -188,12 +191,6 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Coordenador</p>
                 </a>
-              <li class="nav-item">
-                <a href="?modulo=criterios&acao=listar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Critérios Avaliativos</p>
-                </a>
-              </li>
             </ul>
           </li>
 <!--------------------------------- TURMAS  -->
@@ -238,9 +235,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="?modulo=criterios&acao=adicionar" class="nav-link">
+                <a href="?modulo=criterios&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Adicionar Critérios</p>
+                  <p>Critérios Avaliativos</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -404,7 +401,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="?modulo=criterios&acao=adicionar" class="nav-link">
+                <a href="?modulo=criterios&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Adicionar Critérios</p>
                 </a>

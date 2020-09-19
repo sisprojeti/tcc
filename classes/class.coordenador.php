@@ -27,10 +27,13 @@ require_once 'class.db.php';
 /**-----------------------------------------------
  * LISTAR
  --------------------------------------------------------------------------*/
-      public static function listar()
+      public static function listar($busca = false)
         {
           try {
             $query = "SELECT coordenador.id_coordenador as id_coordenador,pessoa.nome as nome_coord, pessoa.email as email_coord, pessoa.cpf as cpf_coord, pessoa.telefone as telefone_coord,coordenador.data_cadastro as datacad_coord from pessoa join coordenador on pessoa.id_pessoa = coordenador.fk_pessoa";
+            if($busca){
+              $query.= " and pessoa.nome like '%$busca%'";
+            }
                         $stmt = DB::conexao()->prepare($query);
                         $stmt->execute();
                         $registros = $stmt->fetchAll();
