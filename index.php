@@ -438,14 +438,6 @@
               <li class="nav-item">
                 <a href="?modulo=turma&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Lista de Alunos</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="?modulo=turma&acao=listar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
                   <p>Lista de Turmas</p>
                 </a>
               </li>

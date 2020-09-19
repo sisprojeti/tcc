@@ -12,7 +12,7 @@
   <p></p>
    <p class="texto-area">Lista de Critérios Avaliativos </p>
     <div>
-      <a href="index.php?modulo=criterios&acao=adicionar" class="btn btn-success">Adicionar</a> 
+      <a href="index.php?modulo=criterios&acao=adicionar" class="btn btn-success">Adicionar</a>
     </div>
 </div>
 
@@ -35,10 +35,10 @@
   foreach($criterios as $criterio){?>
     <tr>
     <th scope="row"><?php echo $criterio->getIdCriterio();?></th>
-    <td><?php echo $criterio->getNome();?></td>
+    <td><?php echo $criterio->getNomeCriterio();?></td>
     <td><?php echo $criterio->getValorMaximo();?></td>
     <td>
-    <a href="?modulo=Criterio&acao=editar&id=<?php echo $criterio->getNome();?>"><button class="btn btn-warning"><i class="fas fa-edit"></i></button></a>
+    <a href="?modulo=Criterio&acao=editar&id=<?php echo $criterio->getNomeCriterio();?>"><button class="btn btn-warning"><i class="fas fa-edit"></i></button></a>
     <a href="?modulo=Criterio&acao=excluir&id=<?php echo $criterio->getValorMaximo();?>"><button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></a></td>
 
     </tr>
