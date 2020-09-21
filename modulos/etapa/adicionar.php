@@ -33,6 +33,8 @@ include_once("classes/class.etapa.php");
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+       <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+ <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 </head>
 <body>
   
@@ -67,17 +69,16 @@ include_once("classes/class.etapa.php");
   <input type="text" class="form-control" name="ordem" id="ordem" placeholder="Ex: 1" required> 
 </div>
 <div class="form-group">
-    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-    <input type="checkbox" name="status_etapa" class="custom-control-input" id="customSwitch3" value="true">
-    <label class="custom-control-label" for="customSwitch3"> Situação  </label>
+    <label>Situação</label><br>
+    <input type="checkbox" name="status_etapa" data-toggle="toggle" data-on="Ativo" data-off="Não Ativo" data-onstyle="success" data-offstyle="danger">
+    
 </div>
  </div>
 <br>
                 <!-- /.card-body -->
 
-                <div class="form-group navbar-white">
-                  <input type="submit" name="button" value="Salvar" class="btn btn-primary" >
-                  <button type="reset" class="btn btn-danger ">Limpar</button>
+                <div class="form-group navbar-white"  style="text-align: center;">
+                  <input style="width: 20%;" type="submit" name="button" value="Salvar" class="btn btn-success" >
                 </div>
               </form>
 

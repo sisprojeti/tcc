@@ -35,7 +35,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Cadastro de Exercicio</h1>
+            <h1 class="m-0 text-dark">Cadastro de Exercício</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -55,7 +55,7 @@
 
          <form role="form" id="form_exercicio" action="#" method="POST">
                   <div class="form-group">
-                    <label>Ano</label>
+                    <label>Nome</label>
                     <input type="text" class="form-control"  placeholder="Ex: 2019" name="nome_ano" id="nome_ano" required autofocus>
                   </div>
                   <div class="form-group">
@@ -68,9 +68,9 @@
                   </div>
                 <!-- /.card-body -->
 
-                <div class="form-group">
-                  <input type="submit" name="button" value="Salvar" class="btn btn-primary" >
-                  <button type="reset" class="btn btn-danger ">Limpar</button>
+                <div class="form-group" style="text-align: center;">
+                  <br>
+                  <input style="width: 20%;" type="submit" name="button" value="Salvar" class="btn btn-success" >
                 </div>
               </form>
 
