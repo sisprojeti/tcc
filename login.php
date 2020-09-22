@@ -1,5 +1,5 @@
 <?php
-    require('Classes/class.usuario.php');
+    require('classes/class.usuario.php');
     session_start();
     if(isset($_POST['botao']) && $_POST["botao"] == "Logar"){
       print_r($_POST);

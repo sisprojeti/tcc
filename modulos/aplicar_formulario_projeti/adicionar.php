@@ -60,13 +60,13 @@ try {
 <div class="content-header navbar-white">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Aplicação de formulário avaliativo.</h1>
+          <div class="col-sm-6" style="">
+            <h3 class="m-0 text-dark">Aplicação de Formulário Avaliativo</h3>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Cadastro Acadêmicos</li>
+              <li class="breadcrumb-item active">Aplicar Formulário Acadêmicos</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -80,18 +80,17 @@ try {
 
 <section class="content navbar-light navbar-white">
 <div class="container-fluid navbar-white ">
-<form role="form" id="form_avaliacao_projeti" action="#" method="POST">
-  <div class="form-group">
-    <label for="">Nome Turma</label>
-    <input class="form-control" disabled type="" name="nome_turma" value="<?php echo $nome_turma;?>">
+<form role="form" id="form_avaliacao_projeti" action="#" method="POST" >
+  <div class="form-group"> <br>
+    <p name="nome_turma" style="font-size: 20px;" > <b> Turma - <?php echo $nome_turma;?> <b></p>
   </div>
   <div class="form-group">
-    <label for="">Nome Projeti</label>
+    <label for="">Tema do Projete</label>
     <input class="form-control" disabled type="" name="nome_projeti" value="<?php echo $nome_projeti;?>">
   </div>
   <div class="form-group">
-    <label for="">Data Avaliacao</label>
-    <input class="form-control" disabled type="" name="" value="<?php echo $data_avaliacao;?>">
+    <label for="">Data da Avaliação</label>
+    <input class="form-control" disabled type="" name="" value="<?php echo date('d/m/Y', strtotime($data_avaliacao));?>">
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Seleção de Avaliadores</label>
@@ -112,12 +111,13 @@ try {
         <option><?php echo $professor->getNomeProfessor();?></option>
     <?php endforeach; ?>
     </select>
-  </div>
+  </div> <br>
+  <label>Grupo do Projete</label> 
   <?php foreach ($formularios_avaliacao_projeti as $formularios_avaliacao_projeti): ?>
-    <div class="form-group">
-      <label>Nome Integrante projeti</label>
-      <input type="text" class="form-control" disabled value="<?php echo $formularios_avaliacao_projeti->getNomePessoa()?>" placeholder="Insira o Nome Completo" name="nome" minlength="15" required>
-      <?php if($criterios):?>
+      
+    <div class="form-group" > 
+      <input style="margin-bottom: 1%;" type="text" class="form-control" disabled value="<?php echo $formularios_avaliacao_projeti->getNomePessoa()?>" placeholder="Insira o Nome Completo" name="nome" minlength="15" required>
+      <!--<?php if($criterios):?>
           <?php foreach ($criterios as $criterio):?>
       <div class="form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -125,8 +125,8 @@ try {
       </div>
     <?php endforeach;?>
     <?php endif ;?>
-    </div>
-  <?php endforeach; ?>
+    </div>-->
+  <?php endforeach; ?> 
 <!--
 <div class="form-group">
     <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
@@ -137,9 +137,8 @@ try {
 
  </div>
  <!-- /.card-body -->
-<div class="form-group navbar-white">
-    <input type="submit" name="button" value="Salvar" class="btn btn-primary" >
-    <button type="reset" class="btn btn-danger ">Limpar</button>
+<div class="form-group navbar-white" style="text-align: center;">
+    <input type="submit" name="button" value="Salvar" class="btn btn-success" style="width: 20%;" >
 </div>
 </form>
     <!-- /.row (main row) -->

@@ -2,6 +2,13 @@
   include "classes/class.criterio.php";
   include "classes/class.formulario_avaliacao.php";
   include "classes/class.refFormularioCriterio.php";
+?>
+<!------------------------------------- MENU ----------------------------------->
+<div style="padding: 1%;">
+  <p style="font-family: sans-serif;font-size: 1.5em;">Criar Formulário Avaliativo </p>
+</div>
+<p style="font-family: sans-serif;font-size: 1.3em;"> Turma - SIS01 </p>
+<?php
   if(isset($_POST['cadastra_formulario']) == 'cadastra_formulario'){
     //print_r($_POST['criterio']);
     if(isset($_POST['criterio'])){
@@ -42,7 +49,7 @@
     echo "  </div>";
     echo " </div>";
     }
-    echo "<button type='submit' class='btn btn-primary' name='cadastra_formulario' value='cadastra_formulario'> Cadastrar Formulário </button>";
+    echo "<button type='submit' class='btn btn-success' name='cadastra_formulario' value='cadastra_formulario'> Cadastrar Formulário </button>";
     echo " </form>";
     echo " </div>";
     echo "</section>";

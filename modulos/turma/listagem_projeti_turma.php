@@ -49,7 +49,7 @@ include('classes/class.pessoa.php');
               <div class="icon">
                 <i class="icon ion-ios-people"></i>
               </div>
-              <a href="?modulo=aplicar_formulario_projeti&acao=adicionar&fk_projeti=<?php echo $projetis->getIdProjeti()?>" class="small-box-footer">Aplicar Formulário Avaliativo <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="?modulo=aplicar_formulario_projeti&acao=adicionar&fk_projeti=<?php echo $projetis->getIdProjeti()?>" class="small-box-footer"> Aplicar Formulário <i class="fas fa-play-circle"></i></a>
             </div>
           </div>
           <?php

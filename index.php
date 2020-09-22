@@ -52,7 +52,7 @@
 
   </nav>
 
-  <aside class="main-sidebar elevation-4 sidebar-light-info">
+  <aside class="main-sidebar elevation-4 sidebar-light-info" style="box-shadow:0 5px 10px rgba(0,0,0,.20)!important;">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link navbar-orange">
       <img src="publico/img/logobranca.png" alt="SISP Logo" class="brand-image"
