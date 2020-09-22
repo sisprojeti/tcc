@@ -1,5 +1,6 @@
 <?php
 include_once('classes/class.refAlunoTurma.php');
+include('classes/class.exercicio.php');
 
 if(isset($_POST['button']) && $_POST['button'] === 'Salvar'){
   try {
@@ -61,10 +62,56 @@ try {
       </div>
     </div>
 <br>
+<!------------------------------------- FILTO ----------------------------------->
+<form name="FormConsulta" class="form-horizontal" action="" method="post">
+<div style="padding: 0 3%; width: 100%; display:flex; justify-content: center;">
+    <div class="controls" style="display:flex; width: 30%; align-content: center; justify-content: space-around;">
+       <p> Exercicío: </p>
+    <select class="form-control col-md-8"  name='exercicio'>
+        <option value=""> Todos </option>
+        <?php
+            $exercicios = Exercicio::listar();
+            foreach ($exercicios as $c) {
+              if($_POST['exercicio']==$c->getIdExercicio()){
+                echo "<option selected value= '".$c->getIdExercicio()."'>".$c->getNomeAno()."</option>";
+              } else {
+                 echo "<option value= '".$c->getIdExercicio()."'>".$c->getNomeAno()."</option>";
+              }
+            }
+        ?>
+    </select>
+    </div>
+    <div  class="controls" style="display:flex; width: 25%; justify-content: space-around;">
+      <input type="submit" name="btnBuscar" value="Buscar" class="btn btn-warning" style="flex-grow: 0.3;" >
+    </div>
+</div>
+<br>
+</form>
+<?php
+    if(isset($_POST["exercicio"])){
+        $exercicio = $_POST['exercicio'];
+   }else{
+        $exercicio=false;
+    }
+?>
     <div class="container col-lg-8">
     <section class="content">
       <div class="container-fluid">
          <form role="form" id="form_vincCoordenador" action="#" method="POST">
+           <div class="form-group">
+             <label>Turma</label>
+             <select class="form-control" name="fk_turma" required>
+                <option value="">Selecione a Turma</option>
+               <?php 
+                $listarTurmas = Turma::listar($exercicio);
+                if(isset($listarTurmas)):
+                ?>
+                 <?php foreach($listarTurmas as $turma):?>
+                   <option value="<?php echo $turma->getIdTurma();?>"> <?php echo $turma->getNomeTurma();?> </option>
+                 <?php endforeach;?>
+               <?php endif;?>
+             </select>
+           </div>
            <div class="form-group">
              <label>Aluno</label>
              <select class="form-control" name="fk_aluno" required autofocus>
@@ -78,20 +125,8 @@ try {
                <?php endif;?>
              </select>
            </div>
-           <div class="form-group">
-             <label>Turma</label>
-             <select class="form-control" name="fk_turma" required>
-                <option value="">Selecione a Turma</option>
-               <?php if(isset($listarTurmas)):?>
-                 <?php foreach($listarTurmas as $turma):?>
-                   <option value="<?php echo $turma->getIdTurma();?>"> <?php echo $turma->getNomeTurma();?> </option>
-                 <?php endforeach;?>
-               <?php endif;?>
-             </select>
-           </div>
-                <div class="form-group">
-                  <input type="submit" name="button" value="Salvar" class="btn btn-primary" >
-                  <button type="reset" class="btn btn-danger ">Limpar</button>
+                <div class="form-group"> <br>
+                  <input style="width: 20%;" type="submit" name="button" value="Salvar" class="btn btn-success" >
                 </div>
               </form>
       </div>
