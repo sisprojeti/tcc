@@ -314,13 +314,13 @@
                  <li class="nav-item">
                    <a href="?modulo=grupo&acao=adicionar" class="nav-link">
                      <i class="fas fa-users-cog nav-icon"></i>
-                     <p>Montar Grupo<span class="right badge badge-danger">New</span></p>
+                     <p>Montar Grupo</p>
                    </a>
                  </li>
                  <li class="nav-item">
                    <a href="?modulo=grupo&acao=listar" class="nav-link">
                      <i class="far fa-edit nav-icon"></i>
-                     <p>Visualizar Grupo<span class="right badge badge-primary">Edit</span></p>
+                     <p>Visualizar Grupo</p>
                    </a>
                  </li>
                </ul>

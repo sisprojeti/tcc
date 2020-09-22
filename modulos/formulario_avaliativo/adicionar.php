@@ -41,19 +41,19 @@
           echo "<input type='date' class='form-control' name='data_avaliacao'>";
         echo "</div>";
       echo "</div> <br>";
-      echo "<label> Selecione os Critérios </label>";
+      echo "<label> Selecione os Critérios: </label>";
     foreach ($criterios as $criterio) {
 
     echo "<div class='form-group'>";
-    echo "  <div class='form-check'>";
-    echo " <input class='form-check-input' type='checkbox' id='gridCheck".$criterio->getIdCriterio()."' value='".$criterio->getIdCriterio()."' name='criterio[]'>";
-    echo " <label class='form-check-label' for='gridCheck".$criterio->getIdCriterio()."'>";
-    echo $criterio->getNomeCriterio();
+    echo "  <div class=' custom-control custom-checkbox'>";
+    echo " <input class='custom-control-input' type='checkbox' id='gridCheck".$criterio->getIdCriterio()."' value='".$criterio->getIdCriterio()."' name='criterio[]'>";
+    echo " <label class='custom-control-label style='font-weight: unset;' for='gridCheck".$criterio->getIdCriterio()."'>";
+    echo ucfirst($criterio->getNomeCriterio());
     echo "  </label>";
     echo "  </div>";
     echo " </div>";
     }
-    echo "<button type='submit' class='btn btn-success' name='cadastra_formulario' value='cadastra_formulario'> Cadastrar Formulário </button>";
+    echo "<br> <button type='submit' class='btn btn-success' name='cadastra_formulario' value='cadastra_formulario'> Cadastrar Formulário </button>";
     echo " </form>";
     echo " </div>";
     echo "</section>";
@@ -61,3 +61,4 @@
     echo "</div>";
   }
 ?>
+

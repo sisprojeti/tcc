@@ -216,30 +216,16 @@ try{
       <!-- ./col -->
     <?php }else if($_SESSION['nome_grupo'] === 'aluno'){ ?>
       <!--fazer verificação se o usuário faz parte de algum grupo se não fizer não mostrar o menu de tarefa-->
-      <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-info">
-          <div class="inner">
-            <h3><i class="fas fa-tasks"></i></h3>
-            <p>Lista de Tarefas</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-bag"></i>
-          </div>
-          <a href="?modulo=tarefa&acao=home" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
       <!-- ./col -->
       <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-info">
           <div class="inner">
             <h3><i class="fas fa-file-upload"></i></h3>
-
-            <p>Documentação</p>
+            <h4>Documentação</h4> 
           </div>
           <div class="icon">
-            <i class="ion ion-stats-bars"></i>
+            <i class="fas fa-file-signature"></i>
           </div>
           <a href="?modulo=anexos&acao=adicionar" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
@@ -249,12 +235,12 @@ try{
         <!-- small box -->
         <div class="small-box bg-info">
           <div class="inner">
-            <h3><i class="far fa-file-alt"></i></h3>
+            <h3><i class="fas fa-bookmark"></i></h3>
 
-            <p>Modelo de Doc</p>
+            <h4>Modelo de Doc</h4>
           </div>
           <div class="icon">
-            <i class="ion ion-person-add"></i>
+            <i class="far fa-file-alt"></i>
           </div>
           <a href="?modulo=documentacao&acao=modelo_documentacao" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
@@ -266,28 +252,12 @@ try{
           <div class="inner">
             <h3 ><i class="fas fa-clipboard"></i></h3>
 
-            <p>Visualizar Notas</p>
+            <h4>Visualizar Notas</>
           </div>
           <div class="icon">
-            <i class="ion ion-pie-graph"></i>
+            <i class="fas fa-graduation-cap"></i>
           </div>
           <a href="?modulo=notas&acao=visualizar_notas" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-primary">
-          <div class="inner">
-            <h3 ><i class="fas fa-clipboard"></i></h3>
-
-            <p>Grupo de Projete</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-pie-graph"></i>
-          </div>
-
-          <a href="?modulo=grupo&acao=listar_grupos" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
@@ -309,31 +279,31 @@ try{
             <p><h4>A Fazer</h4></p>
           </div>
           <div class="icon">
-            <i class="ion ion-stats-bars"></i>
+            <i class="fas fa-exclamation-triangle"></i>
           </div>
           <a href="?modulo=tarefa&acao=home&status=1" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
-        <div class="small-box bg-warning">
+        <div class="small-box" style="background:#ff851b; color: #fff;">
           <div class="inner">
           <h4><?php echo $totalTarefasFazendo;?></h4>
             <p><h4>Fazendo</h4></p>
           </div>
           <div class="icon">
-            <i class="ion ion-stats-bars"></i>
+            <i class="fas fa-running"></i>
           </div>
           <a href="?modulo=tarefa&acao=home&status=2" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
-        <div class="small-box bg-info">
+        <div class="small-box" style="background:#3c8dbc; color: #fff;">
           <div class="inner">
           <h4><?php echo $totalTarefasRevisao;?></h4>
             <p><h4>Revisão</h4></p>
           </div>
           <div class="icon">
-            <i class="ion ion-stats-bars"></i>
+            <i class="fas fa-search"></i>
           </div>
           <a href="?modulo=tarefa&acao=home&status=3" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
@@ -345,7 +315,7 @@ try{
             <p><h4>Feitas</h4></p>
           </div>
           <div class="icon">
-            <i class="ion ion-stats-bars"></i>
+            <i class="fas fa-check"></i>
           </div>
           <a href="?modulo=tarefa&acao=home&status=4" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
         </div>
