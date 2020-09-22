@@ -26,12 +26,6 @@
      //  }
 ?>
 
-<!------------------------------------- MENU ----------------------------------->
-<div class="area_menu">
-  <p></p>
-   <p class="texto-area">Formulários Avaliativos Por Turma</p>
-    <div><a href="index.php?modulo=turma&acao=adicionar" class="btn btn-success">Adicionar</a> </div>
-</div>
 
 <!------------------------------------- TABELA ----------------------------------->
 <div class="container col-lg-12 navbar-white">

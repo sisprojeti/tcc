@@ -246,12 +246,12 @@
                   <p>Formulário Avaliativo</p>
                 </a>
               </li>
-              <li class="nav-item">
+            <!--  <li class="nav-item">
                 <a href="?modulo=formulario_avaliativo&acao=listagem_formularios" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listagem Formulários</p>
                 </a>
-              </li>
+              </li>  -->
             </ul>
           </li>
 
