@@ -100,6 +100,7 @@
     <td width=250>
       <a class="btn btn btn-success" style="width: 20%; height: 10%;" href="?modulo=formulario_avaliativo&acao=adicionar&id=<?php echo $turma->getIdTurma();?>"><i class="fas fa-plus"></i> </a>
       <a class="btn btn-warning" style="width: 20%; height: 10%;"href="?modulo=?&acao=?&id=<?php echo $turma->getIdTurma();?>"><i class="fas fa-edit"></i></a>
+      
   </td>
 
     </tr>

@@ -264,7 +264,7 @@ try{
         <div class="small-box bg-secondary">
           <div class="inner">
           <h4><?php echo $totalTarefas;?></h4>
-            <p><h4>Tarefas Cadastradas</h4></p>
+            <p><h4>Total de Tarefas</h4></p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>

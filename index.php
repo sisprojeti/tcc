@@ -23,10 +23,10 @@
 <style type="text/css">
   *{font-family: sans-serif;}
 </style>
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html  lang=”pt-br”>
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SISP - Conteudo Dinamico</title>
@@ -52,7 +52,7 @@
 
   </nav>
 
-  <aside class="main-sidebar elevation-4 sidebar-light-info" style="box-shadow:0 5px 10px rgba(0,0,0,.20)!important;">
+  <aside class="main-sidebar elevation-4 sidebar-light-info" style="box-shadow:0 5px 10px rgba(0,0,0,.20)!important; ">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link navbar-orange">
       <img src="publico/img/logobranca.png" alt="SISP Logo" class="brand-image"
@@ -65,7 +65,8 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="publico/img/user.png" class="img-circle elevation-2" alt="User Image"> <?php echo $_SESSION['nome_pessoa'];?><br><br><?php if($id_projeti){echo "Projete: ".$id_projeti->getTemaProjeti();}?>
+          <img src="publico/img/user.png" class="img-circle elevation-2" alt="User Image"> 
+          <span> <?php echo $_SESSION['nome_pessoa'];?> </span> <br> <br>
         </div>
         <div class="info">
           <a href="#" class="d-block"></a>
@@ -457,7 +458,7 @@
               <li class="nav-item">
                 <a href="?modulo=formulario_avaliativo&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Formulário Avaliativo</p>
+                  <p>Lançar Notas</p>
                 </a>
               </li>
             </ul>
