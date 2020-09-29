@@ -67,7 +67,7 @@
   <!------------------------------------------------------------
 #INICIO BOTÃO DE NOVA TAREFA
 --------------------------------------------------------------------------------------------------->
-   <button style="float: right;" id="nova_tarefa" type="button" class="btn btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="far fa-plus-square"></i>   Nova Tarefa</button>
+   <button style="float: right;" id="nova_tarefa" type="button" class="btn btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-calendar-plus"></i>   Nova Tarefa</button>
 
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -125,7 +125,7 @@
             <br>
             <div class="row">
                      <div class="col-sm-6">
-                       <label>Status Tarefa</label>
+                       <label>Status</label>
                        <select class="form-control" id="fk_status_tarefa"  name="fk_status_tarefa" required autofocus>
                         <option value="">Selecione o status</option>
                          <?php if(isset($listarStatus)):?>
@@ -139,7 +139,7 @@
               </div>
       </div>
       <div class="modal-footer">
-        <input type="submit" name="action" id="action" value="Adicionar" class="btn btn-primary" >
+        <input type="submit" name="action" id="action" value="Adicionar" class="btn btn-success" >
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
       </div>
       </form>
@@ -207,7 +207,7 @@
             <div class="container">
           <div class="row">
             <div class="col-sm" >
-              Titulo: <?= $tarefa->getTituloTarefa();?>
+              Título: <?= $tarefa->getTituloTarefa();?>
             </div>
             <div class="col-sm">
               Detalhes:
@@ -222,15 +222,15 @@
           <div class="row">
             <div class="col-sm">
               Data de Início:
-              <?= $tarefa->getDataInicio();?>
+              <?= date('d/m/Y', strtotime($tarefa->getDataInicio()));?>
             </div>
             <div class="col-sm">
               Data de Entrega:
-              <?= $tarefa->getDataEntrega();?>
+              <?= date('d/m/Y', strtotime($tarefa->getDataEntrega()));?>
             </div>
             <div class="col-sm">
-              <a href="#" class="btn btn-primary botao-detalhe" id="<?php echo $tarefa->getIdTarefa();?>">Detalhes </a> &nbsp;
-              <a href="index.php?modulo=tarefa&acao=excluir&id_tarefa=<?= $tarefa->getIdTarefa()?>" class="btn btn-danger my-2 my-sm-0" id="<?php echo $tarefa->getIdTarefa();?>" onclick="return confirm('Deseja mesmo excluir a Tarefa?');"> <i class="fas fa-trash-alt"> </i> </a>
+              <a href="#" class="btn btn-info botao-detalhe" id="<?php echo $tarefa->getIdTarefa();?>">Detalhes </a> &nbsp;
+              <a style="height: 95%;" href="index.php?modulo=tarefa&acao=excluir&id_tarefa=<?= $tarefa->getIdTarefa()?>" class="btn btn-danger my-2 my-sm-0" id="<?php echo $tarefa->getIdTarefa();?>" onclick="return confirm('Deseja mesmo excluir a Tarefa?');"> <i class="fas fa-trash-alt"> </i> </a>
             </div>
           </div>
         </div>

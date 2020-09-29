@@ -5,7 +5,7 @@ include_once('Classes/class.aluno.php');
 include_once('Classes/class.turma.php');
 include_once('Classes/class.projeti.php');
 include_once('Classes/class.refAlunoProjeti.php');
-print_r($_SESSION);
+//print_r($_SESSION);
 
 $usuario = new Usuario($_SESSION['fk_pessoa']);
 $pessoa = $usuario->recuperaPessoa();
@@ -75,7 +75,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
 
 <div>
   <br>
-  <p> CADASTRAR GRUPO</p>
+  <h4 style="text-align: center;"> Cadastrar Grupo</h4>
 </div>
 <br>
 <div class="container col-lg-8">
@@ -131,7 +131,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
            <div class="form-group col-md-12">
              <label for="inputState">Integrante 2</label>
              <select name="aluno_dois" id="aluno_dois" class="form-control" data-live-search="true" required>
-               <option value="">Selecione o Aluno</option>
+               <option value="">Selecione o Integrante</option>
                <?php
                $alunos = Aluno::listarAlunosTurma($turma_aluno->getIdTurma(),true);
                foreach($alunos as $aluno){
@@ -143,7 +143,7 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
            <div class="form-group col-md-12">
              <label for="inputState">Integrante 3</label>
              <select name="aluno_tres" id="aluno_tres" class="form-control" data-live-search="true" required>
-               <option value="">Selecione o ALuno</option>
+               <option value="">Selecione o Integrante</option>
                <?php
                $alunos = Aluno::listarAlunosTurma($turma_aluno->getIdTurma(),true);
                foreach($alunos as $aluno){
@@ -154,9 +154,9 @@ if(isset($_POST['cadastroGrupo']) && $_POST['cadastroGrupo'] === 'Cadastrar Grup
            </div>
      </div>
 
-       <?php }?>
-<input type="submit" class="btn btn-primary" value="Cadastrar Grupo" name="cadastroGrupo">
- <input type="reset" class="btn btn-danger" value="Limpar">
+       <?php }?> <br>
+<input type="submit" class="btn btn-success" value="Cadastrar Grupo" name="cadastroGrupo">
+
   </form>
     </div>
     <div class="col-sm">

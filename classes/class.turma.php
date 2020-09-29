@@ -23,6 +23,7 @@
       public $nome_aluno;
       public $tema;
       public $descricao;
+      public $telefone;
 
 
       public static function recuperaTurmaAluno($fk_aluno)
@@ -44,6 +45,32 @@
           return $temporario;
           }
         }
+
+        public static function recuperaNomeTurma($id_turma){
+          $sql = "SELECT turma.nome as nome_turma FROM turma WHERE  turma.id_turma = $id_turma";
+          $conexao = DB::conexao();
+          $stmt = $conexao->prepare($sql);
+          $stmt->execute();
+          $rg = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+          return $rg[0]["nome_turma"];
+        }
+
+        public static function verificaAlunoGrupo($fk_aluno)
+      {
+        $sql = "SELECT * FROM ref_aluno_projeti WHERE ref_aluno_projeti.fk_aluno = $fk_aluno";
+        $conexao = DB::conexao();
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute();
+        $rg = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if($rg){
+         return true;
+          } 
+        else{ return false;
+          }
+        }
+
+        
 
 
 
@@ -169,6 +196,14 @@ public function getTemaProjeti(){
   return $this->tema;
 }
 
+public function setTelefone($telefone){
+  $this->telefone = $telefone;
+}
+
+public function getTelefone(){
+  return $this->telefone;
+}
+
 public function getNomeIntegrantes(){
   return $this->nome_aluno;
 }
@@ -188,7 +223,7 @@ public function setNomeIntegrantes($nome_aluno){
       try {
         $query = "SELECT aluno.data_matricula as data_matricula,
                   aluno.situacao_aluno as situacao_aluno,
-                  aluno.matricula as matricula,
+                  pessoa.telefone as telefone,
                   aluno.fk_pessoa as fk_pessoa,
                   aluno.id_aluno as id_aluno,
                   pessoa.nome as nome_aluno,
@@ -207,7 +242,7 @@ public function setNomeIntegrantes($nome_aluno){
                         $temporario->setNomeAluno($objeto['nome_aluno']);
                         $temporario->setDataMatricula($objeto['data_matricula']);
                         $temporario->setSituacaoAluno($objeto['situacao_aluno']);
-                        $temporario->setMatricula($objeto['matricula']);
+                        $temporario->setTelefone($objeto['telefone']);
                         $temporario->setFkPessoa($objeto['fk_pessoa']);
                         $itens[] = $temporario;
                       }

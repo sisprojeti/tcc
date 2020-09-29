@@ -107,7 +107,7 @@ try {
     <input type="text" class="form-control"  placeholder="Insira o Nome Completo" name="nome" minlength="15" required>
   </div>
   <div class="form-group">
-    <label>Email</label>
+    <label>E-mail</label>
     <input type="email" class="form-control"  placeholder="Insira o E-mail" name="email" required>
 </div>
 <div class="form-group">
@@ -119,32 +119,20 @@ try {
     <input type="tel" class="form-control" name="telefone" id="celular" placeholder="(00) 00000-0000" required>
 </div>
 <div class="form-group">
-    <label>Data Matricula</label>
+    <label>Data da Matrícula</label>
     <input type="date" class="form-control" name="data_matricula" id="data_matricula" required >
 </div>
 <div class="form-group">
-    <label>Matricula</label>
-    <input type="text" class="form-control" name="matricula" id="matricula" placeholder="Insira a Matricula no Aluno" required>
+    <label>Matrícula</label>
+    <input type="text" class="form-control" name="matricula" id="matricula" placeholder="Insira a Matrícula no Aluno" required>
 </div>
-
-
 <div class="form-group">
   <label>Situação</label><br>
   <input type="checkbox" name="situacao_aluno" data-toggle="toggle" data-on="Ativo" data-off="Não Ativo" data-onstyle="success" data-offstyle="danger">
-
-
-    <!--
-      botão antigo
-    <input type="checkbox" name="situacao_adm" class="custom-control-input" id="customSwitch3" value="true">
-    <label class="custom-control-label" for="customSwitch3"> Situação  </label>
-  -->
 </div>
-<!--
-<div class="form-group">
-    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-    <input type="checkbox" name="situacao_aluno" class="custom-control-input" id="customSwitch3" value="true">
-    <label class="custom-control-label" for="customSwitch3"> Ativo  </label>
-</div>-->
+<div style="text-align: center;" class="form-group">
+  <label>Senha: SispAluno </label>
+</div>
 
 
  </div>

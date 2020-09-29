@@ -19,8 +19,8 @@ include('classes/class.pessoa.php');
 <!------------------------------------- MENU ----------------------------------->
 <div class="area_menu">
   <p></p>
-   <p class="texto-area">Projetis da Turma</p>
-    <div><a href="index.php?modulo=turma&acao=adicionar" class="btn btn-success">Adicionar</a> </div>
+   <p class="texto-area">Grupos da Turma - SIS01 </p>
+    <div><a href="index.php?modulo=turma&acao=listar" class="btn btn-secondary">Voltar</a> </div>
 </div>
 
 <!------------------------------------- TABELA ----------------------------------->
@@ -34,23 +34,22 @@ include('classes/class.pessoa.php');
     <?php foreach ($projetisTurma as $projetis){?>
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-light">
               <div class="inner">
-                <h4> <?= $projetis->getTemaProjeti();?> </h4>
+                <h4><b> <?= $projetis->getTemaProjeti();?> </b></h4>
                 <?php if(isset($projetis)):?>
                   <?php $alunosProjeti = Turma::alunosProjeti($projetis->getIdProjeti());
                   foreach ($alunosProjeti as $alunoProjeti) {
                     echo "<br>";
-                    echo $alunoProjeti->getNome()."<br>";
+                    echo strtoupper($alunoProjeti->getNome())."<br>";
                   }
                   ?>
                 <?php endif;?>
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="icon ion-ios-people"></i>
               </div>
-              <a href="#" class="small-box-footer">Relatorios <i class="fas fa-arrow-circle-right"></i></a>
-              <a href="?modulo=aplicar_formulario_projeti&acao=adicionar&fk_projeti=<?php echo $projetis->getIdProjeti()?>" class="small-box-footer">Aplicar Formulário Avaliativo <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="?modulo=aplicar_formulario_projeti&acao=adicionar&fk_projeti=<?php echo $projetis->getIdProjeti()?>" class="small-box-footer"> Aplicar Formulário <i class="fas fa-play-circle"></i></a>
             </div>
           </div>
           <?php

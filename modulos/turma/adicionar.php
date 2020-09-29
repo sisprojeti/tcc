@@ -58,6 +58,8 @@ include_once("classes/class.turma.php");
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+       <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+ <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   <link rel="stylesheet" href="">
 </head>
 <body>
@@ -86,7 +88,7 @@ include_once("classes/class.turma.php");
 <div class="form-group">
   <label>Exercicío</label>
   <select class="form-control" name="fk_exercicio" id="fk_exercicio" required autofocus>
-  <option value="">Selecione o Exercicio da Turma</option>
+  <option value="">Selecione o Exercício da Turma</option>
 <?php if (isset($listarExercicios)):?>
   <?php foreach ($listarExercicios as $linha): ?>
     <option value="<?php echo $linha->getIdExercicio();?>"><?php echo $linha->getNomeAno();?></option>
@@ -108,7 +110,7 @@ include_once("classes/class.turma.php");
 <div class="form-group">
   <label>Etapa</label>
   <select class="form-control" name="fk_etapa" id="fk_etapa" required>
-  <option value="">Selecione a etapa da Turma</option>
+  <option value="">Selecione a Etapa da Turma</option>
   <?php if (isset($listarEtapas)):?>
     <?php foreach ($listarEtapas as $etapa): ?>
         <option value="<?php echo $etapa->getIdEtapa();?>"><?php echo $etapa->getNomeEtapa();?></option>
@@ -122,28 +124,25 @@ include_once("classes/class.turma.php");
 </div>
 <div class="form-group">
   <label>Lotação</label>
-  <input type="number" class="form-control" placeholder="Digite o numero de lotacao" name="lotacao" id="lotacao" required>
+  <input type="number" class="form-control" placeholder="Ex: 30" name="lotacao" id="lotacao" required>
 </div>
 <div class="form-group">
   <label>Turno</label>
   <select class="form-control" name="turno" id="turno" required>
     <option> Selecione um Turno.. </option>
-    <option value="Manhã"> Manhã </option>
-    <option value="Tarde"> Tarde </option>
-    <option value="Noite"> Noite </option>
+    <option value="MANHÃ"> Manhã </option>
+    <option value="TARDE"> Tarde </option>
+    <option value="NOITE"> Noite </option>
   </select>
 </div>
 <div class="form-group">
-    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-    <input type="checkbox" name="status_finalizada" class="custom-control-input" id="customSwitch3" value="true">
-    <label class="custom-control-label" for="customSwitch3"> Ativo  </label>
+<input type="checkbox" name="status_finalizada" data-toggle="toggle" data-on="Ativa" data-off="Inativa" data-onstyle="success" data-offstyle="danger">
 </div>
  </div>
  <br>
                 <!-- /.card-body -->
-                <div class="form-group">
-                  <input type="submit" name="button" value="Salvar" class="btn btn-primary" >
-                  <button type="reset" class="btn btn-danger ">Limpar</button>
+                <div class="form-group" style="text-align: center;">
+                  <input style="width: 20%;" type="submit" name="button" value="Salvar" class="btn btn-success" >
                 </div>
               </form>
         <!-- /.row (main row) -->

@@ -88,8 +88,8 @@ try {
              </select>
            </div>
                 <div class="form-group">
-                  <input type="submit" name="button" value="Salvar" class="btn btn-primary" >
-                  <button type="reset" class="btn btn-danger ">Limpar</button>
+                  <br>
+                  <input style="width: 15%;" type="submit" name="button" value="Salvar" class="btn btn-success" >
                 </div>
               </form>
       </div>

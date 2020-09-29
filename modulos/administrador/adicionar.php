@@ -95,7 +95,7 @@ try {
     <input type="text" class="form-control"  placeholder="Insira o Nome Completo" name="nome" minlength="15" required>
   </div>
   <div class="form-group">
-    <label>Email</label>
+    <label>E-mail</label>
     <input type="email" class="form-control"  placeholder="Insira o E-mail" name="email" required>
 </div>
 <div class="form-group">
@@ -113,13 +113,9 @@ try {
 <div class="form-group">
   <label>Situação</label><br>
   <input type="checkbox" name="situacao_adm" data-toggle="toggle" data-on="Ativo" data-off="Não Ativo" data-onstyle="success" data-offstyle="danger">
-
-
-    <!--
-      botão antigo
-    <input type="checkbox" name="situacao_adm" class="custom-control-input" id="customSwitch3" value="true">
-    <label class="custom-control-label" for="customSwitch3"> Situação  </label>
-  -->
+</div>
+<div style="text-align: center;" class="form-group">
+  <label>Senha: SispAdm </label>
 </div>
  </div>
  <!-- /.card-body -->

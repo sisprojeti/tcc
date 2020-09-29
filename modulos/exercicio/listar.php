@@ -24,10 +24,10 @@
 <thead>
 <tr>
 <th scope="col">#</th>
-<th scope="col">Nome</th>
-<th scope="col">Data de Início</th>
-<th scope="col">Data de Fim</th>
-<th scope="col">Ação</th>
+<th scope="col">NOME</th>
+<th scope="col">DATA DE INÍCIO</th>
+<th scope="col">DATA DE FIM</th>
+<th scope="col">AÇÃO</th>
 </tr>
 </thead>
 <tbody> 

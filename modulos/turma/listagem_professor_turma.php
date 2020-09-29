@@ -2,7 +2,7 @@
   include('classes/class.turma.php');
   include('classes/class.exercicio.php');
   include('classes/class.curso.php');
- ?>
+?>
 <?php
 
   try {
@@ -12,8 +12,10 @@
    }
 ?>
 <!------------------------------------- MENU ----------------------------------->
-<div style="padding: 1%;">
-  <p style="font-family: sans-serif;font-size: 1.5em;">Formulário Avaliativo </p>
+<div class="area_menu">
+  <p></p>
+   <p class="texto-area">Lista de Turmas Avaliativas </p>
+   <p></p>
 </div>
 <!------------------------------------- FILTO ----------------------------------->
 <form name="FormConsulta" class="form-horizontal" action="" method="post" style="border-bottom: solid 1px #ccc;">
@@ -51,11 +53,13 @@
         ?>
     </select>
     </div>
-    <input type="submit" name="btnBuscar" value="Buscar" class="btn btn-warning" style="margin-left: 5%; width: 10%;">
+    <div  class="controls" style="display:flex; width: 25%; justify-content: space-around;">
+      <input type="submit" name="btnBuscar" value="Buscar" class="btn btn-warning" style="flex-grow: 0.3;" >
+    </div>
 </div>
 <br>
 </form>
-
+<!------------------------------------- TABELA ----------------------------------->
 <?php
     if(isset($_POST["exercicio"])){
         $exercicio = $_POST['exercicio'];
@@ -69,8 +73,6 @@
     }
 
 ?>
-
-<!------------------------------------- TABELA ----------------------------------->
 <div class="container col-lg-12 navbar-white">
 <section class="content navbar-light navbar-white">
 <div class="container-fluid navbar-white ">
@@ -79,11 +81,11 @@
 <thead>
 <tr>
 <th scope="col">#</th>
-<th scope="col">Nome</th>
-<th scope="col">Curso</th>
-<th scope="col">Etapa</th>
-<th scope="col">Turno</th>
-<th scope="col">Fomulário</th>
+<th scope="col">NOME</th>
+<th scope="col">CURSO</th>
+<th scope="col">ETAPA</th>
+<th scope="col">TURNO</th>
+<th scope="col">AÇÃO</th>
 </tr>
 </thead>
 <tbody>
@@ -98,9 +100,7 @@
     <td><?php echo $turma->getEtapa();?></td>
     <td><?php echo $turma->getTurno();?></td>
     <td width=250>
-      <a class="btn btn btn-success" style="width: 20%; height: 10%;" href="?modulo=formulario_avaliativo&acao=adicionar&id=<?php echo $turma->getIdTurma();?>"><i class="fas fa-plus"></i> </a>
-      <a class="btn btn-warning" style="width: 20%; height: 10%;"href="?modulo=?&acao=?&id=<?php echo $turma->getIdTurma();?>"><i class="fas fa-edit"></i></a>
-      
+      <a class="btn btn-dark" href="?modulo=turma&acao=listagem_projeti_turma&id=<?php echo $turma->getIdTurma();?>"><i class="fas fa-pen-alt"></i></a>
   </td>
 
     </tr>
@@ -114,75 +114,3 @@
  </div><!-- /.container-fluid -->
     </section>
   </div>
-<?php
-require_once('classes/class.formulario_avaliacao.php');
-
-try {
-    //$formulario_avaliacao = FormularioAvaliacao::listar();
-} catch (Exception $e) {
-  echo "ERROR:".$e->getMessage();
- }
-?>
-
-<style>
-       .error{
-             color:red
-       }
-</style>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-      <script>
-            $("#cad_grupos").validate({
-       rules : {
-              tema:{
-                    required:true,
-                    minlength:6,
-             },
-             descricao:{
-                    required:true,
-                    minlength:6,
-             },
-              aluno_um:{
-                    required:true,
-
-             },
-              aluno_dois:{
-                    required:true,
-             },
-              aluno_tres:{
-                    required:true,
-
-             },
-       },
-       messages:{
-            tema:{
-                    required:"Por favor, insira o tema do projeti",
-                    minlength:"No mínimo 6 letras",
-             },
-             descricao:{
-                    required:"Por favor, informe a descricao",
-                    minlength:"No mínimo 6 letras",
-             },
-             aluno_um:{
-                    required:"Por favor, selecione um aluno",
-
-             },
-             aluno_dois:{
-                    required:"Por favor, selecione um aluno",
-             },
-             aluno_tres:{
-                    required:"Por favor, selecione um aluno",
-             },
-       }
-});
-
-</script>
-
-<style type="text/css">
-  .redq{
-  font-size: 25em;
-}
-</style>

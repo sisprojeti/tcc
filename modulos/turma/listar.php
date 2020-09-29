@@ -84,11 +84,11 @@
 <thead>
 <tr>
 <th scope="col">#</th>
-<th scope="col">Nome</th>
-<th scope="col">Curso</th>
-<th scope="col">Etapa</th>
-<th scope="col">Turno</th>
-<th scope="col">Ação</th>
+<th scope="col">NOME</th>
+<th scope="col">CURSO</th>
+<th scope="col">ETAPA</th>
+<th scope="col">TURNO</th>
+<th scope="col">AÇÃO</th>
 </tr>
 </thead>
 <tbody>
