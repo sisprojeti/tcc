@@ -47,9 +47,9 @@
    <td>
      <?php 
      if (Turma::verificaAlunoGrupo($aluno->getIdAluno())) {
-       echo "<span style='width:40%; font-size: 0.9em;' class='badge badge-info'> COM GRUPO </span>";
+       echo "<span style='width:110px; font-size: 0.9em;' class='badge badge-info'> COM GRUPO </span>";
      }else{
-      echo "<span style='width:40%; font-size: 0.9em;' class='badge badge-danger'> SEM GRUPO </span> ";
+      echo "<span style='width:110px; font-size: 0.9em;' class='badge badge-danger'> SEM GRUPO </span> ";
      }
       ?>
  </td>

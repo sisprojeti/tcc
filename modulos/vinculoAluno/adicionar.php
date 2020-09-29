@@ -15,7 +15,7 @@ if(isset($_POST['button']) && $_POST['button'] === 'Salvar'){
 
 try{
     include_once('classes/class.aluno.php');
-    $listarAlunos = Aluno::listar();
+    $listarAlunos = Aluno::listarAlunoSemTurma();
 } catch (PDOException $e) {
     echo "ERROR".$e->getMessage();
 }

@@ -24,8 +24,31 @@
       //---------Provavelmente vamos utilizar esses atributos em outra classe-------
       //public $turma;
       //public $grupo_projeti;
+
+
       //---------------------------##########---------------------------------------
 
+      public static function listarAlunoSemTurma()
+      {
+        try {
+          $query = "SELECT aluno.id_aluno as id_aluno,pessoa.nome as nome_aluno from aluno
+          join pessoa on pessoa.id_pessoa = aluno.fk_pessoa where aluno.id_aluno not in (select fk_aluno from ref_aluno_turma)";
+        $stmt = DB::conexao()->prepare($query);
+        $stmt->execute();
+        $registros = $stmt->fetchAll();
+          if($registros){
+          foreach($registros as $objeto){
+          $temporario = new Aluno();
+          $temporario->setIdAluno($objeto['id_aluno']);
+          $temporario->setNomeAluno($objeto['nome_aluno']);
+           $itens[] = $temporario;
+                        }
+            return $itens;
+          }
+        } catch (Exception $e) {
+            echo "ERROR".$e->getMessage();
+        }
+      }
       public function __construct($id_aluno=false){
           if($id_aluno){
             $sql = "SELECT aluno.id_aluno,
