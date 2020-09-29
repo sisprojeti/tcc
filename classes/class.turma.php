@@ -26,13 +26,13 @@
       public $telefone;
 
 
-      public static function recuperaTurmaAluno($fk_aluno)
+      public static function recuperaTurmaAluno($fk_pessoa)
       {
         $sql = "SELECT turma.nome as nome_turma, turma.id_turma as id_turma
         from ref_aluno_turma
         join turma on turma.id_turma = ref_aluno_turma.fk_turma
         join aluno on aluno.id_aluno = ref_aluno_turma.fk_aluno
-        where aluno.fk_pessoa = $fk_aluno";
+        where aluno.fk_pessoa = $fk_pessoa";
         $conexao = DB::conexao();
         $stmt = $conexao->prepare($sql);
         $stmt->execute();
@@ -65,12 +65,12 @@
         $rg = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if($rg){
          return true;
-          } 
+          }
         else{ return false;
           }
         }
 
-        
+
 
 
 

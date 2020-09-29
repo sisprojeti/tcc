@@ -37,11 +37,11 @@
             $query = "SELECT pessoa.nome as pessoa_nome,
                       pessoa.id_pessoa as id_pessoa,
                       formulario_avaliacao.id_formulario_avaliacao as id_formulario_avaliacao,
-                      turma.id_turma as id_turma,
-                      turma.nome as nome_turma,
-                      formulario_avaliacao.fk_turma as fk_turma,
                       formulario_avaliacao.data_avaliacao as data_avaliacao,
+                      turma.nome as nome_turma,
+                      aluno.id_aluno as id_aluno,
                       criterio.nome as nome_criterio,
+                      ref_formulario_avaliacao_turma.fk_turma as fk_turma,
                       projeti.tema as nome_projeti
                       from
                       ref_aluno_projeti
@@ -51,8 +51,10 @@
                       join pessoa on pessoa.id_pessoa = aluno.fk_pessoa
                       join projeti on ref_aluno_projeti.fk_projeti = projeti.id_projeti
                       join formulario_avaliacao
+                      join turma
+                      join ref_formulario_avaliacao_turma
+                      on ref_formulario_avaliacao_turma.fk_turma = turma.id_turma
                       join criterio
-                      join turma on formulario_avaliacao.fk_turma = turma.id_turma
                       where projeti.id_projeti = $fk_projeti group by id_aluno";
                         $stmt = DB::conexao()->prepare($query);
                         $stmt->execute();
@@ -63,11 +65,11 @@
                             $temporario->setIdFormularioAvaliacaoProjeti($objeto['id_formulario_avaliacao']);
                             $temporario->setFkProjeti($fk_projeti);
                             $temporario->setPessoaNome($objeto['pessoa_nome']);
-                            $temporario->setIdPessoa($objeto['id_pessoa']);
+                            $temporario->setIdAluno($objeto['id_aluno']);
                             $temporario->setDataAvaliacao($objeto['data_avaliacao']);
-                            $temporario->setFkTurma($objeto['fk_turma']);
                             $temporario->setNomeTurma($objeto['nome_turma']);
                             $temporario->setNomeProjeti($objeto['nome_projeti']);
+                            $temporario->setFkTurma($objeto['fk_turma']);
                             $itens[] = $temporario;
                           }
               return $itens;
@@ -81,6 +83,11 @@
         $this->nome_turma = $nome_turma;
       }
 
+      public function setIdAluno($id_aluno){
+        $this->id_aluno = $id_aluno;
+      }
+
+
       public function getNomeTurma(){
         return $this->nome_turma;
       }
@@ -88,6 +95,11 @@
       public function getIdPessoa(){
         return $this->id_pessoa;
       }
+
+
+            public function getIdAluno(){
+              return $this->id_aluno;
+            }
 
       public function getDataAvaliacao(){
         return $this->data_avaliacao;

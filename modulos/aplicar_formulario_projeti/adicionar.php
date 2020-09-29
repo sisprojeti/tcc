@@ -7,11 +7,12 @@ include('classes/class.criterio.php');
 include('classes/class.professor.php');
 include('classes/class.nota.php');
 
+print_r($_SESSION);
 
 try {
     $formularios_avaliacao_projeti = RefFormularioAvaliacaoProjeti::listarProjeti($_GET['fk_projeti']);
     echo "<pre>";
-    print_r($formularios_avaliacao_projeti);
+    mostrar($formularios_avaliacao_projeti);
     echo "</pre>";
     foreach ($formularios_avaliacao_projeti as $formulario_avaliacao_projeti){
       $id_ref_formulario_projeti = $formulario_avaliacao_projeti->getIdFormularioAvaliacaoProjeti();
@@ -32,11 +33,12 @@ if(isset($_POST["button"]) && ($_POST["button"] === "Salvar")){
        $ref = $pessoa."-".$crit->getIdCriterio();
        $nota_criterio = $_POST[$ref];
        $notas = new Nota();
-       $nota->setValor($nota_criterio);
-       $nota->setDataModificao('2020-09-21');
-       $nota->setFkCriterio($crit->getIdCriterio());
-       $nota->setFkAluno($pessoa->getIdPessoa());
-       $nota->setFkProfessor($)
+       $notas->setValor($nota_criterio);
+       $notas->setDataModificacao(date('d/m/Y'));
+       $notas->setFkCriterio($crit->getIdCriterio());
+       $notas->setFkAluno($pessoa);
+       $notas->setFkProfessor($_SESSION['fk_pessoa']);
+       $notas->adicionar();
        }
    }
    // $notas->setValor($_POST['valor_maximo']);
@@ -129,50 +131,28 @@ try {
     <input class="form-control" disabled type="" name="" value="<?php echo date('d/m/Y', strtotime($data_avaliacao));?>">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect1">Seleção de Avaliadores</label>
-    <select name="id_professor_um" class="form-control" id="exampleFormControlSelect1">
-    <?php foreach ($professores as $professor):?>
-        <option value="<?php echo $professor->getIdProfessor();?>"><?php echo $professor->getNomeProfessor();?></option>
-    <?php endforeach; ?>
-    </select>
-    <br>
-    <select name="id_professor_dois" class="form-control" id="exampleFormControlSelect1">
-    <?php foreach ($professores as $professor):?>
-        <option value="<?php echo $professor->getIdProfessor();?>"><?php echo $professor->getNomeProfessor();?></option>
-    <?php endforeach; ?>
-    </select>
-    <br>
-    <select name="id_professor_tres" class="form-control" id="exampleFormControlSelect1">
-    <?php foreach ($professores as $professor):?>
-        <option value="<?php echo $professor->getIdProfessor();?>"><?php echo $professor->getNomeProfessor();?></option>
-    <?php endforeach; ?>
-    </select>
+    <label for="exampleFormControlSelect1">Avaliador Projeti</label>
+    <input type="text" class="form-control" disabled value="<?php echo $_SESSION['nome_pessoa']?>" placeholder="" name="nome" minlength="15" required>
   </div> <br>
-  <label>Grupo do Projete</label> 
-  <?php foreach ($formularios_avaliacao_projeti as $formularios_avaliacao_projeti): ?>
-<<<<<<< HEAD
+  <label>Grupo do Projete</label>
+  <?php foreach ($formularios_avaliacao_projeti as $formularios_avaliacao_projeti){?>
     <div class="form-group">
       <label>Nome Integrante projeti</label>
-      <input type="hidden" name="fk_pessoa[]" value="<?php echo $formularios_avaliacao_projeti->getIdPessoa();?>">
+      <input type="hidden" name="fk_pessoa[]" value="<?php echo $formularios_avaliacao_projeti->getIdAluno();?>">
       <input type="text" class="form-control" disabled value="<?php echo $formularios_avaliacao_projeti->getNomePessoa()?>" placeholder="" name="nome" minlength="15" required>
-      <?php if($criterios):?>
-=======
-      
-    <div class="form-group" > 
-      <input style="margin-bottom: 1%;" type="text" class="form-control" disabled value="<?php echo $formularios_avaliacao_projeti->getNomePessoa()?>" placeholder="Insira o Nome Completo" name="nome" minlength="15" required>
-      <!--<?php if($criterios):?>
->>>>>>> 3466bcb7c0cc4e159f48fde65de871fe53ad1104
-          <?php foreach ($criterios as $criterio):?>
+    <div class="form-group" >
+      <?php if($criterios) { ?>
+          <?php foreach ($criterios as $criterio){?>
       <div class="form-group">
         Nome do Criterio:<label><?php echo $criterio->getNomeCriterio();?></label>
         Valor Maximo:<label for=""><?php echo $criterio->getValorMaximo();?></label>
       </div>
       <input class="form-control" type="text" name="<?php echo $formularios_avaliacao_projeti->getIdPessoa();?>-<?php echo $criterio->getIdCriterio();?>" value="">
-    <?php endforeach;?>
+    <?php }?>
+  <?php }?>
+  <?php } ?>
     <hr>
-    <?php endif ;?>
-    </div>-->
-  <?php endforeach; ?> 
+    </div>
 <!--
 <div class="form-group">
     <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">

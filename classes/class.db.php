@@ -6,7 +6,7 @@
 
      public static function conexao(){
      try{
-       self:: $conexao = new PDO("mysql:host=localhost;dbname=sisp16","root","");
+       self:: $conexao = new PDO("mysql:host=localhost;dbname=sisp19","root","");
        self:: $conexao->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
      }catch(PDDException $e){

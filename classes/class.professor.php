@@ -25,6 +25,42 @@ include_once 'class.db.php';
         }
       }
 
+
+      public static function listarProjetisVinculados($fk_pessoa,$id_turma)
+        {
+          try {
+            $query = "SELECT * from
+                      avaliador_projeti
+                      join professor on avaliador_projeti.fk_professor = professor.id_professor
+                      join pessoa on professor.fk_pessoa = pessoa.id_pessoa
+                      join projeti on projeti.id_projeti = avaliador_projeti.fk_projeti
+                      where pessoa.id_pessoa = $fk_pessoa";
+                        $stmt = DB::conexao()->prepare($query);
+                        $stmt->execute();
+                        $registros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        if($registros){
+                          foreach($registros as $objeto){
+                            $temporario = new Projeti();
+                            $temporario->setIdProjeti($objeto['fk_projeti']);
+                            $temporario->setTemaProjeti($objeto['tema']);
+                            $itens[] = $temporario;
+                          }
+              return $itens;
+            }
+          } catch (Exception $e) {
+              echo "ERROR".$e->getMessage();
+          }
+        }
+
+        public function setFkProjeti($fk_projeti){
+          $this->fk_projeti = $fk_projeti;
+        }
+
+        public function setFkPessoa($fk_pessoa){
+          $this->fk_pessoa = $fk_pessoa;
+        }
+
+
       public static function listar($busca = false)
         {
           try {
@@ -61,11 +97,6 @@ include_once 'class.db.php';
               echo "ERROR".$e->getMessage();
           }
         }
-
-        public function setFkPessoa($fk_pessoa){
-          $this->fk_pessoa = $fk_pessoa;
-        }
-
         public static function contarProfessores()
           {
             try {

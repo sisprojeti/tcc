@@ -73,7 +73,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="publico/img/user.png" class="img-circle elevation-2" alt="User Image"> 
+          <img src="publico/img/user.png" class="img-circle elevation-2" alt="User Image">
           <span> <?php echo $_SESSION['nome_pessoa'];?> </span> <br> <br>
         </div>
         <div class="info">
@@ -250,11 +250,30 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="?modulo=formulario_avaliativo&acao=adicionar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Criar Formulário Avaliativo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?modulo=vinculoFormAvaTurma&acao=adicionar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Vinculo Form. Ava. a Turma</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?modulo=VinculoAvaFormularioAvaliativo&acao=adicionar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Vinculo Ava. Form Avaliativo</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="?modulo=formulario_avaliativo&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Formulário Avaliativo</p>
                 </a>
               </li>
+
             <!--  <li class="nav-item">
                 <a href="?modulo=formulario_avaliativo&acao=listagem_formularios" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

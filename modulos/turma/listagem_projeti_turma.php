@@ -2,10 +2,12 @@
 include('classes/class.turma.php');
 include('classes/class.aluno.php');
 include('classes/class.pessoa.php');
+include('classes/class.professor.php');
 ?>
 <?php
   try {
-      $projetisTurma = Turma::listarProjetiTurma($_GET['id']);
+        $projetisTurma = Turma::listarProjetiTurma($_GET['id']);
+        mostrar($projetisTurma);
   } catch (Exception $e) {
     echo "ERROR:".$e->getMessage();
    }
@@ -15,6 +17,12 @@ include('classes/class.pessoa.php');
    } catch (Exception $e) {
      echo "ERROR:".$e->getMessage();
     }
+
+    try {
+        $professorAvaForm = Professor::listarProjetisVinculados($_SESSION['fk_pessoa'],$_GET['id']);
+    } catch (Exception $e) {
+      echo "ERROR:".$e->getMessage();
+     }
 ?>
 <!------------------------------------- MENU ----------------------------------->
 <div class="area_menu">
@@ -30,31 +38,31 @@ include('classes/class.pessoa.php');
 <table class="table table-striped"style="margin-top:10px;">
 <tbody>
   <div class="row">
-  <?php if(isset($projetisTurma)):?>
-    <?php foreach ($projetisTurma as $projetis){?>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-light">
-              <div class="inner">
-                <h4><b> <?= $projetis->getTemaProjeti();?> </b></h4>
-                <?php if(isset($projetis)):?>
-                  <?php $alunosProjeti = Turma::alunosProjeti($projetis->getIdProjeti());
-                  foreach ($alunosProjeti as $alunoProjeti) {
-                    echo "<br>";
-                    echo strtoupper($alunoProjeti->getNome())."<br>";
-                  }
-                  ?>
-                <?php endif;?>
+      <?php if(isset($professorAvaForm)):?>
+        <?php foreach ($professorAvaForm as $projetis){?>
+              <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-light">
+                  <div class="inner">
+                    <h4><b> <?= $projetis->getTemaProjeti();?> </b></h4>
+                    <?php if(isset($projetis)):?>
+                      <?php $alunosProjeti = Turma::alunosProjeti($projetis->getIdProjeti());
+                      foreach ($alunosProjeti as $alunoProjeti) {
+                        echo "<br>";
+                        echo strtoupper($alunoProjeti->getNome())."<br>";
+                      }
+                      ?>
+                    <?php endif;?>
+                  </div>
+                  <div class="icon">
+                    <i class="icon ion-ios-people"></i>
+                  </div>
+                  <a href="?modulo=aplicar_formulario_projeti&acao=adicionar&fk_projeti=<?php echo $projetis->getIdProjeti()?>" class="small-box-footer"> Aplicar Formulário <i class="fas fa-play-circle"></i></a>
+                </div>
               </div>
-              <div class="icon">
-                <i class="icon ion-ios-people"></i>
-              </div>
-              <a href="?modulo=aplicar_formulario_projeti&acao=adicionar&fk_projeti=<?php echo $projetis->getIdProjeti()?>" class="small-box-footer"> Aplicar Formulário <i class="fas fa-play-circle"></i></a>
-            </div>
-          </div>
-          <?php
-    };?>
-  <?php endif;?>
+              <?php
+        };?>
+      <?php endif;?>
 </div>
 </tbody>
 </table>

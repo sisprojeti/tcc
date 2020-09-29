@@ -70,7 +70,7 @@
           // where aluno.fk_pessoa = :fk_pessoa;
 
 
-          public function listar(){
+          public static function listar(){
             try {
               $sql = "SELECT * FROM projeti";
               $stmt = DB::conexao()->prepare($sql);
@@ -81,8 +81,7 @@
                   $temporario = new Projeti();
                   $temporario->setIdProjeti($objeto['id_projeti']);
                   $temporario->setTemaProjeti($objeto['tema']);
-                  $temporario->setTemaProjeti($objeto['descricao']);
-                  $temporario->setDescricao($objeto['descricao']);
+                  $temporario->setDescricaoProjeti($objeto['descricao']);
                   $itens[] = $temporario;
                 }
                 return $itens;

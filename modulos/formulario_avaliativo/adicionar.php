@@ -16,7 +16,6 @@
     //print_r($_POST['criterio']);
     if(isset($_POST['criterio'])){
       $formulario = new FormularioAvaliacao();
-      $formulario->setFkTurma($_GET['id']);
       $formulario->setDataAvaliacao($_POST['data_avaliacao']);
       $id_formulario = $formulario->adicionar();
       foreach($_POST['criterio'] as $criterio) {
@@ -61,4 +60,3 @@
     echo "</div>";
   }
 ?>
-

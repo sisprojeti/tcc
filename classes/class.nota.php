@@ -11,11 +11,13 @@
 
       public function adicionar()
       {
-        $sql = "INSERT INTO nota(valor,data_modificao,fk_criterio,fk_aluno,fk_professor) values (:valor,:data_modificao,:fk_criterio,:fk_aluno,:fk_professor)";
+        $sql = "INSERT INTO
+         nota(valor,data_modificacao,fk_criterio,fk_aluno,fk_professor)
+         values (:valor,:data_modificacao,:fk_criterio,:fk_aluno,:fk_professor)";
         $conexao = DB::conexao();
         $stmt = $conexao->prepare($sql);
         $stmt->bindParam(':valor',$this->valor);
-        $stmt->bindParam(':data_modificao',$this->data_modificao);
+        $stmt->bindParam(':data_modificacao',$this->data_modificacao);
         $stmt->bindParam(':fk_criterio',$this->fk_criterio);
         $stmt->bindParam(':fk_aluno',$this->fk_aluno);
         $stmt->bindParam(':fk_professor',$this->fk_professor);
@@ -27,6 +29,10 @@
       }
 
       public function getValor(){
+        return $this->valor;
+      }
+
+      public function getIdPessoa(){
         return $this->valor;
       }
 
@@ -50,7 +56,7 @@
         $this->fk_aluno = $fk_aluno;
       }
 
-      public function getFkAluno(){
+      public function getFkPessoa(){
         return $this->fk_aluno;
       }
 

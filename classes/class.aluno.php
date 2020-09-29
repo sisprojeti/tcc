@@ -69,9 +69,9 @@
           $this->id_grupo = $id_grupo;
         }
 
-        public function recuperaAluno()
+        public static function recuperaAluno($fk_pessoa)
         {
-          return new Aluno($this->fk_pessoa);
+          return new Aluno($fk_pessoa);
         }
 
 
@@ -117,13 +117,13 @@
       {
         try {
           $query = "SELECT aluno.id_aluno,
-          pessoa.nome as nome, 
+          pessoa.nome as nome,
           aluno.situacao_aluno as situacao_aluno,
           aluno.matricula as matricula
           from aluno join pessoa on aluno.fk_pessoa = pessoa.id_pessoa";
             if($busca){
               $query.= " and pessoa.nome like '%$busca%'";
-            }   
+            }
                       $stmt = DB::conexao()->prepare($query);
                       $stmt->execute();
                       $registros = $stmt->fetchAll();
@@ -153,7 +153,6 @@
               WHERE ref_aluno_projeti.fk_aluno = aluno.id_aluno)
               ";
             }
-
               //$query .= " where ref_aluno_turma.fk_turma = :fk_turma";
                         $stmt = DB::conexao()->prepare($query);
                         $stmt->bindParam(':fk_turma',$fk_turma);

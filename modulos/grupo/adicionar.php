@@ -5,17 +5,20 @@ include_once('Classes/class.aluno.php');
 include_once('Classes/class.turma.php');
 include_once('Classes/class.projeti.php');
 include_once('Classes/class.refAlunoProjeti.php');
-//print_r($_SESSION);
+try {
+  $usuario = new Usuario($_SESSION['fk_pessoa']);
+  $pessoa = $usuario->recuperaPessoa();
+  $aluno_logado = new Aluno($_SESSION['fk_pessoa']);
+  $aluno = $aluno_logado->recuperaAluno($_SESSION['fk_pessoa']);
+  $projeti = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
+  // echo "<pre>";
+  // print_r($projeti);
+  // echo "</pre>";
+  $id_projeti_aluno = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
+} catch (PDOException $e) {
+  echo "error".$e->getMessage();
+}
 
-$usuario = new Usuario($_SESSION['fk_pessoa']);
-$pessoa = $usuario->recuperaPessoa();
-$aluno_logado = new Aluno($_SESSION['fk_pessoa']);
-$aluno = $aluno_logado->recuperaAluno();
-$projeti = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
-// echo "<pre>";
-// print_r($projeti);
-// echo "</pre>";
-$id_projeti_aluno = Projeti::recuperaIdProjeti($_SESSION['fk_pessoa']);
 try{
   if($id_projeti_aluno){
     $listarAlunosProjeti = RefAlunoProjeti::listarAlunosProjetiTeste($id_projeti_aluno->getIdProjeti());
