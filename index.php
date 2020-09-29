@@ -456,7 +456,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="?modulo=formulario_avaliativo&acao=listar" class="nav-link">
+                <a href="?modulo=turma&acao=listagem_professor_turma" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Lançar Notas</p>
                 </a>

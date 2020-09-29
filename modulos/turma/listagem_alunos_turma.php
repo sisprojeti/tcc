@@ -1,5 +1,6 @@
-<?php include('classes/class.turma.php');
-include('classes/class.aluno.php');?>
+<?php 
+  include('classes/class.turma.php');
+  include('classes/class.aluno.php');?>
 <?php
 
   try {
@@ -11,8 +12,10 @@ include('classes/class.aluno.php');?>
 <!------------------------------------- MENU ----------------------------------->
 <div class="area_menu">
   <p></p>
-   <p class="texto-area"> Turma - <b> SIS01 <b> </p>
-  <a href="index.php?modulo=turma&acao=listar" class="btn btn-secondary">Voltar</a>
+   <p class="texto-area"> 
+    Turma - <?php echo "<b>".Turma::recuperaNomeTurma($_GET['id'])."</b>"; ?> 
+ </p>
+  <a href="index.php?modulo=turma&acao=listar" style="height: 60%;" class="btn btn-secondary">Voltar</a>
 </div>
 
 <!------------------------------------- TABELA ----------------------------------->
@@ -42,18 +45,20 @@ include('classes/class.aluno.php');?>
    };?></td>
    <td><?php echo $aluno->getTelefone();?></td>
    <td>
-     
+     <?php 
+     if (Turma::verificaAlunoGrupo($aluno->getIdAluno())) {
+       echo "<span style='width:40%; font-size: 0.9em;' class='badge badge-info'> COM GRUPO </span>";
+     }else{
+      echo "<span style='width:40%; font-size: 0.9em;' class='badge badge-danger'> SEM GRUPO </span> ";
+     }
+      ?>
  </td>
-
    </tr>
 <?php }}?>
 </tbody>
 </table>
-     </div><!-- SELECT aluno.id_aluno  FROM aluno
-join ref_aluno_turma on aluno.id_aluno = ref_aluno_turma.fk_aluno
-join turma on ref_aluno_turma.fk_turma = turma.id_turma
- where turma.id_turma = 1 and NOT EXISTS (SELECT * FROM ref_aluno_projeti
-              WHERE ref_aluno_projeti.fk_aluno = aluno.id_aluno) ; -->
+     </div>
    </section>
  </div>
+
 

@@ -46,6 +46,32 @@
           }
         }
 
+        public static function recuperaNomeTurma($id_turma){
+          $sql = "SELECT turma.nome as nome_turma FROM turma WHERE  turma.id_turma = $id_turma";
+          $conexao = DB::conexao();
+          $stmt = $conexao->prepare($sql);
+          $stmt->execute();
+          $rg = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+          return $rg[0]["nome_turma"];
+        }
+
+        public static function verificaAlunoGrupo($fk_aluno)
+      {
+        $sql = "SELECT * FROM ref_aluno_projeti WHERE ref_aluno_projeti.fk_aluno = $fk_aluno";
+        $conexao = DB::conexao();
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute();
+        $rg = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if($rg){
+         return true;
+          } 
+        else{ return false;
+          }
+        }
+
+        
+
 
 
       public function adicionar(){
