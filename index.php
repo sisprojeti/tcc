@@ -252,25 +252,19 @@
               <li class="nav-item">
                 <a href="?modulo=formulario_avaliativo&acao=adicionar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Criar Formulário Avaliativo</p>
+                  <p>Formulário Avaliativo</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="?modulo=vinculoFormAvaTurma&acao=adicionar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Vinculo Form. Ava. a Turma</p>
+                  <p>Form. Ava. Turma</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="?modulo=VinculoAvaFormularioAvaliativo&acao=adicionar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Vinculo Ava. Form Avaliativo</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="?modulo=formulario_avaliativo&acao=listar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Formulário Avaliativo</p>
+                  <p>Avaliador Projete</p>
                 </a>
               </li>
 
@@ -431,13 +425,25 @@
               <li class="nav-item">
                 <a href="?modulo=criterios&acao=listar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Adicionar Critérios</p>
+                  <p>Critérios Avaliativos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="?modulo=formulario_avaliativo&acao=listar" class="nav-link">
+                <a href="?modulo=formulario_avaliativo&acao=adicionar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Formulário Avaliativo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?modulo=vinculoFormAvaTurma&acao=adicionar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Form. Ava. Turma</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?modulo=VinculoAvaFormularioAvaliativo&acao=adicionar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Avaliador Projete</p>
                 </a>
               </li>
             </ul>

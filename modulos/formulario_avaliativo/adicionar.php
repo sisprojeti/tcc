@@ -7,9 +7,8 @@
 <style type="text/css"></style>
 
 <div style="padding: 1%;">
-  <p style="font-family: sans-serif;font-size: 1.5em;">Criar Formulário Avaliativo </p>
+  <p style="font-family: sans-serif;font-size: 1.5em;">Criar Formulário Avaliativo </p> <br>
 </div>
-<p style="font-family: sans-serif;font-size: 1.3em;"> Turma - SIS01 </p>
 
 <?php
   if(isset($_POST['cadastra_formulario']) == 'cadastra_formulario'){

@@ -126,9 +126,9 @@ try {
              </select>
            </div>
            <div class="form-group">
-             <label>Projeti</label>
+             <label>Projete</label>
              <select class="form-control" name="fk_projeti" required>
-                <option value="">Selecione o Projeti</option>
+                <option value="">Selecione o Projete</option>
                <?php
                 if(isset($projetis)):
                 ?>
