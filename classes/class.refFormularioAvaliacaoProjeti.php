@@ -10,6 +10,7 @@
       public $pessoa_nome;
       public $nome_turma;
       public $nome_projeti;
+      public $id_pessoa;
 
       public function setPessoaNome($pessoa_nome){
         $this->pessoa_nome = $pessoa_nome;
@@ -34,6 +35,7 @@
         public static function listarProjeti($fk_projeti){
           try {
             $query = "SELECT pessoa.nome as pessoa_nome,
+                      pessoa.id_pessoa as id_pessoa,
                       formulario_avaliacao.id_formulario_avaliacao as id_formulario_avaliacao,
                       turma.id_turma as id_turma,
                       turma.nome as nome_turma,
@@ -59,8 +61,9 @@
                           foreach($registros as $objeto){
                             $temporario = new RefFormularioAvaliacaoProjeti();
                             $temporario->setIdFormularioAvaliacaoProjeti($objeto['id_formulario_avaliacao']);
-                            $temporario->setFkProjeti($objeto[$fk_projeti]);
+                            $temporario->setFkProjeti($fk_projeti);
                             $temporario->setPessoaNome($objeto['pessoa_nome']);
+                            $temporario->setIdPessoa($objeto['id_pessoa']);
                             $temporario->setDataAvaliacao($objeto['data_avaliacao']);
                             $temporario->setFkTurma($objeto['fk_turma']);
                             $temporario->setNomeTurma($objeto['nome_turma']);
@@ -82,12 +85,20 @@
         return $this->nome_turma;
       }
 
+      public function getIdPessoa(){
+        return $this->id_pessoa;
+      }
+
       public function getDataAvaliacao(){
         return $this->data_avaliacao;
       }
 
       public function setNomeProjeti($nome_projeti){
         $this->nome_projeti = $nome_projeti;
+      }
+
+      public function setIdPessoa($id_pessoa){
+        $this->id_pessoa = $id_pessoa;
       }
 
       public function getNomeProjeti(){
@@ -104,8 +115,15 @@
         $this->fk_turma = $fk_turma;
       }
 
+      public function setIdRefFormularioAvaliacaoProjeti($id_ref_formulario_avaliacao_projeti){
+        $this->id_ref_formulario_avaliacao_projeti = $id_ref_formulario_avaliacao_projeti;
+      }
+
       public function setIdFormularioAvaliacaoProjeti($id_formulario_avaliacao){
         $this->id_formulario_avaliacao = $id_formulario_avaliacao;
+      }
+      public function getIdFormularioAvaliacaoProjeti(){
+        return $this->id_formulario_avaliacao;
       }
 
       public function setFkProjeti($fk_projeti){

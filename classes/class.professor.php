@@ -28,7 +28,15 @@ include_once 'class.db.php';
       public static function listar($busca = false)
         {
           try {
-            $query = "SELECT professor.id_professor as id_professor , pessoa.nome as nome_prof, pessoa.email as email_prof, pessoa.cpf as cpf_prof, pessoa.telefone as telefone_prof, professor.data_cadastro as data_cadastro_prof from pessoa join professor on pessoa.id_pessoa = professor.fk_pessoa";
+            $query = "SELECT
+            professor.id_professor as id_professor
+            , pessoa.nome as nome_prof
+            , pessoa.email as email_prof
+            , pessoa.cpf as cpf_prof
+            , pessoa.telefone as telefone_prof
+            , professor.data_cadastro as data_cadastro_prof
+            , professor.fk_pessoa as fk_pessoa
+            from pessoa join professor on pessoa.id_pessoa = professor.fk_pessoa";
             if($busca){
               $query.= " and pessoa.nome like '%$busca%'";
             }
@@ -39,6 +47,7 @@ include_once 'class.db.php';
                           foreach($registros as $objeto){
                             $temporario = new Professor();
                             $temporario->setIdProfessor($objeto['id_professor']);
+                            $temporario->setFkPessoa($objeto['fk_pessoa']);
                             $temporario->setNome($objeto['nome_prof']);
                             $temporario->setEmail($objeto['email_prof']);
                             $temporario->setCpf($objeto['cpf_prof']);
@@ -51,6 +60,10 @@ include_once 'class.db.php';
           } catch (Exception $e) {
               echo "ERROR".$e->getMessage();
           }
+        }
+
+        public function setFkPessoa($fk_pessoa){
+          $this->fk_pessoa = $fk_pessoa;
         }
 
         public static function contarProfessores()

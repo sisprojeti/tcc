@@ -7,6 +7,14 @@
       header('Location:login.php');
     }
 
+    function mostrar($valor, $die= false){
+    echo "<pre>";
+    print_r($valor);
+    echo "</pre>";
+
+    if($die){ die(); }
+    }
+
     if(!isset($_SESSION['cpf']) || !isset($_SESSION['fk_usuario'])){
       echo "<script>location.href='login.php?msg=erro'</script>";
     } else {

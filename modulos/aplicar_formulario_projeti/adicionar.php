@@ -5,10 +5,16 @@ include('classes/class.turma.php');
 include('classes/class.refFormularioAvaliacaoProjeti.php');
 include('classes/class.criterio.php');
 include('classes/class.professor.php');
+include('classes/class.nota.php');
+
 
 try {
     $formularios_avaliacao_projeti = RefFormularioAvaliacaoProjeti::listarProjeti($_GET['fk_projeti']);
+    echo "<pre>";
+    print_r($formularios_avaliacao_projeti);
+    echo "</pre>";
     foreach ($formularios_avaliacao_projeti as $formulario_avaliacao_projeti){
+      $id_ref_formulario_projeti = $formulario_avaliacao_projeti->getIdFormularioAvaliacaoProjeti();
       $nome_turma = $formulario_avaliacao_projeti->getNomeTurma();
       $nome_projeti = $formulario_avaliacao_projeti->getNomeProjeti();
       $data_avaliacao = $formulario_avaliacao_projeti->getDataAvaliacao();
@@ -18,14 +24,44 @@ try {
 }
 
 try {
-    $criterios = Criterio::listar($_GET['fk_projeti']);
+if(isset($_POST["button"]) && ($_POST["button"] === "Salvar")){
+   mostrar($_REQUEST);
+     $crits = Criterio::listar($_GET['fk_projeti']);
+     foreach ($_POST['fk_pessoa'] as $pessoa){
+       foreach ($crits as $crit){
+       $ref = $pessoa."-".$crit->getIdCriterio();
+       $nota_criterio = $_POST[$ref];
+       $notas = new Nota();
+       $nota->setValor($nota_criterio);
+       $nota->setDataModificao('2020-09-21');
+       $nota->setFkCriterio($crit->getIdCriterio());
+       $nota->setFkAluno($pessoa->getIdPessoa());
+       $nota->setFkProfessor($)
+       }
+   }
+   // $notas->setValor($_POST['valor_maximo']);
+   // $notas->setDataModificacao($_POST['data_modificacao']);
+   // $ultimoIdPessoa = $notas->adicionar();
+}
+} catch (PDOException $e) {
+  echo "ERROR".$e->getMessage();
+}
 
+
+try {
+    $criterios = Criterio::listar($_GET['fk_projeti']);
+    // echo "<pre>";
+    // print_r($criterios);
+    // echo "</pre>";
 } catch (Exception $e) {
   echo "ERROR:".$e->getMessage();
 }
 
 try {
     $professores = Professor::listar();
+// echo "<pre>";
+//     print_r($professores);
+// echo "</pre>";
 } catch (Exception $e) {
   echo "ERROR:".$e->getMessage();
  }
@@ -95,35 +131,38 @@ try {
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Seleção de Avaliadores</label>
-    <select class="form-control" id="exampleFormControlSelect1">
+    <select name="id_professor_um" class="form-control" id="exampleFormControlSelect1">
     <?php foreach ($professores as $professor):?>
-        <option><?php echo $professor->getNomeProfessor();?></option>
+        <option value="<?php echo $professor->getIdProfessor();?>"><?php echo $professor->getNomeProfessor();?></option>
     <?php endforeach; ?>
     </select>
     <br>
-    <select class="form-control" id="exampleFormControlSelect1">
+    <select name="id_professor_dois" class="form-control" id="exampleFormControlSelect1">
     <?php foreach ($professores as $professor):?>
-        <option><?php echo $professor->getNomeProfessor();?></option>
+        <option value="<?php echo $professor->getIdProfessor();?>"><?php echo $professor->getNomeProfessor();?></option>
     <?php endforeach; ?>
     </select>
     <br>
-    <select class="form-control" id="exampleFormControlSelect1">
+    <select name="id_professor_tres" class="form-control" id="exampleFormControlSelect1">
     <?php foreach ($professores as $professor):?>
-        <option><?php echo $professor->getNomeProfessor();?></option>
+        <option value="<?php echo $professor->getIdProfessor();?>"><?php echo $professor->getNomeProfessor();?></option>
     <?php endforeach; ?>
     </select>
   </div>
   <?php foreach ($formularios_avaliacao_projeti as $formularios_avaliacao_projeti): ?>
     <div class="form-group">
       <label>Nome Integrante projeti</label>
-      <input type="text" class="form-control" disabled value="<?php echo $formularios_avaliacao_projeti->getNomePessoa()?>" placeholder="Insira o Nome Completo" name="nome" minlength="15" required>
+      <input type="hidden" name="fk_pessoa[]" value="<?php echo $formularios_avaliacao_projeti->getIdPessoa();?>">
+      <input type="text" class="form-control" disabled value="<?php echo $formularios_avaliacao_projeti->getNomePessoa()?>" placeholder="" name="nome" minlength="15" required>
       <?php if($criterios):?>
           <?php foreach ($criterios as $criterio):?>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1"><?php echo $criterio->getNomeCriterio();?></label>
+      <div class="form-group">
+        Nome do Criterio:<label><?php echo $criterio->getNomeCriterio();?></label>
+        Valor Maximo:<label for=""><?php echo $criterio->getValorMaximo();?></label>
       </div>
+      <input class="form-control" type="text" name="<?php echo $formularios_avaliacao_projeti->getIdPessoa();?>-<?php echo $criterio->getIdCriterio();?>" value="">
     <?php endforeach;?>
+    <hr>
     <?php endif ;?>
     </div>
   <?php endforeach; ?>
