@@ -7,7 +7,6 @@ include('classes/class.criterio.php');
 include('classes/class.professor.php');
 include('classes/class.nota.php');
 
-mostrar($_SESSION);
 
 try {
     $formularios_avaliacao_projeti = RefFormularioAvaliacaoProjeti::listarProjeti($_GET['fk_projeti']);
@@ -24,7 +23,6 @@ try {
     }
 
     $fk_professor = Nota::recuperaIdProfessor($_SESSION['fk_pessoa']);
-    mostrar($fk_professor);
 } catch (Exception $e) {
   echo "ERROR:".$e->getMessage();
 }
@@ -148,7 +146,7 @@ try {
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Lançar Notas</li>
+              <li class="breadcrumb-item active">Lançar Notas</li> <br>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -172,52 +170,7 @@ try {
 </div>
 <br>
 <!------------------------------------- NOTAS ----------------------------------->
-<div class="controls corpo " >
-  <p class="topoturma"> NOTAS</p>
-<div class="controls flex ">
-<!-------------- TABELA ---------------->
-<table class="table table-bordered">
-<thead>
-  <tr>
-  <th width=35% scope="col">Critérios</th>
-  <th width=5% scope="col">Valor Maximo</th>
-  <th scope="col">Aluno 1</th>
-  <th scope="col">Aluno 2</th>
-  <th scope="col">Aluno 3</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>Critério 1</td>
-    <td>Nota = Aluno 1</td>
-    <td>Nota = Aluno 1</td>
-    <td>Nota = Aluno 2</td>
-    <td>Nota = Aluno 3</td>
-  </tr>
- <tr>
-    <td>Critério 2</td>
-    <td>Nota = Aluno 1</td>
-    <td>Nota = Aluno 1</td>
-    <td>Nota = Aluno 2</td>
-    <td>Nota = Aluno 3</td>
-  </tr>
-  <tr>
-    <td>Critério 3</td>
-    <td>Nota = Aluno 1</td>
-    <td>Nota = Aluno 1</td>
-    <td>Nota = Aluno 2</td>
-    <td>Nota = Aluno 3</td>
-  </tr>
-</tbody>
-<tfoot>
-  <tr >
-  <td colspan = 5 style="text-align: right;"><button type="button" class="btn btn-success">Salvar</button></td>
-  </tr>
-</tfoot>
-  
-</table>
-</div>
-</div>
+
     </div>
     <!-- /.content-header --->
 
