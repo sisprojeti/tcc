@@ -27,11 +27,12 @@ include('classes/class.professor.php');
 <!------------------------------------- MENU ----------------------------------->
 <div class="area_menu">
   <p></p>
-   <p class="texto-area">Grupos da Turma - SIS01 </p>
+   <p class="texto-area">Grupos da Turma </p>
     <div><a href="index.php?modulo=turma&acao=listar" class="btn btn-secondary">Voltar</a> </div>
 </div>
 
-<!------------------------------------- TABELA ----------------------------------->
+
+
 <div class="container col-lg-12 navbar-white">
    <section class="content navbar-light navbar-white">
      <div class="container-fluid navbar-white ">
