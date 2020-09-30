@@ -6,9 +6,6 @@ include('classes/class.refFormularioAvaliacaoProjeti.php');
 include('classes/class.criterio.php');
 include('classes/class.professor.php');
 include('classes/class.nota.php');
-
-mostrar($_SESSION);
-
 try {
     $formularios_avaliacao_projeti = RefFormularioAvaliacaoProjeti::listarProjeti($_GET['fk_projeti']);
     echo "<pre>";
@@ -22,9 +19,7 @@ try {
       $fk_criterio = $formulario_avaliacao_projeti->getIdCriterio();
       $fk_aluno = $formulario_avaliacao_projeti->getIdAluno();
     }
-
     $fk_professor = Nota::recuperaIdProfessor($_SESSION['fk_pessoa']);
-    mostrar($fk_professor);
 } catch (Exception $e) {
   echo "ERROR:".$e->getMessage();
 }
@@ -161,7 +156,7 @@ try {
 <!------------ AVALIADORES ---------------->
   <div>
     <p><b>Avaliador:</b> <?php echo $_SESSION['nome_pessoa']?></p>
-    
+
   </div>
 <!--------------- DATA --------------------->
   <div>
@@ -214,7 +209,7 @@ try {
   <td colspan = 5 style="text-align: right;"><button type="button" class="btn btn-success">Salvar</button></td>
   </tr>
 </tfoot>
-  
+
 </table>
 </div>
 </div>
@@ -242,7 +237,7 @@ try {
   <div class="form-group">
     <label for="exampleFormControlSelect1">Avaliador Projeti</label>
     <input type="text" class="form-control" disabled value="<?php echo $_SESSION['nome_pessoa']?>" placeholder="" name="nome" minlength="15" required>
-  </div> <br> 
+  </div> <br>
   <label>Grupo do Projete</label> -->
   <?php foreach ($formularios_avaliacao_projeti as $formularios_avaliacao_projeti){?>
     <div class="form-group">
