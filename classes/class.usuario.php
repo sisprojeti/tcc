@@ -52,6 +52,7 @@
 
       public static function logar($cpf = false, $senha = false){
         if($cpf && $senha){
+          //$senha = md5($senha);
           $sql = "SELECT
           grupo.id_grupo as id_grupo,
           grupo.nome as nome_grupo,

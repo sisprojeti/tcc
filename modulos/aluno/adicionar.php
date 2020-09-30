@@ -38,7 +38,8 @@ try {
        $aluno->setMatricula($_POST['matricula']);
        $aluno->adicionar();
 
-       $senha = '123456';
+       //$senha = md5('12345');
+       $senha = ('123456');
        $usuario = new Usuario();
        $usuario->setPessoaUsuarioId($ultimoIdPessoa);
        $usuario->setSenha($senha);
@@ -139,7 +140,7 @@ try {
  <!-- /.card-body -->
 <div class="form-group navbar-white" style="text-align: center;">
     <input type="submit" style="width: 20%; height: 6%;" name="button" value="Salvar" class="btn btn-success" >
-     <br> 
+     <br>
 </div>
 </form>
     <!-- /.row (main row) -->

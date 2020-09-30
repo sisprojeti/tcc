@@ -3,10 +3,15 @@
   	include('classes/class.exercicio.php');
   	include('classes/class.aluno.php');
   	include('classes/class.nota.php');
-
 		try {
-			$listagemNotas = Nota::listar();
-			mostrar($listagemNotas);
+			$listagemNotas = Nota::listarCriterios();
+			$id_aluno = Nota::recuperaIdAluno($_SESSION['fk_pessoa']);
+			$recuperaIdProjeti = Nota::recuperaFkProjeti($id_aluno);
+			$avaliadores = Nota::listarAvaliadorProjeti($recuperaIdProjeti);
+			//mostrar($listagemNotas);
+			// foreach ($listagemNotas as $listagem) {
+			// 	echo $listagem->getNomeAvaliador()
+			// }
 		} catch (PDOException $e) {
 			echo "Error".$e->getMessage();
 		}
@@ -62,10 +67,10 @@
 	<div>
 		<p><b>Avaliadores:</b></p>
 		<ul>
-			<li> aaa</li>
-			<li> aaa</li>
-			<li> aaa</li>
-		</ul>
+			<?php foreach ($avaliadores as $avaliador): ?>
+					<li> <?php echo $avaliador->getNomeAvaliador();?></li>
+			<?php endforeach; ?>
+			</ul>
 	</div>
 <!--------------- DATA --------------------->
 	<div>
@@ -85,17 +90,37 @@
 	<tr>
 	<th width=85% scope="col">Critérios</th>
 	<th scope="col">Nota</th>
+	<th scope="col">Nota</th>
+	<th scope="col">Nota</th>
+	<th scope="col">Média</th>
 	</tr>
 </thead>
 <tbody>
-	<tr>
-		<td>lalalala</td>
-		<td> 5</td>
-	</tr>
+	<?php $mediaTotal = 0; ?>
+	<?php foreach ($listagemNotas as $listagem): ?>
+		<tr>
+			<td><?php echo $listagem->getNomeCriterio();?> </td>
+			 <?php $peganota = Nota::pegaNota($id_aluno,$listagem->getIdCriterio());
+			 		$mediaNota = 0;
+					$mediaQuantidade = 0;
+					foreach ($peganota as $notas):?>
+				<td>
+						<?php echo $notas->getValor();
+				     $mediaNota += $notas->getValor();
+						 $mediaQuantidade += 1;
+						 ?>
+				</td>
+			<?php endforeach; ?>
+			<td> <?php echo number_format($mediaNota/$mediaQuantidade,2,',','.');
+						$mediaTotal = $mediaTotal + ($mediaNota/$mediaQuantidade);
+					?>
+			</td>
+		</tr>
+	<?php endforeach;?>
 </tbody>
 <tfoot>
-	<td style="text-align: right;"> <b> Média </b></td>
-	<td>5.1</td>
+	<td style="text-align: right;"> <b> Total </b></td>
+	<td><?= $mediaTotal ?></td>
 </tfoot>
 </table>
 </div>
