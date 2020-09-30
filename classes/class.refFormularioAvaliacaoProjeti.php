@@ -10,12 +10,12 @@
       public $pessoa_nome;
       public $nome_turma;
       public $nome_projeti;
-      public $id_pessoa;
+      public $fk_professor;
+      public $fk_criterio;
 
       public function setPessoaNome($pessoa_nome){
         $this->pessoa_nome = $pessoa_nome;
       }
-
 
 
       public function adicionar()
@@ -40,7 +40,9 @@
                       formulario_avaliacao.data_avaliacao as data_avaliacao,
                       turma.nome as nome_turma,
                       aluno.id_aluno as id_aluno,
+                      professor.id_professor as fk_professor,
                       criterio.nome as nome_criterio,
+                      criterio.id_criterio as fk_criterio,
                       ref_formulario_avaliacao_turma.fk_turma as fk_turma,
                       projeti.tema as nome_projeti
                       from
@@ -55,6 +57,7 @@
                       join ref_formulario_avaliacao_turma
                       on ref_formulario_avaliacao_turma.fk_turma = turma.id_turma
                       join criterio
+                      join professor
                       where projeti.id_projeti = $fk_projeti group by id_aluno";
                         $stmt = DB::conexao()->prepare($query);
                         $stmt->execute();
@@ -65,11 +68,13 @@
                             $temporario->setIdFormularioAvaliacaoProjeti($objeto['id_formulario_avaliacao']);
                             $temporario->setFkProjeti($fk_projeti);
                             $temporario->setPessoaNome($objeto['pessoa_nome']);
-                            $temporario->setIdAluno($objeto['id_aluno']);
+                            $temporario->setFkAluno($objeto['id_aluno']);
+                            $temporario->setFKProfessor($objeto['fk_professor']);
+                            $temporario->setFkCriterio($objeto['fk_criterio']);
+                            $temporario->setFkTurma($objeto['fk_turma']);
                             $temporario->setDataAvaliacao($objeto['data_avaliacao']);
                             $temporario->setNomeTurma($objeto['nome_turma']);
                             $temporario->setNomeProjeti($objeto['nome_projeti']);
-                            $temporario->setFkTurma($objeto['fk_turma']);
                             $itens[] = $temporario;
                           }
               return $itens;
@@ -79,12 +84,50 @@
         }
       }
 
+      public static function slistarProjeti($fk_projeti){
+        try {
+          $query = "SELECT
+                    projeti.tema,
+                    pessoa.nome,
+                    avaliador_projeti.fk_professor
+                    from projeti
+                    join pessoa
+                    join professor
+                    on pessoa.id_pessoa = professor.fk_pessoa
+                    join avaliador_projeti
+                    on professor.id_professor = avaliador_projeti.fk_professor";
+                    mostrar($query);
+                      $stmt = DB::conexao()->prepare($query);
+                      $stmt->execute();
+                      $registros = $stmt->fetchAll();
+                      if($registros){
+                        foreach($registros as $objeto){
+                          $temporario = new RefFormularioAvaliacaoProjeti();
+                          $temporario->setIdFormularioAvaliacaoProjeti($objeto['id_formulario_avaliacao']);
+                          $temporario->setFkProjeti($fk_projeti);
+                          $temporario->setPessoaNome($objeto['pessoa_nome']);
+                          $temporario->setFkAluno($objeto['id_aluno']);
+                          $temporario->setFKProfessor($objeto['fk_professor']);
+                          $itens[] = $temporario;
+                        }
+            return $itens;
+        }
+      }catch (PDOException $e){
+        echo "ERROR".$e->getMessage();
+      }
+    }
+
       public function setNomeTurma($nome_turma){
         $this->nome_turma = $nome_turma;
       }
 
-      public function setIdAluno($id_aluno){
+
+      public function setFkAluno($id_aluno){
         $this->id_aluno = $id_aluno;
+      }
+
+      public function setFkProfessor($id_professor){
+        $this->id_professor = $id_professor;
       }
 
 
@@ -92,8 +135,25 @@
         return $this->nome_turma;
       }
 
+      public function getNomeAluno(){
+        return $this->nome_aluno;
+      }
+
+      public function getNomeCriterio(){
+        return $this->nome_criterio;
+      }
+
+
       public function getIdPessoa(){
         return $this->id_pessoa;
+      }
+
+      public function getIdCriterio(){
+        return $this->fk_criterio;
+      }
+
+      public function getIdProfessor(){
+        return $this->id_professor;
       }
 
 

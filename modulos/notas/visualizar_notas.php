@@ -1,7 +1,16 @@
-<?php  
+<?php
 	include('classes/class.turma.php');
   	include('classes/class.exercicio.php');
   	include('classes/class.aluno.php');
+  	include('classes/class.nota.php');
+
+		try {
+			$listagemNotas = Nota::listar();
+			mostrar($listagemNotas);
+		} catch (PDOException $e) {
+			echo "Error".$e->getMessage();
+		}
+
 ?>
 
 <style type="text/css">
@@ -20,7 +29,7 @@
 	width: 96%;
 	border-radius: 10px 10px 10px 10px;
 	box-shadow: 7px 7px 7px  rgba(0, 0, 0, 0.15), -7px -7px 7px rgba(0, 0, 0, 0.15);
-	
+
 }
 .flex{
 	display: flex;
@@ -87,7 +96,7 @@
 <tfoot>
 	<td style="text-align: right;"> <b> Média </b></td>
 	<td>5.1</td>
-</tfoot>	
+</tfoot>
 </table>
 </div>
 </div>

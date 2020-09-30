@@ -131,6 +131,7 @@ include_once 'class.db.php';
           $this->cpf = $cpf;
         }
 
+
         public function getTelefone()
         {
           return $this->telefone;

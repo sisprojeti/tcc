@@ -7,19 +7,24 @@ include('classes/class.criterio.php');
 include('classes/class.professor.php');
 include('classes/class.nota.php');
 
-print_r($_SESSION);
+mostrar($_SESSION);
 
 try {
     $formularios_avaliacao_projeti = RefFormularioAvaliacaoProjeti::listarProjeti($_GET['fk_projeti']);
     echo "<pre>";
-    mostrar($formularios_avaliacao_projeti);
+    //mostrar($formularios_avaliacao_projeti);
     echo "</pre>";
     foreach ($formularios_avaliacao_projeti as $formulario_avaliacao_projeti){
       $id_ref_formulario_projeti = $formulario_avaliacao_projeti->getIdFormularioAvaliacaoProjeti();
       $nome_turma = $formulario_avaliacao_projeti->getNomeTurma();
       $nome_projeti = $formulario_avaliacao_projeti->getNomeProjeti();
       $data_avaliacao = $formulario_avaliacao_projeti->getDataAvaliacao();
+      $fk_criterio = $formulario_avaliacao_projeti->getIdCriterio();
+      $fk_aluno = $formulario_avaliacao_projeti->getIdAluno();
     }
+
+    $fk_professor = Nota::recuperaIdProfessor($_SESSION['fk_pessoa']);
+    mostrar($fk_professor);
 } catch (Exception $e) {
   echo "ERROR:".$e->getMessage();
 }
@@ -28,16 +33,16 @@ try {
 if(isset($_POST["button"]) && ($_POST["button"] === "Salvar")){
    mostrar($_REQUEST);
      $crits = Criterio::listar($_GET['fk_projeti']);
-     foreach ($_POST['fk_pessoa'] as $pessoa){
+     foreach ($_POST['fk_aluno'] as $aluno){
        foreach ($crits as $crit){
-       $ref = $pessoa."-".$crit->getIdCriterio();
+       $ref = $aluno."-".$crit->getIdCriterio();
        $nota_criterio = $_POST[$ref];
        $notas = new Nota();
        $notas->setValor($nota_criterio);
-       $notas->setDataModificacao(date('d/m/Y'));
+       $notas->setDataModificacao('2020-09-29');
        $notas->setFkCriterio($crit->getIdCriterio());
-       $notas->setFkAluno($pessoa);
-       $notas->setFkProfessor($_SESSION['fk_pessoa']);
+       $notas->setFkAluno($aluno);
+       $notas->setFkProfessor($fk_professor);
        $notas->adicionar();
        }
    }
@@ -128,7 +133,7 @@ try {
   </div>
   <div class="form-group">
     <label for="">Data da Avaliação</label>
-    <input class="form-control" disabled type="" name="" value="<?php echo date('d/m/Y', strtotime($data_avaliacao));?>">
+    <input class="form-control" type="" disabled name="data_avaliacao" value="<?php echo date('d/m/Y');?>">
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Avaliador Projeti</label>
@@ -138,7 +143,7 @@ try {
   <?php foreach ($formularios_avaliacao_projeti as $formularios_avaliacao_projeti){?>
     <div class="form-group">
       <label>Nome Integrante projeti</label>
-      <input type="hidden" name="fk_pessoa[]" value="<?php echo $formularios_avaliacao_projeti->getIdAluno();?>">
+      <input type="hidden" name="fk_aluno[]" value="<?php echo $formularios_avaliacao_projeti->getIdAluno();?>">
       <input type="text" class="form-control" disabled value="<?php echo $formularios_avaliacao_projeti->getNomePessoa()?>" placeholder="" name="nome" minlength="15" required>
     <div class="form-group" >
       <?php if($criterios) { ?>
@@ -147,7 +152,7 @@ try {
         Nome do Criterio:<label><?php echo $criterio->getNomeCriterio();?></label>
         Valor Maximo:<label for=""><?php echo $criterio->getValorMaximo();?></label>
       </div>
-      <input class="form-control" type="text" name="<?php echo $formularios_avaliacao_projeti->getIdPessoa();?>-<?php echo $criterio->getIdCriterio();?>" value="">
+      <input class="form-control" type="text" name="<?php echo $formularios_avaliacao_projeti->getIdAluno();?>-<?php echo $criterio->getIdCriterio();?>" value="">
     <?php }?>
   <?php }?>
   <?php } ?>
