@@ -76,38 +76,7 @@ try {
       </div>
     </div>
 <br>
-<!------------------------------------- FILTO ----------------------------------->
-<form name="FormConsulta" class="form-horizontal" action="" method="post">
-<div style="padding: 0 3%; width: 100%; display:flex; justify-content: center;">
-    <div class="controls" style="display:flex; width: 30%; align-content: center; justify-content: space-around;">
-       <p> Exercicío: </p>
-    <select class="form-control col-md-8"  name='exercicio'>
-        <option value=""> Todos </option>
-        <?php
-            $exercicios = Exercicio::listar();
-            foreach ($exercicios as $c) {
-              if($_POST['exercicio']==$c->getIdExercicio()){
-                echo "<option selected value= '".$c->getIdExercicio()."'>".$c->getNomeAno()."</option>";
-              } else {
-                 echo "<option value= '".$c->getIdExercicio()."'>".$c->getNomeAno()."</option>";
-              }
-            }
-        ?>
-    </select>
-    </div>
-    <div  class="controls" style="display:flex; width: 25%; justify-content: space-around;">
-      <input type="submit" name="btnBuscar" value="Buscar" class="btn btn-warning" style="flex-grow: 0.3;" >
-    </div>
-</div>
-<br>
-</form>
-<?php
-    if(isset($_POST["exercicio"])){
-        $exercicio = $_POST['exercicio'];
-   }else{
-        $exercicio=false;
-    }
-?>
+
     <div class="container col-lg-8">
     <section class="content">
       <div class="container-fluid">

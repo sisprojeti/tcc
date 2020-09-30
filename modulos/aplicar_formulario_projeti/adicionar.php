@@ -85,6 +85,45 @@ try {
              color:red
        }
 </style>
+
+<!------------------------------------- TABELA ----------------------------------->
+
+<style type="text/css">
+
+
+.topoturma{
+  background: #fd7e14;
+  border-radius: 10px 10px 0px 0px;
+  height: 4%;
+  font-size: 1.3em;
+  color: #f4f4f4;
+  padding: 2px 0px;
+}
+.corpo{
+  margin: auto;
+  width: 96%;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 7px 7px 7px  rgba(0, 0, 0, 0.15), -7px -7px 7px rgba(0, 0, 0, 0.15);
+
+}
+.flex{
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 1%;
+  font-size: 1em;
+}
+.rodapeturma{
+  background: #f4f4f4;
+  border-radius: 10px;
+  border-radius: 0px 0px 10px 10px;
+  height: 4%;
+  font-size: 1.3em;
+  color: #000;
+  padding: 2px 0px;
+}
+
+</style>
+
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
@@ -104,16 +143,81 @@ try {
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6" style="">
-            <h3 class="m-0 text-dark">Aplicação de Formulário Avaliativo</h3>
+            <h3 class="m-0 text-dark">Lançar Notas</h3>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Aplicar Formulário Acadêmicos</li>
+              <li class="breadcrumb-item active">Lançar Notas</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
+      <!------------------------------------- TEXTO ----------------------------------->
+<!------------ APRESENTAÇÃO --------------->
+<div class="controls corpo">
+  <p class="topoturma"> Turma - <?php echo $nome_turma;?> </p>
+<div class="controls flex">
+<!------------ AVALIADORES ---------------->
+  <div>
+    <p><b>Avaliador:</b> <?php echo $_SESSION['nome_pessoa']?></p>
+    
+  </div>
+<!--------------- DATA --------------------->
+  <div>
+    <p> <b>Data: <?php echo date('d/m/Y');?> </b></p>
+  </div>
+</div>
+<p class="rodapeturma"> Tema: <?php echo $nome_projeti;?> </p>
+</div>
+<br>
+<!------------------------------------- NOTAS ----------------------------------->
+<div class="controls corpo " >
+  <p class="topoturma"> NOTAS</p>
+<div class="controls flex ">
+<!-------------- TABELA ---------------->
+<table class="table table-bordered">
+<thead>
+  <tr>
+  <th width=35% scope="col">Critérios</th>
+  <th width=5% scope="col">Valor Maximo</th>
+  <th scope="col">Aluno 1</th>
+  <th scope="col">Aluno 2</th>
+  <th scope="col">Aluno 3</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Critério 1</td>
+    <td>Nota = Aluno 1</td>
+    <td>Nota = Aluno 1</td>
+    <td>Nota = Aluno 2</td>
+    <td>Nota = Aluno 3</td>
+  </tr>
+ <tr>
+    <td>Critério 2</td>
+    <td>Nota = Aluno 1</td>
+    <td>Nota = Aluno 1</td>
+    <td>Nota = Aluno 2</td>
+    <td>Nota = Aluno 3</td>
+  </tr>
+  <tr>
+    <td>Critério 3</td>
+    <td>Nota = Aluno 1</td>
+    <td>Nota = Aluno 1</td>
+    <td>Nota = Aluno 2</td>
+    <td>Nota = Aluno 3</td>
+  </tr>
+</tbody>
+<tfoot>
+  <tr >
+  <td colspan = 5 style="text-align: right;"><button type="button" class="btn btn-success">Salvar</button></td>
+  </tr>
+</tfoot>
+  
+</table>
+</div>
+</div>
     </div>
     <!-- /.content-header --->
 
@@ -124,7 +228,7 @@ try {
 <section class="content navbar-light navbar-white">
 <div class="container-fluid navbar-white ">
 <form role="form" id="form_avaliacao_projeti" action="#" method="POST" >
-  <div class="form-group"> <br>
+  <!--<div class="form-group"> <br>
     <p name="nome_turma" style="font-size: 20px;" > <b> Turma - <?php echo $nome_turma;?> <b></p>
   </div>
   <div class="form-group">
@@ -138,8 +242,8 @@ try {
   <div class="form-group">
     <label for="exampleFormControlSelect1">Avaliador Projeti</label>
     <input type="text" class="form-control" disabled value="<?php echo $_SESSION['nome_pessoa']?>" placeholder="" name="nome" minlength="15" required>
-  </div> <br>
-  <label>Grupo do Projete</label>
+  </div> <br> 
+  <label>Grupo do Projete</label> -->
   <?php foreach ($formularios_avaliacao_projeti as $formularios_avaliacao_projeti){?>
     <div class="form-group">
       <label>Nome Integrante projeti</label>
