@@ -6,8 +6,11 @@ include('classes/class.refFormularioAvaliacaoProjeti.php');
 include('classes/class.criterio.php');
 include('classes/class.professor.php');
 include('classes/class.nota.php');
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> c9ce83bb50e88b50e4a5d4ee9cd69a90dfcef761
 try {
     $formularios_avaliacao_projeti = RefFormularioAvaliacaoProjeti::listarProjeti($_GET['fk_projeti']);
     echo "<pre>";
@@ -21,7 +24,6 @@ try {
       $fk_criterio = $formulario_avaliacao_projeti->getIdCriterio();
       $fk_aluno = $formulario_avaliacao_projeti->getIdAluno();
     }
-
     $fk_professor = Nota::recuperaIdProfessor($_SESSION['fk_pessoa']);
 } catch (Exception $e) {
   echo "ERROR:".$e->getMessage();
@@ -159,7 +161,7 @@ try {
 <!------------ AVALIADORES ---------------->
   <div>
     <p><b>Avaliador:</b> <?php echo $_SESSION['nome_pessoa']?></p>
-    
+
   </div>
 <!--------------- DATA --------------------->
   <div>
@@ -170,7 +172,56 @@ try {
 </div>
 <br>
 <!------------------------------------- NOTAS ----------------------------------->
+<<<<<<< HEAD
 
+=======
+<div class="controls corpo " >
+  <p class="topoturma"> NOTAS</p>
+<div class="controls flex ">
+<!-------------- TABELA ---------------->
+<table class="table table-bordered">
+<thead>
+  <tr>
+  <th width=35% scope="col">Critérios</th>
+  <th width=5% scope="col">Valor Maximo</th>
+  <th scope="col">Aluno 1</th>
+  <th scope="col">Aluno 2</th>
+  <th scope="col">Aluno 3</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Critério 1</td>
+    <td>Nota = Aluno 1</td>
+    <td>Nota = Aluno 1</td>
+    <td>Nota = Aluno 2</td>
+    <td>Nota = Aluno 3</td>
+  </tr>
+ <tr>
+    <td>Critério 2</td>
+    <td>Nota = Aluno 1</td>
+    <td>Nota = Aluno 1</td>
+    <td>Nota = Aluno 2</td>
+    <td>Nota = Aluno 3</td>
+  </tr>
+  <tr>
+    <td>Critério 3</td>
+    <td>Nota = Aluno 1</td>
+    <td>Nota = Aluno 1</td>
+    <td>Nota = Aluno 2</td>
+    <td>Nota = Aluno 3</td>
+  </tr>
+</tbody>
+<tfoot>
+  <tr >
+  <td colspan = 5 style="text-align: right;"><button type="button" class="btn btn-success">Salvar</button></td>
+  </tr>
+</tfoot>
+
+</table>
+</div>
+</div>
+>>>>>>> c9ce83bb50e88b50e4a5d4ee9cd69a90dfcef761
     </div>
     <!-- /.content-header --->
 
@@ -195,7 +246,7 @@ try {
   <div class="form-group">
     <label for="exampleFormControlSelect1">Avaliador Projeti</label>
     <input type="text" class="form-control" disabled value="<?php echo $_SESSION['nome_pessoa']?>" placeholder="" name="nome" minlength="15" required>
-  </div> <br> 
+  </div> <br>
   <label>Grupo do Projete</label> -->
   <?php foreach ($formularios_avaliacao_projeti as $formularios_avaliacao_projeti){?>
     <div class="form-group">
